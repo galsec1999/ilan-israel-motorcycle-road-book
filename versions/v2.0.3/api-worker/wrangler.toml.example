@@ -1,0 +1,21 @@
+# שירות AI — גרסת מסמך 2.0.3
+name = "ilan-road-book-ai-v2"
+main = "src/worker.js"
+compatibility_date = "2026-08-05"
+
+[vars]
+ALLOWED_ORIGIN = "https://galsec1999.github.io"
+OPENAI_TEXT_MODEL = "gpt-5.6-luna"
+OPENAI_TTS_MODEL = "tts-1"
+OPENAI_TTS_VOICE = "alloy"
+DAILY_AI_LIMIT = "25"
+FIVE_MINUTE_LIMIT = "5"
+
+# לפני פריסה יוצרים KV ומחליפים את המזהה:
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "REPLACE_ME"
+
+# סודות שנקבעים ב-wrangler secret put, לעולם לא בקובץ:
+# OPENAI_API_KEY
+# SESSION_HMAC_SECRET

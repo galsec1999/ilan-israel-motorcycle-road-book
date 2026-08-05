@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#102f3a">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="description" content="ספר טיולי כביש לאופנועים בישראל — גרסת מוצר 2.0, גרסת מסמך 2.0.3">
+  <title>ספר של אילן לטיולי הכביש לאופנועים בישראל — גרסה 2</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./assets/app-v2.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">דלג לתוכן</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">IL</span>
+      <div>
+        <strong>ספר הטיולים של אילן</strong>
+        <small>גרסת מוצר 2.0 · גרסת מסמך 2.0.3</small>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="themeToggle" class="button ghost" type="button" aria-pressed="false">מצב כהה</button>
+      <button id="installButton" class="button primary" type="button" hidden>התקנת אפליקציה</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <span class="eyebrow">מסלולים · מפות · בטיחות · עוזר AI</span>
+        <h1 id="heroTitle">בוחרים טיול, מבינים את הדרך ויוצאים מוכנים</h1>
+        <p>ספר קהילתי לרוכבי כביש בישראל. חיפוש נקי, מפה לכל מסלול, סיפורי דרך, תכנון קבוצתי והסבר קולי בכל עצירה.</p>
+        <div class="hero-actions">
+          <a class="button accent" href="#routesView">מצאו מסלול</a>
+          <button class="button light" type="button" data-view="safetyView">מרכז הבטיחות</button>
+        </div>
+      </div>
+      <dl class="stats" aria-label="נתוני הספר">
+        <div><dt id="statRoutes">—</dt><dd>מסלולים</dd></div>
+        <div><dt id="statStops">—</dt><dd>עצירות מתועדות</dd></div>
+        <div><dt id="statVerified">—</dt><dd>מסלולי מקור מאומתים</dd></div>
+        <div><dt>AI</dt><dd>שאלות והקראה בעצירה</dd></div>
+      </dl>
+    </section>
+
+    <section class="safety-banner" aria-label="הודעת בטיחות">
+      <strong>לפני היציאה:</strong>
+      <span>בודקים מצב כבישים, מזג אוויר, הנחיות רשמיות וכשירות הקבוצה. אין להשתמש באתר בזמן רכיבה.</span>
+      <button class="text-button" type="button" data-view="safetyView">לכללי הבטיחות</button>
+    </section>
+
+    <nav class="view-tabs" role="tablist" aria-label="חלקי הספר">
+      <button role="tab" aria-selected="true" aria-controls="routesView" id="tabRoutes" data-view="routesView">מסלולים</button>
+      <button role="tab" aria-selected="false" aria-controls="journeysView" id="tabJourneys" data-view="journeysView">מסעות של כמה ימים</button>
+      <button role="tab" aria-selected="false" aria-controls="safetyView" id="tabSafety" data-view="safetyView">בטיחות וקבוצה</button>
+      <button role="tab" aria-selected="false" aria-controls="plannerView" id="tabPlanner" data-view="plannerView">הטיולים ששמרתי</button>
+      <button role="tab" aria-selected="false" aria-controls="aboutView" id="tabAbout" data-view="aboutView">אודות ומקורות</button>
+    </nav>
+
+    <section id="routesView" class="app-view" role="tabpanel" aria-labelledby="tabRoutes">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">בחירה מהירה</span>
+          <h2>איזה טיול מתאים לכם היום?</h2>
+        </div>
+        <p>המסננים משתמשים בקטגוריות אחידות. מסלול מותנה או טיוטה מסומן באופן בולט.</p>
+      </div>
+
+      <div id="quickFilters" class="quick-filters" aria-label="סינון מהיר">
+        <button type="button" data-quick="all" class="active">הכול</button>
+        <button type="button" data-quick="short">קצר וממוקד</button>
+        <button type="button" data-quick="twisty">כביש מפותל</button>
+        <button type="button" data-quick="beginner">לרוכבים מתחילים</button>
+        <button type="button" data-quick="water">מים וטבע</button>
+        <button type="button" data-quick="heritage">מורשת וסיפור</button>
+        <button type="button" data-quick="verified">מאומת ממקורות</button>
+      </div>
+
+      <form id="filters" class="filters" role="search">
+        <label class="search-field">
+          <span>חיפוש</span>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="מקום, כביש, עצירה, אוכל או סיפור">
+        </label>
+        <label><span>אזור</span><select id="regionFilter"><option value="">כל האזורים</option></select></label>
+        <label><span>רמת רכיבה</span><select id="levelFilter"><option value="">כל הרמות</option></select></label>
+        <label><span>אופי כביש</span><select id="roadFilter"><option value="">כל סוגי הכביש</option></select></label>
+        <label><span>רמת אימות</span><select id="verifyFilter"><option value="">כל רמות האימות</option></select></label>
+        <label><span>מיון</span>
+          <select id="sortFilter">
+            <option value="book">סדר הספר</option>
+            <option value="title">שם המסלול</option>
+            <option value="stops">מספר עצירות</option>
+            <option value="short">קצר תחילה</option>
+          </select>
+        </label>
+        <button id="clearFilters" class="button ghost" type="button">ניקוי</button>
+      </form>
+
+      <div class="results-bar">
+        <p id="resultSummary" aria-live="polite">טוען מסלולים…</p>
+        <button id="showFavoritesOnly" class="text-button" type="button" aria-pressed="false">רק שמורים</button>
+      </div>
+      <div id="routeGrid" class="route-grid" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        <h3>לא נמצאו מסלולים</h3>
+        <p>נסו להסיר מסנן אחד או לחפש שם של אזור סמוך.</p>
+        <button class="button primary" type="button" data-clear-filters>הצגת כל המסלולים</button>
+      </div>
+    </section>
+
+    <section id="journeysView" class="app-view" role="tabpanel" aria-labelledby="tabJourneys" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">המשך ישיר לגרסה 1</span><h2>מסעות של כמה ימים</h2></div>
+        <p><span id="multiDayCount">—</span> מסעות בני יומיים ו־<span id="grandTourCount">—</span> מסעות גדולים, כולם נשמרו מן הספר המקורי.</p>
+      </div>
+      <section aria-labelledby="grandTourTitle">
+        <h3 id="grandTourTitle" class="subsection-title">המסעות הגדולים</h3>
+        <div id="grandTourGrid" class="journey-grid"></div>
+      </section>
+      <section aria-labelledby="multiDayTitle">
+        <h3 id="multiDayTitle" class="subsection-title">מסעות בני יומיים</h3>
+        <div id="multiDayGrid" class="journey-grid"></div>
+      </section>
+    </section>
+
+    <section id="safetyView" class="app-view safety-center" role="tabpanel" aria-labelledby="tabSafety" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">נוהל קבוצתי</span><h2>מרכז הבטיחות</h2></div>
+        <p>כללים מוסכמים לקבוצה אינם מחליפים חוק, הכשרה, שיקול דעת ובדיקה עדכנית של הדרך.</p>
+      </div>
+
+      <div class="safety-grid">
+        <article><span class="role-number">01</span><h3>המוביל</h3><p>קובע את המסלול ואת קצב הקבוצה. אסור לעבור או לעקוף אותו. המוביל, או רוכב שמאחוריו לפי תדריך מוקדם, מוריד מרשלים בצמתים ובנקודות מפתח.</p></article>
+        <article><span class="role-number">02</span><h3>המאסף</h3><p>נשאר אחרון ומוודא שאיש לא נותר מאחור. התפקיד אינו אישור לרוכב לנסוע במכוון בקצב שאינו מתאים לקבוצה. לאחר אזהרה ברורה, ובהתאם לנוהל שסוכם מראש, המאסף רשאי לעקוף ולסמן שהרוכב יצא מן המסגרת המאורגנת וממשיך באחריותו.</p></article>
+        <article><span class="role-number">03</span><h3>המרשלים</h3><p>ממתינים בצומת ומכוונים את הקבוצה לנתיב שנקבע. המאסף משחרר אותם. לאחר השחרור הם מצטרפים מאחור; מרשלים קבועים רשאים להתקדם שוב אל מאחורי המוביל רק בעקיפות חוקיות ובטוחות ומשמאל.</p></article>
+        <article><span class="role-number">04</span><h3>סדר הרכיבה</h3><p>רכיבה מדורגת בכביש מתאים. עוברים לטור יחיד בפניות, בכביש צר או צדדי, ברוח חזקה ובתנאי ראות ירודים. שומרים מרחק שמאפשר בלימה ותמרון.</p></article>
+      </div>
+
+      <div class="rules-panel">
+        <h3>כללי קבוצה שאינם נתונים למשא ומתן</h3>
+        <ul>
+          <li>אין עקיפה מימין בשום מקרה במסגרת הקבוצה.</li>
+          <li>אין לחסום צומת, לעצור תנועה או לבצע פעולה בניגוד לחוק.</li>
+          <li>אין יוצאים בלי קסדה תקנית, מעיל, כפפות, נעלי רכיבה ורישיון וביטוח תקפים.</li>
+          <li>כל רוכב מגיע עם אופנוע תקין, צמיגים ולחץ אוויר בדוקים, דלק, מים וטלפון טעון.</li>
+          <li>מגדירים נקודות איסוף, מספרי חירום ונוהל במקרה של ניתוק או תאונה.</li>
+          <li>אין להשתמש בטלפון, במפה, ב־AI או בהסבר הקולי בזמן רכיבה.</li>
+        </ul>
+      </div>
+
+      <div class="checklist-panel">
+        <h3>בדיקת יציאה למוביל</h3>
+        <div class="checklist" id="departureChecklist">
+          <label><input type="checkbox"> מצב כבישים, חסימות והנחיות ביטחוניות נבדקו היום</label>
+          <label><input type="checkbox"> מזג אוויר, רוח ועומס חום מתאימים</label>
+          <label><input type="checkbox"> כל המשתתפים קיבלו תדריך מוביל–מאסף–מרשלים</label>
+          <label><input type="checkbox"> נקודות עצירה, תדלוק ואיסוף הוגדרו מראש</label>
+          <label><input type="checkbox"> נבדקו רישיונות, ביטוח, מיגון וכשירות הכלים</label>
+          <label><input type="checkbox"> קיימים ערכת עזרה ראשונה ופרטי חירום</label>
+        </div>
+      </div>
+
+      <div class="legal-disclaimer">
+        <h3>כתב ויתור והבהרת אחריות</h3>
+        <p>הספר הוא מיזם קהילתי וכלי עזר לתכנון בלבד. תנאי דרך, מזג אוויר, חסימות, שעות פתיחה ומצב אתרים עשויים להשתנות ללא התראה. לפני הובלת קבוצה חובה לבדוק את המסלול, מקורות רשמיים, כשירות המשתתפים ומצב הדרך. האחריות לרכיבה, לבחירת המסלול ולציות לחוק חלה על הרוכב ועל מארגן הטיול. אין לראות בתוכן ייעוץ משפטי, מקצועי או אישור שהמסלול בטוח או פתוח.</p>
+      </div>
+    </section>
+
+    <section id="plannerView" class="app-view" role="tabpanel" aria-labelledby="tabPlanner" hidden>
+      <div class="section-heading"><div><span class="eyebrow">תכנון אישי</span><h2>הטיולים ששמרתי</h2></div><p>השמירה מקומית במכשיר ואינה נשלחת לשרת.</p></div>
+      <div id="favoritesGrid" class="route-grid"></div>
+      <div id="favoritesEmpty" class="empty-state"><h3>עדיין לא שמרתם מסלול</h3><p>לחצו על „שמירה” בכרטיס מסלול כדי לבנות רשימה.</p></div>
+    </section>
+
+    <section id="aboutView" class="app-view" role="tabpanel" aria-labelledby="tabAbout" hidden>
+      <div class="section-heading"><div><span class="eyebrow">שקיפות</span><h2>אודות, גרסאות ומקורות</h2></div></div>
+      <div class="about-grid">
+        <article><h3>מצב הגרסה</h3><p><strong>גרסת מוצר 2.0</strong><br>גרסת מסמך 2.0.3<br><span id="buildStatus"></span></p></article>
+        <article><h3>מה המשמעות של אימות?</h3><p>„מאומת ממקורות” מעיד שנמצא חומר תומך למסלול ולנקודותיו. הוא אינו מבטיח שהכביש פתוח, שהאספלט תקין או שהאתר נגיש היום.</p></article>
+        <article><h3>AI ומקורות</h3><p>העוזר מוגבל לטקסט ולמקורות שבספר. כאשר אין חומר מספק הוא חייב לומר שאין מידע מאומת. מקורות ישנים משויכים כעת ברמת המסלול; שיוך מדויק לכל טענה הוא שער האיכות הבא.</p></article>
+      </div>
+      <div id="sourceList" class="source-list"></div>
+      <section class="excluded-panel" aria-labelledby="excludedTitle">
+        <h3 id="excludedTitle">צירים שלא פורסמו כמסלולים</h3>
+        <p>הרשימה נשמרת לצורכי שקיפות בלבד. צירים אלה הוצאו מגרסה 2 בשל סגירה או מגבלה ידועה, ואין לראות בהם הצעת רכיבה.</p>
+        <div id="excludedList"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <span>ספר של אילן לטיולי הכביש לאופנועים בישראל</span>
+    <span>גרסת מוצר 2.0 · גרסת מסמך 2.0.3</span>
+    <button class="text-button" type="button" data-view="safetyView">בטיחות ואחריות</button>
+  </footer>
+
+  <dialog id="routeDialog" class="route-dialog" aria-labelledby="routeDialogTitle">
+    <button class="dialog-close" type="button" data-close-dialog aria-label="סגירת פרטי המסלול">×</button>
+    <div id="routeDialogContent"></div>
+  </dialog>
+
+  <dialog id="aiDialog" class="ai-dialog" aria-labelledby="aiTitle">
+    <button class="dialog-close" type="button" data-close-ai aria-label="סגירת עוזר AI">×</button>
+    <div class="ai-heading"><span class="eyebrow">לשימוש בעצירה בטוחה בלבד</span><h2 id="aiTitle">שאלו על המקום</h2><p id="aiContext"></p></div>
+    <div id="aiQuickQuestions" class="ai-quick"></div>
+    <form id="aiForm">
+      <label><span>מה תרצו לדעת?</span><textarea id="aiQuestion" maxlength="500" rows="3" required placeholder="לדוגמה: למה המקום הזה חשוב?"></textarea></label>
+      <button class="button accent" type="submit">שליחת השאלה</button>
+    </form>
+    <div id="aiStatus" class="ai-status" aria-live="polite"></div>
+    <div id="aiAnswer" class="ai-answer" hidden></div>
+    <div class="ai-actions">
+      <button id="speakAnswer" class="button ghost" type="button" hidden>השמעת התשובה</button>
+      <button id="stopSpeech" class="button ghost" type="button" hidden>עצירת הקראה</button>
+    </div>
+    <p class="ai-privacy">אין להזין מידע אישי או רגיש. תשובת AI עלולה לטעות; מאמתים מול המקורות. הקול, כאשר נוצר בענן, הוא קול AI.</p>
+  </dialog>
+
+  <dialog id="disclaimerDialog" class="disclaimer-dialog" aria-labelledby="disclaimerTitle">
+    <h2 id="disclaimerTitle">לפני שמשתמשים בספר</h2>
+    <p>זהו כלי תכנון קהילתי, לא אישור דרך. חובה לבדוק את המסלול ומקורות רשמיים ביום היציאה. אין להשתמש באתר בזמן רכיבה.</p>
+    <label class="accept-row"><input id="acceptDisclaimer" type="checkbox"> קראתי והבנתי</label>
+    <button id="confirmDisclaimer" class="button primary" type="button" disabled>כניסה לספר</button>
+  </dialog>
+
+  <noscript><p class="noscript">נדרש JavaScript כדי להציג את המסלולים. כללי הבטיחות והגרסה מופיעים במסמך גם ללא התקנה.</p></noscript>
+  <script src="./data/config-v2.js"></script>
+  <script src="./data/legacy-content-v2.js"></script>
+  <script src="./data/new-routes-v2.js"></script>
+  <script src="./assets/app-v2.js"></script>
+</body>
+</html>
