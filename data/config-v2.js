@@ -1,10 +1,10 @@
 /**
  * הגדרות ספר הטיולים
- * גרסה: 2.1.1
+ * גרסה: 2.1.2
  */
 
 window.ROAD_BOOK_CONFIG = Object.freeze({
-  version: '2.1.1',
+  version: '2.1.2',
   buildStatus: 'פורסם ב־GitHub Pages',
   aiEndpoint: '',
   aiTimeoutMs: 25000,

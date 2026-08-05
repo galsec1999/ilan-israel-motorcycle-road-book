@@ -1,6 +1,6 @@
 /**
  * עיצוב גרסה 2
- * גרסה: 2.1.1
+ * גרסה: 2.1.2
  */
 
 :root {
@@ -106,16 +106,17 @@ main { inline-size: min(1520px, 100%); margin-inline: auto; padding: 22px clamp(
 .filters .button { align-self: end; min-block-size: 46px; }
 .results-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 18px 3px; color: var(--muted); }
 
-.route-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
-.route-card { display: grid; grid-template-columns: minmax(210px,.82fr) minmax(0,1.45fr); min-block-size: 310px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 9px 28px rgb(16 53 65 / 6%); }
+.route-grid { min-inline-size: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.route-card { min-inline-size: 0; max-inline-size: 100%; display: grid; grid-template-columns: minmax(210px,.82fr) minmax(0,1.45fr); min-block-size: 310px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 9px 28px rgb(16 53 65 / 6%); }
 .route-card[data-verification="טיוטת רכיבה"], .route-card[data-verification="מועמד באימות"] { border-color: color-mix(in srgb, var(--warning) 45%, var(--line)); }
 .map-preview { position: relative; min-block-size: 250px; background: var(--surface-soft); border-inline-end: 1px solid var(--line); }
 .map-preview iframe { inline-size: 100%; block-size: 100%; min-block-size: 310px; border: 0; filter: saturate(.82) contrast(.96); }
 .map-loading { position: absolute; inset: 0; display: grid; place-content: center; padding: 18px; text-align: center; color: var(--muted); }
-.route-card-main { padding: 21px; display: flex; flex-direction: column; }
-.route-card-top { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
-.route-card h3 { margin: 4px 0 9px; font-size: 1.27rem; line-height: 1.25; }
-.route-card p { margin: 0 0 13px; color: var(--muted); }
+.route-card-main { min-inline-size: 0; padding: 21px; display: flex; flex-direction: column; }
+.route-card-top { min-inline-size: 0; display: flex; align-items: start; justify-content: space-between; gap: 14px; }
+.route-card-top > div { min-inline-size: 0; }
+.route-card h3 { margin: 4px 0 9px; font-size: 1.27rem; line-height: 1.25; overflow-wrap: anywhere; }
+.route-card p { margin: 0 0 13px; color: var(--muted); overflow-wrap: anywhere; }
 .route-number { color: var(--accent-strong); font-weight: 900; font-size: .8rem; }
 .favorite-button { inline-size: 42px; block-size: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface-soft); color: var(--text); cursor: pointer; font-size: 0; }
 .favorite-button::after { content: "שמירה"; font-size: .68rem; font-weight: 900; }
@@ -160,9 +161,10 @@ main { inline-size: min(1520px, 100%); margin-inline: auto; padding: 22px clamp(
 .excluded-panel article { margin-block-start: 9px; padding: 11px 13px; background: var(--surface-soft); border-radius: 10px; }
 .excluded-panel article strong { display: block; }
 
-dialog { inline-size: min(920px, calc(100% - 24px)); max-block-size: calc(100dvh - 24px); overflow: auto; border: 1px solid var(--line); border-radius: 24px; padding: 28px; background: var(--surface); color: var(--text); box-shadow: 0 30px 90px rgb(0 0 0 / 34%); }
+dialog { inline-size: min(920px, calc(100% - 24px)); max-inline-size: calc(100vw - 24px); max-block-size: calc(100dvh - 24px); overflow: auto; border: 1px solid var(--line); border-radius: 24px; padding: 28px; background: var(--surface); color: var(--text); box-shadow: 0 30px 90px rgb(0 0 0 / 34%); }
 dialog::backdrop { background: rgb(3 13 17 / 76%); backdrop-filter: blur(5px); }
 .dialog-close { position: sticky; z-index: 2; top: 0; float: left; inline-size: 42px; block-size: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 1.5rem; cursor: pointer; }
+#routeDialogContent, .detail-section { min-inline-size: 0; max-inline-size: 100%; }
 .route-detail-hero { padding-block-end: 20px; border-bottom: 1px solid var(--line); }
 .route-detail-hero h2 { margin: 5px 0 10px; font-size: clamp(1.6rem,3.5vw,2.7rem); line-height: 1.14; }
 .detail-map { block-size: 390px; margin-block: 20px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
@@ -186,13 +188,13 @@ dialog::backdrop { background: rgb(3 13 17 / 76%); backdrop-filter: blur(5px); }
 footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 26px; color: var(--muted); border-top: 1px solid var(--line); }
 .noscript { padding: 20px; background: #fff3cd; color: #4b3510; }
 
-/* תכונות שהוחזרו בגרסה 2.1.1 */
+/* תכונות שהוחזרו מגרסה 1.1 ושופרו */
 .results-actions, .route-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .route-card { position: relative; }
-.route-inline-details { grid-column: 1 / -1; border-top: 1px solid var(--line); background: var(--surface-soft); }
+.route-inline-details { min-inline-size: 0; max-inline-size: 100%; grid-column: 1 / -1; border-top: 1px solid var(--line); background: var(--surface-soft); }
 .route-inline-details > summary { cursor: pointer; padding: 12px 20px; font-weight: 850; color: var(--brand-2); }
-.route-inline-content { padding: 0 20px 18px; }
-.route-strip { display: flex; gap: 8px; overflow-x: auto; padding-block: 8px; }
+.route-inline-content { min-inline-size: 0; max-inline-size: 100%; padding: 0 20px 18px; }
+.route-strip { inline-size: 100%; min-inline-size: 0; max-inline-size: 100%; display: flex; gap: 8px; overflow-x: auto; padding-block: 8px; }
 .route-node { min-inline-size: 150px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
 .route-node strong, .route-node small { display: block; }
 .route-node small { color: var(--muted); }
@@ -237,7 +239,7 @@ footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; pad
   .filters { grid-template-columns: repeat(3,minmax(150px,1fr)); }
   .search-field { grid-column: span 2; }
   .quick-filters { grid-template-columns: repeat(12,150px); }
-  .route-card { grid-template-columns: 1fr; }
+  .route-card { grid-template-columns: minmax(0,1fr); }
   .map-preview { border-inline-end: 0; border-bottom: 1px solid var(--line); }
   .map-preview iframe { min-block-size: 230px; }
   .safety-grid, .about-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -257,7 +259,7 @@ footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; pad
   .section-heading { display: block; }
   .filters { grid-template-columns: repeat(2,minmax(0,1fr)); padding: 10px; }
   .search-field { grid-column: 1/-1; }
-  .route-grid { grid-template-columns: 1fr; }
+  .route-grid { grid-template-columns: minmax(0,1fr); }
   .route-card { min-block-size: 0; }
   .map-preview iframe { min-block-size: 210px; }
   .safety-grid, .about-grid, .checklist, .detail-grid { grid-template-columns: 1fr; }

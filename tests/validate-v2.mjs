@@ -1,6 +1,6 @@
 /**
  * שער האיכות המקומי
- * גרסה: 2.1.1
+ * גרסה: 2.1.2
  */
 
 import test from 'node:test';
@@ -24,6 +24,7 @@ const additions = evaluate('data/new-routes-v2.js');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const index = read('index.html');
 const app = read('assets/app-v2.js');
+const css = read('assets/app-v2.css');
 const serviceWorker = read('sw.js');
 
 test('V2 preserves the complete V1 catalogue and journeys', () => {
@@ -64,7 +65,7 @@ test('closed or blocked corridors remain excluded', () => {
 });
 
 test('HTML exposes one version, safety and all views', () => {
-  assert.match(index, /גרסה 2\.1\.1/);
+  assert.match(index, /גרסה 2\.1\.2/);
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
   assert.doesNotMatch(index, /<iframe[^>]+book\.html/i);
@@ -92,6 +93,18 @@ test('filter, map, speech, AI and legacy migration code is present', () => {
   for (const control of ['typeFilter', 'durationFilter', 'themeFilter', "quickFilter === 'food'", "sort === 'quality'", "sort === 'long'"]) assert.ok(app.includes(control), control);
 });
 
+test('mobile route cards cannot grow past the viewport', () => {
+  assert.match(css, /\.route-grid \{ min-inline-size: 0;/);
+  assert.match(css, /\.route-card \{ min-inline-size: 0; max-inline-size: 100%;/);
+  assert.match(css, /\.route-card-main \{ min-inline-size: 0;/);
+  assert.match(css, /\.route-card-top > div \{ min-inline-size: 0;/);
+  assert.match(css, /\.route-inline-details \{ min-inline-size: 0; max-inline-size: 100%;/);
+  assert.match(css, /\.route-strip \{[^}]*inline-size: 100%;[^}]*min-inline-size: 0;[^}]*max-inline-size: 100%;[^}]*overflow-x: auto;/);
+  assert.match(css, /@media \(max-width: 1180px\)[\s\S]*?\.route-card \{ grid-template-columns: minmax\(0,1fr\); \}/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.route-grid \{ grid-template-columns: minmax\(0,1fr\); \}/);
+  assert.match(css, /\.route-card h3 \{[^}]*overflow-wrap: anywhere;/);
+});
+
 test('all restored V1 data remains available to the V2 interface', () => {
   assert.equal(legacy.routes.reduce((sum, route) => sum + route.stops.length, 0), 477);
   assert.equal(legacy.routes.reduce((sum, route) => sum + route.connections.length, 0), 234);
@@ -102,7 +115,7 @@ test('all restored V1 data remains available to the V2 interface', () => {
 });
 
 test('manifest is relative, installable and versioned', () => {
-  assert.equal(manifest.version, '2.1.1');
+  assert.equal(manifest.version, '2.1.2');
   assert.equal('document_version' in manifest, false);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
@@ -119,8 +132,8 @@ test('service worker cannot delete caches owned by other projects', () => {
 });
 
 test('robots and offline shell are ready for an unlisted deployment', () => {
-  assert.equal(read('robots.txt').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read('offline.html'), /גרסה 2\.1\.1/);
+  assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
+  assert.match(read('offline.html'), /גרסה 2\.1\.2/);
   for (const relative of [
     'index.html', 'offline.html', 'manifest.webmanifest', 'sw.js',
     'assets/app-v2.css', 'assets/app-v2.js', 'data/config-v2.js',
