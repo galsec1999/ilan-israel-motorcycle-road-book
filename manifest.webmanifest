@@ -1,28 +1,25 @@
 {
   "id": "./",
-  "name": "ספר הטיולים של אילן — גרסת מסמך 1.1.1",
-  "short_name": "אילן 1.1.1",
-  "description": "90 מסלולי כביש לאופנועים בישראל, סיפורי דרך, נקודות עניין וקישורי ניווט.",
+  "name": "ספר הטיולים של אילן — גרסה 2.1.0",
+  "short_name": "אילן 2.1",
+  "description": "143 מסלולי כביש ומועמדי מסלול בישראל, מפות, בטיחות קבוצתית, סיפורי דרך ועוזר AI.",
+  "version": "2.1.0",
   "lang": "he",
   "dir": "rtl",
-  "start_url": "./",
+  "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#eef4f7",
-  "theme_color": "#0b5362",
+  "background_color": "#f3f7f6",
+  "theme_color": "#102f3a",
+  "categories": ["travel", "navigation", "education"],
+  "shortcuts": [
+    { "name": "בחירת מסלול", "short_name": "מסלולים", "url": "./#routesView" },
+    { "name": "מרכז הבטיחות", "short_name": "בטיחות", "url": "./#safetyView" },
+    { "name": "בונה טיול משולב", "short_name": "טיול משולב", "url": "./#combinedView" }
+  ],
   "icons": [
-    {
-      "src": "./icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }
