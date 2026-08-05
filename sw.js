@@ -1,10 +1,10 @@
 /**
- * Service Worker — גרסה 2.1.0
+ * Service Worker — גרסה 2.1.1
  * מוחק רק caches של הספר ואינו שומר מפות, AI או שמע דינמי.
  */
 
 const CACHE_PREFIX = 'ilan-road-book-';
-const CACHE_NAME = `${CACHE_PREFIX}v2.1.0`;
+const CACHE_NAME = `${CACHE_PREFIX}v2.1.1`;
 const APP_FILES = [
   './',
   './index.html',

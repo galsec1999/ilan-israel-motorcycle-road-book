@@ -1,6 +1,6 @@
 /**
  * עיצוב גרסה 2
- * גרסה: 2.1.0
+ * גרסה: 2.1.1
  */
 
 :root {
@@ -186,7 +186,7 @@ dialog::backdrop { background: rgb(3 13 17 / 76%); backdrop-filter: blur(5px); }
 footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 26px; color: var(--muted); border-top: 1px solid var(--line); }
 .noscript { padding: 20px; background: #fff3cd; color: #4b3510; }
 
-/* תכונות שהוחזרו בגרסה 2.1.0 */
+/* תכונות שהוחזרו בגרסה 2.1.1 */
 .results-actions, .route-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .route-card { position: relative; }
 .route-inline-details { grid-column: 1 / -1; border-top: 1px solid var(--line); background: var(--surface-soft); }
