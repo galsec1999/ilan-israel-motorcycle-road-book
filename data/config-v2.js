@@ -1,16 +1,16 @@
 /**
  * הגדרות ספר הטיולים
- * גרסה: 2.1.2
+ * גרסה: 2.2.0
  */
 
 window.ROAD_BOOK_CONFIG = Object.freeze({
-  version: '2.1.2',
+  version: '2.2.0',
   buildStatus: 'פורסם ב־GitHub Pages',
   aiEndpoint: '',
   aiTimeoutMs: 25000,
   aiMaxQuestionLength: 500,
   mapPreviewMode: 'google-embed-lazy',
-  allowCloudAi: true,
+  allowCloudAi: false,
   disclaimerAcceptedKey: 'ilan-road-book-v2-disclaimer',
   favoritesKey: 'ilan-road-book-v2-favorites',
   combinedKey: 'roadTripCombinedV02',

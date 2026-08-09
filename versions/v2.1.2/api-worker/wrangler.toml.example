@@ -1,4 +1,4 @@
-# עוזר המסלול ושירות AI אופציונלי — גרסה 2.2.0
+# שירות AI — גרסת מסמך 2.0.3
 name = "ilan-road-book-ai-v2"
 main = "src/worker.js"
 compatibility_date = "2026-08-05"

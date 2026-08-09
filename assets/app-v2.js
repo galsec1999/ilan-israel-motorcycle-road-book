@@ -1,6 +1,6 @@
 /**
  * יישום ספר הטיולים
- * גרסה: 2.1.2
+ * גרסה: 2.2.0
  */
 
 (() => {
@@ -94,9 +94,14 @@
       sources,
       springs,
       search_text: searchable,
-      ai_ready: route.verification_level === 'מאומת ממקורות'
-        && sources.length > 0
+      assistant_ready: sources.length > 0
+        && Boolean(route.story_big || route.summary)
         && stops.some((stop) => stop.story_long),
+      assistant_support: route.verification_level === 'מאומת ממקורות'
+        ? 'route_scope'
+        : route.verification_level === 'מועמד באימות'
+          ? 'candidate_scope'
+          : 'limited_route_scope',
       content_scope: 'מקורות ברמת המסלול; שיוך מדויק לכל טענה טרם הושלם',
     };
   }
@@ -131,7 +136,7 @@
       quality_status: 'ממתין לבדיקת מסלול מקוצר',
       trip_types: [...new Set([spec.label, ...(base.trip_types || [])])],
       index: legacyRoutes.length + index,
-      ai_ready: false,
+      assistant_ready: false,
     };
     return normalizeRoute(route, route.index);
   }
@@ -163,7 +168,7 @@
         kind: 'נקודת מועמד לאימות',
         minutes: 0,
         story: 'הנקודה מופיעה בציר המחקר; תוכן מלא יתווסף רק לאחר אימות מקורות.',
-        story_long: 'נקודת מועמד במסלול חדש. אין בספר עדיין מידע מאומת מספיק להסבר קולי או לתשובת AI על המקום.',
+        story_long: 'נקודת מועמד במסלול חדש. עוזר המסלול יציג רק את מעמד המועמד ואת המידע הקיים בספר.',
         era: 'טרם תועד',
         fuel: false,
         index: stopIndex + 1,
@@ -187,7 +192,7 @@
       quality_status: 'ממתין לשער איכות',
       candidate_grade: spec.grade,
       index: legacyRoutes.length + variantRoutes.length + index,
-      ai_ready: false,
+      assistant_ready: false,
     };
     return normalizeRoute(route, route.index);
   }
@@ -447,7 +452,7 @@
           <a class="button light" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">Google Maps</a>
           <button class="button ghost" type="button" data-add-combined="${escapeHtml(route.id)}">${combined ? 'נוסף לשילוב ✓' : 'הוספה לשילוב'}</button>
           <button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">יצירת הזמנה</button>
-          <button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}" ${route.ai_ready ? '' : 'title="העוזר יפעל במצב מקומי עד להשלמת מקורות מדויקים"'}>שאל AI</button>
+          <button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}" title="עוזר המסלול מציג מידע מתוך תיק המסלול שבספר">עוזר המסלול</button>
         </div>
       </div>
       <details class="route-inline-details" data-card-details>
@@ -723,12 +728,12 @@
       ${detailMeta('כבישים', route.roads)}${detailMeta('עונה', route.best)}${detailMeta('נבדק', route.checked_on)}${detailMeta('מבנה', route.route_shape)}
     </div>
     <div class="detail-map"><iframe title="מפת המסלול ${escapeHtml(route.title)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${escapeHtml(embedUrl(route))}"></iframe></div>
-    <div class="route-actions"><a class="button accent" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">מסלול הטיול ב־Google Maps</a><a class="button ghost" href="${escapeHtml(wazeUrl(route.start))}" target="_blank" rel="noopener">Waze למפגש הרשמי</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">יצירת הזמנה ונקודות מפגש</button><button class="button ghost" type="button" data-add-combined="${escapeHtml(route.id)}">הוספה לטיול משולב</button><button class="button ghost" type="button" data-export-route="${escapeHtml(route.id)}">ייצוא ל־HTML</button><button class="button ghost" type="button" data-speak-route="${escapeHtml(route.id)}">השמעת תקציר</button><button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}">שאל AI</button></div>
+    <div class="route-actions"><a class="button accent" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">מסלול הטיול ב־Google Maps</a><a class="button ghost" href="${escapeHtml(wazeUrl(route.start))}" target="_blank" rel="noopener">Waze למפגש הרשמי</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">יצירת הזמנה ונקודות מפגש</button><button class="button ghost" type="button" data-add-combined="${escapeHtml(route.id)}">הוספה לטיול משולב</button><button class="button ghost" type="button" data-export-route="${escapeHtml(route.id)}">ייצוא ל־HTML</button><button class="button ghost" type="button" data-speak-route="${escapeHtml(route.id)}">השמעת תקציר</button><button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}">עוזר המסלול</button></div>
     <section class="detail-section meeting-summary"><h3>נקודות מפגש והצטרפות</h3><p><strong>מרכז:</strong> ${escapeHtml(meetings.primaryPlace)} — מפגש ${escapeHtml(meetings.primaryMeet)}, יציאה ${escapeHtml(meetings.primaryDepart)}</p>${meetings.secondaryEnabled ? `<p><strong>הצטרפות בדרך:</strong> ${escapeHtml(meetings.secondaryPlace)} — מפגש ${escapeHtml(meetings.secondaryMeet)}, יציאה ${escapeHtml(meetings.secondaryDepart)}</p>` : ''}<p><strong>תחילת מסלול הטיול:</strong> ${escapeHtml(route.start)}</p><p class="export-note">השעות מחושבות בקירוב ואינן כוללות עומסי תנועה חיים.</p><div class="route-actions"><a class="button primary" href="${escapeHtml(approachMapsUrl(route, meetings))}" target="_blank" rel="noopener">מפת גישה מהמרכז</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">עריכת נקודות ושעות</button></div></section>
     <section class="detail-section quality-panel"><div class="quality-head"><div><h3>שער איכות ואמינות</h3><strong>${escapeHtml(route.quality_status || 'ממתין לשער איכות')}</strong></div><div class="quality-score">${Number.isFinite(route.quality_score) ? `${route.quality_score}/100` : 'ממתין'}</div></div>${qualityChecks ? `<div class="quality-checks">${qualityChecks}</div>` : '<p>בדיקות האיכות המפורטות טרם הושלמו למסלול זה.</p>'}<p>${escapeHtml(route.verification_note || '')}</p></section>
     <section class="detail-section"><h3>פרופיל הכבישים</h3><div class="road-profile"><div class="road-meter"><strong>${Number(profile.fast) || 0}%</strong>מהיר / בין־עירוני</div><div class="road-meter"><strong>${Number(profile.twisty) || 0}%</strong>מפותל</div><div class="road-meter"><strong>${Number(profile.local) || 0}%</strong>אזורי</div><div class="road-meter"><strong>${Number(profile.urban) || 0}%</strong>עירוני</div></div><p>${escapeHtml(profile.note || 'פרופיל הכביש טרם הושלם.')} האחוזים הם הערכת תכנון בלבד.</p></section>
     <section class="detail-section"><h3>סדר התחנות</h3><div class="route-strip">${route.stops.map((stop, index) => `<div class="route-node"><strong>${index + 1}. ${escapeHtml(stop.name)}</strong><small>${escapeHtml(stop.kind)} · ${Number(stop.minutes) || 0} דקות</small></div>`).join('')}</div></section>
-    <section class="detail-section"><h3>סיפורי הדרך והתחנות</h3><div class="stops-list">${route.stops.map((stop, index) => `<article class="stop-card"><h4>${index + 1}. ${escapeHtml(stop.name)}</h4><small>${escapeHtml(stop.kind)} · ${Number(stop.minutes) || 0} דקות · ${escapeHtml(stop.era || '')}${stop.fuel ? ' · תדלוק/שירות' : ''}</small><p>${escapeHtml(stop.story_long)}</p>${stop.spring ? `<div class="spring-note"><strong>💧 ${escapeHtml(stop.spring.status)}</strong><br>${escapeHtml(stop.spring.note)}</div>` : ''}<div class="stop-actions"><a class="button light" href="${escapeHtml(wazeUrl(stop.name))}" target="_blank" rel="noopener">Waze</a><button class="button ghost" type="button" data-speak-stop="${escapeHtml(route.id)}" data-stop-index="${index}">השמעת הסבר</button><button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}" data-ai-stop="${index}">שאל AI</button></div></article>`).join('')}</div></section>
+    <section class="detail-section"><h3>סיפורי הדרך והתחנות</h3><div class="stops-list">${route.stops.map((stop, index) => `<article class="stop-card"><h4>${index + 1}. ${escapeHtml(stop.name)}</h4><small>${escapeHtml(stop.kind)} · ${Number(stop.minutes) || 0} דקות · ${escapeHtml(stop.era || '')}${stop.fuel ? ' · תדלוק/שירות' : ''}</small><p>${escapeHtml(stop.story_long)}</p>${stop.spring ? `<div class="spring-note"><strong>💧 ${escapeHtml(stop.spring.status)}</strong><br>${escapeHtml(stop.spring.note)}</div>` : ''}<div class="stop-actions"><a class="button light" href="${escapeHtml(wazeUrl(stop.name))}" target="_blank" rel="noopener">Waze</a><button class="button ghost" type="button" data-speak-stop="${escapeHtml(route.id)}" data-stop-index="${index}">השמעת הסבר</button><button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}" data-ai-stop="${index}">עוזר המסלול</button></div></article>`).join('')}</div></section>
     ${springs ? `<section class="detail-section"><h3>מים ומעיינות</h3><div class="info-grid">${springs}</div></section>` : ''}
     ${food ? `<section class="detail-section"><h3>קפה, בראנץ׳ ואוכל</h3><div class="info-grid">${food}</div></section>` : ''}
     <section class="detail-section fuel-panel"><h3>תכנית תדלוק</h3><p>${escapeHtml(route.fuel)}</p><div class="route-actions">${fuelLinks}</div></section>
@@ -876,9 +881,11 @@
     lastFocusedElement = document.activeElement;
     $('#aiContext').textContent = stop ? `${route.title} · ${stop.name}` : route.title;
     $('#aiQuestion').value = '';
-    $('#aiStatus').textContent = route.ai_ready
-      ? 'העוזר יענה רק מתוך חומר הספר ומקורות המסלול.'
-      : 'עד להשלמת שיוך מקורות מדויק, התשובה תוצג במצב מקומי מתוך הטקסט הקיים.';
+    $('#aiStatus').textContent = route.assistant_support === 'route_scope'
+      ? 'תיק המסלול מאומת ממקורות; העוזר מציג רק את חומר הספר.'
+      : route.assistant_support === 'candidate_scope'
+        ? 'זהו תיק מועמד מוגבל, לא מסלול רכיבה מאושר. העוזר יציג רק את הנקודות וההסתייגויות שתועדו.'
+        : `תיק המסלול זמין במעמד „${route.verification_level}”. העוזר יציג את הכתוב בספר בלי לשנות את מעמד האימות.`;
     $('#aiAnswer').hidden = true;
     $('#speakAnswer').hidden = true;
     const questions = stop
@@ -892,7 +899,7 @@
     const sourceText = stop?.story_long || route.story_big || route.summary || '';
     const caution = route.cautions ? `\n\nאזהרת המסלול: ${route.cautions}` : '';
     const prefix = /אזהר|בטיח|יציאה/.test(question) ? 'תדריך מתוך הספר:' : 'מידע מתוך הספר:';
-    return `${prefix}\n${sourceText}${caution}\n\nמצב מקומי: זו אינה תשובת מודל ענן. המידע הוחזר ישירות מהטקסט המתועד בספר.`;
+    return `${prefix}\n${sourceText}${caution}\n\nמעמד המסלול: ${route.verification_level}.\nעוזר המסלול פועל מקומית: זהו מידע שהוחזר ישירות מן הספר, לא תשובה של מודל AI.`;
   }
 
   async function askAi(question) {
@@ -900,12 +907,12 @@
     const { route, stop } = aiContext;
     const status = $('#aiStatus');
     const answerBox = $('#aiAnswer');
-    status.textContent = 'בודק את החומר המאומת…';
+    status.textContent = 'מכין תשובה מתוך תיק המסלול…';
     answerBox.hidden = true;
     let answer = '';
     let sources = route.sources;
 
-    if (config.aiEndpoint && navigator.onLine && route.ai_ready) {
+    if (config.allowCloudAi && config.aiEndpoint && navigator.onLine && route.assistant_ready) {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), config.aiTimeoutMs);
       try {
@@ -928,19 +935,25 @@
         const data = await response.json();
         answer = data.answer_he || data.answer || '';
         sources = Array.isArray(data.sources) ? data.sources.map((item) => item.url || item).filter(safeHttpsUrl) : route.sources;
-        status.textContent = data.support === 'supported' ? 'תשובה מעוגנת בחומר המאומת.' : 'המידע הקיים אינו מספיק לתשובה מלאה.';
+        const supportMessages = {
+          route_scope: 'תשובה מתיק מסלול מאומת; המקורות משויכים למסלול כולו.',
+          limited_route_scope: `תשובה מתיק מסלול במעמד „${route.verification_level}”.`,
+          candidate_scope: 'תשובה מוגבלת מתיק מועמד; זה אינו מסלול רכיבה מאושר.',
+          insufficient: 'המידע הקיים בספר אינו מספיק לתשובה.',
+        };
+        status.textContent = supportMessages[data.support] || 'התקבלה תשובה מתוך תיק המסלול.';
       } catch (error) {
         console.warn('AI fallback', error);
         answer = localGroundedAnswer(route, stop, question);
-        status.textContent = 'שירות ה-AI אינו זמין כרגע; מוצג הטקסט המקומי המאומת.';
+        status.textContent = 'שירות ה־AI בענן אינו זמין; עוזר המסלול מציג את המידע המקומי מן הספר.';
       } finally {
         clearTimeout(timer);
       }
     } else {
       answer = localGroundedAnswer(route, stop, question);
       status.textContent = navigator.onLine
-        ? 'שירות הענן טרם חובר; מוצג הטקסט המקומי.'
-        : 'המכשיר במצב לא מקוון; מוצג הטקסט המקומי.';
+        ? 'עוזר המסלול פועל מקומית מתוך הספר; שירות AI בענן אינו מחובר בגרסה זו.'
+        : 'המכשיר במצב לא מקוון; עוזר המסלול מציג את תיק המסלול השמור במכשיר.';
     }
 
     answerBox.replaceChildren();

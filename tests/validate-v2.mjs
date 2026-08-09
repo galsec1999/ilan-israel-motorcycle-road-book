@@ -1,6 +1,6 @@
 /**
  * שער האיכות המקומי
- * גרסה: 2.1.2
+ * גרסה: 2.2.0
  */
 
 import test from 'node:test';
@@ -21,6 +21,8 @@ function evaluate(relative, seed = {}) {
 
 const legacy = evaluate('data/legacy-content-v2.js').ROAD_BOOK_LEGACY;
 const additions = evaluate('data/new-routes-v2.js');
+const config = evaluate('data/config-v2.js').ROAD_BOOK_CONFIG;
+const { ROUTE_CONTEXT: routeContext } = await import('../api-worker/src/context.generated.js');
 const manifest = JSON.parse(read('manifest.webmanifest'));
 const index = read('index.html');
 const app = read('assets/app-v2.js');
@@ -65,7 +67,7 @@ test('closed or blocked corridors remain excluded', () => {
 });
 
 test('HTML exposes one version, safety and all views', () => {
-  assert.match(index, /גרסה 2\.1\.2/);
+  assert.match(index, /גרסה 2\.2\.0/);
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
   assert.doesNotMatch(index, /<iframe[^>]+book\.html/i);
@@ -81,7 +83,7 @@ test('HTML exposes one version, safety and all views', () => {
   assert.doesNotMatch(index, /קיימים ערכת עזרה ראשונה ופרטי חירום/);
 });
 
-test('filter, map, speech, AI and legacy migration code is present', () => {
+test('filter, map, speech, route assistant and legacy migration code is present', () => {
   for (const functionName of ['filterRoutes', 'renderJourneys', 'pointsMapsUrl', 'openAi', 'localGroundedAnswer', 'migrateLegacyStorage', 'renderCombined', 'routeExportHtml', 'grandExportHtml', 'openInvite', 'getMeetings', 'initVisitCounter']) {
     assert.match(app, new RegExp(`function ${functionName}\\(`));
   }
@@ -91,6 +93,19 @@ test('filter, map, speech, AI and legacy migration code is present', () => {
   assert.match(app, /filter\(\(spring\) => spring && spring\.name\)/);
   for (const feature of ['data-export-route', 'data-add-combined', 'data-jump-route', 'data-invite', 'data-export-grand']) assert.match(app, new RegExp(feature));
   for (const control of ['typeFilter', 'durationFilter', 'themeFilter', "quickFilter === 'food'", "sort === 'quality'", "sort === 'long'"]) assert.ok(app.includes(control), control);
+});
+
+test('route assistant is named honestly and has all route dossiers', () => {
+  assert.equal(Object.keys(routeContext).length, 143);
+  assert.equal(Object.values(routeContext).reduce((sum, route) => sum + route.stops.length, 0), 659);
+  assert.match(index, /עוזר המסלול/);
+  assert.match(manifest.description, /עוזר המסלול/);
+  assert.doesNotMatch(index, /שאל AI|עוזר AI|<dt>AI<\/dt>/);
+  assert.doesNotMatch(app, />שאל AI</);
+  assert.match(app, /assistant_ready/);
+  assert.match(app, /candidate_scope/);
+  assert.equal(config.aiEndpoint, '');
+  assert.equal(config.allowCloudAi, false);
 });
 
 test('mobile route cards cannot grow past the viewport', () => {
@@ -115,7 +130,7 @@ test('all restored V1 data remains available to the V2 interface', () => {
 });
 
 test('manifest is relative, installable and versioned', () => {
-  assert.equal(manifest.version, '2.1.2');
+  assert.equal(manifest.version, '2.2.0');
   assert.equal('document_version' in manifest, false);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
@@ -125,6 +140,7 @@ test('manifest is relative, installable and versioned', () => {
 });
 
 test('service worker cannot delete caches owned by other projects', () => {
+  assert.match(serviceWorker, /v2\.2\.0/);
   assert.match(serviceWorker, /CACHE_PREFIX\s*=\s*['"]ilan-road-book-['"]/);
   assert.match(serviceWorker, /key\.startsWith\(CACHE_PREFIX\)/);
   assert.doesNotMatch(serviceWorker, /keys\.filter\(\(key\) => key !== CACHE_NAME\)/);
@@ -133,7 +149,7 @@ test('service worker cannot delete caches owned by other projects', () => {
 
 test('robots and offline shell are ready for an unlisted deployment', () => {
   assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read('offline.html'), /גרסה 2\.1\.2/);
+  assert.match(read('offline.html'), /גרסה 2\.2\.0/);
   for (const relative of [
     'index.html', 'offline.html', 'manifest.webmanifest', 'sw.js',
     'assets/app-v2.css', 'assets/app-v2.js', 'data/config-v2.js',

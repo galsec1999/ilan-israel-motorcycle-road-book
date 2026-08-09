@@ -1,6 +1,6 @@
 /**
  * הכנת נתוני גרסה 2
- * גרסה: 2.2.0
+ * גרסת מסמך: 2.0.3
  *
  * סקריפט מכני: שומר צילום של קבצי PWA 1.1.1 ומחלץ את מאגרי התוכן
  * מתוך book.html לקובץ JavaScript חיצוני, בלי לשנות את התוכן המקורי.
@@ -65,7 +65,7 @@ await cp(join(ROOT, 'icons'), join(ARCHIVE, 'icons'), {
 
 const legacyBook = await readFile(join(ROOT, 'book.html'), 'utf8');
 const payload = {
-  documentVersion: '2.2.0',
+  documentVersion: '2.0.3',
   sourceDocumentVersion: '1.1.1',
   generatedAt: new Date().toISOString(),
   routes: extractJsonConstant(legacyBook, 'ROUTES'),
@@ -77,7 +77,7 @@ const payload = {
 const output = [
   '/**',
   ' * מאגר תוכן קיים לגרסה 2',
-  ' * גרסה: 2.2.0',
+  ' * גרסת מסמך: 2.0.3',
   ' * מקור: מסמך 1.1.1; התוכן נשמר ללא שינוי ומנורמל בזמן הריצה.',
   ' */',
   `window.ROAD_BOOK_LEGACY = ${JSON.stringify(payload, null, 2)};`,
