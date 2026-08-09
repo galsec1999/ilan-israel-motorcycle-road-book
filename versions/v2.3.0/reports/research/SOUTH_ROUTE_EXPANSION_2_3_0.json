@@ -1,0 +1,4150 @@
+{
+  "document_title": "הרחבת מסלולי הדרום — גרסת מסמך 2.3.0",
+  "document_version": "2.3.0",
+  "researched_on": "2026-08-09",
+  "methodology": {
+    "scope": "30 מסלולים חדשים היוצאים מאזור המרכז: 15 תקינים לפרסום ו-15 במסלול אזהרות נפרד.",
+    "coordinate_method": "כל נקודת ניווט נבדקה מול ישות חד-משמעית ב-OpenStreetMap באמצעות Nominatim או Photon. נקודות כניסה שאינן חד-משמעיות נשארו במסלולי WARNING עם הסבר מפורש.",
+    "distance_method": "אומדן קילומטרים וזמן נהיגה חושב לפי רצף הנקודות במנוע OSRM; הוא אינו כולל עצירות, הליכות, עומסים או סגירות זמניות.",
+    "map_method": "קישורי Google Directions משתמשים בקואורדינטות ובכל נקודות הליבה והחזרה, כדי למנוע התאמת שם שגויה.",
+    "source_policy": "הועדפו רשות הטבע והגנים, קק״ל, רשויות מקומיות ואתרי האתרים עצמם. אין תמלול מספרי טיולים שלא סופקו ואין נקודות מומצאות."
+  },
+  "routes": [
+    {
+      "id": "south-expansion-pass-001",
+      "title": "באר שבע התנ״כית ומורשת מלחמת העולם הראשונה",
+      "region": "דרום",
+      "area": "באר שבע והנגב הצפוני",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "קל-בינוני",
+      "road_character": "כבישים בין-עירוניים מהירים, קטע עירוני קצר ועצירות מורשת עם חניה מוסדרת.",
+      "roads": [
+        "4",
+        "6",
+        "40",
+        "60"
+      ],
+      "best": "סתיו עד אביב; להתחיל מוקדם כדי להשאיר זמן לאתרים.",
+      "summary": "כוכב מן המרכז אל ארבע שכבות סיפור בבאר שבע: העיר המקראית, באר אברהם, בית העלמין הצבאי הבריטי ואנדרטת חטיבת הנגב.",
+      "cautions": [
+        "אין לעצור בשולי כביש 40 או במחלפים.",
+        "יש לבדוק שעות פתיחה והזמנה באתרי הביקור בבוקר היציאה."
+      ],
+      "fuel": "יציאה עם מכל מלא; השלמה אפשרית בבאר שבע לפני החזרה צפונה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (3.4 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־233 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 233,
+      "estimated_km": 233,
+      "estimated_driving_hours": 3.4,
+      "core_points": [
+        {
+          "name": "גן לאומי תל באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2450250,34.8410144",
+          "kind": "גן לאומי וארכאולוגיה",
+          "minutes": 75,
+          "story": "תל מקראי מבוצר ומערכת מים המדגימים את התפתחות היישוב בנגב.",
+          "era": "תקופת הברזל",
+          "coordinates": {
+            "lat": 31.245025,
+            "lon": 34.8410144
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2/"
+          ]
+        },
+        {
+          "name": "מרכז המבקרים באר אברהם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2372151,34.7930768",
+          "kind": "אתר מורשת",
+          "minutes": 45,
+          "story": "מרכז מבקרים סביב מסורת באר אברהם וסיפורה של באר שבע כעיר מדברית.",
+          "era": "מקרא ומורשת מקומית",
+          "coordinates": {
+            "lat": 31.2372151,
+            "lon": 34.7930768
+          },
+          "sources": [
+            "https://visitbr7.co.il/attractions/%D7%9E%D7%A8%D7%9B%D7%96-%D7%9E%D7%91%D7%A7%D7%A8%D7%99%D7%9D-%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%90%D7%A8-%D7%90%D7%91%D7%A8%D7%94%D7%9D/"
+          ]
+        },
+        {
+          "name": "בית העלמין הצבאי הבריטי בבאר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2438784,34.7835807",
+          "kind": "אתר הנצחה",
+          "minutes": 30,
+          "story": "תחנת זיכרון לקרבות 1917 ולכיבוש באר שבע בידי כוחות האימפריה הבריטית ואנז״ק.",
+          "era": "מלחמת העולם הראשונה",
+          "coordinates": {
+            "lat": 31.2438784,
+            "lon": 34.7835807
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/anzac-trail/",
+            "https://anzac.co.il/"
+          ]
+        },
+        {
+          "name": "אנדרטת חטיבת הנגב",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2666069,34.8205289",
+          "kind": "אנדרטה ותצפית",
+          "minutes": 35,
+          "story": "יצירת הנצחה מרחבית לקרבות חטיבת הנגב ולמערכה על הדרום.",
+          "era": "מלחמת העצמאות",
+          "coordinates": {
+            "lat": 31.2666069,
+            "lon": 34.8205289
+          },
+          "sources": [
+            "https://www.izkor.gov.il/monument/en_1be6781fc599cb2def64efd6d735fedf"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          }
+        }
+      ],
+      "return_roads": [
+        "60",
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.2450250,34.8410144%7C31.2372151,34.7930768%7C31.2438784,34.7835807%7C31.2666069,34.8205289%7C31.3845851,34.8112424&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2/",
+        "https://visitbr7.co.il/attractions/%D7%9E%D7%A8%D7%9B%D7%96-%D7%9E%D7%91%D7%A7%D7%A8%D7%99%D7%9D-%D7%91%D7%99%D7%A0%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%90%D7%A8-%D7%90%D7%91%D7%A8%D7%94%D7%9D/",
+        "https://www.kkl.org.il/travel/trips/anzac-trail/",
+        "https://anzac.co.il/",
+        "https://www.izkor.gov.il/monument/en_1be6781fc599cb2def64efd6d735fedf"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-002",
+      "title": "באר שבע החלוצית: בית אשל, נחל ואמנות",
+      "region": "דרום",
+      "area": "באר שבע",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "קל",
+      "road_character": "רכיבה בין-עירונית נוחה וקטעי עיר קצרים בין אתרי תרבות ופארק.",
+      "roads": [
+        "6",
+        "40",
+        "60"
+      ],
+      "best": "כל השנה למעט עומסי חום; למוזיאון יש לבדוק שעות פתיחה.",
+      "summary": "יום עירוני-חלוצי המחבר את בית אשל, פארק נחל באר שבע, מוזאון הנגב ואנדרטת חטיבת הנגב.",
+      "cautions": [
+        "בפארק ובמרכז העיר יש תנועת הולכי רגל ורוכבי אופניים.",
+        "אין להשאיר ציוד גלוי על האופנוע בעצירות עירוניות."
+      ],
+      "fuel": "תדלוק בבאר שבע לפי הצורך; אין צורך להסתמך על תחנה יחידה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (3.4 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־222 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 222,
+      "estimated_km": 222,
+      "estimated_driving_hours": 3.4,
+      "core_points": [
+        {
+          "name": "מצפה בית אשל",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2332329,34.8129729",
+          "kind": "אתר מורשת חלוצית",
+          "minutes": 45,
+          "story": "אחת משלוש המצפות שהוקמו בנגב ב-1943 ונקודת מפתח בסיפור ההתיישבות והמים.",
+          "era": "תקופת המנדט ומלחמת העצמאות",
+          "coordinates": {
+            "lat": 31.2332329,
+            "lon": 34.8129729
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/beit-eshel/"
+          ]
+        },
+        {
+          "name": "פארק נחל באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2373133,34.8210353",
+          "kind": "פארק עירוני",
+          "minutes": 35,
+          "story": "פרויקט שיקום נחל ומרחב ציבורי רחב הממחיש את הקשר בין עיר, מדבר ומים.",
+          "era": "פיתוח עירוני בן זמננו",
+          "coordinates": {
+            "lat": 31.2373133,
+            "lon": 34.8210353
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_beer7/"
+          ]
+        },
+        {
+          "name": "מוזאון הנגב לאמנות",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2412781,34.7889536",
+          "kind": "מוזאון",
+          "minutes": 60,
+          "story": "מוזאון אמנות בבית המושל העות׳מאני, בלב המתחם ההיסטורי של העיר העתיקה.",
+          "era": "עות׳מאני ומודרני",
+          "coordinates": {
+            "lat": 31.2412781,
+            "lon": 34.7889536
+          },
+          "sources": [
+            "https://negev-museum.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/"
+          ]
+        },
+        {
+          "name": "אנדרטת חטיבת הנגב",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2666069,34.8205289",
+          "kind": "אנדרטה ותצפית",
+          "minutes": 35,
+          "story": "סיום גבוה ושקט ליום, מול נוף העיר וסיפור הקרבות על הנגב.",
+          "era": "מלחמת העצמאות",
+          "coordinates": {
+            "lat": 31.2666069,
+            "lon": 34.8205289
+          },
+          "sources": [
+            "https://www.izkor.gov.il/monument/en_1be6781fc599cb2def64efd6d735fedf"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.2332329,34.8129729%7C31.2373133,34.8210353%7C31.2412781,34.7889536%7C31.2666069,34.8205289%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://www.kkl.org.il/travel/trips/beit-eshel/",
+        "https://www.kkl.org.il/travel/kkl_beer7/",
+        "https://negev-museum.org.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/",
+        "https://www.izkor.gov.il/monument/en_1be6781fc599cb2def64efd6d735fedf"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-003",
+      "title": "באר שבע של סקרנות ותרבות: לונדע, קרסו והאסלאם",
+      "region": "דרום",
+      "area": "באר שבע",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "קל",
+      "road_character": "ציר בין־עירוני אל באר שבע ומקטע עירוני קצר בין שלושה מוסדות ביקור; חזרה בציר 40–6.",
+      "roads": [
+        "4",
+        "41",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "כל השנה; יש להזמין ולבדוק שעות בכל מוסד לפני היציאה.",
+      "summary": "לולאה עירונית־תרבותית שמחברת מדע אינטראקטיבי, מדע היסטורי ואמנות מן המזרח התיכון בלי לחזור על אתרי נתיב אנז״ק.",
+      "cautions": [
+        "המעבר בין האתרים עירוני וכולל עומסי תנועה ורמזורים.",
+        "לונדע ופארק קרסו דורשים בדיקת שעות וכרטיסים מראש."
+      ],
+      "fuel": "מכל מלא באזור אשדוד; תדלוק גיבוי בבאר שבע לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום מלא (3.1 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־220 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 220,
+      "estimated_km": 220,
+      "estimated_driving_hours": 3.1,
+      "core_points": [
+        {
+          "name": "לונדע — מוזאון הילדים של באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2625372,34.7632395",
+          "coordinates": {
+            "lat": 31.2625372,
+            "lon": 34.7632395
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מוזאון אינטראקטיבי",
+          "minutes": 90,
+          "story": "מרחב התנסות אינטראקטיבי שמאפשר לדבר על למידה דרך תנועה, משחק וסקרנות.",
+          "story_long": "מרחב התנסות אינטראקטיבי שמאפשר לדבר על למידה דרך תנועה, משחק וסקרנות.",
+          "era": "מדע וחינוך עכשוויים",
+          "sources": [
+            "https://lunada.co.il/"
+          ]
+        },
+        {
+          "name": "פארק קרסו למדע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2418329,34.7859019",
+          "coordinates": {
+            "lat": 31.2418329,
+            "lon": 34.7859019
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מוזאון מדע",
+          "minutes": 90,
+          "story": "מתחם מדע בבניינים היסטוריים של העיר העתיקה, עם תערוכות המדגימות עקרונות מדעיים.",
+          "story_long": "מתחם מדע בבניינים היסטוריים של העיר העתיקה, עם תערוכות המדגימות עקרונות מדעיים.",
+          "era": "עות׳מאני עד עכשווי",
+          "sources": [
+            "https://sci-park.co.il/%D7%A9%D7%A2%D7%95%D7%AA-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA/"
+          ]
+        },
+        {
+          "name": "המוזאון לתרבות האסלאם ועמי המזרח",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.241491,34.788681",
+          "coordinates": {
+            "lat": 31.241491,
+            "lon": 34.788681
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מוזאון אמנות ותרבות",
+          "minutes": 60,
+          "story": "המוזאון שוכן במסגד הגדול ההיסטורי ומציג אמנות ותרבות של עמי האסלאם והמזרח.",
+          "story_long": "המוזאון שוכן במסגד הגדול ההיסטורי ומציג אמנות ותרבות של עמי האסלאם והמזרח.",
+          "era": "עות׳מאני עד עכשווי",
+          "sources": [
+            "https://ine-museum.org.il/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.7761689%2C34.6643774%7C31.2625372%2C34.7632395%7C31.2418329%2C34.7859019%7C31.241491%2C34.788681%7C31.3845851%2C34.8112424",
+      "sources": [
+        "https://lunada.co.il/",
+        "https://sci-park.co.il/%D7%A9%D7%A2%D7%95%D7%AA-%D7%A4%D7%A2%D7%99%D7%9C%D7%95%D7%AA/",
+        "https://ine-museum.org.il/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-004",
+      "title": "בעלי חיים ומים במדבר: מדבריום–דימונה–ירוחם",
+      "region": "דרום",
+      "area": "באר שבע–דימונה–ירוחם",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "snake",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני",
+      "road_character": "מסלול נחש סלול: ירידה דרך כביש 6 לבאר שבע, המשך מזרחה לדימונה וירוחם וחזרה בציר 40.",
+      "roads": [
+        "6",
+        "40",
+        "25",
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "סתיו עד אביב; בקיץ רק בשעות קרירות ובהתאם לשעות האתרים.",
+      "summary": "יום דרומי מגוון שמתחיל בחיות מדבר, ממשיך לאגם דימונה ומסיים באגם ירוחם לפני חזרה בציר אחר.",
+      "cautions": [
+        "רוחות צד וחול אפשריים בכבישים 204 ו־224.",
+        "יש לבדוק מראש את שעות מדבריום ואת מצב הפארקים העירוניים."
+      ],
+      "fuel": "תדלוק בבאר שבע; גיבוי בדימונה לפני ירוחם.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (4.8 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־313 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 313,
+      "estimated_km": 313,
+      "estimated_driving_hours": 4.8,
+      "core_points": [
+        {
+          "name": "מדבריום — פארק החיות באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2608801,34.7464693",
+          "coordinates": {
+            "lat": 31.2608801,
+            "lon": 34.7464693
+          },
+          "review_state": "manual_confirmed",
+          "kind": "פארק בעלי חיים",
+          "minutes": 120,
+          "story": "פארק חווייתי העוסק בהתאמות של בעלי חיים ובתי גידול לסביבה המדברית.",
+          "story_long": "פארק חווייתי העוסק בהתאמות של בעלי חיים ובתי גידול לסביבה המדברית.",
+          "era": "טבע וחינוך עכשוויים",
+          "sources": [
+            "https://midbarium.co.il/%D7%A6%D7%A8%D7%95-%D7%A7%D7%A9%D7%A8/"
+          ]
+        },
+        {
+          "name": "אגם דימונה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0811485,35.0313155",
+          "coordinates": {
+            "lat": 31.0811485,
+            "lon": 35.0313155
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אגם ופארק עירוני",
+          "minutes": 35,
+          "story": "אגם מלאכותי ופארק עירוני המדגימים יצירת מרחב פנאי בלב אקלים צחיח.",
+          "story_long": "אגם מלאכותי ופארק עירוני המדגימים יצירת מרחב פנאי בלב אקלים צחיח.",
+          "era": "פיתוח עירוני מודרני",
+          "sources": [
+            "https://www.dimona.muni.il/%D7%90%D7%92%D7%9D-%D7%93%D7%99%D7%9E%D7%95%D7%A0%D7%94/"
+          ]
+        },
+        {
+          "name": "פארק אגם ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "review_state": "manual_confirmed",
+          "kind": "פארק ואגם",
+          "minutes": 45,
+          "story": "מאגר מים ופארק קהילתי המשמשים תחנת טבע ומנוחה לפני החזרה צפונה.",
+          "story_long": "מאגר מים ופארק קהילתי המשמשים תחנת טבע ומנוחה לפני החזרה צפונה.",
+          "era": "פיתוח מדברי מודרני",
+          "sources": [
+            "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+            "https://www.kkl.org.il/travel/trips/42/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C31.2608801%2C34.7464693%7C31.0811485%2C35.0313155%7C30.9885959%2C34.8955392%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://midbarium.co.il/%D7%A6%D7%A8%D7%95-%D7%A7%D7%A9%D7%A8/",
+        "https://www.dimona.muni.il/%D7%90%D7%92%D7%9D-%D7%93%D7%99%D7%9E%D7%95%D7%A0%D7%94/",
+        "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+        "https://www.kkl.org.il/travel/trips/42/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-005",
+      "title": "ציר הערים הנבטיות: ניצנה, עבדת וממשית",
+      "region": "דרום",
+      "area": "רמת נגב וצפון-מזרח הנגב",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "snake",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך",
+      "road_character": "יום כביש ארוך בין אתרי עתיקות; כבישי 211, 40, 206 ו-25.",
+      "roads": [
+        "40",
+        "211",
+        "40",
+        "206",
+        "25",
+        "6"
+      ],
+      "best": "חורף; להקדיש יום מלא ולצמצם את מספר האתרים אם שעות האור קצרות.",
+      "summary": "חתך רוחב של דרך הבשמים והערים הנבטיות, מניצנה במערב דרך עבדת ועד ממשית במזרח.",
+      "cautions": [
+        "יש לבדוק הזמנה ושעות סגירה לכל גן לאומי בנפרד.",
+        "אין להיכנס לקטעי דרך הבשמים שאינם סלולים באופנוע כביש."
+      ],
+      "fuel": "מכל מלא לפני רמת נגב; בדיקת טווח בדימונה לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים מומלצים (7.5 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־466 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 466,
+      "estimated_km": 466,
+      "estimated_driving_hours": 7.5,
+      "core_points": [
+        {
+          "name": "גן לאומי ניצנה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8747993,34.4311573",
+          "kind": "עתיקות וגבול",
+          "minutes": 55,
+          "story": "עיר דרך ומרכז מנהלי שנבנה מחדש בתקופות שונות על גבול המדבר.",
+          "era": "נבטי, ביזנטי, עות׳מאני ומנדטורי",
+          "coordinates": {
+            "lat": 30.8747993,
+            "lon": 34.4311573
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A0%D7%99%D7%A6%D7%A0%D7%94/"
+          ]
+        },
+        {
+          "name": "גן לאומי עבדת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.7943027,34.7747543",
+          "kind": "עיר נבטית",
+          "minutes": 80,
+          "story": "עיר מרכזית על דרך הבשמים ובה אקרופוליס, כנסיות ומערכות חקלאות מדברית.",
+          "era": "נבטי עד ביזנטי",
+          "coordinates": {
+            "lat": 30.7943027,
+            "lon": 34.7747543
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A2%D7%91%D7%93%D7%AA/"
+          ]
+        },
+        {
+          "name": "גן לאומי ממשית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0240184,35.0648415",
+          "kind": "עיר נבטית",
+          "minutes": 80,
+          "story": "עיר נבטית קומפקטית ושמורה שבה בתי מידות, כנסיות ושוק.",
+          "era": "נבטי, רומי וביזנטי",
+          "coordinates": {
+            "lat": 31.0240184,
+            "lon": 35.0648415
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/"
+          ]
+        },
+        {
+          "name": "פארק בן גוריון, דימונה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0800396,35.0270541",
+          "kind": "פארק עירוני",
+          "minutes": 25,
+          "story": "עצירת התאוששות עירונית לפני החזרה הארוכה למרכז.",
+          "era": "פיתוח מודרני",
+          "coordinates": {
+            "lat": 31.0800396,
+            "lon": 35.0270541
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_p_bg/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          }
+        }
+      ],
+      "return_roads": [
+        "25",
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C30.8747993,34.4311573%7C30.7943027,34.7747543%7C31.0240184,35.0648415%7C31.0800396,35.0270541%7C31.3845851,34.8112424&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A0%D7%99%D7%A6%D7%A0%D7%94/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A2%D7%91%D7%93%D7%AA/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/",
+        "https://www.kkl.org.il/travel/kkl_p_bg/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-006",
+      "title": "ירוחם הקהילתית וממשית: מדבר חי",
+      "region": "דרום",
+      "area": "ירוחם–דימונה",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "בינוני",
+      "road_character": "כבישי מדבר סלולים, מעבר בין בקעות ועיר מדברית; ללא כניסה לשטח.",
+      "roads": [
+        "6",
+        "40",
+        "224",
+        "204",
+        "206",
+        "25"
+      ],
+      "best": "סתיו עד אביב; מתאים ליום מלא בקצב רגוע.",
+      "summary": "מסלול שמציג את ירוחם כקהילה ולא רק כנקודת מעבר, ואז מחבר אותה למורשת הנבטית בממשית ולפארק בדימונה.",
+      "cautions": [
+        "בכביש 224 ייתכנו רוחות צד וחול על הכביש.",
+        "בממשית יש לבדוק שעות כניסה לפני שיוצאים מירוחם."
+      ],
+      "fuel": "תדלוק מלא לפני ירוחם; השלמה בדימונה לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (5.0 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־326 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 326,
+      "estimated_km": 326,
+      "estimated_driving_hours": 5,
+      "core_points": [
+        {
+          "name": "פארק אגם ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "kind": "פארק ואגם",
+          "minutes": 45,
+          "story": "אגם בלב המדבר ומרחב קהילתי שממחיש התאמה של יישוב לתנאי האקלים.",
+          "era": "פיתוח מדברי מודרני",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "sources": [
+            "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+            "https://www.kkl.org.il/travel/trips/42/"
+          ]
+        },
+        {
+          "name": "אנדרטת המייסדים, ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9882915,34.9245017",
+          "kind": "מורשת קהילתית",
+          "minutes": 25,
+          "story": "אנדרטה קהילתית למייסדי ירוחם, סמוך למתחם המורשת העירוני, המספקת נקודת שיחה על ראשית היישוב.",
+          "era": "שנות ה-50 והלאה",
+          "coordinates": {
+            "lat": 30.9882915,
+            "lon": 34.9245017
+          },
+          "sources": [
+            "https://visit-yerucham.com/tour-item-attraction/%D7%A2%D7%AA%D7%99%D7%93-%D7%91%D7%9E%D7%93%D7%91%D7%A8-2/"
+          ],
+          "story_long": "אנדרטה קהילתית למייסדי ירוחם, סמוך למתחם המורשת העירוני, המספקת נקודת שיחה על ראשית היישוב.",
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "גן לאומי ממשית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0240184,35.0648415",
+          "kind": "עיר נבטית",
+          "minutes": 80,
+          "story": "עיר מסחר נבטית שממחישה חיים עירוניים משוכללים באזור צחיח.",
+          "era": "נבטי עד ביזנטי",
+          "coordinates": {
+            "lat": 31.0240184,
+            "lon": 35.0648415
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/"
+          ]
+        },
+        {
+          "name": "פארק בן גוריון, דימונה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0800396,35.0270541",
+          "kind": "פארק עירוני",
+          "minutes": 30,
+          "story": "עצירת התאוששות לפני העלייה צפונה והזדמנות להשוות בין שתי ערי המדבר.",
+          "era": "פיתוח הנגב",
+          "coordinates": {
+            "lat": 31.0800396,
+            "lon": 35.0270541
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_p_bg/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          }
+        }
+      ],
+      "return_roads": [
+        "25",
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C30.9885959,34.8955392%7C30.9882915,34.9245017%7C31.0240184,35.0648415%7C31.0800396,35.0270541%7C31.3845851,34.8112424&travelmode=driving",
+      "sources": [
+        "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+        "https://www.kkl.org.il/travel/trips/42/",
+        "https://visit-yerucham.com/tour-item-attraction/%D7%A2%D7%AA%D7%99%D7%93-%D7%91%D7%9E%D7%93%D7%91%D7%A8-2/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/",
+        "https://www.kkl.org.il/travel/kkl_p_bg/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-007",
+      "title": "שדה בוקר: בן גוריון, הרועה ועבדת",
+      "region": "דרום",
+      "area": "שדה בוקר ושדרת הצינים",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "בינוני-ארוך",
+      "road_character": "כביש 40 ארוך וחשוף עם עצירות סמוכות זו לזו באזור שדה בוקר.",
+      "roads": [
+        "6",
+        "40",
+        "204",
+        "25"
+      ],
+      "best": "חורף ואביב; לצאת לפני הזריחה אם רוצים להיכנס לכל האתרים.",
+      "summary": "יום עומק סביב חזון הנגב של דוד בן גוריון, חניון הרועה, הצריף, אחוזת הקבר והעיר עבדת.",
+      "cautions": [
+        "משאיות ורוח צד בכביש 40.",
+        "הכניסה לאתרים כפופה לשעות ולהזמנה; אין לרכוב אל שבילי ההליכה."
+      ],
+      "fuel": "תדלוק מלא באזור באר שבע; השלמה במצפה רמון או ירוחם אם נדרש.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום ארוך מאוד (6.2 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־353 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 353,
+      "estimated_km": 353,
+      "estimated_driving_hours": 6.2,
+      "core_points": [
+        {
+          "name": "חניון הרועה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8755034,34.7859293",
+          "kind": "חניון קק״ל",
+          "minutes": 25,
+          "story": "חניון על ציר 40 הקרוי לזכר ברברה פרופר, רועת הצאן משדה בוקר.",
+          "era": "ראשית ההתיישבות בשדה בוקר",
+          "coordinates": {
+            "lat": 30.8755034,
+            "lon": 34.7859293
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/harohe_negev/"
+          ]
+        },
+        {
+          "name": "צריף בן גוריון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8755590,34.7872130",
+          "kind": "אתר מורשת",
+          "minutes": 70,
+          "story": "ביתו המדברי של בן גוריון ומרכז מבקרים על חזונו לפיתוח הנגב.",
+          "era": "שנות ה-50 עד שנות ה-70",
+          "coordinates": {
+            "lat": 30.875559,
+            "lon": 34.787213
+          },
+          "sources": [
+            "https://www.ben-gurion.co.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/",
+            "https://www.ben-gurion.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A6%D7%A8%D7%99%D7%A3-%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F-%D7%A9%D7%93%D7%94-%D7%91%D7%95%D7%A7%D7%A8/"
+          ]
+        },
+        {
+          "name": "גן לאומי קבר בן גוריון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8485347,34.7805389",
+          "kind": "גן לאומי ותצפית",
+          "minutes": 45,
+          "story": "אחוזת הקבר צופה לנחל צין ומחברת בין הנוף המדברי לבחירתו של בן גוריון.",
+          "era": "המאה ה-20",
+          "coordinates": {
+            "lat": 30.8485347,
+            "lon": 34.7805389
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A7%D7%91%D7%A8-%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F/"
+          ]
+        },
+        {
+          "name": "גן לאומי עבדת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.7943027,34.7747543",
+          "kind": "עיר נבטית",
+          "minutes": 80,
+          "story": "עיר דרך המדגישה כי המדבר היה ציר מסחר וחקלאות מאות שנים לפני ההתיישבות המודרנית.",
+          "era": "נבטי עד ביזנטי",
+          "coordinates": {
+            "lat": 30.7943027,
+            "lon": 34.7747543
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A2%D7%91%D7%93%D7%AA/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "פארק אגם ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "204",
+        "25",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C30.8755034,34.7859293%7C30.8755590,34.7872130%7C30.8485347,34.7805389%7C30.7943027,34.7747543%7C30.9885959,34.8955392%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://www.kkl.org.il/travel/harohe_negev/",
+        "https://www.ben-gurion.co.il/%D7%90%D7%95%D7%93%D7%95%D7%AA/",
+        "https://www.ben-gurion.co.il/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F-%D7%A6%D7%A8%D7%99%D7%A3-%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F-%D7%A9%D7%93%D7%94-%D7%91%D7%95%D7%A7%D7%A8/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A7%D7%91%D7%A8-%D7%91%D7%9F-%D7%92%D7%95%D7%A8%D7%99%D7%95%D7%9F/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A2%D7%91%D7%93%D7%AA/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-008",
+      "title": "ערד: תל, חורשה, מצפור וממשית",
+      "region": "דרום",
+      "area": "ערד–דימונה",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "בינוני",
+      "road_character": "עלייה וירידה בכביש 31, קטעי מדבר פתוחים ועצירות סלולות.",
+      "roads": [
+        "6",
+        "31",
+        "80",
+        "25"
+      ],
+      "best": "חורף ועונות מעבר; להימנע מערפל כבד בעלייה לערד.",
+      "summary": "לולאה סביב ערד שמתחילה בעיר קדומה, עוברת בחורשת רן ובמצפור מואב, וממשיכה לממשית ולדימונה.",
+      "cautions": [
+        "כביש 31 כולל משאיות ושינויי גובה.",
+        "מצפור מואב חשוף לרוח; חניה רק ברחבה המסומנת."
+      ],
+      "fuel": "תדלוק בערד או בדימונה; אין לצאת אל כבישי המדבר עם טווח גבולי.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (5.3 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־347 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 347,
+      "estimated_km": 347,
+      "estimated_driving_hours": 5.3,
+      "core_points": [
+        {
+          "name": "גן לאומי תל ערד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2781052,35.1221180",
+          "kind": "גן לאומי וארכאולוגיה",
+          "minutes": 80,
+          "story": "עיר כנענית מתוכננת ומצודה מתקופת ממלכת יהודה, כולל מקדש ומפעל מים.",
+          "era": "ברונזה קדומה עד תקופת המלוכה",
+          "coordinates": {
+            "lat": 31.2781052,
+            "lon": 35.122118
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%A2%D7%A8%D7%93/"
+          ]
+        },
+        {
+          "name": "חורשת רן",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2566776,35.1591495",
+          "kind": "חניון קק״ל",
+          "minutes": 25,
+          "story": "פינת יער מדברית סמוכה לערד המשמשת עצירת קבוצה קצרה לפני המצפור.",
+          "era": "הנצחה ופיתוח קק״ל",
+          "coordinates": {
+            "lat": 31.2566776,
+            "lon": 35.1591495
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/parking_lot_ran/"
+          ]
+        },
+        {
+          "name": "מצפור מואב",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2605853,35.2422206",
+          "kind": "מצפור ופסל סביבתי",
+          "minutes": 35,
+          "story": "תצפית מזרחה אל מדבר יהודה והרי מואב ופסלו של יגאל תומרקין.",
+          "era": "נוף גאולוגי ואמנות מודרנית",
+          "coordinates": {
+            "lat": 31.2605853,
+            "lon": 35.2422206
+          },
+          "sources": [
+            "https://www.deadsea.co.il/?ambassadors=%D7%9E%D7%A6%D7%A4%D7%94-%D7%9E%D7%95%D7%90%D7%91"
+          ]
+        },
+        {
+          "name": "גן לאומי ממשית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0240184,35.0648415",
+          "kind": "עיר נבטית",
+          "minutes": 75,
+          "story": "עיר נבטית מרשימה המסיימת את קו העתיקות לפני החזרה דרך דימונה.",
+          "era": "נבטי עד ביזנטי",
+          "coordinates": {
+            "lat": 31.0240184,
+            "lon": 35.0648415
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "פארק בן גוריון, דימונה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0800396,35.0270541",
+          "coordinates": {
+            "lat": 31.0800396,
+            "lon": 35.0270541
+          }
+        },
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          }
+        }
+      ],
+      "return_roads": [
+        "25",
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.2781052,35.1221180%7C31.2566776,35.1591495%7C31.2605853,35.2422206%7C31.0240184,35.0648415%7C31.0800396,35.0270541%7C31.3845851,34.8112424&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%A2%D7%A8%D7%93/",
+        "https://www.kkl.org.il/travel/parking_lot_ran/",
+        "https://www.deadsea.co.il/?ambassadors=%D7%9E%D7%A6%D7%A4%D7%94-%D7%9E%D7%95%D7%90%D7%91",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-009",
+      "title": "כיכרות ים המלח והערבה הצפונית",
+      "region": "דרום",
+      "area": "דרום ים המלח והערבה התיכונה",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך מאוד",
+      "road_character": "ירידה ארוכה לערבה בכבישים 31 ו-90 וחזרה שונה דרך 40.",
+      "roads": [
+        "6",
+        "31",
+        "90",
+        "40"
+      ],
+      "best": "חורף בלבד; מומלץ לפצל ליומיים.",
+      "summary": "לולאה מן המרכז אל יישובי כיכר סדום, חקלאות חצבה ופארק ספיר, עם חזרה דרך מצפה רמון.",
+      "cautions": [
+        "כביש 90 חשוף לשיטפונות, חום ורוח.",
+        "לפני יציאה בודקים הודעות משטרה, מזג אוויר ומצב הכבישים."
+      ],
+      "fuel": "תדלוק מלא בבאר שבע; השלמה באזור הערבה ובמצפה רמון לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים מומלצים (7.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־540 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 540,
+      "estimated_km": 540,
+      "estimated_driving_hours": 7.7,
+      "core_points": [
+        {
+          "name": "עין תמר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9433090,35.3747349",
+          "kind": "יישוב חקלאי",
+          "minutes": 25,
+          "story": "מושב בכיכר סדום שמדגים חקלאות בתנאי מליחות וחום קיצוניים.",
+          "era": "התיישבות מודרנית",
+          "coordinates": {
+            "lat": 30.943309,
+            "lon": 35.3747349
+          },
+          "sources": [
+            "https://ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/"
+          ]
+        },
+        {
+          "name": "נאות הכיכר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9331200,35.3778408",
+          "kind": "יישוב ומרחב חקלאי",
+          "minutes": 25,
+          "story": "יישוב בכיכר סדום ונקודת מבט על מפלס ים המלח, חקלאות ומדבר.",
+          "era": "התיישבות מודרנית",
+          "coordinates": {
+            "lat": 30.93312,
+            "lon": 35.3778408
+          },
+          "sources": [
+            "https://www.ma-tamar.org.il/%D7%A0%D7%90%D7%95%D7%AA-%D7%94%D7%9B%D7%99%D7%9B%D7%A8/"
+          ]
+        },
+        {
+          "name": "מרכז ויידור, חצבה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.7671940,35.2776930",
+          "kind": "מרכז מבקרים חקלאי",
+          "minutes": 60,
+          "story": "מרכז מבקרים המסביר את חדשנות החקלאות בערבה ואת העבודה בתנאי מדבר.",
+          "era": "חקלאות מודרנית",
+          "coordinates": {
+            "lat": 30.767194,
+            "lon": 35.277693
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/"
+          ]
+        },
+        {
+          "name": "פארק ספיר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6164706,35.1913355",
+          "kind": "פארק מדברי",
+          "minutes": 40,
+          "story": "נווה מדבר קהילתי סביב אגם וצמחייה בערבה התיכונה.",
+          "era": "פיתוח קהילתי מודרני",
+          "coordinates": {
+            "lat": 30.6164706,
+            "lon": 35.1913355
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C30.9433090,35.3747349%7C30.9331200,35.3778408%7C30.7671940,35.2776930%7C30.6164706,35.1913355%7C30.6119687,34.8012169%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/",
+        "https://www.ma-tamar.org.il/%D7%A0%D7%90%D7%95%D7%AA-%D7%94%D7%9B%D7%99%D7%9B%D7%A8/",
+        "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/",
+        "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-010",
+      "title": "חקלאות ואמנות לאורך הערבה",
+      "region": "דרום",
+      "area": "הערבה התיכונה והדרומית",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך מאוד",
+      "road_character": "ציר 90 ארוך וישר עם כניסות קצרות ליישובים; חזרה בכביש 40.",
+      "roads": [
+        "6",
+        "40",
+        "90",
+        "40"
+      ],
+      "best": "חורף; מסלול של יומיים עם לינה בערבה.",
+      "summary": "מסע תוכן לאורך הערבה: מרכז חקלאות בחצבה, פארק ספיר, כפר האמנים בצוקים ועצירת קהילה ביטבתה.",
+      "cautions": [
+        "חום, עייפות ורוח צד הם הסיכונים המרכזיים.",
+        "לא להפוך את קטעי כביש 90 למבחן מהירות; לקבוע עצירות קבועות."
+      ],
+      "fuel": "תדלוק מלא בבאר שבע; השלמות מתוכננות בערבה ובמצפה רמון.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (8.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־608 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 608,
+      "estimated_km": 608,
+      "estimated_driving_hours": 8.7,
+      "core_points": [
+        {
+          "name": "מרכז ויידור, חצבה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.7671940,35.2776930",
+          "kind": "מרכז מבקרים חקלאי",
+          "minutes": 60,
+          "story": "חלון אל חקלאות הערבה, המחקר והטכנולוגיה שמאפשרים גידול בתנאים קיצוניים.",
+          "era": "חקלאות מודרנית",
+          "coordinates": {
+            "lat": 30.767194,
+            "lon": 35.277693
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/"
+          ]
+        },
+        {
+          "name": "פארק ספיר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6164706,35.1913355",
+          "kind": "פארק מדברי",
+          "minutes": 40,
+          "story": "אגם וצל בלב הערבה, תחנת מנוחה טבעית בין מקטעי הרכיבה הארוכים.",
+          "era": "פיתוח קהילתי",
+          "coordinates": {
+            "lat": 30.6164706,
+            "lon": 35.1913355
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+          ]
+        },
+        {
+          "name": "כפר האמנים צוקים",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.4915317,35.1663571",
+          "kind": "כפר אמנים",
+          "minutes": 50,
+          "story": "קהילת יוצרים שמחברת מלאכה, מדבר ואירוח מקומי.",
+          "era": "יצירה קהילתית בת זמננו",
+          "coordinates": {
+            "lat": 30.4915317,
+            "lon": 35.1663571
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%9B%D7%A4%D7%A8-%D7%94%D7%90%D7%9E%D7%A0%D7%99%D7%9D-%D7%91%D7%A6%D7%95%D7%A7%D7%99%D7%9D/"
+          ]
+        },
+        {
+          "name": "פארק יטבתה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.8938533,35.0642838",
+          "kind": "מרכז דרך קהילתי",
+          "minutes": 45,
+          "story": "עצירת דרך המספרת על התיישבות, חקלאות ותעשיית מזון בערבה הדרומית.",
+          "era": "התיישבות מודרנית",
+          "coordinates": {
+            "lat": 29.8938533,
+            "lon": 35.0642838
+          },
+          "sources": [
+            "https://www.aravadesert.co.il/business/30/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C30.7671940,35.2776930%7C30.6164706,35.1913355%7C30.4915317,35.1663571%7C29.8938533,35.0642838%7C30.6119687,34.8012169%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/",
+        "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/",
+        "https://goarava.co.il/business/%D7%9B%D7%A4%D7%A8-%D7%94%D7%90%D7%9E%D7%A0%D7%99%D7%9D-%D7%91%D7%A6%D7%95%D7%A7%D7%99%D7%9D/",
+        "https://www.aravadesert.co.il/business/30/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-011",
+      "title": "שימור בדרום הערבה: יטבתה, חי-בר, תמנע וצפרות",
+      "region": "דרום",
+      "area": "הערבה הדרומית ואילת",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך מאוד",
+      "road_character": "מסלול דו-יומי בכבישים 40 ו-90, עם כניסות סלולות לאתרי טבע.",
+      "roads": [
+        "6",
+        "40",
+        "90",
+        "40"
+      ],
+      "best": "נובמבר עד מרץ; לינה באזור אילת או הערבה הדרומית.",
+      "summary": "רצף שימור וחינוך סביבתי מן ההתיישבות ביטבתה, דרך חי-בר ופארק תמנע ועד פארק הצפרות באילת.",
+      "cautions": [
+        "אין לבצע ביום אחד עם סיורים מלאים; לפצל ליומיים.",
+        "לבדוק שעות, הזמנות ועומסי חום בכל אתר."
+      ],
+      "fuel": "תדלוק בבאר שבע, השלמה בערבה ותדלוק נוסף באילת לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (10.5 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־694 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 694,
+      "estimated_km": 694,
+      "estimated_driving_hours": 10.5,
+      "core_points": [
+        {
+          "name": "פארק יטבתה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.8938533,35.0642838",
+          "kind": "מרכז דרך ומורשת",
+          "minutes": 45,
+          "story": "תחנה על התיישבות וחקלאות בערבה הדרומית.",
+          "era": "התיישבות מודרנית",
+          "coordinates": {
+            "lat": 29.8938533,
+            "lon": 35.0642838
+          },
+          "sources": [
+            "https://www.aravadesert.co.il/business/30/"
+          ]
+        },
+        {
+          "name": "שמורת חי-בר יטבתה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.8466469,35.0297039",
+          "kind": "שמורת טבע",
+          "minutes": 90,
+          "story": "מרכז לשימור ולהשבת חיות בר מדבריות.",
+          "era": "שמירת טבע מודרנית",
+          "coordinates": {
+            "lat": 29.8466469,
+            "lon": 35.0297039
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%99-%D7%91%D7%A8-%D7%99%D7%95%D7%98%D7%91%D7%AA%D7%94-2/"
+          ]
+        },
+        {
+          "name": "מרכז המבקרים פארק תמנע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.7874454,34.9887885",
+          "kind": "פארק גאולוגי והיסטורי",
+          "minutes": 90,
+          "story": "שער למכרות נחושת, תצורות סלע וסיפור כרייה בן אלפי שנים.",
+          "era": "קדום עד מודרני",
+          "coordinates": {
+            "lat": 29.7874454,
+            "lon": 34.9887885
+          },
+          "sources": [
+            "https://parktimna.co.il/he-attractions/sites-and-trails/"
+          ]
+        },
+        {
+          "name": "פארק הצפרות אילת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5724526,34.9717278",
+          "kind": "מרכז צפרות",
+          "minutes": 60,
+          "story": "תחנת נדידה בין אפריקה לאירופה ומרחב שיקום מלחה.",
+          "era": "אקולוגיה בת זמננו",
+          "coordinates": {
+            "lat": 29.5724526,
+            "lon": 34.9717278
+          },
+          "sources": [
+            "https://eilatbirds.com/about/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C29.8938533,35.0642838%7C29.8466469,35.0297039%7C29.7874454,34.9887885%7C29.5724526,34.9717278%7C30.6119687,34.8012169%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://www.aravadesert.co.il/business/30/",
+        "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%99-%D7%91%D7%A8-%D7%99%D7%95%D7%98%D7%91%D7%AA%D7%94-2/",
+        "https://parktimna.co.il/he-attractions/sites-and-trails/",
+        "https://eilatbirds.com/about/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-012",
+      "title": "אילת: טבע עירוני, מורשת וחוף האלמוגים",
+      "region": "דרום",
+      "area": "אילת והרי אילת",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך מאוד",
+      "road_character": "מסע דו-יומי לאילת וחזרה במסדרונות שונים, עם קטע עירוני וחופי.",
+      "roads": [
+        "6",
+        "40",
+        "90",
+        "12",
+        "40"
+      ],
+      "best": "חורף; לינה באילת חובה מעשית למסלול מלא.",
+      "summary": "מסלול אילתי מגוון שמתחיל בצפרות, עובר במוזאון העירוני ובחוף האלמוגים, וחוזר דרך תמנע ומצפה רמון.",
+      "cautions": [
+        "אין להשאיר ציוד רכיבה ללא השגחה בחוף.",
+        "כביש 12 וכביש 40 דורשים בדיקת פתיחה, רוח ומצב ביטחוני."
+      ],
+      "fuel": "מכל מלא בבאר שבע, השלמה באילת ומילוי לפני כביש 12.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (10.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־710 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 710,
+      "estimated_km": 710,
+      "estimated_driving_hours": 10.7,
+      "core_points": [
+        {
+          "name": "פארק הצפרות אילת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5724526,34.9717278",
+          "kind": "מרכז צפרות",
+          "minutes": 60,
+          "story": "מוקד נדידה ושיקום אקולוגי בקצה מפרץ אילת.",
+          "era": "אקולוגיה מודרנית",
+          "coordinates": {
+            "lat": 29.5724526,
+            "lon": 34.9717278
+          },
+          "sources": [
+            "https://eilatbirds.com/about/"
+          ]
+        },
+        {
+          "name": "מוזאון אילת עירי",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5517662,34.9529603",
+          "kind": "מוזאון עירוני",
+          "minutes": 55,
+          "story": "סיפור התפתחות אילת מיישוב קצה לעיר נמל ותיירות.",
+          "era": "המאה ה-20",
+          "coordinates": {
+            "lat": 29.5517662,
+            "lon": 34.9529603
+          },
+          "sources": [
+            "https://eilat.city/en/city-museum"
+          ]
+        },
+        {
+          "name": "שמורת חוף האלמוגים",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5097930,34.9225210",
+          "kind": "שמורת טבע ימית",
+          "minutes": 90,
+          "story": "שונית אלמוגים צפונית ורגישה המחייבת ביקור לפי כללי השמורה.",
+          "era": "מערכת טבע חיה",
+          "coordinates": {
+            "lat": 29.509793,
+            "lon": 34.922521
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A3-%D7%94%D7%90%D7%9C%D7%9E%D7%95%D7%92%D7%99%D7%9D/"
+          ]
+        },
+        {
+          "name": "מרכז המבקרים פארק תמנע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.7874454,34.9887885",
+          "kind": "פארק גאולוגי",
+          "minutes": 75,
+          "story": "עצירת מורשת כרייה וגאולוגיה בדרך חזרה צפונה.",
+          "era": "קדום עד מודרני",
+          "coordinates": {
+            "lat": 29.7874454,
+            "lon": 34.9887885
+          },
+          "sources": [
+            "https://parktimna.co.il/he-attractions/sites-and-trails/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C29.5724526,34.9717278%7C29.5517662,34.9529603%7C29.5097930,34.9225210%7C29.7874454,34.9887885%7C30.6119687,34.8012169%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://eilatbirds.com/about/",
+        "https://eilat.city/en/city-museum",
+        "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A3-%D7%94%D7%90%D7%9C%D7%9E%D7%95%D7%92%D7%99%D7%9D/",
+        "https://parktimna.co.il/he-attractions/sites-and-trails/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-013",
+      "title": "אילת הבוטנית והימית: גן, דולפינים ומצפה תת־ימי",
+      "region": "דרום",
+      "area": "אילת והערבה הדרומית",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "snake",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "ארוך — יומיים",
+      "road_character": "מסלול נחש ארוך על כבישי 40 ו־90 דרומה, ובחזרה דרך כביש 12 ומצפה רמון; כולו סלול.",
+      "roads": [
+        "6",
+        "40",
+        "90",
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "אוקטובר עד אפריל; להזמין מראש ולחלק ליומיים.",
+      "summary": "מסלול אילתי עצמאי המשלב צמחי מדבר, מפגש ימי ותצפית תת־ימית, עם ציר חזרה שונה דרך מצפה רמון.",
+      "cautions": [
+        "המסלול דורש לינה ותכנון טווח דלק.",
+        "אין לבצע בשרב, בשיטפון או בעייפות; בודקים שעות וכרטיסים מראש."
+      ],
+      "fuel": "תדלוק בבאר שבע, בערבה ובאילת; בחזרה משלימים במצפה רמון.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (9.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־684 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 684,
+      "estimated_km": 684,
+      "estimated_driving_hours": 9.7,
+      "core_points": [
+        {
+          "name": "הגן הבוטני של אילת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5739016,34.9638671",
+          "coordinates": {
+            "lat": 29.5739016,
+            "lon": 34.9638671
+          },
+          "review_state": "manual_confirmed",
+          "kind": "גן בוטני",
+          "minutes": 75,
+          "story": "גן המציג צמחייה המתאימה לאקלים המדברי ומרחב ירוק שנבנה בתנאי קיצון.",
+          "story_long": "גן המציג צמחייה המתאימה לאקלים המדברי ומרחב ירוק שנבנה בתנאי קיצון.",
+          "era": "טבע ופיתוח עכשוויים",
+          "sources": [
+            "https://www.botanicgarden.co.il/gan-botani"
+          ]
+        },
+        {
+          "name": "ריף הדולפינים",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5260651,34.9370469",
+          "coordinates": {
+            "lat": 29.5260651,
+            "lon": 34.9370469
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר טבע ימי",
+          "minutes": 120,
+          "story": "אתר בחוף ים סוף המאפשר היכרות מבוקרת עם דולפינים וסביבתם הימית.",
+          "story_long": "אתר בחוף ים סוף המאפשר היכרות מבוקרת עם דולפינים וסביבתם הימית.",
+          "era": "טבע ימי עכשווי",
+          "sources": [
+            "https://www.dolphinreef.co.il/experience-thereef"
+          ]
+        },
+        {
+          "name": "פארק המצפה התת־ימי",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.5040726,34.9192423",
+          "coordinates": {
+            "lat": 29.5040726,
+            "lon": 34.9192423
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז מבקרים ימי",
+          "minutes": 120,
+          "story": "חלונות תצפית אל שונית ים סוף ותצוגות הממחישות את המערכת האקולוגית הימית.",
+          "story_long": "חלונות תצפית אל שונית ים סוף ותצוגות הממחישות את המערכת האקולוגית הימית.",
+          "era": "טבע ימי וחינוך",
+          "sources": [
+            "https://coralworld.co.il/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C29.5739016%2C34.9638671%7C29.5260651%2C34.9370469%7C29.5040726%2C34.9192423%7C30.6119687%2C34.8012169%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.botanicgarden.co.il/gan-botani",
+        "https://www.dolphinreef.co.il/experience-thereef",
+        "https://coralworld.co.il/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-014",
+      "title": "לכיש–נגבה–מצודת יואב: קו המצודות",
+      "region": "דרום",
+      "area": "שפלת יהודה וצפון הנגב",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום-מערב",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        }
+      },
+      "level": "בינוני",
+      "road_character": "כבישי שפלה אזוריים עם תנועה חקלאית; חזרה דרך בית גוברין ולטרון.",
+      "roads": [
+        "4",
+        "35",
+        "3",
+        "38",
+        "1"
+      ],
+      "best": "חורף ואביב; מתאים ליום מלא ולא ארוך מדי.",
+      "summary": "רצף היסטורי מן המצור האשורי בלכיש אל קרבות 1948 במצודת יואב ובנגבה, וסיום בבית גוברין.",
+      "cautions": [
+        "כבישים אזוריים צרים ותנועה חקלאית.",
+        "לתל לכיש ולבית גוברין יש לבדוק הזמנה ושעות כניסה."
+      ],
+      "fuel": "מכל מלא באשדוד; גיבוי בקריית גת או בבית שמש.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום מלא (3.2 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־196 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 196,
+      "estimated_km": 196,
+      "estimated_driving_hours": 3.2,
+      "core_points": [
+        {
+          "name": "גן לאומי תל לכיש",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5649661,34.8495365",
+          "kind": "גן לאומי וארכאולוגיה",
+          "minutes": 80,
+          "story": "עיר מבצר מקראית, סוללת מצור אשורית ומכתבי לכיש.",
+          "era": "תקופת הברונזה והברזל",
+          "coordinates": {
+            "lat": 31.5649661,
+            "lon": 34.8495365
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/lachish/"
+          ]
+        },
+        {
+          "name": "מצודת יואב",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.6479270,34.6819998",
+          "kind": "אתר הנצחה",
+          "minutes": 55,
+          "story": "משטרת עיראק סווידאן וסיפור הקרבות לפריצת הדרך לנגב.",
+          "era": "מלחמת העצמאות",
+          "coordinates": {
+            "lat": 31.647927,
+            "lon": 34.6819998
+          },
+          "sources": [
+            "https://www.izkor.gov.il/monument/en_2dbf6f501c1e5725412263d7c3e8ad8d"
+          ]
+        },
+        {
+          "name": "נגבה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.6623288,34.6827493",
+          "kind": "קיבוץ ואתר מורשת",
+          "minutes": 50,
+          "story": "קיבוץ שנאבק במצור ובקרבות 1948, עם מרחב הנצחה פתוח.",
+          "era": "התיישבות ומלחמת העצמאות",
+          "coordinates": {
+            "lat": 31.6623288,
+            "lon": 34.6827493
+          },
+          "sources": [
+            "https://yoav.org.il/business/225/"
+          ]
+        },
+        {
+          "name": "גן לאומי בית גוברין",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5953276,34.9024839",
+          "kind": "גן לאומי",
+          "minutes": 90,
+          "story": "מערות, מחצבות ועיר רומית-ביזנטית בלב השפלה.",
+          "era": "הלניסטי עד ביזנטי",
+          "coordinates": {
+            "lat": 31.5953276,
+            "lon": 34.9024839
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%99%D7%AA-%D7%92%D7%95%D7%91%D7%A8%D7%99%D7%9F/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "יד לשריון, לטרון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.8378181,34.9796740",
+          "coordinates": {
+            "lat": 31.8378181,
+            "lon": 34.979674
+          }
+        }
+      ],
+      "return_roads": [
+        "38",
+        "3",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.7761689,34.6643774%7C31.5649661,34.8495365%7C31.6479270,34.6819998%7C31.6623288,34.6827493%7C31.5953276,34.9024839%7C31.8378181,34.9796740&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/lachish/",
+        "https://www.izkor.gov.il/monument/en_2dbf6f501c1e5725412263d7c3e8ad8d",
+        "https://yoav.org.il/business/225/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%99%D7%AA-%D7%92%D7%95%D7%91%D7%A8%D7%99%D7%9F/"
+      ]
+    },
+    {
+      "id": "south-expansion-pass-015",
+      "title": "מסע המים המדברי: גולדה–ירוחם–עין תמר–ספיר",
+      "region": "דרום",
+      "area": "רמת נגב, ים המלח והערבה",
+      "status": "PASS",
+      "severity": null,
+      "warning_reason": null,
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "ארוך מאוד",
+      "road_character": "לולאת יומיים בין מאגרים, יישובים חקלאיים וערבה; חזרה בכביש 40.",
+      "roads": [
+        "6",
+        "40",
+        "222",
+        "204",
+        "25",
+        "90",
+        "40"
+      ],
+      "best": "חורף; לא לביצוע בחום כבד או בהתרעת שיטפונות.",
+      "summary": "מסע נושאי בעקבות מים במדבר: מאגר בפארק גולדה, אגם ירוחם, חקלאות עין תמר ונווה פארק ספיר.",
+      "cautions": [
+        "המסלול ארוך ומחייב לינה ותוכנית דלק.",
+        "בודקים שיטפונות בכבישים 90, 25 ו-40."
+      ],
+      "fuel": "תדלוק בבאר שבע, השלמה בערבה ותדלוק במצפה רמון לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (8.6 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־575 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 575,
+      "estimated_km": 575,
+      "estimated_driving_hours": 8.6,
+      "core_points": [
+        {
+          "name": "פארק גולדה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0162670,34.7603950",
+          "kind": "פארק ומאגר",
+          "minutes": 35,
+          "story": "מאגר ופארק במרחב משאבים המשמשים שער לנושא המים במדבר.",
+          "era": "פיתוח הנגב",
+          "coordinates": {
+            "lat": 31.016267,
+            "lon": 34.760395
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_gold/"
+          ]
+        },
+        {
+          "name": "פארק אגם ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "kind": "פארק ואגם",
+          "minutes": 45,
+          "story": "אגם מדברי ושטח קהילתי על ערוץ נחל רביבים.",
+          "era": "פיתוח מודרני",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "sources": [
+            "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/"
+          ]
+        },
+        {
+          "name": "עין תמר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9433090,35.3747349",
+          "kind": "יישוב חקלאי",
+          "minutes": 25,
+          "story": "חקלאות מודרנית בכיכר סדום, לצד אתגרי מליחות וחום.",
+          "era": "התיישבות מודרנית",
+          "coordinates": {
+            "lat": 30.943309,
+            "lon": 35.3747349
+          },
+          "sources": [
+            "https://ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/"
+          ]
+        },
+        {
+          "name": "פארק ספיר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6164706,35.1913355",
+          "kind": "פארק מדברי",
+          "minutes": 40,
+          "story": "נווה קהילתי מסכם את מסע המים לפני החזרה דרך הר הנגב.",
+          "era": "פיתוח קהילתי",
+          "coordinates": {
+            "lat": 30.6164706,
+            "lon": 35.1913355
+          },
+          "sources": [
+            "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          }
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.0162670,34.7603950%7C30.9885959,34.8955392%7C30.9433090,35.3747349%7C30.6164706,35.1913355%7C30.6119687,34.8012169%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://www.kkl.org.il/travel/kkl_gold/",
+        "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+        "https://ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/",
+        "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-001",
+      "title": "להב וג׳ו אלון — גישה חלופית נדרשת",
+      "region": "דרום",
+      "area": "יער להב ובאר שבע",
+      "status": "WARNING",
+      "severity": "minor_navigation",
+      "warning_reason": "דרך היער הראשית ביער להב דווחה כסגורה מ-14.7.2026; קיימות דרכי גישה חלופיות משולטות, ולכן אין להסתמך על ניווט אוטומטי בתוך היער.",
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "קל-בינוני",
+      "road_character": "כבישי גישה סלולים; אין להיכנס לדרך היער הסגורה או לדרכי עפר.",
+      "roads": [
+        "6",
+        "31",
+        "325",
+        "40"
+      ],
+      "best": "חורף ואביב, רק לאחר בדיקת הודעת קק״ל עדכנית.",
+      "summary": "מסלול תרבות בדואית ונוף יערני, עם המשך לתל באר שבע; הבעיה מקומית בכניסת יער להב ואינה מבטלת את יתר היום.",
+      "cautions": [
+        "אזהרה מודגשת: להשתמש רק בגישה החלופית המשולטת ולא לעקוף מחסום.",
+        "מרכז ג׳ו אלון הוא נקודת המפגש והחלופה הבטוחה אם היער אינו נגיש."
+      ],
+      "fuel": "תדלוק באזור להבים או באר שבע לפני המשך היום.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (3.4 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־213 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 213,
+      "estimated_km": 213,
+      "estimated_driving_hours": 3.4,
+      "core_points": [
+        {
+          "name": "מרכז ג׳ו אלון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3794316,34.8652220",
+          "kind": "מוזאון ותרבות",
+          "minutes": 75,
+          "story": "מרכז לתרבות הבדואים ולמורשת הנגב.",
+          "era": "מורשת מסורתית ומודרנית",
+          "coordinates": {
+            "lat": 31.3794316,
+            "lon": 34.865222
+          },
+          "sources": [
+            "https://joealon.org.il/he/10/",
+            "https://www.joealon.org.il/he/20/"
+          ]
+        },
+        {
+          "name": "יער להב — נקודת ניווט כללית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3667888,34.8385225",
+          "kind": "יער קק״ל",
+          "minutes": 30,
+          "story": "יער ספר מדברי ובו אתרי טבע ומורשת; הביקור כאן מותנה בגישה המשולטת בפועל.",
+          "era": "ייעור ופיתוח מודרני",
+          "coordinates": {
+            "lat": 31.3667888,
+            "lon": 34.8385225
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/lahav_forest/"
+          ]
+        },
+        {
+          "name": "גן לאומי תל באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2450250,34.8410144",
+          "kind": "גן לאומי",
+          "minutes": 75,
+          "story": "עיר מקראית ומערכת מים המספקות ליבת ביקור תקינה גם אם מדלגים על היער.",
+          "era": "תקופת הברזל",
+          "coordinates": {
+            "lat": 31.245025,
+            "lon": 34.8410144
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.3794316,34.8652220%7C31.3667888,34.8385225%7C31.2450250,34.8410144%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://joealon.org.il/he/10/",
+        "https://www.kkl.org.il/travel/trips/lahav_forest/",
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%91%D7%90%D7%A8-%D7%A9%D7%91%D7%A2/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-002",
+      "title": "פורה ושוקדה: פריחה, יער וכניסה מדויקת",
+      "region": "דרום",
+      "area": "צפון הנגב ומערב הנגב",
+      "status": "WARNING",
+      "severity": "minor_navigation",
+      "warning_reason": "בשמורת פורה וביער שוקדה קיימות דרכי שירות ודרכי עפר סמוכות; הניווט מיועד לחניות הכניסה בלבד, ויש לעצור אם האספלט מסתיים או השילוט אינו תואם.",
+      "route_pattern": "loop",
+      "direction": "דרום-מערב",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "קל–בינוני",
+      "road_character": "כבישים אזוריים סלולים בין שני מוקדי פריחה; הסטייה מן הכביש מוגבלת לחניה חוקית ומסומנת.",
+      "roads": [
+        "4",
+        "35",
+        "40",
+        "293",
+        "232",
+        "34",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "חורף ואביב בעונת הפריחה, לאחר בדיקת הודעות פתיחה.",
+      "summary": "לולאה מערבית חדשה בין שמורת פורה ליער שוקדה, עם אזהרת ניווט מקומית שאינה מבטלת את יום הרכיבה.",
+      "cautions": [
+        "אין להמשיך לדרך עפר אם החניה או דרך הגישה אינן מתאימות לאופנוע כביש.",
+        "בעונת פריחה צפויים עומס הולכי רגל וכלי רכב סמוך לכניסות."
+      ],
+      "fuel": "תדלוק באשדוד או בקריית גת; גיבוי באזור נתיבות.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום חלקי (3.8 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־232 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 232,
+      "estimated_km": 232,
+      "estimated_driving_hours": 3.8,
+      "core_points": [
+        {
+          "name": "שמורת טבע פורה — חניית כניסה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4966619,34.7752658",
+          "coordinates": {
+            "lat": 31.4966619,
+            "lon": 34.7752658
+          },
+          "review_state": "manual_confirmed",
+          "kind": "שמורת טבע",
+          "minutes": 50,
+          "story": "שמורה עונתית של בתרונות, פריחה וערוץ נחל פורה; הביקור מתחיל רק מן החניה המסומנת.",
+          "story_long": "שמורה עונתית של בתרונות, פריחה וערוץ נחל פורה; הביקור מתחיל רק מן החניה המסומנת.",
+          "era": "טבע עונתי",
+          "sources": [
+            "https://www.parks.org.il/reserve-park/fura/"
+          ]
+        },
+        {
+          "name": "יער שוקדה — חניית כניסה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4262613,34.5124323",
+          "coordinates": {
+            "lat": 31.4262613,
+            "lon": 34.5124323
+          },
+          "review_state": "manual_confirmed",
+          "kind": "יער ופריחה",
+          "minutes": 45,
+          "story": "יער קק״ל המוכר במרבדי כלניות; נשארים בחניה ובדרכים המותרות לפי השילוט בשטח.",
+          "story_long": "יער קק״ל המוכר במרבדי כלניות; נשארים בחניה ובדרכים המותרות לפי השילוט בשטח.",
+          "era": "יער קק״ל מודרני",
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/shokeda_forest/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "34",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.7761689%2C34.6643774%7C31.4966619%2C34.7752658%7C31.4262613%2C34.5124323%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/fura/",
+        "https://www.kkl.org.il/travel/trips/shokeda_forest/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-003",
+      "title": "אירוס ירוחם ובית המייסדים: שתי כניסות שיש לזהות",
+      "region": "דרום",
+      "area": "ירוחם",
+      "status": "WARNING",
+      "severity": "minor_navigation",
+      "warning_reason": "נקודת הכניסה לשמורת אירוס ירוחם עונתית ואינה זהה לבית המייסדים העירוני; יש להשתמש בכל נקודה בנפרד, לאמת שילוט ולא להמשיך לשביל עפר לא מתאים.",
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני",
+      "road_character": "כבישי 40 ו־204 הסלולים אל ירוחם, עם ניווט עירוני קצר וחניה נפרדת לשמורת האירוסים.",
+      "roads": [
+        "6",
+        "40",
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "בעונת פריחת האירוס ובהתאם להודעות רט״ג; בית המייסדים בתיאום שעות.",
+      "summary": "יום ירוחמי המחבר טבע עונתי עם סיפור הקמת העיירה ואגם ירוחם, תוך הפרדה ברורה בין נקודות הניווט.",
+      "cautions": [
+        "אין לרכוב בתוך השמורה ואין להסתמך על שם חיפוש כללי.",
+        "בודקים שעות פעילות של בית המייסדים לפני היציאה."
+      ],
+      "fuel": "תדלוק בבאר שבע או בירוחם; חזרה דרך כביש 224.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (4.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־292 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 292,
+      "estimated_km": 292,
+      "estimated_driving_hours": 4.7,
+      "core_points": [
+        {
+          "name": "שמורת טבע אירוס ירוחם — חניית כניסה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0210312,34.974141",
+          "coordinates": {
+            "lat": 31.0210312,
+            "lon": 34.974141
+          },
+          "review_state": "manual_confirmed",
+          "kind": "שמורת טבע עונתית",
+          "minutes": 45,
+          "story": "שמורה המגינה על אירוס ירוחם ועל בית הגידול המדברי שלו; הביקור רגלי מן החניה המותרת.",
+          "story_long": "שמורה המגינה על אירוס ירוחם ועל בית הגידול המדברי שלו; הביקור רגלי מן החניה המותרת.",
+          "era": "טבע עונתי",
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%90%D7%99%D7%A8%D7%95%D7%A1-%D7%99%D7%A8%D7%95%D7%97%D7%9D/"
+          ]
+        },
+        {
+          "name": "בית המייסדים ופארק מורשת ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9875043,34.9232727",
+          "coordinates": {
+            "lat": 30.9875043,
+            "lon": 34.9232727
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז מורשת ומידע",
+          "minutes": 60,
+          "story": "מרכז המבקרים מספר את תולדות ירוחם וקהילותיה ומשמש נקודת מוצא לסיורים בעיר.",
+          "story_long": "מרכז המבקרים מספר את תולדות ירוחם וקהילותיה ומשמש נקודת מוצא לסיורים בעיר.",
+          "era": "שנות ה־50 עד ימינו",
+          "sources": [
+            "https://visit-yerucham.com/tour-item-attraction/%D7%A2%D7%AA%D7%99%D7%93-%D7%91%D7%9E%D7%93%D7%91%D7%A8-2/"
+          ]
+        },
+        {
+          "name": "פארק אגם ירוחם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "review_state": "manual_confirmed",
+          "kind": "פארק ואגם",
+          "minutes": 40,
+          "story": "תחנת סיום פתוחה יחסית לצד המאגר והפארק לפני ציר החזרה השונה צפונה.",
+          "story_long": "תחנת סיום פתוחה יחסית לצד המאגר והפארק לפני ציר החזרה השונה צפונה.",
+          "era": "פיתוח מדברי מודרני",
+          "sources": [
+            "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C31.0210312%2C34.974141%7C30.9875043%2C34.9232727%7C30.9885959%2C34.8955392%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%90%D7%99%D7%A8%D7%95%D7%A1-%D7%99%D7%A8%D7%95%D7%97%D7%9D/",
+        "https://visit-yerucham.com/tour-item-attraction/%D7%A2%D7%AA%D7%99%D7%93-%D7%91%D7%9E%D7%93%D7%91%D7%A8-2/",
+        "https://visit-yerucham.com/tour-item-travel/%D7%A4%D7%90%D7%A8%D7%A7-%D7%90%D7%92%D7%9D-%D7%99%D7%A8%D7%95%D7%97%D7%9D/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-004",
+      "title": "יתיר וערד — כבישי יער אינם בהכרח אספלט",
+      "region": "דרום",
+      "area": "יער יתיר וערד",
+      "status": "WARNING",
+      "severity": "minor_navigation",
+      "warning_reason": "מפות היער כוללות דרכי נוף שאינן בהכרח סלולות; לאופנוע כביש המסלול מוגבל לכביש 316 ולרחבות חניה סלולות ומאומתות בשטח.",
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "בינוני",
+      "road_character": "כביש 316 מפותל; אין להשתמש בקיצורי יער או בדרכי נוף ללא אספלט.",
+      "roads": [
+        "6",
+        "31",
+        "80",
+        "316",
+        "31"
+      ],
+      "best": "חורף ואביב, ביום יבש ובאור מלא.",
+      "summary": "מסלול ערד–יתיר עם תל ערד וחורשת רן; הליבה תקינה אם נשארים על האספלט ומדלגים על דרכי היער.",
+      "cautions": [
+        "אזהרה מודגשת: כל דרך ללא אספלט נחשבת מחוץ למסלול.",
+        "יש להיזהר מבעלי חיים, בוץ וחצץ באזור היער."
+      ],
+      "fuel": "תדלוק בערד לפני כביש 316; גיבוי בבאר שבע.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (4.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־320 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 320,
+      "estimated_km": 320,
+      "estimated_driving_hours": 4.7,
+      "core_points": [
+        {
+          "name": "גן לאומי תל ערד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2781052,35.1221180",
+          "kind": "גן לאומי",
+          "minutes": 75,
+          "story": "עיר כנענית ומצודה מתקופת ממלכת יהודה.",
+          "era": "ברונזה קדומה עד ברזל",
+          "coordinates": {
+            "lat": 31.2781052,
+            "lon": 35.122118
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%A2%D7%A8%D7%93/"
+          ]
+        },
+        {
+          "name": "יער יתיר — נקודת ניווט כללית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3070172,35.0038305",
+          "kind": "יער קק״ל",
+          "minutes": 35,
+          "story": "היער הנטוע הגדול באזור ספר המדבר; נקודת המפה היא כללית ולא אישור לדרך פנימית.",
+          "era": "ייעור מודרני",
+          "coordinates": {
+            "lat": 31.3070172,
+            "lon": 35.0038305
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/yatir_forest/"
+          ]
+        },
+        {
+          "name": "חורשת רן",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2566776,35.1591495",
+          "kind": "חניון קק״ל",
+          "minutes": 25,
+          "story": "עצירת יער מדברי נגישה סמוך לערד.",
+          "era": "הנצחה ופיתוח",
+          "coordinates": {
+            "lat": 31.2566776,
+            "lon": 35.1591495
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/parking_lot_ran/"
+          ]
+        },
+        {
+          "name": "מרכז ג׳ו אלון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3794316,34.8652220",
+          "kind": "מוזאון",
+          "minutes": 60,
+          "story": "תחנת סיום לתרבות הבדואים ומורשת הנגב.",
+          "era": "מורשת מסורתית ומודרנית",
+          "coordinates": {
+            "lat": 31.3794316,
+            "lon": 34.865222
+          },
+          "sources": [
+            "https://joealon.org.il/he/10/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          }
+        }
+      ],
+      "return_roads": [
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.2781052,35.1221180%7C31.3070172,35.0038305%7C31.2566776,35.1591495%7C31.3794316,34.8652220%7C31.3845851,34.8112424&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%AA%D7%9C-%D7%A2%D7%A8%D7%93/",
+        "https://www.kkl.org.il/travel/trips/yatir_forest/",
+        "https://www.kkl.org.il/travel/parking_lot_ran/",
+        "https://joealon.org.il/he/10/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-005",
+      "title": "פארק שרשרת–נחל גרר — כניסה לפי שילוט קק״ל",
+      "region": "דרום",
+      "area": "נתיבות–אופקים",
+      "status": "WARNING",
+      "severity": "minor_navigation",
+      "warning_reason": "קואורדינטת OSM היא לישות נחל גרר ולא לרחבת חניה מאומתת; קק״ל מורה להיכנס מכביש 25 מול מושב תדהר ולפעול לפי השילוט.",
+      "route_pattern": "loop",
+      "direction": "דרום-מערב",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        }
+      },
+      "level": "בינוני",
+      "road_character": "כבישים 25 ו-241; בתוך הפארק נוסעים רק בציר הפתוח והמסומן. החזרה דרך בית קמה וכביש 40 יוצרת לולאה ולא חזרה באותו ציר. החזרה דרך בית קמה וכביש 40 יוצרת לולאה ולא חזרה באותו ציר. החזרה דרך בית קמה וכביש 40 יוצרת לולאה ולא חזרה באותו ציר. החזרה דרך בית קמה וכביש 40 יוצרת לולאה ולא חזרה באותו ציר. החזרה דרך בית קמה וכביש 40 יוצרת לולאה ולא חזרה באותו ציר.",
+      "roads": [
+        "6",
+        "40",
+        "25",
+        "241",
+        "222"
+      ],
+      "best": "חורף ואביב; לא לאחר גשם כבד.",
+      "summary": "יום נחל ופארקים בין נחל גרר, אופקים וגולדה; הבעיה היא זיהוי הכניסה ולא תוכן המסלול.",
+      "cautions": [
+        "אזהרה מודגשת: אין לנווט אל מרכז הישות של הנחל אם השילוט מפנה אחרת.",
+        "אם הכניסה אינה פתוחה וברורה, ממשיכים ישירות לפארק אופקים."
+      ],
+      "fuel": "תדלוק באזור נתיבות או אופקים.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (4.8 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־323 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 323,
+      "estimated_km": 323,
+      "estimated_driving_hours": 4.8,
+      "core_points": [
+        {
+          "name": "נחל גרר — נקודת ניווט כללית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3862898,34.6349481",
+          "kind": "פארק נחל",
+          "minutes": 40,
+          "story": "אי ירוק במישורי הלס עם דרכי נוף וחניוני קק״ל; הכניסה בפועל מול תדהר.",
+          "era": "נוף טבע ופיתוח קק״ל",
+          "coordinates": {
+            "lat": 31.3862898,
+            "lon": 34.6349481
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_shar_grar/",
+            "https://www.kkl.org.il/travel/campground_sharsheret/"
+          ]
+        },
+        {
+          "name": "פארק אופקים",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3086690,34.6286260",
+          "kind": "פארק קק״ל",
+          "minutes": 35,
+          "story": "פארק בשולי אופקים עם שרידי מצודה ומרחב מנוחה.",
+          "era": "עות׳מאני ופיתוח מודרני",
+          "coordinates": {
+            "lat": 31.308669,
+            "lon": 34.628626
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/1555/"
+          ]
+        },
+        {
+          "name": "פארק גולדה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0162670,34.7603950",
+          "kind": "פארק מדברי",
+          "minutes": 40,
+          "story": "מאגר וצמחייה כנקודת סיום דרומית.",
+          "era": "פיתוח הנגב",
+          "coordinates": {
+            "lat": 31.016267,
+            "lon": 34.760395
+          },
+          "sources": [
+            "https://www.kkl.org.il/travel/kkl_gold/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          }
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.3790549,34.8653567%7C31.3862898,34.6349481%7C31.3086690,34.6286260%7C31.0162670,34.7603950%7C31.4405576,34.7723251&travelmode=driving",
+      "sources": [
+        "https://www.kkl.org.il/travel/kkl_shar_grar/",
+        "https://www.kkl.org.il/travel/campground_sharsheret/",
+        "https://www.kkl.org.il/travel/trips/1555/",
+        "https://www.kkl.org.il/travel/kkl_gold/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-006",
+      "title": "השומרוני הטוב–קומראן–עינות צוקים: הזמנה מחייבת",
+      "region": "דרום",
+      "area": "צפון ים המלח",
+      "status": "WARNING",
+      "severity": "conditional",
+      "warning_reason": "החל מ-1.1.2026 הכניסה לגן לאומי קומראן מחייבת רישום מראש; ללא אישור ביקור מדלגים על קומראן ואסור להניח שיתאפשר להיכנס במקום.",
+      "route_pattern": "out_and_back",
+      "direction": "מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        }
+      },
+      "secondary": {
+        "name": "יד לשריון, לטרון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.8378181,34.9796740",
+        "coordinates": {
+          "lat": 31.8378181,
+          "lon": 34.979674
+        }
+      },
+      "level": "בינוני",
+      "road_character": "ירידה לים המלח בכביש 1 והמשך בכביש 90; חזרה באותו מסדרון.",
+      "roads": [
+        "1",
+        "90",
+        "1"
+      ],
+      "best": "חורף ועונות מעבר, עם שלוש הזמנות מאומתות.",
+      "summary": "יום פסיפסים, מגילות ומעיינות בצפון ים המלח; קומראן הוא תנאי הזמנה, לא נקודת מעבר חופשית.",
+      "cautions": [
+        "אזהרה מודגשת: אין אישור קומראן — מדלגים.",
+        "בודקים שיטפונות, עומס חום ומצב כביש 90 בבוקר היציאה."
+      ],
+      "fuel": "מכל מלא במרכז; השלמה באזור מעלה אדומים או ירושלים לפני הירידה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 30,
+      "duration": "יום מלא (3.5 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־216 ק״מ מהמֶרכז ובחזרה",
+      "km_num": 216,
+      "estimated_km": 216,
+      "estimated_driving_hours": 3.5,
+      "core_points": [
+        {
+          "name": "מוזאון השומרוני הטוב",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.8163358,35.3593027",
+          "kind": "מוזאון פסיפסים",
+          "minutes": 60,
+          "story": "מוזאון על אתר חאן עתיק ובו פסיפסים מאזור יהודה ושומרון.",
+          "era": "רומי, ביזנטי ומאוחר",
+          "coordinates": {
+            "lat": 31.8163358,
+            "lon": 35.3593027
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F-%D7%94%D7%A9%D7%95%D7%9E%D7%A8%D7%95%D7%A0%D7%99-%D7%94%D7%98%D7%95%D7%91/?useIcon=1"
+          ]
+        },
+        {
+          "name": "גן לאומי קומראן",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.7419290,35.4593100",
+          "kind": "גן לאומי ועתיקות",
+          "minutes": 80,
+          "story": "יישוב מדברי המקושר למגילות מדבר יהודה ולחיי קהילה בתקופת הבית השני.",
+          "era": "בית שני",
+          "coordinates": {
+            "lat": 31.741929,
+            "lon": 35.45931
+          },
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%A4%D7%90%D7%A8%D7%A7-%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A7%D7%95%D7%9E%D7%A8%D7%90%D7%9F/"
+          ]
+        },
+        {
+          "name": "שמורת עינות צוקים",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.7043220,35.4607283",
+          "kind": "שמורת טבע",
+          "minutes": 90,
+          "story": "נאות מים מתוקים על חוף ים המלח המשתנה.",
+          "era": "מערכת טבע חיה",
+          "coordinates": {
+            "lat": 31.704322,
+            "lon": 35.4607283
+          },
+          "sources": [
+            "https://static.parks.org.il/wp-content/uploads/2025/03/einot-tzukim.pdf"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "יד לשריון, לטרון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.8378181,34.9796740",
+          "coordinates": {
+            "lat": 31.8378181,
+            "lon": 34.979674
+          }
+        }
+      ],
+      "return_roads": [
+        "90",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678,34.7966276&destination=32.0036678,34.7966276&waypoints=31.8378181,34.9796740%7C31.8163358,35.3593027%7C31.7419290,35.4593100%7C31.7043220,35.4607283%7C31.8378181,34.9796740&travelmode=driving",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F-%D7%94%D7%A9%D7%95%D7%9E%D7%A8%D7%95%D7%A0%D7%99-%D7%94%D7%98%D7%95%D7%91/?useIcon=1",
+        "https://www.parks.org.il/reserve-park/%D7%A4%D7%90%D7%A8%D7%A7-%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%A7%D7%95%D7%9E%D7%A8%D7%90%D7%9F/",
+        "https://static.parks.org.il/wp-content/uploads/2025/03/einot-tzukim.pdf"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-007",
+      "title": "לקיה וּואדי עתיר: תרבות בדואית וקיימות בתיאום",
+      "region": "דרום",
+      "area": "צפון הנגב",
+      "status": "WARNING",
+      "severity": "conditional",
+      "warning_reason": "שני מרכזי התוכן מקבלים מבקרים ופעילויות לפי תיאום ולא כתחנת מעבר חופשית; אין להגיע עם קבוצה ללא אישור מפורש ושעת מפגש.",
+      "route_pattern": "loop",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "קל–בינוני",
+      "road_character": "כבישי צפון הנגב הסלולים בין להב, לקיה ומיזם ואדי עתיר; חזרה דרך להבים.",
+      "roads": [
+        "6",
+        "31",
+        "358",
+        "60",
+        "31",
+        "6",
+        "1"
+      ],
+      "best": "כל השנה במזג אוויר נוח ורק לאחר תיאום כתוב עם שני האתרים.",
+      "summary": "לולאה חברתית־מדברית שמחברת מלאכת רקמה מקומית עם חקלאות וקיימות בדואית יישומית.",
+      "cautions": [
+        "אין להיכנס למתחם פרטי ללא אישור.",
+        "כבישים מקומיים כוללים תנועה חקלאית וצמתים צפופים."
+      ],
+      "fuel": "מכל מלא ביציאה; גיבוי בלהבים או באר שבע.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (3.1 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־222 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 222,
+      "estimated_km": 222,
+      "estimated_driving_hours": 3.1,
+      "core_points": [
+        {
+          "name": "רקמת המדבר, לקיה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.321699,34.859052",
+          "coordinates": {
+            "lat": 31.321699,
+            "lon": 34.859052
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז מבקרים ומלאכה",
+          "minutes": 75,
+          "story": "יוזמה מקומית המציגה רקמה בדואית, עבודת נשים ומסורת חומרית של הקהילה.",
+          "story_long": "יוזמה מקומית המציגה רקמה בדואית, עבודת נשים ומסורת חומרית של הקהילה.",
+          "era": "מסורת בדואית ועשייה עכשווית",
+          "sources": [
+            "https://laqye.muni.il/he/157/"
+          ]
+        },
+        {
+          "name": "פרויקט ואדי עתיר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2722222,34.9380556",
+          "coordinates": {
+            "lat": 31.2722222,
+            "lon": 34.9380556
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז קיימות וחקלאות",
+          "minutes": 90,
+          "story": "מיזם קהילתי המשלב חקלאות מדברית, אנרגיה, מים וידע בדואי מסורתי.",
+          "story_long": "מיזם קהילתי המשלב חקלאות מדברית, אנרגיה, מים וידע בדואי מסורתי.",
+          "era": "קיימות עכשווית",
+          "sources": [
+            "https://projectwadiattir.com/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף להבים — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.3845851,34.8112424",
+          "coordinates": {
+            "lat": 31.3845851,
+            "lon": 34.8112424
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "60",
+        "31",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C31.321699%2C34.859052%7C31.2722222%2C34.9380556%7C31.3845851%2C34.8112424",
+      "sources": [
+        "https://laqye.muni.il/he/157/",
+        "https://projectwadiattir.com/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-008",
+      "title": "מצפה רמון מבפנים: אלפקות ורובע דרכי הבשמים",
+      "region": "דרום",
+      "area": "מצפה רמון",
+      "status": "WARNING",
+      "severity": "conditional",
+      "warning_reason": "הביקור בחוות האלפקות ובפעילויות ברובע דרכי הבשמים תלוי בשעות פתיחה ובהזמנה; אין לבנות יום קבוצתי על הגעה ספונטנית.",
+      "route_pattern": "loop",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני",
+      "road_character": "כביש 40 הסלול למצפה רמון, מעבר מקומי קצר וחזרה דרך ירוחם וכביש 224.",
+      "roads": [
+        "6",
+        "40",
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "סתיו עד אביב, לאחר אישור שעות ופעילות בשני האתרים.",
+      "summary": "לולאה אל מצפה רמון שמתרכזת בעסקים וביוזמות מקומיות ולא חוזרת על מרכז המבקרים או עבדת.",
+      "cautions": [
+        "יש לתאם מראש את חוות האלפקות ואת הפעילות ברובע.",
+        "בכביש 40 צפויים רוחות, ערפל מקומי ועייפות בחזרה."
+      ],
+      "fuel": "תדלוק בבאר שבע או במצפה רמון; גיבוי בירוחם בחזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (5.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־386 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 386,
+      "estimated_km": 386,
+      "estimated_driving_hours": 5.7,
+      "core_points": [
+        {
+          "name": "חוות האלפקות, מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6107795,34.7767741",
+          "coordinates": {
+            "lat": 30.6107795,
+            "lon": 34.7767741
+          },
+          "review_state": "manual_confirmed",
+          "kind": "חווה תיירותית",
+          "minutes": 90,
+          "story": "חווה המתמקדת באלפקות ולאמות ומציעה ביקור מודרך בהתאם לשעות ולהזמנה.",
+          "story_long": "חווה המתמקדת באלפקות ולאמות ומציעה ביקור מודרך בהתאם לשעות ולהזמנה.",
+          "era": "חקלאות ותיירות עכשווית",
+          "sources": [
+            "https://alpaca.co.il/visit/"
+          ]
+        },
+        {
+          "name": "רובע דרכי הבשמים, מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.621536,34.800806",
+          "coordinates": {
+            "lat": 30.621536,
+            "lon": 34.800806
+          },
+          "review_state": "manual_confirmed",
+          "kind": "רובע יצירה ותיירות",
+          "minutes": 75,
+          "story": "מתחם של סדנאות, יוצרים ועסקים מקומיים במבני התעשייה הוותיקים של מצפה רמון.",
+          "story_long": "מתחם של סדנאות, יוצרים ועסקים מקומיים במבני התעשייה הוותיקים של מצפה רמון.",
+          "era": "פיתוח מקומי עכשווי",
+          "sources": [
+            "https://www.noamshalev.co.il/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "פארק אגם ירוחם — נקודת חזרה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C30.6107795%2C34.7767741%7C30.621536%2C34.800806%7C30.9885959%2C34.8955392%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://alpaca.co.il/visit/",
+        "https://www.noamshalev.co.il/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-009",
+      "title": "חוות ויקבים בהר הנגב: נחל בוקר–כרמי עבדת–ננה",
+      "region": "דרום",
+      "area": "הר הנגב",
+      "status": "WARNING",
+      "severity": "conditional",
+      "warning_reason": "שלושת האתרים הם עסקים פרטיים הפועלים לפי הזמנה ושעות משתנות; טעימות אלכוהול אינן מתאימות למי שממשיך לרכוב.",
+      "route_pattern": "snake",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני–ארוך",
+      "road_character": "ציר 40 הסלול בין חוות הר הנגב, עם חזרה דרך מצפה רמון, ירוחם וכביש 224.",
+      "roads": [
+        "6",
+        "40",
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "סתיו עד אביב, בתיאום מלא וללא צריכת אלכוהול לרוכבים.",
+      "summary": "מסלול נחש שעוסק בחקלאות תיירותית בהר הנגב ומציג שלושה עסקים שונים לאורך ציר 40.",
+      "cautions": [
+        "הרוכבים אינם טועמים אלכוהול לפני המשך רכיבה.",
+        "אין להיכנס לדרך חווה שאינה מסומנת או שאינה מאושרת בתיאום."
+      ],
+      "fuel": "תדלוק בבאר שבע ובמצפה רמון; השלמה בירוחם בחזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום מלא (6.8 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־392 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 392,
+      "estimated_km": 392,
+      "estimated_driving_hours": 6.8,
+      "core_points": [
+        {
+          "name": "חוות נחל בוקר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.906339,34.7764406",
+          "coordinates": {
+            "lat": 30.906339,
+            "lon": 34.7764406
+          },
+          "review_state": "manual_confirmed",
+          "kind": "חווה ואירוח",
+          "minutes": 60,
+          "story": "חוות בודדים בהר הנגב המשלבת חקלאות, אירוח וסיפור התיישבות מדברית.",
+          "story_long": "חוות בודדים בהר הנגב המשלבת חקלאות, אירוח וסיפור התיישבות מדברית.",
+          "era": "התיישבות חקלאית עכשווית",
+          "sources": [
+            "https://www.bokerfarm.com/about"
+          ]
+        },
+        {
+          "name": "כרמי עבדת",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8271673,34.7433818",
+          "coordinates": {
+            "lat": 30.8271673,
+            "lon": 34.7433818
+          },
+          "review_state": "manual_confirmed",
+          "kind": "חווה וכרם",
+          "minutes": 60,
+          "story": "חווה המתמחה בגידול כרם ויין בתנאי המדבר וממחישה חידוש חקלאות קדומה.",
+          "story_long": "חווה המתמחה בגידול כרם ויין בתנאי המדבר וממחישה חידוש חקלאות קדומה.",
+          "era": "חקלאות מדברית עכשווית",
+          "sources": [
+            "https://carmey-avdat.co.il/"
+          ]
+        },
+        {
+          "name": "יקב ננה, מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6144559,34.7526219",
+          "coordinates": {
+            "lat": 30.6144559,
+            "lon": 34.7526219
+          },
+          "review_state": "manual_confirmed",
+          "kind": "כרם ויקב",
+          "minutes": 60,
+          "story": "יקב מדברי באזור מצפה רמון; הביקור עוסק בכרם ובייצור בלבד לרוכבים שממשיכים בדרך.",
+          "story_long": "יקב מדברי באזור מצפה רמון; הביקור עוסק בכרם ובייצור בלבד לרוכבים שממשיכים בדרך.",
+          "era": "חקלאות ויין עכשוויים",
+          "sources": [
+            "https://nanawine.com/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "פארק אגם ירוחם — נקודת חזרה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9885959,34.8955392",
+          "coordinates": {
+            "lat": 30.9885959,
+            "lon": 34.8955392
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "204",
+        "224",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C30.906339%2C34.7764406%7C30.8271673%2C34.7433818%7C30.6144559%2C34.7526219%7C30.9885959%2C34.8955392%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.bokerfarm.com/about",
+        "https://carmey-avdat.co.il/",
+        "https://nanawine.com/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-010",
+      "title": "קטורה ואליפז: סביבה וחקלאות בערבה הדרומית",
+      "region": "דרום",
+      "area": "הערבה הדרומית",
+      "status": "WARNING",
+      "severity": "conditional",
+      "warning_reason": "מכון הערבה וחממת חמשת החושים אינם תחנות חופשיות לקבוצה; נדרש תיאום מוקדם ואישור פעילות בכל אתר.",
+      "route_pattern": "snake",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "ארוך — יומיים",
+      "road_character": "ירידה סלולה בכבישי 40 ו־90 לקטורה ולאליפז וחזרה בציר 12–40 דרך מצפה רמון.",
+      "roads": [
+        "6",
+        "40",
+        "90",
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "אוקטובר עד אפריל, ביומיים ורק לאחר תיאום שני הביקורים.",
+      "summary": "מסלול נחש לימודי שמחבר מחקר סביבתי אזורי עם חקלאות חווייתית בערבה הדרומית.",
+      "cautions": [
+        "אין להגיע ללא תיאום כתוב.",
+        "נדרשים לינה, בדיקת מזג אוויר וטווחי דלק ארוכים."
+      ],
+      "fuel": "תדלוק בבאר שבע, ביטבתה או באזור אילת; חזרה דרך מצפה רמון.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (8.7 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־620 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 620,
+      "estimated_km": 620,
+      "estimated_driving_hours": 8.7,
+      "core_points": [
+        {
+          "name": "מכון הערבה ללימודי הסביבה, קטורה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.9685365,35.0593387",
+          "coordinates": {
+            "lat": 29.9685365,
+            "lon": 35.0593387
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מכון מחקר וחינוך",
+          "minutes": 90,
+          "story": "מכון אקדמי־סביבתי העוסק בשיתוף פעולה אזורי, מים, אנרגיה ומדבר.",
+          "story_long": "מכון אקדמי־סביבתי העוסק בשיתוף פעולה אזורי, מים, אנרגיה ומדבר.",
+          "era": "מחקר וחינוך עכשוויים",
+          "sources": [
+            "https://arava.org/%D7%A2%D7%91%D7%A8%D7%99%D7%AA-home/"
+          ]
+        },
+        {
+          "name": "חממת חמשת החושים, אליפז",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=29.7955166,35.0144792",
+          "coordinates": {
+            "lat": 29.7955166,
+            "lon": 35.0144792
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז חקלאות חווייתית",
+          "minutes": 75,
+          "story": "חממה חקלאית המדגימה גידולים, טעמים וטכנולוגיות חקלאות בתנאי הערבה.",
+          "story_long": "חממה חקלאית המדגימה גידולים, טעמים וטכנולוגיות חקלאות בתנאי הערבה.",
+          "era": "חקלאות מדברית עכשווית",
+          "sources": [
+            "https://www.aravadesert.co.il/business/37/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "12",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C29.9685365%2C35.0593387%7C29.7955166%2C35.0144792%7C30.6119687%2C34.8012169%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://arava.org/%D7%A2%D7%91%D7%A8%D7%99%D7%AA-home/",
+        "https://www.aravadesert.co.il/business/37/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-011",
+      "title": "יער פלוגות וקוממיות סגורים — חלופת תום ותומר וגברעם",
+      "region": "דרום",
+      "area": "שפלת הדרום ומערב הנגב",
+      "status": "WARNING",
+      "severity": "major",
+      "warning_reason": "יער פלוגות ושביל הכפר ביער קוממיות סגורים לפי הודעות קק״ל העדכניות; שתי הנקודות נשמרות לתיעוד בלבד ומוחרגות לחלוטין מן המפה הבטוחה.",
+      "route_pattern": "loop",
+      "direction": "דרום-מערב",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני — בגרסה הבטוחה בלבד",
+      "road_character": "לולאה סלולה אל אתרי ההנצחה תום ותומר וגברעם; היערות הסגורים אינם כלולים בניווט.",
+      "roads": [
+        "4",
+        "3",
+        "232",
+        "34",
+        "35",
+        "38",
+        "1"
+      ],
+      "best": "רק בגרסה הבטוחה ולאחר בדיקת הודעות קק״ל ופיקוד העורף ביום היציאה.",
+      "summary": "שתי סגירות מהותיות מוצגות בגלוי, אך המסלול המעשי נשאר יום הנצחה סלול בין תום ותומר לגברעם.",
+      "cautions": [
+        "אין לנווט או להיכנס ליער פלוגות ולשביל הכפר ביער קוממיות.",
+        "אם הוראות הביטחון משתנות, מבטלים או מקצרים את המסלול."
+      ],
+      "fuel": "תדלוק באשדוד או אשקלון; גיבוי בקריית גת לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום חלקי (3.4 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־153 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 153,
+      "estimated_km": 153,
+      "estimated_driving_hours": 3.4,
+      "core_points": [
+        {
+          "name": "יער פלוגות — סגור, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.6179321,34.7458799",
+          "coordinates": {
+            "lat": 31.6179321,
+            "lon": 34.7458799
+          },
+          "review_state": "manual_confirmed",
+          "kind": "יער סגור",
+          "minutes": 10,
+          "story": "קק״ל פרסמה שהיער סגור לציבור; הנקודה נשמרת כדי להסביר מדוע אינה מופיעה בניווט.",
+          "story_long": "קק״ל פרסמה שהיער סגור לציבור; הנקודה נשמרת כדי להסביר מדוע אינה מופיעה בניווט.",
+          "era": "יער קק״ל",
+          "sources": [
+            "https://www.kkl.org.il/recreation-and-tours/messages/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "היער סגור לציבור לפי הודעת קק״ל עד הודעה חדשה; אסור לכלול אותו בניווט או לעקוף מחסום."
+        },
+        {
+          "name": "יער קוממיות — שביל הכפר סגור, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.6298584,34.7505463",
+          "coordinates": {
+            "lat": 31.6298584,
+            "lon": 34.7505463
+          },
+          "review_state": "manual_confirmed",
+          "kind": "יער ושביל סגורים",
+          "minutes": 10,
+          "story": "שביל הכפר ואתר המחצבה ביער קוממיות מתועדים כחסם בלבד ואינם יעד רכיבה.",
+          "story_long": "שביל הכפר ואתר המחצבה ביער קוממיות מתועדים כחסם בלבד ואינם יעד רכיבה.",
+          "era": "יער קק״ל",
+          "sources": [
+            "https://www.kkl.org.il/recreation-and-tours/messages/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "שביל הכפר סגור ואתר המחצבה אסור לכניסה לפי הודעת קק״ל; הנקודה מוחרגת מן המפה הבטוחה."
+        },
+        {
+          "name": "מצפה תום ותומר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.669958,34.6763421",
+          "coordinates": {
+            "lat": 31.669958,
+            "lon": 34.6763421
+          },
+          "review_state": "manual_confirmed",
+          "kind": "גן הנצחה ותצפית",
+          "minutes": 50,
+          "story": "גן הנצחה לזכר 73 חללי אסון המסוקים, עם תצפית ושבילי ביקור מן החניה.",
+          "story_long": "גן הנצחה לזכר 73 חללי אסון המסוקים, עם תצפית ושבילי ביקור מן החניה.",
+          "era": "1997 והלאה",
+          "sources": [
+            "https://tom-tomer.org.il/"
+          ]
+        },
+        {
+          "name": "אנדרטת חללי צוק איתן, יער גברעם",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5866183,34.6245453",
+          "coordinates": {
+            "lat": 31.5866183,
+            "lon": 34.6245453
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר הנצחה",
+          "minutes": 40,
+          "story": "אתר הנצחה קהילתי ביער גברעם לחללי מבצע צוק איתן, הנגיש מן הציר המקומי.",
+          "story_long": "אתר הנצחה קהילתי ביער גברעם לחללי מבצע צוק איתן, הנגיש מן הציר המקומי.",
+          "era": "2014 והלאה",
+          "sources": [
+            "https://www.kkl.org.il/about-us/news-archive/news-archive-2021/tzuk-eitan-memeorial-yaar-gvaram.aspx"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "יד לשריון, לטרון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.8378181,34.979674",
+          "coordinates": {
+            "lat": 31.8378181,
+            "lon": 34.979674
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "35",
+        "38",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.7761689%2C34.6643774%7C31.669958%2C34.6763421%7C31.5866183%2C34.6245453%7C31.8378181%2C34.979674",
+      "sources": [
+        "https://www.kkl.org.il/recreation-and-tours/messages/",
+        "https://tom-tomer.org.il/",
+        "https://www.kkl.org.il/about-us/news-archive/news-archive-2021/tzuk-eitan-memeorial-yaar-gvaram.aspx"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-012",
+      "title": "נתיב אנז״ק הבטוח: יד מרדכי לבאר שבע, בלי יד אנז״ק",
+      "region": "דרום",
+      "area": "מישור החוף הדרומי ובאר שבע",
+      "status": "WARNING",
+      "severity": "major",
+      "warning_reason": "יד אנז״ק ביער בארי סגור למבקרים; הוא נשמר כתיעוד בלבד ומוחרג מן הניווט. הגרסה הבטוחה ממשיכה מיד מרדכי לאתרי אנז״ק העירוניים בבאר שבע.",
+      "route_pattern": "snake",
+      "direction": "דרום-מערב ואז דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "בינוני — בגרסה הבטוחה בלבד",
+      "road_character": "מסלול נחש סלול לאורך החוף ליד מרדכי, משם לבאר שבע וחזרה דרך כביש 40–6.",
+      "roads": [
+        "4",
+        "34",
+        "25",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "כל השנה במזג אוויר נוח, עם תיאום המוזאונים ובדיקת הנחיות ביטחון.",
+      "summary": "סיפור אנז״ק נשמר בלי לשלוח רוכבים לאתר הסגור: יד מרדכי משמשת תחנת מורשת, ובאר שבע משלימה את פרק מלחמת העולם הראשונה.",
+      "cautions": [
+        "אין להתקרב ליד אנז״ק או ליער בארי כל עוד אין פתיחה מפורשת.",
+        "מוזאון יד מרדכי ומרכז אנז״ק פועלים בשעות מוגבלות ובתיאום."
+      ],
+      "fuel": "תדלוק באשדוד, אשקלון או באר שבע; אין להסתמך על שירותים ליד האתר הסגור.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום מלא (3.0 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־208 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 208,
+      "estimated_km": 208,
+      "estimated_driving_hours": 3,
+      "core_points": [
+        {
+          "name": "יד אנז״ק — סגור, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4485692,34.4618819",
+          "coordinates": {
+            "lat": 31.4485692,
+            "lon": 34.4618819
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אנדרטה סגורה",
+          "minutes": 10,
+          "story": "האנדרטה ביער בארי מייצגת תחנה מרכזית בנתיב ההיסטורי, אך אינה יעד מותר כעת.",
+          "story_long": "האנדרטה ביער בארי מייצגת תחנה מרכזית בנתיב ההיסטורי, אך אינה יעד מותר כעת.",
+          "era": "מלחמת העולם הראשונה",
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/anzac-trail/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "קק״ל מציינת במפורש שיד אנז״ק סגור למבקרים; הנקודה אינה נכללת בשום קישור ניווט בטוח."
+        },
+        {
+          "name": "מוזאון יד מרדכי — משואה לתקומה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5900465,34.5572912",
+          "coordinates": {
+            "lat": 31.5900465,
+            "lon": 34.5572912
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מוזאון מורשת",
+          "minutes": 75,
+          "story": "המוזאון מחבר בין מרד גטו ורשה, הקמת הקיבוץ וקרב יד מרדכי במלחמת העצמאות.",
+          "story_long": "המוזאון מחבר בין מרד גטו ורשה, הקמת הקיבוץ וקרב יד מרדכי במלחמת העצמאות.",
+          "era": "השואה ומלחמת העצמאות",
+          "sources": [
+            "https://ymmuseum.org/info/"
+          ]
+        },
+        {
+          "name": "פארק החייל האוסטרלי, באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2598654,34.7732677",
+          "coordinates": {
+            "lat": 31.2598654,
+            "lon": 34.7732677
+          },
+          "review_state": "manual_confirmed",
+          "kind": "פארק הנצחה",
+          "minutes": 35,
+          "story": "פארק ציבורי ובו פסל פרש אוסטרלי המנציח את פרשי אנז״ק ואת כיבוש באר שבע.",
+          "story_long": "פארק ציבורי ובו פסל פרש אוסטרלי המנציח את פרשי אנז״ק ואת כיבוש באר שבע.",
+          "era": "מלחמת העולם הראשונה",
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/anzac-trail/"
+          ]
+        },
+        {
+          "name": "המרכז להנצחת חיילי אנז״ק, באר שבע",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.2436043,34.78268",
+          "coordinates": {
+            "lat": 31.2436043,
+            "lon": 34.78268
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז מורשת",
+          "minutes": 75,
+          "story": "מרכז חווייתי המספר את מסע פרשי אנז״ק ואת קרב באר שבע, בסמוך לבית הקברות הבריטי.",
+          "story_long": "מרכז חווייתי המספר את מסע פרשי אנז״ק ואת קרב באר שבע, בסמוך לבית הקברות הבריטי.",
+          "era": "מלחמת העולם הראשונה",
+          "sources": [
+            "https://anzac.co.il/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.7761689%2C34.6643774%7C31.5900465%2C34.5572912%7C31.2598654%2C34.7732677%7C31.2436043%2C34.78268%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.kkl.org.il/travel/trips/anzac-trail/",
+        "https://ymmuseum.org/info/",
+        "https://anzac.co.il/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-013",
+      "title": "בארות יצחק ויער אסף שמחוני סגורים — חלופת שקמה",
+      "region": "דרום",
+      "area": "מערב הנגב ושער הנגב",
+      "status": "WARNING",
+      "severity": "major",
+      "warning_reason": "בארות יצחק הישנה נמצאת בשטח צבאי סגור ויער אסף שמחוני סגור לפי הודעת קק״ל; שתיהן נשמרות כתיעוד בלבד ומוחרגות מן הניווט.",
+      "route_pattern": "loop",
+      "direction": "דרום-מערב",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "BIG FASHION אשדוד",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.7761689,34.6643774",
+        "coordinates": {
+          "lat": 31.7761689,
+          "lon": 34.6643774
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "קל–בינוני — בגרסה הבטוחה בלבד",
+      "road_character": "לולאה סלולה למוזאון יד מרדכי ולגבעת הכלניות; שתי הנקודות הסגורות אינן במפה.",
+      "roads": [
+        "4",
+        "34",
+        "334",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "חורף ואביב, אחרי בדיקת הנחיות ביטחון ותיאום מוזאון יד מרדכי.",
+      "summary": "הגרסה הבטוחה מחברת את מורשת יד מרדכי לגבעת הכלניות, ומציגה בגלוי שתי נקודות מורשת שאסורות לכניסה.",
+      "cautions": [
+        "אין להתקרב לבארות יצחק הישנה או ליער אסף שמחוני ואין לעקוף מחסום.",
+        "בגבעת הכלניות חונים רק במקום המותר ואינם נכנסים לחוות שקמים."
+      ],
+      "fuel": "תדלוק באשדוד או אשקלון; גיבוי באזור שדרות לפני החזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 28,
+      "duration": "יום חלקי (3.0 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־172 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 172,
+      "estimated_km": 172,
+      "estimated_driving_hours": 3,
+      "core_points": [
+        {
+          "name": "בארות יצחק הישנה — שטח צבאי סגור, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4608612,34.5003395",
+          "coordinates": {
+            "lat": 31.4608612,
+            "lon": 34.5003395
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר מורשת סגור",
+          "minutes": 10,
+          "story": "מגדל המים ושרידי הקיבוץ הישן מתעדים את קרבות 1948, אך האתר אינו פתוח לביקור.",
+          "story_long": "מגדל המים ושרידי הקיבוץ הישן מתעדים את קרבות 1948, אך האתר אינו פתוח לביקור.",
+          "era": "מלחמת העצמאות",
+          "sources": [
+            "https://www.kkl.org.il/travel/beerot_yitzhak/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "האתר מוגדר שטח צבאי סגור עקב הלחימה; הוא מוחרג לחלוטין מן הניווט ואין להתקרב אליו."
+        },
+        {
+          "name": "יער אסף שמחוני — סגור, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4754755,34.5229631",
+          "coordinates": {
+            "lat": 31.4754755,
+            "lon": 34.5229631
+          },
+          "review_state": "manual_confirmed",
+          "kind": "יער סגור",
+          "minutes": 10,
+          "story": "היער ואתריו נשמרים ברשומה כדי להסביר את החסם העדכני ולא כדי להציע כניסה.",
+          "story_long": "היער ואתריו נשמרים ברשומה כדי להסביר את החסם העדכני ולא כדי להציע כניסה.",
+          "era": "הנצחה ופיתוח נוף",
+          "sources": [
+            "https://www.kkl.org.il/recreation-and-tours/messages/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "קק״ל מפרסמת שהיער סגור לציבור עד הודעה חדשה; הנקודה אינה חלק מן המפה הבטוחה."
+        },
+        {
+          "name": "מוזאון יד מרדכי — משואה לתקומה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5900465,34.5572912",
+          "coordinates": {
+            "lat": 31.5900465,
+            "lon": 34.5572912
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מוזאון מורשת",
+          "minutes": 75,
+          "story": "מוזאון הקיבוץ עוסק בשואה, בתקומה ובקרב יד מרדכי, בתיאום שעות ביקור.",
+          "story_long": "מוזאון הקיבוץ עוסק בשואה, בתקומה ובקרב יד מרדכי, בתיאום שעות ביקור.",
+          "era": "השואה ומלחמת העצמאות",
+          "sources": [
+            "https://ymmuseum.org/info/"
+          ]
+        },
+        {
+          "name": "גבעת הכלניות — קברי אריאל ולילי שרון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.5074,34.6274",
+          "coordinates": {
+            "lat": 31.5074,
+            "lon": 34.6274
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר הנצחה ותצפית",
+          "minutes": 40,
+          "story": "הגבעה צופה אל חוות שקמים ובה קבריהם של אריאל ולילי שרון; מגיעים רק לחניה הציבורית.",
+          "story_long": "הגבעה צופה אל חוות שקמים ובה קבריהם של אריאל ולילי שרון; מגיעים רק לחניה הציבורית.",
+          "era": "היסטוריה ישראלית עכשווית",
+          "sources": [
+            "https://www.kkl.org.il/travel/trips/2904/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "334",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.7761689%2C34.6643774%7C31.5900465%2C34.5572912%7C31.5074%2C34.6274%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.kkl.org.il/travel/beerot_yitzhak/",
+        "https://www.kkl.org.il/recreation-and-tours/messages/",
+        "https://ymmuseum.org/info/",
+        "https://www.kkl.org.il/travel/trips/2904/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-014",
+      "title": "ממשית וצפון הערבה — בלי חציית מעלה עקרבים החסום",
+      "region": "דרום",
+      "area": "דימונה וצפון הערבה",
+      "status": "WARNING",
+      "severity": "major",
+      "warning_reason": "הקטע העליון של כביש 227 ומעלה עקרבים חסום; נקודת החסם נשמרת להסבר ומוחרגת מן הניווט. המסלול הבטוח מגיע לצפון הערבה בכבישים 25 ו־90 וחוזר דרך מצפה רמון.",
+      "route_pattern": "snake",
+      "direction": "דרום-מזרח",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "ארוך — ללא המעלה החסום",
+      "road_character": "מסלול נחש סלול דרך דימונה וצומת הערבה, עם חזרה בכביש 90–40; כביש 227 העליון אינו כלול.",
+      "roads": [
+        "6",
+        "25",
+        "90",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "סתיו עד אביב; רק בגרסה הבטוחה ובבדיקת חסימות ביום היציאה.",
+      "summary": "מסלול חוקי לממשית, עיר אובות ועין תמר, כשהחסם במעלה עקרבים מוצג אך אינו יכול למשוך את הניווט אליו.",
+      "cautions": [
+        "אין להגיע לראש המעלה מכיוון אורון ואין לעקוף חסימה.",
+        "Waze ו־Google אינם סמכות לפתיחת כביש; הודעות המשטרה והגורמים הרשמיים קובעות."
+      ],
+      "fuel": "תדלוק בבאר שבע, דימונה ובערבה; השלמה במצפה רמון בחזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יום ארוך או יומיים (7.4 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־530 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 530,
+      "estimated_km": 530,
+      "estimated_driving_hours": 7.4,
+      "core_points": [
+        {
+          "name": "גן לאומי ממשית",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.0240184,35.0648415",
+          "coordinates": {
+            "lat": 31.0240184,
+            "lon": 35.0648415
+          },
+          "review_state": "manual_confirmed",
+          "kind": "עיר נבטית",
+          "minutes": 75,
+          "story": "עיר נבטית־ביזנטית ובה רחובות, כנסיות ומערכות מים, נגישה מן כביש 25.",
+          "story_long": "עיר נבטית־ביזנטית ובה רחובות, כנסיות ומערכות מים, נגישה מן כביש 25.",
+          "era": "נבטי עד ביזנטי",
+          "sources": [
+            "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/"
+          ]
+        },
+        {
+          "name": "מעלה עקרבים — חסם בכביש 227, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.9090538,35.1316261",
+          "coordinates": {
+            "lat": 30.9090538,
+            "lon": 35.1316261
+          },
+          "review_state": "manual_confirmed",
+          "kind": "כביש היסטורי חסום",
+          "minutes": 10,
+          "story": "הדרך ההיסטורית נשמרת ברשומה כדי להסביר את הניתוק בין ממשית לצפון הערבה.",
+          "story_long": "הדרך ההיסטורית נשמרת ברשומה כדי להסביר את הניתוק בין ממשית לצפון הערבה.",
+          "era": "מנדטורי ומודרני",
+          "sources": [
+            "https://www.teva.org.il/tracks/842231"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "הקטע העליון של כביש 227 חסום רשמית ובחלקו פיזית; הנקודה מוחרגת מכל קישור ניווט."
+        },
+        {
+          "name": "עיר אובות",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8090441,35.2441845",
+          "coordinates": {
+            "lat": 30.8090441,
+            "lon": 35.2441845
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר עתיקות ויישוב",
+          "minutes": 45,
+          "story": "אתר בצפון הערבה הסמוך למצד חצבה ולציר 90, שאליו מגיעים מן הדרך החוקית בלבד.",
+          "story_long": "אתר בצפון הערבה הסמוך למצד חצבה ולציר 90, שאליו מגיעים מן הדרך החוקית בלבד.",
+          "era": "מקראי, רומי ומודרני",
+          "sources": [
+            "https://www.teva.org.il/tracks/842801"
+          ]
+        },
+        {
+          "name": "עין תמר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.943309,35.3747349",
+          "coordinates": {
+            "lat": 30.943309,
+            "lon": 35.3747349
+          },
+          "review_state": "manual_confirmed",
+          "kind": "יישוב חקלאי",
+          "minutes": 30,
+          "story": "יישוב בכיכר סדום המשמש תחנת מנוחה והמחשה להתיישבות חקלאית בתנאי מלחה וחום.",
+          "story_long": "יישוב בכיכר סדום המשמש תחנת מנוחה והמחשה להתיישבות חקלאית בתנאי מלחה וחום.",
+          "era": "התיישבות מודרנית",
+          "sources": [
+            "https://www.ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "90",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C31.0240184%2C35.0648415%7C30.8090441%2C35.2441845%7C30.943309%2C35.3747349%7C30.6119687%2C34.8012169%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%9E%D7%A9%D7%99%D7%AA/",
+        "https://www.teva.org.il/tracks/842231",
+        "https://www.teva.org.il/tracks/842801",
+        "https://www.ma-tamar.org.il/%D7%A2%D7%99%D7%9F-%D7%AA%D7%9E%D7%A8/"
+      ]
+    },
+    {
+      "id": "south-expansion-warning-015",
+      "title": "הערבה התיכונה הבטוחה — בלי מואה ובלי חוות האנטילופות",
+      "region": "דרום",
+      "area": "צפון הערבה והערבה התיכונה",
+      "status": "WARNING",
+      "severity": "major",
+      "warning_reason": "הגישה למואה כוללת דרך עפר שאינה ברירת מחדל לאופנוע כביש, וחוות האנטילופות סגורה לתיירות מינואר 2026; שתיהן מוחרגות מן הניווט.",
+      "route_pattern": "snake",
+      "direction": "דרום",
+      "primary": {
+        "name": "פארק פרס, חולון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=32.0036678,34.7966276",
+        "coordinates": {
+          "lat": 32.0036678,
+          "lon": 34.7966276
+        },
+        "review_state": "manual_confirmed"
+      },
+      "secondary": {
+        "name": "חניית מרכז ג׳ו אלון",
+        "navigation": "https://www.google.com/maps/search/?api=1&query=31.3790549,34.8653567",
+        "coordinates": {
+          "lat": 31.3790549,
+          "lon": 34.8653567
+        },
+        "review_state": "manual_confirmed"
+      },
+      "level": "ארוך — בגרסה הסלולה בלבד",
+      "road_character": "מסלול נחש סלול דרך כביש 90, עיר אובות, ויידור, מצפור השלום וספיר; חזרה דרך מצפה רמון.",
+      "roads": [
+        "6",
+        "40",
+        "25",
+        "90",
+        "דרך השלום",
+        "90",
+        "40",
+        "6",
+        "1"
+      ],
+      "best": "אוקטובר עד אפריל, ביומיים, לאחר בדיקת דרך השלום והנחיות מזג אוויר.",
+      "summary": "שתי בעיות מקומיות אינן מבטלות את הערבה: המפה הבטוחה עוברת בארבע נקודות סלולות ומחזירה את הקבוצה בציר אחר.",
+      "cautions": [
+        "אין לפנות לדרך העפר למואה ואין להגיע לחוות האנטילופות הסגורה.",
+        "דרך השלום מבוצעת רק כשהיא פתוחה וללא כניסה לדרכי מאגרים או עפר."
+      ],
+      "fuel": "תדלוק בבאר שבע ובערבה; השלמה במצפה רמון בחזרה.",
+      "start": "פארק פרס, חולון",
+      "end": "פארק פרס, חולון",
+      "meeting_minutes": 68,
+      "duration": "יומיים (8.2 שעות רכיבה נטו לפני עצירות)",
+      "km": "כ־531 ק״מ מאזור המרכז ובחזרה",
+      "km_num": 531,
+      "estimated_km": 531,
+      "estimated_driving_hours": 8.2,
+      "core_points": [
+        {
+          "name": "עיר אובות",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.8090441,35.2441845",
+          "coordinates": {
+            "lat": 30.8090441,
+            "lon": 35.2441845
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר עתיקות ויישוב",
+          "minutes": 45,
+          "story": "נקודת מורשת סלולה בצפון הערבה, סמוך למצד חצבה ולציר 90.",
+          "story_long": "נקודת מורשת סלולה בצפון הערבה, סמוך למצד חצבה ולציר 90.",
+          "era": "מקראי, רומי ומודרני",
+          "sources": [
+            "https://www.teva.org.il/tracks/842801"
+          ]
+        },
+        {
+          "name": "מרכז ויידור, חצבה",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.767194,35.277693",
+          "coordinates": {
+            "lat": 30.767194,
+            "lon": 35.277693
+          },
+          "review_state": "manual_confirmed",
+          "kind": "מרכז מבקרים חקלאי",
+          "minutes": 60,
+          "story": "מרכז מבקרים המציג חקלאות, מים וחדשנות בערבה התיכונה.",
+          "story_long": "מרכז מבקרים המציג חקלאות, מים וחדשנות בערבה התיכונה.",
+          "era": "חקלאות מודרנית",
+          "sources": [
+            "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/"
+          ]
+        },
+        {
+          "name": "מצפור השלום בדרך השלום",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.7788143,35.2934952",
+          "coordinates": {
+            "lat": 30.7788143,
+            "lon": 35.2934952
+          },
+          "review_state": "manual_confirmed",
+          "kind": "תצפית גבול",
+          "minutes": 35,
+          "story": "תצפית סלולה אל נחל הערבה והרי אדום; נשארים בציר הסלול ובהתאם לפתיחה.",
+          "story_long": "תצפית סלולה אל נחל הערבה והרי אדום; נשארים בציר הסלול ובהתאם לפתיחה.",
+          "era": "גבול השלום עם ירדן",
+          "sources": [
+            "https://goarava.co.il/%D7%93%D7%A8%D7%9A-%D7%94%D7%A9%D7%9C%D7%95%D7%9D/"
+          ]
+        },
+        {
+          "name": "מואה הנבטית — גישת עפר, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.5408572,35.1621597",
+          "coordinates": {
+            "lat": 30.5408572,
+            "lon": 35.1621597
+          },
+          "review_state": "manual_confirmed",
+          "kind": "חאן נבטי בגישת עפר",
+          "minutes": 10,
+          "story": "תחנת דרך הבשמים חשובה, אך הסטייה מכביש 90 אינה מתאימה כברירת מחדל לקבוצת אופנועי כביש.",
+          "story_long": "תחנת דרך הבשמים חשובה, אך הסטייה מכביש 90 אינה מתאימה כברירת מחדל לקבוצת אופנועי כביש.",
+          "era": "נבטי ורומי",
+          "sources": [
+            "https://goarava.co.il/business/%D7%9E%D7%95%D7%90%D7%94/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "הגישה כוללת כחמישה קילומטרים של דרך עפר; הנקודה מוחרגת מן הניווט של אופנועי כביש."
+        },
+        {
+          "name": "חוות האנטילופות — סגורה לתיירות, תיעוד בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.57686,35.17947",
+          "coordinates": {
+            "lat": 30.57686,
+            "lon": 35.17947
+          },
+          "review_state": "manual_confirmed",
+          "kind": "אתר תיירות סגור",
+          "minutes": 10,
+          "story": "החווה הייתה מוקד טבע ותיירות בערבה, אך מפעיליה הודיעו על סגירה לתיירות מינואר 2026.",
+          "story_long": "החווה הייתה מוקד טבע ותיירות בערבה, אך מפעיליה הודיעו על סגירה לתיירות מינואר 2026.",
+          "era": "תיירות טבע מודרנית",
+          "sources": [
+            "https://afrika.co.il/%D7%9E%D7%A4%D7%AA-%D7%90%D7%AA%D7%A8/"
+          ],
+          "navigation_excluded": true,
+          "navigation_exclusion_reason": "האתר סגור לתיירות החל מ־1 בינואר 2026; אין לכלול אותו בניווט או להציגו כתחנת ביקור פעילה."
+        },
+        {
+          "name": "פארק ספיר",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6164706,35.1913355",
+          "coordinates": {
+            "lat": 30.6164706,
+            "lon": 35.1913355
+          },
+          "review_state": "manual_confirmed",
+          "kind": "פארק מדברי",
+          "minutes": 40,
+          "story": "פארק קהילתי נגיש מן הכביש המשמש חלופת עצירה סלולה ומוצלת יחסית.",
+          "story_long": "פארק קהילתי נגיש מן הכביש המשמש חלופת עצירה סלולה ומוצלת יחסית.",
+          "era": "פיתוח קהילתי",
+          "sources": [
+            "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+          ]
+        }
+      ],
+      "return_points": [
+        {
+          "name": "מצפה רמון",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=30.6119687,34.8012169",
+          "coordinates": {
+            "lat": 30.6119687,
+            "lon": 34.8012169
+          },
+          "review_state": "manual_confirmed"
+        },
+        {
+          "name": "מחלף בית קמה — נקודת מעבר בלבד",
+          "navigation": "https://www.google.com/maps/search/?api=1&query=31.4405576,34.7723251",
+          "coordinates": {
+            "lat": 31.4405576,
+            "lon": 34.7723251
+          },
+          "review_state": "manual_confirmed"
+        }
+      ],
+      "return_roads": [
+        "90",
+        "40",
+        "6",
+        "1"
+      ],
+      "full_maps_url": "https://www.google.com/maps/dir/?api=1&origin=32.0036678%2C34.7966276&destination=32.0036678%2C34.7966276&travelmode=driving&waypoints=31.3790549%2C34.8653567%7C30.8090441%2C35.2441845%7C30.767194%2C35.277693%7C30.7788143%2C35.2934952%7C30.6164706%2C35.1913355%7C30.6119687%2C34.8012169%7C31.4405576%2C34.7723251",
+      "sources": [
+        "https://www.teva.org.il/tracks/842801",
+        "https://goarava.co.il/business/%D7%9E%D7%A8%D7%9B%D7%96-%D7%95%D7%99%D7%93%D7%95%D7%A8-%D7%97%D7%9C%D7%95%D7%9F-%D7%9C%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%9E%D7%95%D7%A9%D7%91-%D7%97%D7%A6%D7%91%D7%94/",
+        "https://goarava.co.il/%D7%93%D7%A8%D7%9A-%D7%94%D7%A9%D7%9C%D7%95%D7%9D/",
+        "https://goarava.co.il/business/%D7%9E%D7%95%D7%90%D7%94/",
+        "https://afrika.co.il/%D7%9E%D7%A4%D7%AA-%D7%90%D7%AA%D7%A8/",
+        "https://goarava.co.il/business/%D7%A4%D7%90%D7%A8%D7%A7-%D7%A1%D7%A4%D7%99%D7%A8/"
+      ]
+    }
+  ]
+}

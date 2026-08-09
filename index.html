@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#102f3a">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-  <meta name="description" content="ספר טיולי כביש לאופנועים בישראל — 180 מסלולים היוצאים מהמרכז — גרסה 2.3.0">
-  <title>ספר של אילן לטיולי הכביש לאופנועים בישראל — גרסה 2.3.0</title>
-  <link rel="manifest" href="./manifest-2.3.0.webmanifest">
+  <meta name="description" content="ספר טיולי כביש לאופנועים בישראל — 180 מסלולים עם תכנון אישי ושיתוף — גרסה 2.4.0">
+  <title>ספר של אילן לטיולי הכביש לאופנועים בישראל — גרסה 2.4.0</title>
+  <link rel="manifest" href="./manifest-2.4.0.webmanifest">
   <link rel="icon" href="./favicon.ico" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./assets/app-v2.3.0.css">
+  <link rel="stylesheet" href="./assets/app-v2.4.0.css">
 </head>
 <body>
   <a class="skip-link" href="#main">דלג לתוכן</a>
@@ -20,7 +20,7 @@
       <span class="brand-mark" aria-hidden="true">IL</span>
       <div>
         <strong>ספר הטיולים של אילן</strong>
-        <small>גרסה 2.3.0</small>
+        <small>גרסה 2.4.0</small>
       </div>
     </div>
     <div class="top-actions">
@@ -94,20 +94,27 @@
       </div>
 
       <div id="quickFilters" class="quick-filters" aria-label="סינון מהיר">
-        <button type="button" data-quick="all" class="active">הכול</button>
-        <button type="button" data-quick="short">קצר וממוקד</button>
-        <button type="button" data-quick="twisty">כביש מפותל</button>
-        <button type="button" data-quick="beginner">לרוכבים מתחילים</button>
-        <button type="button" data-quick="water">מים וטבע</button>
-        <button type="button" data-quick="heritage">מורשת וסיפור</button>
-        <button type="button" data-quick="food">קפה ואוכל</button>
-        <button type="button" data-quick="photo">נוף וצילום</button>
-        <button type="button" data-quick="full">יום מלא</button>
-        <button type="button" data-quick="gravel">דרך כבושה קלה</button>
-        <button type="button" data-quick="seasonal">עונתי או מותנה</button>
-        <button type="button" data-quick="loop">לולאה או ״נחש״</button>
-        <button type="button" data-quick="radial">יציאה ישירה</button>
-        <button type="button" data-quick="verified">מאומת ממקורות</button>
+        <button type="button" data-quick="all" class="active" aria-pressed="true">כל מסלולי PASS</button>
+        <button type="button" data-quick="half" aria-pressed="false">חצי יום</button>
+        <button type="button" data-quick="full" aria-pressed="false">יום מלא</button>
+        <button type="button" data-quick="long-day" aria-pressed="false">יום ארוך</button>
+        <button type="button" data-quick="twisty" aria-pressed="false">כביש מפותל</button>
+        <button type="button" data-quick="calm" aria-pressed="false">רגוע</button>
+        <button type="button" data-quick="north" aria-pressed="false">צפונה</button>
+        <button type="button" data-quick="south" aria-pressed="false">דרומה</button>
+        <button type="button" data-quick="east" aria-pressed="false">מזרחה</button>
+        <button type="button" data-quick="center" aria-pressed="false">מרכז ושפלה</button>
+        <button type="button" data-quick="beginner" aria-pressed="false">לרוכבים מתחילים</button>
+        <button type="button" data-quick="water" aria-pressed="false">מים וטבע</button>
+        <button type="button" data-quick="heritage" aria-pressed="false">מורשת וסיפור</button>
+        <button type="button" data-quick="food" aria-pressed="false">קפה ואוכל</button>
+        <button type="button" data-quick="photo" aria-pressed="false">נוף וצילום</button>
+        <button type="button" data-quick="gravel" aria-pressed="false">דרך כבושה קלה</button>
+        <button type="button" data-quick="seasonal" aria-pressed="false">עונתי או מותנה</button>
+        <button type="button" data-quick="loop" aria-pressed="false">לולאה</button>
+        <button type="button" data-quick="snake" aria-pressed="false">מסלול ״נחש״</button>
+        <button type="button" data-quick="radial" aria-pressed="false">יציאה ישירה</button>
+        <button type="button" data-quick="verified" aria-pressed="false">מאומת ממקורות</button>
       </div>
 
       <form id="filters" class="filters" role="search">
@@ -116,19 +123,26 @@
           <input id="searchInput" type="search" autocomplete="off" placeholder="מקום, כביש, עצירה, אוכל או סיפור">
         </label>
         <label><span>אזור</span><select id="regionFilter"><option value="">כל האזורים</option></select></label>
+        <label><span>כיוון מהמרכז</span><select id="directionFilter"><option value="">כל הכיוונים</option><option value="north">צפון</option><option value="east">מזרח, ירושלים וים המלח</option><option value="south">דרום, נגב וערבה</option><option value="center">מרכז, שפלה וחוף</option></select></label>
+        <label><span>מבנה המסלול</span><select id="patternFilter"><option value="">כל המבנים</option><option value="loop">לולאה</option><option value="snake">נחש — חזרה בדרך אחרת</option><option value="out_and_back">הלוך וחזור באותו ציר</option><option value="other">מסלול מתמשך אחר</option></select></label>
+        <label><span>אורך היום מהמרכז</span><select id="dayLengthFilter"><option value="">כל אורכי היום</option><option value="half">חצי יום</option><option value="full">יום מלא</option><option value="long">יום ארוך</option></select></label>
         <label><span>סוג טיול</span><select id="typeFilter"><option value="">כל סוגי הטיול</option></select></label>
         <label><span>משך</span><select id="durationFilter"><option value="">כל המשכים</option></select></label>
         <label><span>נושא מפורט</span><select id="themeFilter"><option value="">כל הנושאים</option></select></label>
         <label><span>רמת רכיבה</span><select id="levelFilter"><option value="">כל הרמות</option></select></label>
         <label><span>אופי כביש</span><select id="roadFilter"><option value="">כל סוגי הכביש</option></select></label>
         <label><span>רמת אימות</span><select id="verifyFilter"><option value="">כל רמות האימות</option></select></label>
+        <label><span>תכנון אישי</span><select id="personalFilter"><option value="">כל המסלולים</option><option value="favorite">שמורים</option><option value="want">רוצה לרכוב</option><option value="ridden">רכבתי</option></select></label>
         <label><span>מיון</span>
           <select id="sortFilter">
             <option value="book">סדר הספר</option>
             <option value="title">שם המסלול</option>
             <option value="stops">מספר עצירות</option>
-            <option value="short">קצר תחילה</option>
-            <option value="long">ארוך תחילה</option>
+            <option value="day-short">יום קצר תחילה</option>
+            <option value="day-long">יום ארוך תחילה</option>
+            <option value="short">ליבת מסלול קצרה תחילה</option>
+            <option value="long">ליבת מסלול ארוכה תחילה</option>
+            <option value="checked">נבדק לאחרונה</option>
             <option value="quality">איכות גבוהה תחילה</option>
             <option value="stories">יותר סיפורי דרך</option>
           </select>
@@ -139,13 +153,14 @@
       <div class="results-bar">
         <p id="resultSummary" aria-live="polite">טוען מסלולים…</p>
         <div class="results-actions">
+          <button id="openPicker" class="button primary" type="button">בחר לי טיול</button>
           <button id="inviteGlobal" class="button accent" type="button">יצירת הזמנה</button>
           <button id="openAll" class="button ghost" type="button">פתיחת התקצירים</button>
           <button id="closeAll" class="button ghost" type="button">סגירת התקצירים</button>
           <button id="showFavoritesOnly" class="text-button" type="button" aria-pressed="false">רק שמורים</button>
         </div>
       </div>
-      <div id="routeGrid" class="route-grid" aria-live="polite"></div>
+      <div id="routeGrid" class="route-grid"></div>
       <div id="emptyState" class="empty-state" hidden>
         <h3>לא נמצאו מסלולים</h3>
         <p>נסו להסיר מסנן אחד או לחפש שם של אזור סמוך.</p>
@@ -279,9 +294,10 @@
     </section>
 
     <section id="plannerView" class="app-view" role="tabpanel" aria-labelledby="tabPlanner" hidden>
-      <div class="section-heading"><div><span class="eyebrow">תכנון אישי</span><h2>הטיולים ששמרתי</h2></div><p>השמירה מקומית במכשיר ואינה נשלחת לשרת.</p></div>
+      <div class="section-heading"><div><span class="eyebrow">תכנון אישי</span><h2>הטיולים שלי</h2></div><p>שמירה, „רוצה לרכוב”, „רכבתי” והערות אישיות נשמרים רק במכשיר ואינם נשלחים לשרת.</p></div>
+      <div id="plannerSummary" class="planner-summary" aria-live="polite"><span><strong id="plannerFavoriteCount">0</strong> שמורים</span><span><strong id="plannerWantCount">0</strong> רוצה לרכוב</span><span><strong id="plannerRiddenCount">0</strong> רכבתי</span></div>
       <div id="favoritesGrid" class="route-grid"></div>
-      <div id="favoritesEmpty" class="empty-state"><h3>עדיין לא שמרתם מסלול</h3><p>לחצו על „שמירה” בכרטיס מסלול כדי לבנות רשימה.</p></div>
+      <div id="favoritesEmpty" class="empty-state"><h3>עדיין אין תכנון אישי</h3><p>שמרו מסלול או סמנו „רוצה לרכוב” ו„רכבתי”.</p></div>
     </section>
 
     <section id="combinedView" class="app-view" role="tabpanel" aria-labelledby="tabCombined" hidden>
@@ -301,9 +317,10 @@
     <section id="aboutView" class="app-view" role="tabpanel" aria-labelledby="tabAbout" hidden>
       <div class="section-heading"><div><span class="eyebrow">שקיפות</span><h2>אודות, גרסאות ומקורות</h2></div></div>
       <div class="about-grid">
-        <article><h3>מצב הגרסה</h3><p><strong>גרסה 2.3.0</strong><br><span id="buildStatus"></span></p></article>
+        <article><h3>מצב הגרסה</h3><p><strong>גרסה 2.4.0</strong><br><span id="buildStatus"></span></p></article>
         <article><h3>מה המשמעות של אימות?</h3><p>„מאומת ממקורות” מעיד שנמצא חומר תומך למסלול ולנקודותיו. הוא אינו מבטיח שהכביש פתוח, שהאספלט תקין או שהאתר נגיש היום.</p></article>
-        <article><h3>ביקורת המסלולים</h3><p>גרסה 2.3.0 מציגה <strong id="aboutPassCount">90</strong> מסלולים ב־PASS בטאב הראשי ועוד <strong id="aboutIssueCount">90</strong> מסלולים בשלוש קטגוריות בטאב „מסלולים עם הערות”. 53 מועמדי מחקר ישנים שחסר בהם מידע יסודי נשמרו בקבצים אך אינם מפורסמים.</p></article>
+        <article><h3>ביקורת המסלולים</h3><p>גרסה 2.4.0 מציגה <strong id="aboutPassCount">90</strong> מסלולים ב־PASS בטאב הראשי ועוד <strong id="aboutIssueCount">90</strong> מסלולים בשלוש קטגוריות בטאב „מסלולים עם הערות”. 53 מועמדי מחקר ישנים שחסר בהם מידע יסודי נשמרו בקבצים אך אינם מפורסמים.</p></article>
+        <article><h3>תכנון פשוט</h3><p>אפשר לסנן לפי יום מלא מהמרכז, לקבל הצעה אקראית מתאימה, לשמור מצב אישי, להעתיק קישור ישיר ולהפיק תקציר מוכן להפצה — ללא חשבון וללא שרת.</p></article>
         <article><h3>העתקה ל־AI</h3><p>בכל אחת מ־<strong id="aboutStopCount">—</strong> התחנות אפשר להעתיק פרומפט להרחבה ולשאלות נוספות. הפרומפט אינו מוצג ואינו נשלח מן האתר; הוא מועתק ללוח בלבד, כדי להדביקו ב־AI שבמכשיר.</p></article>
       </div>
       <div id="sourceList" class="source-list"></div>
@@ -317,7 +334,7 @@
 
   <footer>
     <span>ספר של אילן לטיולי הכביש לאופנועים בישראל</span>
-    <span>גרסה 2.3.0</span>
+    <span>גרסה 2.4.0</span>
     <button class="text-button" type="button" data-view="safetyView">בטיחות ואחריות</button>
   </footer>
 
@@ -380,6 +397,38 @@
     </div>
   </dialog>
 
+  <dialog id="pickerDialog" class="picker-dialog" aria-labelledby="pickerTitle">
+    <button class="dialog-close" type="button" data-close-picker aria-label="סגירת בחירת הטיול">×</button>
+    <div class="dialog-heading"><span class="eyebrow">הצעה מתוך מסלולי PASS בלבד</span><h2 id="pickerTitle">בחר לי טיול</h2><p>בחרו זמן, כיוון ואופי. ההצעה נשענת על הנתונים שבספר ואינה בודקת תנועה או מזג אוויר חיים.</p></div>
+    <form id="pickerForm" class="picker-form">
+      <label><span>כמה זמן יש?</span><select id="pickerDay"><option value="">לא משנה</option><option value="half">חצי יום</option><option value="full">יום מלא</option><option value="long">יום ארוך</option></select></label>
+      <label><span>לאיזה כיוון?</span><select id="pickerDirection"><option value="">לא משנה</option><option value="north">צפון</option><option value="east">מזרח, ירושלים וים המלח</option><option value="south">דרום, נגב וערבה</option><option value="center">מרכז, שפלה וחוף</option></select></label>
+      <label><span>איזה אופי?</span><select id="pickerStyle"><option value="">לא משנה</option><option value="twisty">מפותל</option><option value="calm">רגוע</option><option value="scenic">נוף וצילום</option><option value="water">מים וטבע</option><option value="food">קפה ואוכל</option></select></label>
+      <button class="button primary" type="submit">הציעו לי מסלול</button>
+    </form>
+    <div id="pickerResult" class="picker-result" aria-live="polite" hidden></div>
+  </dialog>
+
+  <dialog id="mapDialog" class="map-dialog" aria-labelledby="mapDialogTitle">
+    <button class="dialog-close" type="button" data-close-map aria-label="סגירת המפה המוגדלת">×</button>
+    <div class="dialog-heading"><span class="eyebrow">תצוגה מוגדלת</span><h2 id="mapDialogTitle">מפת המסלול</h2></div>
+    <div class="large-map"><iframe id="largeMapFrame" title="מפת מסלול מוגדלת" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    <div class="route-actions"><a id="largeMapGoogle" class="button primary" href="#" target="_blank" rel="noopener">פתיחת המסלול המלא ב־Google Maps</a></div>
+  </dialog>
+
+  <dialog id="readyShareDialog" class="ready-share-dialog" aria-labelledby="readyShareTitle">
+    <button class="dialog-close" type="button" data-close-ready-share aria-label="סגירת תצוגת ההפצה">×</button>
+    <div class="dialog-heading"><span class="eyebrow">כל הפרטים במקום אחד</span><h2 id="readyShareTitle">מוכן להפצה</h2><p>התקציר כולל נקודות מפגש, אומדן יום, תחנות, מפות והבהרת אחריות. בדקו את השעות ואת מצב הדרך לפני השליחה.</p></div>
+    <label class="ready-share-label"><span>נוסח מוכן להעתקה</span><textarea id="readySharePreview" rows="18" readonly></textarea></label>
+    <div class="route-actions">
+      <button id="copyReadyShare" class="button primary" type="button">העתקת התקציר</button>
+      <button id="openReadyWhatsapp" class="button accent" type="button">פתיחה ב־WhatsApp</button>
+      <button id="copyReadyLink" class="button ghost" type="button">העתקת קישור למסלול</button>
+      <a id="readyShareMap" class="button ghost" href="#" target="_blank" rel="noopener">Google Maps</a>
+      <button id="exportReadyRoute" class="button ghost" type="button">ייצוא ל־HTML</button>
+    </div>
+  </dialog>
+
   <dialog id="disclaimerDialog" class="disclaimer-dialog" aria-labelledby="disclaimerTitle">
     <h2 id="disclaimerTitle">לפני שמשתמשים בספר</h2>
     <p>זהו כלי תכנון קהילתי לטיולי חברים לא־מאורגנים, לא אישור דרך ולא ארגון טיול. כל רוכב רוכב באחריותו הבלעדית ואחראי לרישיון, לביטוח, למיגון, לתקינות האופנוע ולשירותי גרירה. חובה לבדוק את המסלול ומקורות רשמיים ביום היציאה. אין להשתמש באתר בזמן רכיבה.</p>
@@ -391,11 +440,11 @@
   <div id="copyStatus" class="visually-hidden" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <noscript><p class="noscript">נדרש JavaScript כדי להציג את המסלולים. כללי הבטיחות והגרסה מופיעים במסמך גם ללא התקנה.</p></noscript>
-  <script src="./data/config-v2.3.0.js"></script>
+  <script src="./data/config-v2.4.0.js"></script>
   <script src="./data/legacy-content-v2.js"></script>
   <script src="./data/new-routes-v2.js"></script>
   <script src="./data/route-expansion-v2.3.0.js"></script>
   <script src="./data/release-audit-v2.3.0.js"></script>
-  <script src="./assets/app-v2.3.0.js"></script>
+  <script src="./assets/app-v2.4.0.js"></script>
 </body>
 </html>
