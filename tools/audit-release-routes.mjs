@@ -1,6 +1,7 @@
 /**
  * ביקורת שחרור פרטנית למסלולים
- * גרסה: 2.2.4
+ * גרסת מסמך: 2.3.1
+ * גרסת מוצר: 2.3.0
  */
 
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
@@ -10,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPORT_DIR = path.join(ROOT, 'reports');
-const VERSION = '2.2.4';
+const VERSION = '2.3.0';
 const WARNING_SEVERITIES = Object.freeze({
   minor_navigation: {
     label: 'תיקון ניווט קטן',
@@ -25,6 +26,19 @@ const WARNING_SEVERITIES = Object.freeze({
     explanation: 'נדרש שינוי משמעותי במסלול או חלופה בדוקה לפני יציאה; הבעיה עשויה לגעת בליבת הדרך, בגישה או בהתאמת המפה.',
   },
 });
+
+// אתרים רשמיים אלה נבדקו גם בדפדפן אך מחזירים 401/403 לבודקי HTTP אוטומטיים.
+// הסטטוס נשמר בדוח כ-access_controlled ואינו מוסווה כ-HTTP 200.
+const OFFICIAL_BROWSER_VERIFIED_WAF_HOSTS = new Set([
+  'www.parks.org.il',
+  'parks.org.il',
+  'www.anumuseum.org.il',
+  'www.neot-kedumim.org.il',
+  'www.nli.org.il',
+  'www.gov.il',
+  'izkor.gov.il',
+  'www.izkor.gov.il',
+]);
 const INSTRUCTIONAL_LOCATION = /\s\/\s|\sאו\s|רק אם|חניה בלבד|בהתאם להנחיות|מבחוץ|נקודת מורשת|אזור תצפית מותר|נקודת יציאה צפונית|נקודת תדריך/;
 const PLACEHOLDER = /טרם|לחישוב|יתועד לאחר|לא אומת|מועמד באימות/;
 
@@ -33,6 +47,7 @@ async function loadWindowData() {
   for (const relative of [
     'data/legacy-content-v2.js',
     'data/new-routes-v2.js',
+    `data/route-expansion-v${VERSION}.js`,
     `data/release-audit-v${VERSION}.js`,
   ]) {
     vm.runInContext(await readFile(path.join(ROOT, relative), 'utf8'), context, { filename: relative });
@@ -82,12 +97,49 @@ function applyRelease(route, audit) {
 }
 
 function navigationPoints(route) {
-  if (Array.isArray(route.map_points) && route.map_points.length >= 2) return orderedPoints(route.map_points);
+  // במסלול אזהרה ייתכן יעד רכיבה בטוח יחיד, כשיתר תחנות התוכן מוחרגות
+  // במפורש להליכה. במקרה כזה אין להמציא יעד נהיגה שני רק לצורך הביקורת.
+  if (Array.isArray(route.map_points) && route.map_points.length >= 1) return orderedPoints(route.map_points);
   return orderedPoints([
     route.start,
     ...(route.stops || []).map((stop) => stop.navigation_name === null ? '' : (stop.navigation_name || stop.name)),
     route.end,
   ]);
+}
+
+const MEETING_HUBS = Object.freeze({
+  north: Object.freeze({ name: 'חניון רידינג מזרח, תל אביב', lat: 32.0998202, lon: 34.7809780 }),
+  center: Object.freeze({ name: 'תחנת דלק היובל, משה דיין 10, חולון', lat: 32.0012040, lon: 34.7632800 }),
+  southCoast: Object.freeze({ name: 'יס פלאנט ראשון לציון', lat: 31.9797548, lon: 34.7476658 }),
+  south: Object.freeze({ name: 'תחנת דלק פז גדרה, כביש 40', lat: 31.8065710, lon: 34.7659320 }),
+});
+
+function defaultMeetingHub(route) {
+  if (route.meeting_primary) return {
+    name: route.meeting_primary,
+    lat: Number(route.meeting_primary_coordinates?.lat),
+    lon: Number(route.meeting_primary_coordinates?.lon),
+  };
+  const text = `${route.region || ''} ${route.area || ''} ${route.start || ''}`;
+  if (/דרום|נגב|ערבה|אילת|באר שבע|מצפה רמון|ירוחם|דימונה|ערד/.test(text)) return MEETING_HUBS.south;
+  if (/אשדוד|אשקלון|חוף דרומי/.test(text)) return MEETING_HUBS.southCoast;
+  if (/צפון|גליל|גולן|כנרת|חיפה|כרמל|עכו|נהריה|עמק יזרעאל|בית שאן|החולה/.test(text)) return MEETING_HUBS.north;
+  return MEETING_HUBS.center;
+}
+
+function fullNavigationPoints(route) {
+  if (Array.isArray(route.full_map_points) && route.full_map_points.length >= 2) {
+    return orderedPoints(route.full_map_points);
+  }
+  const hub = defaultMeetingHub(route).name;
+  const points = orderedPoints([
+    hub,
+    route.meeting_secondary || route.start,
+    ...navigationPoints(route),
+    ...(route.return_points || []),
+  ]);
+  if (['loop', 'snake', 'out_and_back'].includes(route.route_pattern) && points.at(-1) !== hub) points.push(hub);
+  return points;
 }
 
 function googleMapsUrl(points) {
@@ -113,14 +165,33 @@ function requiredFields(route) {
 }
 
 function staticChecks(route, allLegacyIds) {
-  const points = navigationPoints(route);
+  const corePoints = navigationPoints(route);
+  const points = fullNavigationPoints(route);
   const mapUrl = googleMapsUrl(points);
   const missing = requiredFields(route);
   const placeholders = ['duration', 'km', 'roads', 'fuel', 'summary']
     .filter((field) => PLACEHOLDER.test(String(route[field] || '')));
   const sourceLinks = route.sources || [];
   const connectionErrors = (route.connections || []).filter((id) => !allLegacyIds.has(id));
-  const circleMatches = route.route_shape !== 'מעגלי' || points[0] === points.at(-1);
+  const circleMatches = ['loop', 'snake'].includes(route.route_pattern)
+    ? points[0] === points.at(-1)
+    : route.route_shape !== 'מעגלי' || corePoints[0] === corePoints.at(-1);
+  const hub = defaultMeetingHub(route);
+  const hubInsideCentralBand = Number.isFinite(hub.lat) && Number.isFinite(hub.lon)
+    && hub.lat >= 31.78 && hub.lat <= 32.12 && hub.lon >= 34.72 && hub.lon <= 34.83;
+  const isExpansionRoute = route.catalogue_version === VERSION;
+  const coordinatePoints = route.navigation_coordinates || [];
+  const excludedStops = (route.stops || []).filter((stop) => stop.navigation_excluded);
+  const safeNavigationExclusions = excludedStops.every((stop) =>
+    stop.navigation_name === null
+    && String(stop.navigation_exclusion_reason || '').trim().length >= 20
+    && !corePoints.includes(stop.name)
+    && !points.includes(stop.name));
+  const stopSourcesComplete = !isExpansionRoute || (route.stops || []).every((stop) =>
+    Array.isArray(stop.sources) && stop.sources.length > 0 && stop.sources.every((url) => Boolean(httpsUrl(url))));
+  const coordinatesComplete = !isExpansionRoute || (Array.isArray(coordinatePoints)
+    && coordinatePoints.length === corePoints.length
+    && coordinatePoints.every((point) => Number.isFinite(Number(point?.lat)) && Number.isFinite(Number(point?.lon))));
   return {
     required_fields: missing.length === 0,
     missing_fields: missing,
@@ -130,6 +201,12 @@ function staticChecks(route, allLegacyIds) {
     stop_content_complete: (route.stops || []).every((stop) => stop.name && stop.kind && Number.isFinite(Number(stop.minutes)) && (stop.story_long || stop.story)),
     sources_https: sourceLinks.length > 0 && sourceLinks.every((url) => Boolean(httpsUrl(url))),
     sources_unique: sourceLinks.length === new Set(sourceLinks).size,
+    stop_sources_complete: stopSourcesComplete,
+    navigation_coordinates_complete: coordinatesComplete,
+    safe_navigation_exclusions: safeNavigationExclusions,
+    navigation_exclusion_count: excludedStops.length,
+    central_origin_verified: hubInsideCentralBand,
+    central_origin: hub,
     connections_valid: connectionErrors.length === 0,
     connection_errors: connectionErrors,
     road_profile_100: profileTotal(route.road_profile) === 100,
@@ -142,7 +219,8 @@ function staticChecks(route, allLegacyIds) {
     map_api_1: new URL(mapUrl).searchParams.get('api') === '1',
     map_points_unambiguous: points.every((point) => !INSTRUCTIONAL_LOCATION.test(point)),
     circle_matches_points: circleMatches,
-    navigation_points: points,
+    navigation_points: corePoints,
+    full_navigation_points: points,
     map_url: mapUrl,
   };
 }
@@ -150,7 +228,8 @@ function staticChecks(route, allLegacyIds) {
 function checksPassed(checks) {
   return [
     'required_fields', 'no_placeholders', 'stops_present', 'stop_content_complete',
-    'sources_https', 'sources_unique', 'connections_valid', 'road_profile_100',
+    'sources_https', 'sources_unique', 'stop_sources_complete', 'navigation_coordinates_complete', 'safe_navigation_exclusions',
+    'central_origin_verified', 'connections_valid', 'road_profile_100',
     'map_has_origin_and_destination', 'map_waypoints_within_limit', 'map_url_under_2048',
     'map_api_1', 'map_points_unambiguous', 'circle_matches_points',
   ].every((name) => checks[name] === true);
@@ -167,8 +246,47 @@ async function checkSource(url) {
         signal: controller.signal,
         headers: { 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/127 Safari/537.36' },
       });
-      lastResult = { url, ok: response.ok, status: response.status, final_url: response.url, attempts: attempt };
-      if (response.ok || (response.status > 0 && response.status < 500 && response.status !== 429)) return lastResult;
+      const originalUrl = new URL(url);
+      const finalUrl = new URL(response.url || url);
+      const finalHost = finalUrl.hostname.toLowerCase();
+      const accessControlled = [401, 403].includes(response.status) && OFFICIAL_BROWSER_VERIFIED_WAF_HOSTS.has(finalHost);
+      const genericPath = (pathname) => /^\/(?:he|en|heb|eng)?\/?$/i.test(pathname || '/');
+      const genericRedirect = response.redirected
+        && !genericPath(originalUrl.pathname)
+        && genericPath(finalUrl.pathname);
+      let pageTitle = '';
+      let soft404 = false;
+      if (response.ok && /(?:text\/html|application\/xhtml\+xml)/i.test(response.headers.get('content-type') || '')) {
+        const reader = response.body?.getReader();
+        const chunks = [];
+        let bytes = 0;
+        while (reader && bytes < 65536) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          bytes += value.byteLength;
+        }
+        if (reader) await reader.cancel().catch(() => {});
+        const sample = new TextDecoder('utf-8').decode(Buffer.concat(chunks.map((chunk) => Buffer.from(chunk))));
+        pageTitle = String(sample.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] || '')
+          .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 240);
+        const firstHeading = String(sample.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '')
+          .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 240);
+        soft404 = /(?:\b404\b|page not found|not found|הדף לא נמצא|העמוד לא נמצא)/i.test(`${pageTitle} ${firstHeading}`);
+      }
+      lastResult = {
+        url,
+        ok: (response.ok && !genericRedirect && !soft404) || accessControlled,
+        status: response.status,
+        final_url: response.url,
+        access_controlled: accessControlled,
+        generic_redirect: genericRedirect,
+        soft_404: soft404,
+        page_title: pageTitle,
+        verification: accessControlled ? 'official_site_browser_verified_waf' : 'direct_http_content_sample',
+        attempts: attempt,
+      };
+      if (lastResult.ok || (response.status > 0 && response.status < 500 && response.status !== 429)) return lastResult;
     } catch (error) {
       lastResult = { url, ok: false, status: 0, error: error?.cause?.code || error.name || 'fetch_failed', attempts: attempt };
     } finally {
@@ -242,8 +360,12 @@ export async function buildAudit({ network = false } = {}) {
   const audit = data.ROAD_BOOK_RELEASE_AUDIT;
   const withheld = new Set(audit.withheld_legacy_route_ids || []);
   const ready = new Set(audit.release_ready_route_ids || []);
-  const allLegacyIds = new Set(data.ROAD_BOOK_LEGACY.routes.map((route) => route.id));
-  const legacyRoutes = data.ROAD_BOOK_LEGACY.routes.map((route) => applyRelease(route, audit));
+  const catalogueRoutes = [
+    ...(data.ROAD_BOOK_LEGACY.routes || []),
+    ...(data.ROAD_BOOK_V23_EXPANSION?.routes || []),
+  ];
+  const allLegacyIds = new Set(catalogueRoutes.map((route) => route.id));
+  const legacyRoutes = catalogueRoutes.map((route) => applyRelease(route, audit));
   const activeRoutes = legacyRoutes.filter((route) => ready.has(route.id) && !withheld.has(route.id));
   const warningRoutes = audit.publish_with_warnings
     ? legacyRoutes.filter((route) => withheld.has(route.id))
@@ -284,7 +406,7 @@ export async function buildAudit({ network = false } = {}) {
     return {
       id: route.id,
       title: route.title,
-      origin: 'legacy',
+      origin: route.catalogue_version === VERSION ? 'expansion_2_3_0' : 'legacy',
       release_status: releaseStatus,
       published_tab: releaseStatus === 'pass' ? 'main' : (releaseStatus === 'warning' ? 'issues' : null),
       release_reason: isWarning
@@ -294,7 +416,7 @@ export async function buildAudit({ network = false } = {}) {
       warning_severity_label: severityMeta?.label || '',
       warning_severity_explanation: severityMeta?.explanation || '',
       verification_level: route.verification_level,
-      checks: { ...(releaseResult?.checks || {}), ...checks, sources_reachable: sourcesReachable },
+      checks: { ...(releaseResult?.checks || {}), ...checks, static_checks_passed: staticPass, sources_reachable: sourcesReachable },
       source_urls: route.sources,
       source_results: network ? sourceResults : [],
     };
@@ -321,18 +443,24 @@ export async function buildAudit({ network = false } = {}) {
     reviewing: legacyRecords.filter((record) => record.release_status === 'reviewing').length,
     withheld: records.filter((record) => record.release_status === 'withheld').length,
     failed: records.filter((record) => record.release_status === 'fail').length,
+    published_static_failures: legacyRecords.filter((record) => record.published_tab && record.checks.static_checks_passed !== true).length,
+    published_source_failures: network ? legacyRecords.filter((record) => record.published_tab && record.checks.sources_reachable !== true).length : null,
     active_stops: activeRoutes.reduce((sum, route) => sum + route.stops.length, 0),
     unique_active_sources: new Set(activeRoutes.flatMap((route) => route.sources)).size,
     warning_stops: warningRoutes.reduce((sum, route) => sum + route.stops.length, 0),
     published_stops: publishedRoutes.reduce((sum, route) => sum + route.stops.length, 0),
+    navigation_excluded_stops: publishedRoutes.reduce((sum, route) => sum + (route.stops || []).filter((stop) => stop.navigation_excluded).length, 0),
     unique_published_sources: new Set(publishedRoutes.flatMap((route) => route.sources)).size,
+    access_controlled_sources: network ? Object.values(health).filter((result) => result.access_controlled).length : null,
+    generic_redirect_sources: network ? Object.values(health).filter((result) => result.generic_redirect).length : null,
+    soft_404_sources: network ? Object.values(health).filter((result) => result.soft_404).length : null,
   };
 
   return {
     document_title: 'ביקורת שחרור פרטנית למסלולים',
     document_version: VERSION,
     audited_on: audit.audited_on,
-    scope: 'כל 90 מסלולי המקור (45 PASS ו־45 עם הערה) וכל 53 מועמדי המחקר המוסתרים',
+    scope: `כל ${legacyRoutes.length} המסלולים המפורסמים (${activeRoutes.length} ב־PASS ו־${warningRoutes.length} עם הערה) וכל ${candidateRecords.length} מועמדי המחקר המוסתרים`,
     network_checked: network,
     summary,
     routes: records,
@@ -365,7 +493,11 @@ function markdownReport(report) {
     `- חלוקת המסלולים עם ההערות: ${report.summary.warning_severity.minor_navigation} „תיקון ניווט קטן”, ${report.summary.warning_severity.conditional} „מסלול מותנה” ו־${report.summary.warning_severity.major} „בעיה מהותית”.\n` +
     `- בסך הכול מפורסמים ${report.summary.published_catalogue} מסלולים; ${report.summary.research} מועמדי מחקר לא גמורים נשארים מוסתרים.\n` +
     `- ${report.summary.reviewing} מסלולים עדיין בבדיקה ו־${report.summary.failed} מסלולי מקור נכשלו בשער הסטטי.\n` +
+    `- ${report.summary.published_static_failures} מסלולים מפורסמים נכשלו בשער מבנה/מפה; ${report.network_checked ? report.summary.published_source_failures : '—'} נכשלו בבדיקת מקורות חיה.\n` +
+    `- ${report.network_checked ? report.summary.access_controlled_sources : '—'} מקורות רשמיים נפתחו בדפדפן אך החזירו חסימת WAF לבדיקת HTTP; הסטטוס הגולמי נשמר בדוח.\n` +
+    `- ${report.network_checked ? report.summary.generic_redirect_sources : '—'} קישורים הוסטו לדף בית כללי ו־${report.network_checked ? report.summary.soft_404_sources : '—'} החזירו דף 404 רך; שניהם נחשבים כשל.\n` +
     `- ${report.summary.published_stops} תחנות ו־${report.summary.unique_published_sources} מקורות ייחודיים נכללים ב־${report.summary.published_catalogue} המסלולים המפורסמים.\n\n` +
+    `- ${report.summary.navigation_excluded_stops} נקודות בעייתיות נשמרות כתיעוד בלבד והוחרגו ממפות הניווט.\n\n` +
     `## תוצאה לכל מסלול\n\n` +
     `| מזהה | מסלול | סטטוס | קטגוריית הערה | נתונים | מפה | מקורות |\n` +
     `|---|---|---|---|---:|---:|---:|\n${rows}\n\n` +
@@ -384,11 +516,14 @@ async function main() {
   const report = await buildAudit({ network });
   if (write) {
     await mkdir(REPORT_DIR, { recursive: true });
-    await writeFile(path.join(REPORT_DIR, 'route-release-audit-2.2.4.json'), `${JSON.stringify(report, null, 2)}\n`);
-    await writeFile(path.join(REPORT_DIR, 'ROUTE_RELEASE_AUDIT_2_2_4.md'), markdownReport(report));
+    await writeFile(path.join(REPORT_DIR, 'route-release-audit-2.3.0.json'), `${JSON.stringify(report, null, 2)}\n`);
+    await writeFile(path.join(REPORT_DIR, 'ROUTE_RELEASE_AUDIT_2_3_0.md'), markdownReport(report));
   }
   console.log(JSON.stringify(report.summary));
-  if (report.summary.failed > 0 || report.summary.reviewing > 0) process.exitCode = 1;
+  if (report.summary.failed > 0
+      || report.summary.reviewing > 0
+      || report.summary.published_static_failures > 0
+      || (network && report.summary.published_source_failures > 0)) process.exitCode = 1;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

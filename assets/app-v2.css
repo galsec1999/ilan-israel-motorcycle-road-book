@@ -1,6 +1,6 @@
 /**
  * עיצוב גרסה 2
- * גרסה: 2.2.4
+ * גרסה: 2.3.0
  */
 
 :root {
@@ -94,6 +94,21 @@ main { inline-size: min(1520px, 100%); margin-inline: auto; padding: 22px clamp(
 :root[data-theme="dark"] .safety-banner { background: #392818; color: #ffe1b8; border-color: #624525; }
 .safety-banner .text-button { margin-inline-start: auto; }
 
+.central-star { margin: 18px 0 24px; padding: 20px; display: grid; grid-template-columns: minmax(250px,.72fr) minmax(0,1.45fr); gap: 18px; align-items: stretch; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 9px 28px rgb(16 53 65 / 6%); }
+.central-star-hub { min-inline-size: 0; display: flex; align-items: center; gap: 15px; padding: 18px; border-radius: 18px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; }
+.central-star-hub .eyebrow { color: var(--accent); }
+.central-star-hub h2 { margin: 0 0 7px; line-height: 1.15; }
+.central-star-hub p { margin: 0; color: #e2eeee; }
+.central-star-mark { flex: 0 0 auto; display: grid; place-items: center; inline-size: 64px; block-size: 64px; border-radius: 50%; background: var(--accent); color: #1d2528; font-size: 2rem; box-shadow: 0 0 0 8px rgb(255 255 255 / 12%); }
+.central-star-spokes { min-inline-size: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.central-star-spokes button { min-inline-size: 0; padding: 13px 15px; display: grid; gap: 2px; text-align: start; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-soft); color: var(--text); cursor: pointer; }
+.central-star-spokes button:first-child { grid-column: 1 / -1; text-align: center; }
+.central-star-spokes button:hover, .central-star-spokes button.active { border-color: var(--brand-2); background: color-mix(in srgb, var(--brand-2) 13%, var(--surface)); }
+.central-star-spokes button.active { box-shadow: inset 0 0 0 2px var(--brand-2); }
+.central-star-spokes strong, .central-star-spokes small { min-inline-size: 0; overflow-wrap: anywhere; }
+.central-star-spokes small { color: var(--muted); }
+.central-origin-chip { border-color: color-mix(in srgb, var(--accent) 70%, var(--line)); background: color-mix(in srgb, var(--accent) 13%, var(--surface)); font-weight: 800; }
+
 .view-tabs { position: sticky; z-index: 50; top: 67px; display: flex; gap: 6px; overflow-x: auto; padding: 8px; margin: 20px 0 30px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 8px 24px rgb(16 53 65 / 7%); scrollbar-width: none; }
 .view-tabs::-webkit-scrollbar, .quick-filters::-webkit-scrollbar { display: none; }
 .view-tabs button { flex: 1 0 auto; border: 0; border-radius: 999px; padding: 11px 18px; background: transparent; color: var(--muted); font-weight: 800; cursor: pointer; }
@@ -104,7 +119,7 @@ main { inline-size: min(1520px, 100%); margin-inline: auto; padding: 22px clamp(
 .section-heading h2 { margin: 0; font-size: clamp(1.65rem,3.2vw,2.7rem); line-height: 1.15; }
 .section-heading p { max-inline-size: 58ch; color: var(--muted); }
 
-.quick-filters { display: grid; grid-template-columns: repeat(12,minmax(120px,1fr)); gap: 8px; margin-block-end: 14px; overflow-x: auto; padding-block-end: 3px; scrollbar-width: none; }
+.quick-filters { display: grid; grid-template-columns: repeat(14,minmax(120px,1fr)); gap: 8px; margin-block-end: 14px; overflow-x: auto; padding-block-end: 3px; scrollbar-width: none; }
 .quick-filters button { min-inline-size: 120px; padding: 12px 10px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; font-weight: 750; }
 .quick-filters button.active { background: var(--brand-2); border-color: var(--brand-2); color: white; }
 
@@ -214,6 +229,7 @@ dialog::backdrop { background: rgb(3 13 17 / 76%); backdrop-filter: blur(5px); }
 .detail-grid small { display: block; color: var(--muted); }
 .stops-list { display: grid; gap: 10px; }
 .stop-card { padding: 15px; border: 1px solid var(--line); border-radius: 13px; }
+.navigation-exclusion-note { margin-block: 10px; padding: 10px 12px; border-inline-start: 5px solid var(--danger); border-radius: 9px; background: color-mix(in srgb, var(--danger) 10%, var(--surface)); color: var(--text); overflow-wrap: anywhere; }
 .stop-card h4 { margin: 0 0 4px; }
 .stop-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-block-start: 10px; }
 .ai-quick { display: flex; flex-wrap: wrap; gap: 7px; margin-block: 15px; }
@@ -283,9 +299,10 @@ footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; pad
 .export-note { color: var(--muted); font-size: .84rem; }
 
 @media (max-width: 1180px) {
+  .central-star { grid-template-columns: minmax(0,1fr); }
   .filters { grid-template-columns: repeat(3,minmax(150px,1fr)); }
   .search-field { grid-column: span 2; }
-  .quick-filters { grid-template-columns: repeat(12,150px); }
+  .quick-filters { grid-template-columns: repeat(14,150px); }
   .route-card { grid-template-columns: minmax(0,1fr); }
   .map-preview { border-inline-end: 0; border-bottom: 1px solid var(--line); }
   .map-preview iframe { min-block-size: 230px; }
@@ -320,6 +337,11 @@ footer { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; pad
   .safety-grid, .about-grid, .checklist, .detail-grid { grid-template-columns: 1fr; }
   .journey-grid { grid-template-columns: 1fr; }
   .safety-banner .text-button { margin-inline-start: 0; }
+  .central-star { padding: 12px; }
+  .central-star-hub { align-items: flex-start; padding: 15px; }
+  .central-star-mark { inline-size: 48px; block-size: 48px; font-size: 1.45rem; }
+  .central-star-spokes { grid-template-columns: minmax(0,1fr); }
+  .central-star-spokes button:first-child { grid-column: auto; }
   dialog { padding: 18px; }
   .results-bar { align-items: flex-start; flex-direction: column; }
   .issue-search-panel { grid-template-columns: minmax(0,1fr); }

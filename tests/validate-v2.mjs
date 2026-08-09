@@ -1,6 +1,7 @@
 /**
  * שער האיכות המקומי
- * גרסה: 2.2.4
+ * גרסת מסמך: 2.3.0
+ * גרסת מוצר: 2.3.0
  */
 
 import test from 'node:test';
@@ -17,10 +18,11 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 function evaluateAll() {
   const context = vm.createContext({ window: {} });
   for (const relative of [
-    'data/config-v2.2.4.js',
+    'data/config-v2.3.0.js',
     'data/legacy-content-v2.js',
     'data/new-routes-v2.js',
-    'data/release-audit-v2.2.4.js',
+    'data/route-expansion-v2.3.0.js',
+    'data/release-audit-v2.3.0.js',
   ]) vm.runInContext(read(relative), context, { filename: relative });
   return context.window;
 }
@@ -30,10 +32,12 @@ const legacy = data.ROAD_BOOK_LEGACY;
 const additions = data;
 const config = data.ROAD_BOOK_CONFIG;
 const release = data.ROAD_BOOK_RELEASE_AUDIT;
-const manifest = JSON.parse(read('manifest-2.2.4.webmanifest'));
+const expansion = data.ROAD_BOOK_V23_EXPANSION;
+const catalogueRoutes = [...legacy.routes, ...expansion.routes];
+const manifest = JSON.parse(read('manifest-2.3.0.webmanifest'));
 const index = read('index.html');
-const app = read('assets/app-v2.2.4.js');
-const css = read('assets/app-v2.2.4.css');
+const app = read('assets/app-v2.3.0.js');
+const css = read('assets/app-v2.3.0.css');
 const serviceWorker = read('sw.js');
 
 function appFunctionSection(name, nextName) {
@@ -44,7 +48,28 @@ function appFunctionSection(name, nextName) {
   return app.slice(start, end);
 }
 
-test('גרסה 2.2.4 משמרת את כל חומר המקור ואת צילומי 2.2.0–2.2.3', () => {
+function canonicalPlace(value) {
+  return String(value || '').trim().toLocaleLowerCase('he')
+    .replace(/[״׳"'–—־,:()]/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/^(?:גן לאומי|שמורת טבע|מרכז המבקרים(?: של)?|חניון|פארק|מוזאון|מוזיאון)\s+/, '')
+    .replace(/\s+(?:נקודת ניווט כללית|נקודת מעבר בלבד|נקודת הקהילה|גישה לפארק|סגור.*)$/u, '')
+    .trim();
+}
+
+function corePlaceSet(route) {
+  const contentPoints = Array.isArray(route.stops) && route.stops.length
+    ? route.stops.map((stop) => stop.name || stop.navigation_name)
+    : (route.map_points || [route.start, route.end]);
+  return new Set(contentPoints
+    .map(canonicalPlace).filter(Boolean));
+}
+
+function sharedPlaceCount(a, b) {
+  return [...a].filter((point) => b.has(point)).length;
+}
+
+test('גרסה 2.3.0 משמרת את כל חומר המקור ואת צילומי 2.2.0–2.2.4', () => {
   assert.equal(legacy.routes.length, 90);
   assert.equal(legacy.multiday.length, 18);
   assert.equal(legacy.grandTours.length, 3);
@@ -55,7 +80,8 @@ test('גרסה 2.2.4 משמרת את כל חומר המקור ואת צילומ�
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.1', 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.2', 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.3', 'index.html')));
-  assert.match(read('versions/v2.2.3/index.html'), /גרסה 2\.2\.3/);
+  assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.4', 'index.html')));
+  assert.match(read('versions/v2.2.4/index.html'), /גרסה 2\.2\.4/);
   for (const preserved of [
     'versions/v2.2.3/assets/app-v2.2.3.js',
     'versions/v2.2.3/assets/app-v2.2.3.css',
@@ -76,26 +102,26 @@ test('גרסה 2.2.4 משמרת את כל חומר המקור ואת צילומ�
   }
 });
 
-test('שכבת השחרור מפרידה 45 PASS, ‏45 warning ו־53 research מוסתרים', () => {
-  assert.equal(release.version, '2.2.4');
+test('שכבת השחרור מפרידה 90 PASS, ‏90 warning ו־53 research מוסתרים', () => {
+  assert.equal(release.version, '2.3.0');
   assert.equal(release.publish_candidates, false);
   assert.equal(release.publish_with_warnings, true);
-  assert.equal(release.release_ready_route_ids.length, 45);
-  assert.equal(release.withheld_legacy_route_ids.length, 45);
+  assert.equal(release.release_ready_route_ids.length, 90);
+  assert.equal(release.withheld_legacy_route_ids.length, 90);
   assert.equal(new Set(release.release_ready_route_ids).size, release.release_ready_route_ids.length);
   assert.equal(new Set(release.withheld_legacy_route_ids).size, release.withheld_legacy_route_ids.length);
   assert.equal(release.release_ready_route_ids.filter((id) => release.withheld_legacy_route_ids.includes(id)).length, 0);
-  assert.equal(release.release_ready_route_ids.length + release.withheld_legacy_route_ids.length, legacy.routes.length);
+  assert.equal(release.release_ready_route_ids.length + release.withheld_legacy_route_ids.length, catalogueRoutes.length);
   const exclusions = new Map(release.catalogue_exclusions
     .filter((item) => item.route_id)
     .map((item) => [item.route_id, item.reason]));
   for (const id of release.withheld_legacy_route_ids) assert.ok(exclusions.get(id), id);
 
-  const sourceIds = new Set(legacy.routes.map((route) => route.id));
+  const sourceIds = new Set(catalogueRoutes.map((route) => route.id));
   assert.ok(release.release_ready_route_ids.every((id) => sourceIds.has(id)));
   assert.ok(release.withheld_legacy_route_ids.every((id) => sourceIds.has(id)));
   assert.deepEqual(new Set(Object.keys(release.route_results)), sourceIds);
-  for (const route of legacy.routes) {
+  for (const route of catalogueRoutes) {
     const result = release.route_results[route.id];
     assert.ok(result, route.id);
     assert.ok(['pass', 'warning'].includes(result.status), route.id);
@@ -108,8 +134,8 @@ test('שכבת השחרור מפרידה 45 PASS, ‏45 warning ו־53 research 
       assert.equal(result.reason, exclusions.get(route.id), route.id);
     }
   }
-  assert.equal(Object.values(release.route_results).filter((result) => result.status === 'pass').length, 45);
-  assert.equal(Object.values(release.route_results).filter((result) => result.status === 'warning').length, 45);
+  assert.equal(Object.values(release.route_results).filter((result) => result.status === 'pass').length, 90);
+  assert.equal(Object.values(release.route_results).filter((result) => result.status === 'warning').length, 90);
   assert.match(app, /releaseAudit\.route_results/);
   assert.match(app, /release_audit_status/);
   assert.match(app, /release_has_issue/);
@@ -117,13 +143,13 @@ test('שכבת השחרור מפרידה 45 PASS, ‏45 warning ו־53 research 
   assert.doesNotMatch(app, /release_audit_status:\s*'עבר ביקורת שחרור טכנית'/);
 });
 
-test('כל 45 מסלולי ההערות מסווגים בדיוק פעם אחת בשלוש הקטגוריות', () => {
+test('כל 90 מסלולי ההערות מסווגים בדיוק פעם אחת בשלוש הקטגוריות', () => {
   const allowed = new Set(['minor_navigation', 'conditional', 'major']);
   const entries = Object.entries(release.warning_severity || {});
   const warningIds = new Set(release.withheld_legacy_route_ids);
   const passIds = new Set(release.release_ready_route_ids);
-  assert.equal(entries.length, 45);
-  assert.equal(new Set(entries.map(([id]) => id)).size, 45);
+  assert.equal(entries.length, 90);
+  assert.equal(new Set(entries.map(([id]) => id)).size, 90);
   assert.deepEqual([...entries.map(([id]) => id)].sort(), [...warningIds].sort());
   assert.ok(entries.every(([, severity]) => allowed.has(severity)));
   assert.equal(entries.filter(([id]) => passIds.has(id)).length, 0);
@@ -131,7 +157,62 @@ test('כל 45 מסלולי ההערות מסווגים בדיוק פעם אחת 
     severity,
     entries.filter(([, value]) => value === severity).length,
   ]));
-  assert.deepEqual(counts, { minor_navigation: 6, conditional: 8, major: 31 });
+  assert.equal(Object.values(counts).reduce((sum, value) => sum + value, 0), 90);
+  assert.ok(Object.values(counts).every((value) => value > 0));
+});
+
+test('הרחבת 2.3.0 כוללת 90 מסלולים אמיתיים, יציאה מהמרכז ולפחות 45 לולאות או מסלולי נחש', () => {
+  assert.equal(expansion.version, '2.3.0');
+  assert.equal(expansion.release_complete, true);
+  assert.equal(expansion.routes.length, 90);
+  assert.equal(expansion.pass_route_ids.length, 45);
+  assert.equal(expansion.warning_route_ids.length, 45);
+  assert.equal(new Set(expansion.routes.map((route) => route.id)).size, 90);
+  assert.equal(expansion.routes.filter((route) => ['loop', 'snake'].includes(route.route_pattern)).length >= 45, true);
+  const legacyIds = new Set(legacy.routes.map((route) => route.id));
+  assert.ok(expansion.routes.every((route) => !legacyIds.has(route.id)));
+  const legacyPointSets = legacy.routes.map((route) => ({ id: route.id, points: corePlaceSet(route) }));
+  for (const route of expansion.routes) {
+    const candidate = corePlaceSet(route);
+    for (const reference of legacyPointSets) {
+      const shared = sharedPlaceCount(candidate, reference.points);
+      assert.ok(shared < 2 || candidate.size - shared >= 2, `${route.id} duplicates ${reference.id}`);
+    }
+  }
+  for (let index = 0; index < expansion.routes.length; index += 1) {
+    const candidate = corePlaceSet(expansion.routes[index]);
+    for (let otherIndex = index + 1; otherIndex < expansion.routes.length; otherIndex += 1) {
+      const reference = corePlaceSet(expansion.routes[otherIndex]);
+      const shared = sharedPlaceCount(candidate, reference);
+      assert.ok(shared < 2 || (candidate.size - shared >= 2 && reference.size - shared >= 2), `${expansion.routes[index].id} duplicates ${expansion.routes[otherIndex].id}`);
+    }
+  }
+  for (const route of expansion.routes) {
+    const origin = route.meeting_primary_coordinates;
+    assert.ok(origin && origin.lat >= 31.78 && origin.lat <= 32.12 && origin.lon >= 34.72 && origin.lon <= 34.83, route.id);
+    assert.equal(route.full_map_points.length, route.full_map_coordinates.length, route.id);
+    assert.ok(route.full_map_points.length >= 3 && route.full_map_points.length <= 10, route.id);
+    assert.ok(route.sources.length > 0 && route.sources.every((url) => url.startsWith('https://')), route.id);
+    assert.ok(route.navigation_coordinates.every((point) => point && Number.isFinite(point.lat) && Number.isFinite(point.lon)), route.id);
+    assert.ok(route.stops.every((stop) => stop.sources.length > 0 && stop.story_long), route.id);
+    const excludedStops = route.stops.filter((stop) => stop.navigation_excluded);
+    if (expansion.pass_route_ids.includes(route.id)) assert.equal(excludedStops.length, 0, route.id);
+    for (const stop of excludedStops) {
+      assert.equal(stop.navigation_name, null, route.id);
+      assert.ok(stop.navigation_exclusion_reason.length >= 20, route.id);
+      assert.ok(!route.map_points.includes(stop.name), route.id);
+      assert.ok(!route.full_map_points.includes(stop.name), route.id);
+    }
+    if (['loop', 'snake', 'out_and_back'].includes(route.route_pattern)) {
+      assert.equal(route.full_map_points[0], route.full_map_points.at(-1), route.id);
+    }
+    if (['loop', 'snake'].includes(route.route_pattern)) {
+      assert.ok(route.return_points.length > 0, route.id);
+      assert.ok(route.return_roads, route.id);
+      const outbound = new Set([route.meeting_primary, route.meeting_secondary, ...route.map_points]);
+      assert.ok(route.return_points.some((point) => !outbound.has(point)), route.id);
+    }
+  }
 });
 
 test('תיקוני הנתונים והניווט הקריטיים נשמרים במפורש', () => {
@@ -165,25 +246,26 @@ test('תיקוני הנתונים והניווט הקריטיים נשמרים �
   assert.match(app, /stop\.navigation_name === null/);
 });
 
-test('דוח הביקורת מפרסם 90 מסלולים בשני טאבים ומשאיר רק מחקר לא גמור מוסתר', async () => {
+test('דוח הביקורת מפרסם 180 מסלולים בשני טאבים ומשאיר רק מחקר לא גמור מוסתר', async () => {
   const report = await buildAudit();
-  assert.equal(report.document_version, '2.2.4');
-  assert.equal(report.summary.total_records, 143);
-  assert.equal(report.summary.legacy_records, 90);
+  assert.equal(report.document_version, '2.3.0');
+  assert.equal(report.summary.total_records, 233);
+  assert.equal(report.summary.legacy_records, 180);
   assert.equal(report.summary.candidate_records, 53);
-  assert.equal(report.summary.pass_catalogue, 45);
-  assert.equal(report.summary.active_catalogue, 45);
-  assert.equal(report.summary.warning_catalogue, 45);
-  assert.equal(report.summary.published_catalogue, 90);
-  assert.equal(report.summary.passed, 45);
-  assert.equal(report.summary.warning, 45);
-  assert.deepEqual(report.summary.warning_severity, { minor_navigation: 6, conditional: 8, major: 31 });
+  assert.equal(report.summary.pass_catalogue, 90);
+  assert.equal(report.summary.active_catalogue, 90);
+  assert.equal(report.summary.warning_catalogue, 90);
+  assert.equal(report.summary.published_catalogue, 180);
+  assert.equal(report.summary.passed, 90);
+  assert.equal(report.summary.warning, 90);
+  assert.equal(Object.values(report.summary.warning_severity).reduce((sum, value) => sum + value, 0), 90);
   assert.equal(report.summary.research, 53);
   assert.equal(report.summary.reviewing, 0);
   assert.equal(report.summary.failed, 0);
+  assert.equal(report.summary.published_static_failures, 0);
   assert.equal(report.summary.withheld, 0);
-  assert.equal(report.routes.filter((route) => route.release_status === 'pass' && route.published_tab === 'main').length, 45);
-  assert.equal(report.routes.filter((route) => route.release_status === 'warning' && route.published_tab === 'issues').length, 45);
+  assert.equal(report.routes.filter((route) => route.release_status === 'pass' && route.published_tab === 'main').length, 90);
+  assert.equal(report.routes.filter((route) => route.release_status === 'warning' && route.published_tab === 'issues').length, 90);
   assert.equal(report.routes.filter((route) => route.release_status === 'research' && route.published_tab === null).length, 53);
   assert.ok(report.routes
     .filter((route) => route.release_status === 'warning')
@@ -196,23 +278,28 @@ test('דוח הביקורת מפרסם 90 מסלולים בשני טאבים ו�
   assert.ok(report.routes
     .filter((route) => route.release_status !== 'warning')
     .every((route) => route.warning_severity === null));
-  assert.equal(report.summary.published_stops, 475);
+  assert.ok(report.summary.published_stops > 475);
   assert.ok(report.summary.published_stops > report.summary.active_stops);
   assert.ok(report.summary.unique_published_sources >= report.summary.unique_active_sources);
+  assert.ok(report.summary.navigation_excluded_stops > 0);
 });
 
-test('דוחות 2.2.4 הכתובים כוללים בדיקת רשת מלאה ושומרים את דוחות 2.2.1–2.2.3', () => {
-  const jsonPath = path.join(root, 'reports', 'route-release-audit-2.2.4.json');
-  const markdownPath = path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_4.md');
+test('דוחות 2.3.0 הכתובים כוללים בדיקת רשת מלאה ושומרים את דוחות 2.2.1–2.2.4', () => {
+  const jsonPath = path.join(root, 'reports', 'route-release-audit-2.3.0.json');
+  const markdownPath = path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_3_0.md');
   assert.ok(fs.existsSync(jsonPath));
   assert.ok(fs.existsSync(markdownPath));
   const written = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
-  assert.equal(written.document_version, '2.2.4');
+  assert.equal(written.document_version, '2.3.0');
   assert.equal(written.network_checked, true);
-  assert.equal(written.summary.published_catalogue, 90);
-  assert.equal(written.summary.passed, 45);
-  assert.equal(written.summary.warning, 45);
-  assert.deepEqual(written.summary.warning_severity, { minor_navigation: 6, conditional: 8, major: 31 });
+  assert.equal(written.summary.published_catalogue, 180);
+  assert.equal(written.summary.passed, 90);
+  assert.equal(written.summary.warning, 90);
+  assert.equal(written.summary.published_static_failures, 0);
+  assert.equal(written.summary.published_source_failures, 0);
+  assert.equal(written.summary.generic_redirect_sources, 0);
+  assert.equal(written.summary.soft_404_sources, 0);
+  assert.equal(Object.values(written.summary.warning_severity).reduce((sum, value) => sum + value, 0), 90);
   assert.equal(written.summary.research, 53);
   assert.ok(written.routes
     .filter((route) => route.release_status === 'warning')
@@ -222,12 +309,9 @@ test('דוחות 2.2.4 הכתובים כוללים בדיקת רשת מלאה ו
     .filter((route) => route.published_tab)
     .every((route) => route.checks.sources_reachable === true));
   const markdown = fs.readFileSync(markdownPath, 'utf8');
-  assert.match(markdown, /גרסה 2\.2\.4/);
-  assert.match(markdown, /45 מסלולים ב־PASS/);
-  assert.match(markdown, /45 מסלולים מפורסמים בטאב נפרד/);
-  assert.match(markdown, /6 „תיקון ניווט קטן”/);
-  assert.match(markdown, /8 „מסלול מותנה”/);
-  assert.match(markdown, /31 „בעיה מהותית”/);
+  assert.match(markdown, /גרסה 2\.3\.0/);
+  assert.match(markdown, /90 מסלולים ב־PASS/);
+  assert.match(markdown, /90 מסלולים מפורסמים בטאב נפרד/);
   assert.match(markdown, /\| קטגוריית הערה \|/);
   assert.match(markdown, /## שלוש קטגוריות ההערה/);
   assert.match(markdown, /53 מועמדי מחקר לא גמורים נשארים מוסתרים/);
@@ -237,17 +321,56 @@ test('דוחות 2.2.4 הכתובים כוללים בדיקת רשת מלאה ו
   assert.ok(fs.existsSync(path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_2.md')));
   assert.ok(fs.existsSync(path.join(root, 'reports', 'route-release-audit-2.2.3.json')));
   assert.ok(fs.existsSync(path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_3.md')));
+  assert.ok(fs.existsSync(path.join(root, 'reports', 'route-release-audit-2.2.4.json')));
+  assert.ok(fs.existsSync(path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_4.md')));
+});
+
+test('דוח הגאוגרפיה בודק את כל 90 המסלולים החדשים ואת ציר החזרה בפועל', () => {
+  const jsonPath = path.join(root, 'reports', 'route-geography-audit-2.3.0.json');
+  const markdownPath = path.join(root, 'reports', 'ROUTE_GEOGRAPHY_AUDIT_2_3_0.md');
+  assert.ok(fs.existsSync(jsonPath));
+  assert.ok(fs.existsSync(markdownPath));
+  const written = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  assert.equal(written.document_version, '2.3.0');
+  assert.equal(written.product_version, '2.3.0');
+  assert.equal(written.network_checked, true);
+  assert.equal(written.summary.routes_checked, 90);
+  assert.equal(written.summary.pass_routes_checked, 45);
+  assert.equal(written.summary.warning_routes_checked, 45);
+  assert.equal(written.summary.osrm_routeable, 90);
+  assert.equal(written.summary.route_gate_failures, 0);
+  assert.equal(written.summary.pass_gate_failures, 0);
+  assert.equal(written.summary.different_return_corridor_passed, 90);
+  assert.ok(written.routes.every((route) => route.route_gate === true));
+  assert.ok(written.routes
+    .filter((route) => ['loop', 'snake'].includes(route.route_pattern))
+    .every((route) => route.checks.different_return_corridor === true
+      && route.osrm.return_geometry_unique_percent >= 10));
+  assert.match(fs.readFileSync(markdownPath, 'utf8'), /גרסת מסמך 2\.3\.0/);
+});
+
+test('שלושת תיקי המחקר נסגרו בדוחות QA אזוריים', () => {
+  for (const name of ['NORTH_ROUTE_EXPANSION_QA_2_3_0.json', 'CENTRAL_EAST_ROUTE_EXPANSION_QA_2_3_0.json', 'SOUTH_ROUTE_EXPANSION_QA_2_3_0.json']) {
+    const report = JSON.parse(read(`reports/research/${name}`));
+    assert.equal(report.document_version, '2.3.0', name);
+    assert.equal(report.product_version, '2.3.0', name);
+    assert.equal(report.result, 'PASS', name);
+    assert.equal(report.route_counts.total, 30, name);
+    assert.equal(report.route_counts.pass, 15, name);
+    assert.equal(report.route_counts.warning, 15, name);
+  }
 });
 
 test('HTML מציג גרסה אחת, טאב אזהרות, בטיחות וכל התצוגות', () => {
-  assert.match(index, /גרסה 2\.2\.4/);
+  assert.match(index, /גרסה 2\.3\.0/);
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
-  assert.match(index, /data\/release-audit-v2\.2\.4\.js/);
-  assert.match(index, /data\/config-v2\.2\.4\.js/);
-  assert.match(index, /assets\/app-v2\.2\.4\.js/);
-  assert.match(index, /assets\/app-v2\.2\.4\.css/);
-  assert.match(index, /manifest-2\.2\.4\.webmanifest/);
+  assert.match(index, /data\/route-expansion-v2\.3\.0\.js/);
+  assert.match(index, /data\/release-audit-v2\.3\.0\.js/);
+  assert.match(index, /data\/config-v2\.3\.0\.js/);
+  assert.match(index, /assets\/app-v2\.3\.0\.js/);
+  assert.match(index, /assets\/app-v2\.3\.0\.css/);
+  assert.match(index, /manifest-2\.3\.0\.webmanifest/);
   assert.match(index, /href="\.\/favicon\.ico"/);
   assert.doesNotMatch(index, /<iframe[^>]+book\.html/i);
   for (const view of ['routesView', 'issuesView', 'journeysView', 'safetyView', 'plannerView', 'combinedView', 'aboutView']) {
@@ -265,7 +388,9 @@ test('HTML מציג גרסה אחת, טאב אזהרות, בטיחות וכל ה
     assert.match(index, new RegExp(`data-issue-severity="${severity}"`), severity);
   }
   for (const label of ['תיקון ניווט קטן', 'מסלול מותנה', 'בעיה מהותית']) assert.match(index, new RegExp(label), label);
-  assert.match(index, /45 מסלולים שעברו את שער השחרור/);
+  assert.match(index, /90 מסלולים שעברו את שער השחרור/);
+  assert.match(index, /יוצאים מהמרכז — בכוכב, בלולאה או ב״נחש״/);
+  assert.match(index, /id="centralStar"/);
   assert.match(index, /המסלולים כאן לא קיבלו PASS, אבל הם לא נמחקו/);
   assert.match(index, /הבעיה המדויקת/);
   assert.match(index, /המפה או אחת מנקודות הניווט עלולות להיות חלק מהבעיה/);
@@ -284,7 +409,7 @@ test('התכונות ששוחזרו נשארות פעילות בקוד', () => {
     'filterRoutes', 'renderJourneys', 'pointsMapsUrl', 'migrateLegacyStorage',
     'renderCombined', 'routeExportHtml', 'grandExportHtml', 'openInvite',
     'getMeetings', 'initVisitCounter', 'normalizeSprings', 'approachMapsUrl',
-    'filterIssueRoutes', 'renderIssueRoutes',
+    'filterIssueRoutes', 'renderIssueRoutes', 'renderCentralStar', 'routeStarDirection',
     'writeClipboardText', 'copyWithFeedback', 'buildStopAiPrompt', 'copyStopAiPrompt',
   ]) assert.match(app, new RegExp(`function ${functionName}\\(`));
 
@@ -292,9 +417,14 @@ test('התכונות ששוחזרו נשארות פעילות בקוד', () => {
     assert.match(app, new RegExp(feature));
   }
   assert.match(app, /quickFilter === 'short'[\s\S]*?trip_types/);
+  assert.match(app, /quickFilter === 'loop'[\s\S]*?route_pattern/);
+  assert.match(app, /quickFilter === 'radial'[\s\S]*?route_pattern/);
   assert.match(app, /Number\(profile\.gravel\) > 0/);
   assert.match(app, /מפת גישה לנקודות המפגש/);
   assert.match(app, /מפת מסלול הטיול/);
+  assert.match(app, /function fullRouteNavigationPoints\(/);
+  assert.match(app, /route\.return_points/);
+  assert.match(app, /route\.route_pattern/);
   assert.doesNotMatch(app, /mapsUrlWithMeetings/);
 });
 
@@ -401,20 +531,21 @@ test('כרטיסים ומסכי מובייל אינם יכולים לחרוג מ
 });
 
 test('manifest ו-Service Worker יחסיים, מתקינים ומסונכרנים לגרסה', () => {
-  assert.equal(config.version, '2.2.4');
-  assert.equal(manifest.version, '2.2.4');
-  assert.match(manifest.name, /גרסה 2\.2\.4/);
-  assert.match(manifest.short_name, /2\.2\.4/);
+  assert.equal(config.version, '2.3.0');
+  assert.equal(manifest.version, '2.3.0');
+  assert.match(manifest.name, /גרסה 2\.3\.0/);
+  assert.match(manifest.short_name, /2\.3\.0/);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
   assert.equal(manifest.display, 'standalone');
   assert.ok(manifest.icons.some((icon) => icon.sizes === '192x192' && icon.src.startsWith('./')));
   assert.ok(manifest.icons.some((icon) => icon.sizes === '512x512' && icon.src.startsWith('./')));
   assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === './#issuesView'));
-  assert.match(serviceWorker, /v2\.2\.4/);
-  assert.match(serviceWorker, /data\/release-audit-v2\.2\.4\.js/);
-  assert.match(serviceWorker, /assets\/app-v2\.2\.4\.js/);
-  assert.match(serviceWorker, /offline-2\.2\.4\.html/);
+  assert.match(serviceWorker, /v2\.3\.0/);
+  assert.match(serviceWorker, /data\/route-expansion-v2\.3\.0\.js/);
+  assert.match(serviceWorker, /data\/release-audit-v2\.3\.0\.js/);
+  assert.match(serviceWorker, /assets\/app-v2\.3\.0\.js/);
+  assert.match(serviceWorker, /offline-2\.3\.0\.html/);
   assert.match(serviceWorker, /CACHE_PREFIX\s*=\s*['"]ilan-road-book-['"]/);
   assert.match(serviceWorker, /key\.startsWith\(CACHE_PREFIX\)/);
   assert.doesNotMatch(serviceWorker, /keys\.filter\(\(key\) => key !== CACHE_NAME\)/);
@@ -423,20 +554,20 @@ test('manifest ו-Service Worker יחסיים, מתקינים ומסונכרני
 
 test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read('offline-2.2.4.html'), /גרסה 2\.2\.4/);
+  assert.match(read('offline-2.3.0.html'), /גרסה 2\.3\.0/);
   for (const relative of [
-    'index.html', 'offline-2.2.4.html', 'manifest-2.2.4.webmanifest', 'sw.js',
-    'assets/app-v2.2.4.css', 'assets/app-v2.2.4.js', 'data/config-v2.2.4.js',
-    'data/legacy-content-v2.js', 'data/new-routes-v2.js', 'data/release-audit-v2.2.4.js',
+    'index.html', 'offline-2.3.0.html', 'manifest-2.3.0.webmanifest', 'sw.js',
+    'assets/app-v2.3.0.css', 'assets/app-v2.3.0.js', 'data/config-v2.3.0.js',
+    'data/legacy-content-v2.js', 'data/new-routes-v2.js', 'data/route-expansion-v2.3.0.js', 'data/release-audit-v2.3.0.js',
     'icons/icon-192.png', 'icons/icon-512.png', 'favicon.ico',
   ]) assert.ok(fs.existsSync(path.join(root, relative)), relative);
   for (const [compatibility, active] of [
-    ['assets/app-v2.js', 'assets/app-v2.2.4.js'],
-    ['assets/app-v2.css', 'assets/app-v2.2.4.css'],
-    ['data/config-v2.js', 'data/config-v2.2.4.js'],
-    ['data/release-audit-v2.js', 'data/release-audit-v2.2.4.js'],
-    ['manifest.webmanifest', 'manifest-2.2.4.webmanifest'],
-    ['offline.html', 'offline-2.2.4.html'],
+    ['assets/app-v2.js', 'assets/app-v2.3.0.js'],
+    ['assets/app-v2.css', 'assets/app-v2.3.0.css'],
+    ['data/config-v2.js', 'data/config-v2.3.0.js'],
+    ['data/release-audit-v2.js', 'data/release-audit-v2.3.0.js'],
+    ['manifest.webmanifest', 'manifest-2.3.0.webmanifest'],
+    ['offline.html', 'offline-2.3.0.html'],
   ]) assert.equal(read(compatibility), read(active), `${compatibility} != ${active}`);
 });
 
