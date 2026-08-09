@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "ספר הטיולים של אילן — גרסה 2.2.3",
+  "short_name": "אילן 2.2.3",
+  "description": "90 מסלולי כביש בשני טאבים, 475 תחנות עם העתקה ל־AI, מפות, בטיחות קבוצתית וסיפורי דרך.",
+  "version": "2.2.3",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f3f7f6",
+  "theme_color": "#102f3a",
+  "categories": ["travel", "navigation", "education"],
+  "shortcuts": [
+    { "name": "בחירת מסלול", "short_name": "מסלולים", "url": "./#routesView" },
+    { "name": "מסלולים עם הערות", "short_name": "עם הערות", "url": "./#issuesView" },
+    { "name": "מרכז הבטיחות", "short_name": "בטיחות", "url": "./#safetyView" },
+    { "name": "בונה טיול משולב", "short_name": "טיול משולב", "url": "./#combinedView" }
+  ],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
