@@ -1,6 +1,6 @@
 /**
  * שער האיכות המקומי
- * גרסת מסמך: 2.5.1
+ * גרסת מסמך: 2.5.2
  * גרסת מוצר: 2.5.0
  */
 
@@ -17,7 +17,7 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const readBytes = (relative) => fs.readFileSync(path.join(root, relative));
 const APP_VERSION = '2.5.0';
 const CATALOGUE_VERSION = '2.3.0';
-const RELEASE_DOCUMENT_VERSION = '2.5.1';
+const RELEASE_DOCUMENT_VERSION = '2.5.2';
 
 function evaluateAll() {
   const context = vm.createContext({ window: {} });
@@ -867,7 +867,7 @@ test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   ]) assert.deepEqual(readBytes(compatibility), readBytes(active), `${compatibility} != ${active} byte-for-byte`);
 });
 
-test('מסמכי הסיום מציגים גרסת מסמך 2.5.1 ומוצר 2.5.0', () => {
+test('מסמכי הסיום מציגים גרסת מסמך 2.5.2 ומוצר 2.5.0', () => {
   for (const relative of [
     'README_HE.md',
     'PROJECT_STATUS.md',
@@ -882,7 +882,7 @@ test('מסמכי הסיום מציגים גרסת מסמך 2.5.1 ומוצר 2.5.
   }
 
   const decisions = read('DECISIONS.md');
-  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.5\.1/, 'DECISIONS.md: גרסת מסמך');
+  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.5\.2/, 'DECISIONS.md: גרסת מסמך');
   assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.5\.0/, 'DECISIONS.md: גרסת מוצר');
 });
 
