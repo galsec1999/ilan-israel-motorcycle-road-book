@@ -1,7 +1,7 @@
 /**
  * שער האיכות המקומי
- * גרסת מסמך: 2.4.1
- * גרסת מוצר: 2.4.0
+ * גרסת מסמך: 2.5.1
+ * גרסת מוצר: 2.5.0
  */
 
 import test from 'node:test';
@@ -14,9 +14,10 @@ import { buildAudit } from '../tools/audit-release-routes.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
-const APP_VERSION = '2.4.0';
+const readBytes = (relative) => fs.readFileSync(path.join(root, relative));
+const APP_VERSION = '2.5.0';
 const CATALOGUE_VERSION = '2.3.0';
-const RELEASE_DOCUMENT_VERSION = '2.4.1';
+const RELEASE_DOCUMENT_VERSION = '2.5.1';
 
 function evaluateAll() {
   const context = vm.createContext({ window: {} });
@@ -72,7 +73,7 @@ function sharedPlaceCount(a, b) {
   return [...a].filter((point) => b.has(point)).length;
 }
 
-test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומי 2.2.0–2.3.0', () => {
+test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומי 2.2.0–2.4.0', () => {
   assert.equal(legacy.routes.length, 90);
   assert.equal(legacy.multiday.length, 18);
   assert.equal(legacy.grandTours.length, 3);
@@ -85,6 +86,7 @@ test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומ�
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.3', 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.4', 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', `v${CATALOGUE_VERSION}`, 'index.html')));
+  assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.4.0', 'index.html')));
   assert.match(read('versions/v2.2.4/index.html'), /גרסה 2\.2\.4/);
   for (const preserved of [
     'versions/v2.2.3/assets/app-v2.2.3.js',
@@ -116,6 +118,27 @@ test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומ�
     [`versions/v${CATALOGUE_VERSION}/manifest-${CATALOGUE_VERSION}.webmanifest`, `manifest-${CATALOGUE_VERSION}.webmanifest`],
     [`versions/v${CATALOGUE_VERSION}/offline-${CATALOGUE_VERSION}.html`, `offline-${CATALOGUE_VERSION}.html`],
   ]) assert.equal(read(snapshot), read(historical), `${snapshot} != ${historical}`);
+  for (const preserved of [
+    'versions/v2.4.0/index.html',
+    'versions/v2.4.0/assets/app-v2.4.0.js',
+    'versions/v2.4.0/assets/app-v2.4.0.css',
+    'versions/v2.4.0/data/config-v2.4.0.js',
+    'versions/v2.4.0/manifest-2.4.0.webmanifest',
+    'versions/v2.4.0/offline-2.4.0.html',
+    'versions/v2.4.0/sw.js',
+    'versions/v2.4.0/tests/browser-qa-v2.4.0.cjs',
+    'versions/v2.4.0/reports/browser-qa-2.4.0.json',
+  ]) assert.ok(fs.existsSync(path.join(root, preserved)), preserved);
+  assert.match(read('versions/v2.4.0/index.html'), /גרסה 2\.4\.0/);
+  assert.doesNotMatch(read('versions/v2.4.0/index.html'), /גרסה 2\.5\.0/);
+  for (const [snapshot, historical] of [
+    ['versions/v2.4.0/assets/app-v2.4.0.js', 'assets/app-v2.4.0.js'],
+    ['versions/v2.4.0/assets/app-v2.4.0.css', 'assets/app-v2.4.0.css'],
+    ['versions/v2.4.0/data/config-v2.4.0.js', 'data/config-v2.4.0.js'],
+    ['versions/v2.4.0/manifest-2.4.0.webmanifest', 'manifest-2.4.0.webmanifest'],
+    ['versions/v2.4.0/offline-2.4.0.html', 'offline-2.4.0.html'],
+    ['versions/v2.4.0/tests/browser-qa-v2.4.0.cjs', 'tests/browser-qa-v2.4.0.cjs'],
+  ]) assert.deepEqual(readBytes(snapshot), readBytes(historical), `${snapshot} != ${historical} byte-for-byte`);
   assert.ok(fs.existsSync(path.join(root, 'reports', 'route-release-audit-2.2.1.json')));
   assert.ok(fs.existsSync(path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_1.md')));
 
@@ -386,7 +409,7 @@ test('שלושת תיקי המחקר נסגרו בדוחות QA אזוריים',
   }
 });
 
-test('HTML מציג ממשק 2.4.0, קטלוג 2.3.0, טאב אזהרות, בטיחות וכל התצוגות', () => {
+test('HTML מציג ממשק 2.5.0, קטלוג 2.3.0, טאב אזהרות, בטיחות וכל התצוגות', () => {
   assert.match(index, new RegExp(`גרסה ${APP_VERSION.replaceAll('.', '\\.')}`));
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
@@ -495,6 +518,7 @@ test('שמונת שיפורי 2.4.0 קיימים בממשק ומחוברים ל�
   assert.match(events, /button\.dataset\.quick/);
 
   // 4. קישור ישיר לכל מסלול, כולל פתיחה מכתובת והסרת הפרמטר בסגירה.
+  assert.match(shareUrl, /url\.search = ''/);
   assert.match(shareUrl, /searchParams\.set\('route', route\.id\)/);
   assert.match(shareUrl, /issuesView|routesView/);
   assert.match(card, /data-copy-route-link/);
@@ -502,7 +526,8 @@ test('שמונת שיפורי 2.4.0 קיימים בממשק ומחוברים ל�
   assert.match(events, /routeShareUrl\(route\)/);
   assert.match(appFunctionSection('requestedRouteFromAddress', 'openPendingInitialRoute'), /searchParams\.get\('route'\)/);
   assert.match(init, /requestedRouteFromAddress\(\)/);
-  assert.match(appFunctionSection('closeRouteDialog', 'closeDialog'), /clearRouteAddress\(\)/);
+  assert.match(appFunctionSection('closeRouteDialog', 'closeDialog'), /restoreRouteReturnAddress\(\)/);
+  assert.match(appFunctionSection('restoreRouteReturnAddress', 'routeReturnFocusTarget'), /clearRouteAddress\(\)/);
 
   // 5. תכנון אישי מקומי: רוצה לרכוב, רכבתי והערה אישית.
   assert.equal(config.personalRoutesKey, 'ilan-road-book-v2-personal-routes');
@@ -549,6 +574,146 @@ test('שמונת שיפורי 2.4.0 קיימים בממשק ומחוברים ל�
   assert.match(events, /https:\/\/wa\.me/);
   assert.match(events, /#copyReadyLink/);
   assert.match(events, /#exportReadyRoute/);
+});
+
+test('שמונת שיפורי 2.5.0 מחוברים ל־UI, לאחסון המקומי ולמנגנוני הייצוא הבטוחים', () => {
+  const events = appFunctionSection('bindEvents', 'initPwa');
+  const init = appFunctionSection('init', '');
+  const recents = appFunctionSection('validStoredRouteIds', 'verificationClass');
+  const compare = appFunctionSection('getCompareRouteIds', 'applyLayout');
+  const filterRestore = appFunctionSection('restoreFilterStateFromAddress', 'filterStateUrl');
+  const filterUrl = appFunctionSection('filterStateUrl', 'syncFilterAddress');
+  const freshnessParser = appFunctionSection('checkedDateValue', 'dateSortValue');
+  const freshness = appFunctionSection('routeFreshness', 'freshnessBadge');
+  const navigation = appFunctionSection('navigationBundleText', 'writeClipboardText');
+  const calendar = appFunctionSection('icsEscape', 'updateInvitePreview');
+  const checklist = appFunctionSection('checklistInputs', 'verificationClass');
+  const layout = appFunctionSection('applyLayout', 'checklistInputs');
+
+  // 1. רשימת מסלולים אחרונים היא MRU מקומי, ייחודי, מוגבל ומסנן מזהים שאינם קיימים.
+  assert.equal(config.recentRoutesKey, 'ilan-road-book-v2-recent-routes');
+  assert.equal(config.recentRoutesLimit, 8);
+  for (const control of ['recentRoutesPanel', 'recentRoutesGrid', 'recentRoutesEmpty', 'clearRecentRoutes']) {
+    assert.match(index, new RegExp(`id="${control}"`), control);
+  }
+  for (const functionName of ['validStoredRouteIds', 'getRecentRouteIds', 'rememberRecentRoute', 'clearRecentRoutes', 'renderRecentRoutes']) {
+    assert.match(recents, new RegExp(`function ${functionName}\\(`), functionName);
+  }
+  assert.match(recents, /seen\.has\(id\)|seen\.size >= limit/);
+  assert.match(recents, /routeById\.has\(id\)/);
+  assert.match(recents, /\[routeId, \.\.\.getRecentRouteIds\(\)\.filter\(\(id\) => id !== routeId\)\]\.slice\(0, limit\)/);
+  assert.match(appFunctionSection('openRoute', 'resolveInviteTarget'), /rememberRecentRoute\(route\.id\)/);
+  assert.match(events, /#clearRecentRoutes/);
+
+  // 2. ההשוואה מוגבלת בשתי שכבות לשני מסלולים, מתמידה מקומית ומציגה מצב חסר ברור.
+  assert.equal(config.compareRoutesKey, 'ilan-road-book-v2-compare-routes');
+  for (const control of ['compareTray', 'compareSelectionNames', 'compareSelectionCount', 'openCompare', 'clearComparison', 'compareDialog', 'compareContent', 'clearComparisonDialog']) {
+    assert.match(index, new RegExp(`id="${control}"`), control);
+  }
+  assert.match(compare, /validStoredRouteIds\([^,]+, 2\)/);
+  assert.match(compare, /selected\.length >= 2/);
+  assert.match(compare, /כבר נבחרו שני מסלולים/);
+  assert.match(compare, /selected\.length !== 2/);
+  assert.match(compare, /נדרשים שני מסלולים/);
+  assert.match(compare, /data-compare-card/);
+  assert.match(compare, /route\.release_issue_reason/);
+  assert.match(events, /data-compare-route/);
+  assert.match(events, /#openCompare/);
+
+  // 3. קובץ היומן הוא VCALENDAR יחיד, עם תאריך מקומי, CRLF, קישורים ו־escaping.
+  assert.match(index, /id="exportInviteCalendar"/);
+  assert.match(index, /id="calendarStatus"[^>]+aria-live="polite"/);
+  for (const token of ['BEGIN:VCALENDAR', 'VERSION:2.0', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'BEGIN:VEVENT', 'END:VEVENT', 'END:VCALENDAR']) {
+    assert.ok(calendar.includes(token), token);
+  }
+  assert.match(calendar, /DTSTART;TZID=Asia\/Jerusalem/);
+  assert.match(calendar, /DTEND;TZID=Asia\/Jerusalem/);
+  assert.match(calendar, /UID:/);
+  assert.match(calendar, /DTSTAMP:/);
+  assert.match(calendar, /SUMMARY:/);
+  assert.match(calendar, /LOCATION:/);
+  assert.match(calendar, /DESCRIPTION:/);
+  assert.match(calendar, /URL:\$\{routeUrl\}/);
+  assert.match(calendar, /lines\.map\(foldIcsLine\)\.join\('\\r\\n'\)/);
+  assert.match(calendar, /payloadLimit = 75/);
+  assert.match(calendar, /payloadLimit = 74/);
+  assert.match(calendar, /endsAt <= startsAt/);
+  assert.match(calendar, /text\/calendar;charset=utf-8/);
+  assert.match(calendar, /\.replace\(\/\\\\\/g, '\\\\\\\\'\)/);
+  assert.match(calendar, /\.replace\(\/\\r\?\\n\/g, '\\\\n'\)/);
+  assert.match(events, /#exportInviteCalendar/);
+
+  // 4. קישור סינון משחזר רק מסננים ציבוריים ומסיר route/source בעת שיתוף.
+  assert.match(index, /id="copyFilterLink"/);
+  for (const parameter of ['q', 'region', 'direction', 'pattern', 'day', 'type', 'duration', 'theme', 'level', 'road', 'verification', 'sort']) {
+    assert.match(app, new RegExp(`param: '${parameter}'`), parameter);
+  }
+  assert.doesNotMatch(app.match(/const FILTER_PARAM_BINDINGS[\s\S]*?\]\);/)?.[0] || '', /personal|favorite/);
+  assert.match(filterRestore, /field\.tagName === 'SELECT'/);
+  assert.match(filterRestore, /field\.options/);
+  assert.match(filterRestore, /quickValues\.has\(quick\)/);
+  assert.match(filterRestore, /Object\.hasOwn\(STAR_DIRECTIONS, star\)/);
+  assert.match(filterUrl, /url\.searchParams\.delete\('route'\)/);
+  assert.match(filterUrl, /url\.searchParams\.delete\('source'\)/);
+  assert.match(filterUrl, /share\) url\.searchParams\.set\('layout', compactLayout \? 'compact' : 'comfortable'\)/);
+  assert.match(filterUrl, /url\.hash = 'routesView'/);
+  assert.doesNotMatch(filterUrl, /personalRoutesKey|personalFilter|favoritesKey/);
+  assert.match(events, /filterStateUrl\(\{ share: true \}\)\.href/);
+  assert.match(init, /restoreFilterStateFromAddress\(\)/);
+
+  // 5. עדכניות מפענחת DD.MM.YYYY עם suffix ו־ISO, בודקת תאריך אמיתי ומטפלת בעתיד כשדורש רענון.
+  assert.equal(config.freshnessRecentDays, 180);
+  assert.match(freshnessParser, /\^\(\\d\{1,2\}\)\\\.\(\\d\{1,2\}\)\\\.\(\\d\{4\}\)\(\?:\\D\|\$\)/);
+  assert.match(freshnessParser, /\^\(\\d\{4\}\)-\(\\d\{2\}\)-\(\\d\{2\}\)\(\?:\\D\|\$\)/);
+  assert.match(freshnessParser, /getUTCFullYear\(\)/);
+  assert.match(freshness, /ageDays >= 0/);
+  assert.match(freshness, /config\.freshnessRecentDays/);
+  for (const state of ['fresh', 'refresh', 'unknown']) assert.match(freshness, new RegExp(`state: '${state}'`), state);
+  assert.match(appFunctionSection('routeCard', 'filterRoutes'), /data-freshness="\$\{freshness\.state\}"/);
+  for (const state of ['fresh', 'refresh', 'unknown']) assert.match(css, new RegExp(`data-freshness="${state}"`), state);
+
+  // 6. תצוגה קומפקטית נשמרת, משתקפת ב־URL ומחילה כללי RTL רספונסיביים על כל grids.
+  assert.equal(config.layoutKey, 'ilan-road-book-v2-layout');
+  assert.match(index, /id="compactToggle"[^>]+aria-pressed="false"/);
+  assert.match(layout, /document\.documentElement\.dataset\.layout/);
+  assert.match(layout, /localStorage\.setItem\(config\.layoutKey/);
+  assert.match(layout, /aria-pressed/);
+  assert.match(filterUrl, /searchParams\.set\('layout', 'compact'\)/);
+  assert.match(init, /localStorage\.getItem\(config\.layoutKey\) === 'compact'/);
+  assert.match(css, /:root\[data-layout="compact"\] \.route-grid/);
+  assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.compare-grid, \.compare-facts/);
+
+  // 7. checklist מכיל שמונה מזהים יציבים, מתמיד כ־JSON ומאפס רק את המפתח שלו.
+  assert.equal(config.departureChecklistKey, 'ilan-road-book-v2-departure-checklist');
+  const checklistIds = [...index.matchAll(/data-checklist-item="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(checklistIds.length, 8);
+  assert.equal(new Set(checklistIds).size, checklistIds.length);
+  assert.match(index, /id="checklistProgress"[^>]+aria-live="polite"/);
+  assert.match(index, /id="resetDepartureChecklist"/);
+  assert.match(checklist, /config\.departureChecklistKey/);
+  assert.match(checklist, /version: 1, checked/);
+  assert.match(checklist, /localStorage\.removeItem\(config\.departureChecklistKey\)/);
+  assert.doesNotMatch(appFunctionSection('resetDepartureChecklist', 'verificationClass'), /clear\(\)|favoritesKey|personalRoutesKey|recentRoutesKey|layoutKey/);
+  assert.match(events, /#departureChecklist/);
+  assert.match(events, /#resetDepartureChecklist/);
+  assert.match(init, /restoreDepartureChecklist\(\)/);
+
+  // 8. העתקת הניווט שומרת את הסדר, כוללת מפגשים ומפות ואינה מנווטת לנקודה מוחרגת.
+  assert.match(app, /const NAVIGATION_COPY_TOOLTIP/);
+  assert.match(navigation, /נקודת מפגש ראשית/);
+  assert.match(navigation, /נקודת הצטרפות/);
+  assert.match(navigation, /approachMapsUrl\(route, meetings\)/);
+  assert.match(navigation, /mapsUrl\(route\)/);
+  assert.match(navigation, /coreMapsUrl\(route\)/);
+  assert.match(navigation, /route\.stops\.forEach/);
+  assert.match(navigation, /stopWazeUrl\(stop\)/);
+  assert.match(navigation, /else if \(stop\.navigation_excluded\)/);
+  assert.match(navigation, /הוחרגה מן הניווט/);
+  assert.match(navigation, /routeShareUrl\(route\)/);
+  assert.match(appFunctionSection('routeCard', 'filterRoutes'), /data-copy-navigation/);
+  assert.match(appFunctionSection('openRoute', 'resolveInviteTarget'), /data-copy-navigation/);
+  assert.match(events, /data-copy-navigation/);
+  assert.match(events, /navigationBundleText\(route\)/);
 });
 
 test('הערת ה־warning המדויקת נשמרת בכרטיס, בפרטים, בהזמנה, בשילוב ובייצוא', () => {
@@ -653,35 +818,39 @@ test('כרטיסים ומסכי מובייל אינם יכולים לחרוג מ
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.issue-severity-guide, \.issue-severity-filters \{ grid-template-columns: minmax\(0,1fr\); \}/);
 });
 
-test('manifest, נכסי UI ו-Service Worker יחסיים ומסונכרנים ל-2.4.0 בלי לשנות את קטלוג 2.3.0', () => {
+test('manifest, נכסי UI ו-Service Worker יחסיים ומסונכרנים ל-2.5.0 בלי לשנות את קטלוג 2.3.0', () => {
   assert.equal(config.version, APP_VERSION);
   assert.equal(release.version, CATALOGUE_VERSION);
   assert.equal(expansion.version, CATALOGUE_VERSION);
   assert.equal(manifest.version, APP_VERSION);
-  assert.match(manifest.name, /גרסה 2\.4\.0/);
-  assert.match(manifest.short_name, /2\.4\.0/);
+  assert.match(manifest.name, /גרסה 2\.5\.0/);
+  assert.match(manifest.short_name, /2\.5\.0/);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
   assert.equal(manifest.display, 'standalone');
   assert.ok(manifest.icons.some((icon) => icon.sizes === '192x192' && icon.src.startsWith('./')));
   assert.ok(manifest.icons.some((icon) => icon.sizes === '512x512' && icon.src.startsWith('./')));
   assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === './#issuesView'));
-  assert.match(serviceWorker, /const CACHE_PREFIX = 'ilan-roadbook-live-'/);
-  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}v2\.4\.0-build-1`/);
+  assert.match(serviceWorker, /const CACHE_PREFIX = 'ilan-roadbook-v250-'/);
+  assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}build-1`/);
+  assert.match(serviceWorker, /LEGACY_LIVE_CACHES = new Set\(\['ilan-roadbook-live-v2\.4\.0-build-1'\]\)/);
   assert.match(serviceWorker, /data\/route-expansion-v2\.3\.0\.js/);
   assert.match(serviceWorker, /data\/release-audit-v2\.3\.0\.js/);
-  assert.match(serviceWorker, /data\/config-v2\.4\.0\.js/);
-  assert.match(serviceWorker, /assets\/app-v2\.4\.0\.js/);
-  assert.match(serviceWorker, /assets\/app-v2\.4\.0\.css/);
-  assert.match(serviceWorker, /manifest-2\.4\.0\.webmanifest/);
-  assert.match(serviceWorker, /offline-2\.4\.0\.html/);
+  assert.match(serviceWorker, /data\/config-v2\.5\.0\.js/);
+  assert.match(serviceWorker, /assets\/app-v2\.5\.0\.js/);
+  assert.match(serviceWorker, /assets\/app-v2\.5\.0\.css/);
+  assert.match(serviceWorker, /manifest-2\.5\.0\.webmanifest/);
+  assert.match(serviceWorker, /offline-2\.5\.0\.html/);
   assert.match(serviceWorker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE_NAME/);
+  assert.match(serviceWorker, /const cache = await caches\.open\(CACHE_NAME\)/);
+  assert.match(serviceWorker, /cache\.match\(event\.request, \{ ignoreSearch: true \}\)/);
+  assert.doesNotMatch(serviceWorker, /caches\.match\(/);
   assert.doesNotMatch(serviceWorker, /maps\.google|api\/v2\/ask|api\/v2\/speech/);
 });
 
 test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read(`offline-${APP_VERSION}.html`), /גרסה 2\.4\.0/);
+  assert.match(read(`offline-${APP_VERSION}.html`), /גרסה 2\.5\.0/);
   for (const relative of [
     'index.html', `offline-${APP_VERSION}.html`, `manifest-${APP_VERSION}.webmanifest`, 'sw.js',
     `assets/app-v${APP_VERSION}.css`, `assets/app-v${APP_VERSION}.js`, `data/config-v${APP_VERSION}.js`,
@@ -695,26 +864,26 @@ test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
     ['data/release-audit-v2.js', 'data/release-audit-v2.3.0.js'],
     ['manifest.webmanifest', `manifest-${APP_VERSION}.webmanifest`],
     ['offline.html', `offline-${APP_VERSION}.html`],
-  ]) assert.equal(read(compatibility), read(active), `${compatibility} != ${active}`);
+  ]) assert.deepEqual(readBytes(compatibility), readBytes(active), `${compatibility} != ${active} byte-for-byte`);
 });
 
-test('מסמכי הסיום מציגים גרסת מסמך 2.4.1 ומוצר 2.4.0', () => {
+test('מסמכי הסיום מציגים גרסת מסמך 2.5.1 ומוצר 2.5.0', () => {
   for (const relative of [
     'README_HE.md',
     'PROJECT_STATUS.md',
     'REVIEW_PACKET.md',
     'NEXT_ACTION.md',
-    'RELEASE_2_4_0.md',
+    'RELEASE_2_5_0.md',
   ]) {
     assert.ok(fs.existsSync(path.join(root, relative)), relative);
     const document = read(relative);
     assert.match(document, new RegExp(`גרסת מסמך(?:[: ]+)(?:\\*\\*)?${RELEASE_DOCUMENT_VERSION.replaceAll('.', '\\.')}`), `${relative}: גרסת מסמך`);
-    assert.match(document, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.4\.0/, `${relative}: גרסת מוצר`);
+    assert.match(document, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.5\.0/, `${relative}: גרסת מוצר`);
   }
 
   const decisions = read('DECISIONS.md');
-  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.4\.0/, 'DECISIONS.md: גרסת מסמך');
-  assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.4\.0/, 'DECISIONS.md: גרסת מוצר');
+  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.5\.1/, 'DECISIONS.md: גרסת מסמך');
+  assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.5\.0/, 'DECISIONS.md: גרסת מוצר');
 });
 
 test('אין מפתח OpenAI בקובצי הפרויקט הניתנים לפרסום', () => {

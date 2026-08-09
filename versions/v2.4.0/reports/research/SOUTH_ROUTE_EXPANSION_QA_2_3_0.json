@@ -1,0 +1,142 @@
+{
+  "document_title": "דוח QA להרחבת מסלולי הדרום — גרסת מסמך 2.3.0",
+  "document_version": "2.3.0",
+  "product_version": "2.3.0",
+  "checked_on": "2026-08-09",
+  "target": "reports/research/SOUTH_ROUTE_EXPANSION_2_3_0.json",
+  "scope": "נתוני מחקר הדרום ושילובם בשער בניית ההרחבה; לא שער פרסום המוצר המלא",
+  "result": "PASS",
+  "route_counts": {
+    "total": 30,
+    "pass": 15,
+    "warning": 15,
+    "warning_severity": {
+      "minor_navigation": 5,
+      "conditional": 5,
+      "major": 5
+    },
+    "loop": 21,
+    "snake": 8,
+    "out_and_back": 1
+  },
+  "checks": {
+    "json_parse": {
+      "checked": 30,
+      "errors": 0
+    },
+    "validate_record": {
+      "checked": 30,
+      "errors": 0
+    },
+    "global_build_gate": {
+      "routes": 90,
+      "pass": 45,
+      "warning": 45,
+        "loop_or_snake": 74,
+      "errors": 0
+    },
+    "semantic_duplicate_gate": {
+      "south_routes_checked_against_legacy_and_all_new_routes": 30,
+      "blocking_duplicates": 0
+    },
+    "osrm": {
+      "routes_checked": 30,
+      "routeable": 30,
+      "declared_distance_and_time_match": 30,
+      "failures": 0
+    },
+    "google_directions": {
+      "links_checked": 30,
+      "http_success": 30,
+      "failures": 0
+    },
+    "sources": {
+      "unique_urls_checked": 80,
+      "http_200": 80,
+      "failures": 0,
+      "method": "HTTP GET with redirects and a browser user agent"
+    },
+    "navigation_exclusions": {
+      "excluded_points": 8,
+      "excluded_points_leaking_into_full_maps": 0,
+      "safe_points_missing_from_full_maps": 0
+    },
+    "different_return_corridor": {
+      "loop_or_snake_routes_checked": 29,
+      "routes_with_distinct_return_waypoint": 29,
+      "routes_with_distinct_osrm_return_geometry": 29,
+      "minimum_return_geometry_unique_percent": 20.2,
+      "method": "Outbound and return OSRM geometries were compared in coordinate cells rounded to 0.001 degrees"
+    },
+    "full_product_test_suite_observation": {
+      "command": "node --test tests/validate-v2.mjs",
+      "passed": 17,
+      "failed": 0,
+      "south_data_failures": 0,
+      "note": "סוויטת המוצר הסופית עברה במלואה לאחר סגירת שכבת הביקורת, הדוחות ועותקי הפרסום."
+    }
+  },
+  "replaced_route_ids": [
+    "south-expansion-pass-003",
+    "south-expansion-pass-004",
+    "south-expansion-pass-013",
+    "south-expansion-warning-002",
+    "south-expansion-warning-003",
+    "south-expansion-warning-007",
+    "south-expansion-warning-008",
+    "south-expansion-warning-009",
+    "south-expansion-warning-010",
+    "south-expansion-warning-011",
+    "south-expansion-warning-012",
+    "south-expansion-warning-013",
+    "south-expansion-warning-014",
+    "south-expansion-warning-015"
+  ],
+  "additional_corrected_route_ids": [
+    "south-expansion-pass-001",
+    "south-expansion-pass-002",
+    "south-expansion-pass-006",
+    "south-expansion-pass-007",
+    "south-expansion-pass-009",
+    "south-expansion-warning-005"
+  ],
+  "excluded_navigation_points": [
+    {
+      "route_id": "south-expansion-warning-011",
+      "name": "יער פלוגות — סגור, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-011",
+      "name": "יער קוממיות — שביל הכפר סגור, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-012",
+      "name": "יד אנז״ק — סגור, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-013",
+      "name": "בארות יצחק הישנה — שטח צבאי סגור, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-013",
+      "name": "יער אסף שמחוני — סגור, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-014",
+      "name": "מעלה עקרבים — חסם בכביש 227, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-015",
+      "name": "מואה הנבטית — גישת עפר, תיעוד בלבד"
+    },
+    {
+      "route_id": "south-expansion-warning-015",
+      "name": "חוות האנטילופות — סגורה לתיירות, תיעוד בלבד"
+    }
+  ],
+  "notes": [
+    "warning-009 תוקן כך שנקודת החזרה דרך ירוחם נכללת בפועל בקישור המפה ולא רק בטקסט.",
+    "נקודות מוחרגות נשארות בתוכן עם מקור, סיפור וסיבת החרגה, אך אינן משתתפות בניווט.",
+    "מצב כבישים, מזג אוויר, ביטחון ושעות פעילות מחייב בדיקה חוזרת ביום הרכיבה."
+  ]
+}

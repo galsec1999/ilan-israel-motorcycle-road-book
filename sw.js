@@ -1,19 +1,20 @@
 /**
- * Service Worker — גרסה 2.4.0
+ * Service Worker — גרסה 2.5.0
  * מוחק רק caches של הספר ואינו שומר מפות, AI או שמע דינמי.
  */
 
 // Prefix נפרד מגרסאות הצילום, כדי ש־SW היסטורי לא ימחק את מטמון האתר החי.
-const CACHE_PREFIX = 'ilan-roadbook-live-';
-const CACHE_NAME = `${CACHE_PREFIX}v2.4.0-build-1`;
+const CACHE_PREFIX = 'ilan-roadbook-v250-';
+const CACHE_NAME = `${CACHE_PREFIX}build-1`;
+const LEGACY_LIVE_CACHES = new Set(['ilan-roadbook-live-v2.4.0-build-1']);
 const APP_FILES = [
   './',
   './index.html',
-  './manifest-2.4.0.webmanifest',
-  './offline-2.4.0.html',
-  './assets/app-v2.4.0.css',
-  './assets/app-v2.4.0.js',
-  './data/config-v2.4.0.js',
+  './manifest-2.5.0.webmanifest',
+  './offline-2.5.0.html',
+  './assets/app-v2.5.0.css',
+  './assets/app-v2.5.0.js',
+  './data/config-v2.5.0.js',
   './data/legacy-content-v2.js',
   './data/new-routes-v2.js',
   './data/route-expansion-v2.3.0.js',
@@ -36,7 +37,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
     await Promise.all(keys
-      .filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+      .filter((key) => (key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME) || LEGACY_LIVE_CACHES.has(key))
       .map((key) => caches.delete(key)));
     await self.clients.claim();
   })());
@@ -59,7 +60,8 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       } catch {
-        return (await caches.match('./index.html')) || (await caches.match('./offline-2.4.0.html'));
+        const cache = await caches.open(CACHE_NAME);
+        return (await cache.match('./index.html')) || (await cache.match('./offline-2.5.0.html'));
       }
     })());
     return;
@@ -70,11 +72,11 @@ self.addEventListener('fetch', (event) => {
   if (!isPrecached) return;
 
   event.respondWith((async () => {
-    const cached = await caches.match(event.request, { ignoreSearch: true });
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(event.request, { ignoreSearch: true });
     if (cached) return cached;
     const response = await fetch(event.request);
     if (response.ok) {
-      const cache = await caches.open(CACHE_NAME);
       await cache.put(event.request, response.clone());
     }
     return response;
