@@ -1,6 +1,6 @@
 /**
  * שער האיכות המקומי
- * גרסת מסמך: 2.4.0
+ * גרסת מסמך: 2.4.1
  * גרסת מוצר: 2.4.0
  */
 
@@ -16,6 +16,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const APP_VERSION = '2.4.0';
 const CATALOGUE_VERSION = '2.3.0';
+const RELEASE_DOCUMENT_VERSION = '2.4.1';
 
 function evaluateAll() {
   const context = vm.createContext({ window: {} });
@@ -697,20 +698,23 @@ test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   ]) assert.equal(read(compatibility), read(active), `${compatibility} != ${active}`);
 });
 
-test('מסמכי החובה מציגים גרסת מסמך ומוצר 2.4.0', () => {
+test('מסמכי הסיום מציגים גרסת מסמך 2.4.1 ומוצר 2.4.0', () => {
   for (const relative of [
     'README_HE.md',
     'PROJECT_STATUS.md',
-    'DECISIONS.md',
     'REVIEW_PACKET.md',
     'NEXT_ACTION.md',
     'RELEASE_2_4_0.md',
   ]) {
     assert.ok(fs.existsSync(path.join(root, relative)), relative);
     const document = read(relative);
-    assert.match(document, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.4\.0/, `${relative}: גרסת מסמך`);
+    assert.match(document, new RegExp(`גרסת מסמך(?:[: ]+)(?:\\*\\*)?${RELEASE_DOCUMENT_VERSION.replaceAll('.', '\\.')}`), `${relative}: גרסת מסמך`);
     assert.match(document, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.4\.0/, `${relative}: גרסת מוצר`);
   }
+
+  const decisions = read('DECISIONS.md');
+  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.4\.0/, 'DECISIONS.md: גרסת מסמך');
+  assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.4\.0/, 'DECISIONS.md: גרסת מוצר');
 });
 
 test('אין מפתח OpenAI בקובצי הפרויקט הניתנים לפרסום', () => {
