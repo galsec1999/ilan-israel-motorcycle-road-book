@@ -1,0 +1,2693 @@
+{
+  "document_title": "דוח QA להרחבת מסלולי הצפון — גרסת מסמך 2.3.0",
+  "document_version": "2.3.0",
+  "product_version": "2.3.0",
+  "checked_on": "2026-08-09",
+  "target": "reports/research/NORTH_ROUTE_EXPANSION_2_3_0.json",
+  "scope": "כל 30 מסלולי הצפון: תוכן, מקורות, יעדי ניווט, OSRM, Google Maps, מסדרונות חזרה וכפילויות סמנטיות.",
+  "result": "PASS",
+  "route_counts": {
+    "total": 30,
+    "pass": 15,
+    "warning": 15,
+    "warning_severity": {
+      "minor_navigation": 6,
+      "conditional": 5,
+      "major": 4
+    },
+    "loop": 10,
+    "snake": 9,
+    "out_and_back": 11,
+    "radial": 0,
+    "loop_or_snake": 19
+  },
+  "checks": {
+    "json_and_record_shape": {
+      "checked": 30,
+      "errors": 0
+    },
+    "global_build_gate": {
+      "routes": 90,
+      "pass": 45,
+      "warning": 45,
+      "loop_or_snake": 74,
+      "duplicate_ids": 0,
+      "duplicate_titles": 0,
+      "blocking_semantic_duplicates": 0,
+      "errors": 0
+    },
+    "global_geography_gate": {
+      "routes_checked": 90,
+      "static_passed": 90,
+      "osrm_routeable": 90,
+      "different_return_corridor_passed": 90,
+      "route_gate_failures": 0
+    },
+    "osrm": {
+      "routes_checked": 30,
+      "routeable": 30,
+      "failures": 0
+    },
+    "google_directions": {
+      "links_checked": 30,
+      "http_success": 30,
+      "failures": 0
+    },
+    "sources": {
+      "unique_urls_checked": 102,
+      "http_success": 83,
+      "http_403_antibot": 19,
+      "failures": 0
+    },
+    "navigation_nearest_road": {
+      "unique_points_checked": 120,
+      "within_100m": 119,
+      "official_entrance_exceptions": 1,
+      "unhandled_over_100m": 0
+    },
+    "navigation_exclusions": {
+      "excluded_points": 9,
+      "acre_walking_points_excluded": 4
+    },
+    "different_return_corridor": {
+      "loop_or_snake_routes_checked": 19,
+      "distinct_geometry": 19,
+      "failures": 0,
+      "minimum_unique_percent": 52.9
+    },
+    "semantic_duplicate_gate": {
+      "reviewed_pairs": 3,
+      "blocking_duplicates": 0,
+      "requirement": "לפחות שתי ליבות תוכן ייחודיות ומאומתות בכל זוג שנבדק"
+    },
+    "full_product_test_suite_observation": {
+      "command": "node --test tests/validate-v2.mjs",
+      "passed": 17,
+      "failed": 0,
+      "north_data_failures": 0,
+      "note": "סוויטת המוצר הסופית עברה במלואה לאחר סגירת שכבת הביקורת, הדוחות ועותקי הפרסום."
+    }
+  },
+  "route_checks": [
+    {
+      "id": "n21",
+      "status": "pass",
+      "route_pattern": "loop",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 216.9,
+      "duration_minutes": 184,
+      "return_geometry_unique_percent": 98.7,
+      "return_geometry_unique_cells": 749,
+      "return_geometry_total_cells": 759
+    },
+    {
+      "id": "n22",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 200.4,
+      "duration_minutes": 185,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n23",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 190.9,
+      "duration_minutes": 171,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n24",
+      "status": "pass",
+      "route_pattern": "loop",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 170.5,
+      "duration_minutes": 150,
+      "return_geometry_unique_percent": 96.5,
+      "return_geometry_unique_cells": 629,
+      "return_geometry_total_cells": 652
+    },
+    {
+      "id": "n25",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 193.4,
+      "duration_minutes": 185,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n26",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 7,
+      "osrm_routeable": true,
+      "distance_km": 239.4,
+      "duration_minutes": 219,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n27",
+      "status": "warning",
+      "route_pattern": "loop",
+      "map_points": 7,
+      "osrm_routeable": true,
+      "distance_km": 245.6,
+      "duration_minutes": 199,
+      "return_geometry_unique_percent": 98.9,
+      "return_geometry_unique_cells": 870,
+      "return_geometry_total_cells": 880
+    },
+    {
+      "id": "n28",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 254.8,
+      "duration_minutes": 227,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n29",
+      "status": "pass",
+      "route_pattern": "loop",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 281.4,
+      "duration_minutes": 242,
+      "return_geometry_unique_percent": 67.2,
+      "return_geometry_unique_cells": 601,
+      "return_geometry_total_cells": 895
+    },
+    {
+      "id": "n30",
+      "status": "pass",
+      "route_pattern": "snake",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 294.7,
+      "duration_minutes": 263,
+      "return_geometry_unique_percent": 72.8,
+      "return_geometry_unique_cells": 633,
+      "return_geometry_total_cells": 870
+    },
+    {
+      "id": "n31",
+      "status": "pass",
+      "route_pattern": "loop",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 291.3,
+      "duration_minutes": 263,
+      "return_geometry_unique_percent": 71.2,
+      "return_geometry_unique_cells": 575,
+      "return_geometry_total_cells": 808
+    },
+    {
+      "id": "n32",
+      "status": "pass",
+      "route_pattern": "snake",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 317.7,
+      "duration_minutes": 277,
+      "return_geometry_unique_percent": 83.9,
+      "return_geometry_unique_cells": 771,
+      "return_geometry_total_cells": 919
+    },
+    {
+      "id": "n33",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 214.7,
+      "duration_minutes": 185,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n34",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 188.9,
+      "duration_minutes": 168,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n35",
+      "status": "pass",
+      "route_pattern": "loop",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 414.9,
+      "duration_minutes": 362,
+      "return_geometry_unique_percent": 93.4,
+      "return_geometry_unique_cells": 1296,
+      "return_geometry_total_cells": 1388
+    },
+    {
+      "id": "n36",
+      "status": "warning",
+      "route_pattern": "loop",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 193.7,
+      "duration_minutes": 192,
+      "return_geometry_unique_percent": 91.9,
+      "return_geometry_unique_cells": 620,
+      "return_geometry_total_cells": 675
+    },
+    {
+      "id": "n37",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 296.6,
+      "duration_minutes": 265,
+      "return_geometry_unique_percent": 72.4,
+      "return_geometry_unique_cells": 610,
+      "return_geometry_total_cells": 843
+    },
+    {
+      "id": "n38",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 363.9,
+      "duration_minutes": 343,
+      "return_geometry_unique_percent": 78.4,
+      "return_geometry_unique_cells": 818,
+      "return_geometry_total_cells": 1044
+    },
+    {
+      "id": "n39",
+      "status": "pass",
+      "route_pattern": "out_and_back",
+      "map_points": 7,
+      "osrm_routeable": true,
+      "distance_km": 363.1,
+      "duration_minutes": 336,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n40",
+      "status": "warning",
+      "route_pattern": "loop",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 319,
+      "duration_minutes": 280,
+      "return_geometry_unique_percent": 59.2,
+      "return_geometry_unique_cells": 544,
+      "return_geometry_total_cells": 919
+    },
+    {
+      "id": "n41",
+      "status": "warning",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 361.2,
+      "duration_minutes": 339,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n42",
+      "status": "warning",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 378,
+      "duration_minutes": 336,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n43",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 439.6,
+      "duration_minutes": 388,
+      "return_geometry_unique_percent": 69.7,
+      "return_geometry_unique_cells": 1019,
+      "return_geometry_total_cells": 1461
+    },
+    {
+      "id": "n44",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 462.6,
+      "duration_minutes": 405,
+      "return_geometry_unique_percent": 65.5,
+      "return_geometry_unique_cells": 1057,
+      "return_geometry_total_cells": 1613
+    },
+    {
+      "id": "n45",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 397.1,
+      "duration_minutes": 355,
+      "return_geometry_unique_percent": 87.2,
+      "return_geometry_unique_cells": 985,
+      "return_geometry_total_cells": 1129
+    },
+    {
+      "id": "n46",
+      "status": "warning",
+      "route_pattern": "loop",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 321.8,
+      "duration_minutes": 271,
+      "return_geometry_unique_percent": 86.3,
+      "return_geometry_unique_cells": 963,
+      "return_geometry_total_cells": 1116
+    },
+    {
+      "id": "n47",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 10,
+      "osrm_routeable": true,
+      "distance_km": 416.9,
+      "duration_minutes": 361,
+      "return_geometry_unique_percent": 76.3,
+      "return_geometry_unique_cells": 1103,
+      "return_geometry_total_cells": 1446
+    },
+    {
+      "id": "n48",
+      "status": "warning",
+      "route_pattern": "loop",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 407.8,
+      "duration_minutes": 350,
+      "return_geometry_unique_percent": 73.2,
+      "return_geometry_unique_cells": 1023,
+      "return_geometry_total_cells": 1397
+    },
+    {
+      "id": "n49",
+      "status": "warning",
+      "route_pattern": "out_and_back",
+      "map_points": 8,
+      "osrm_routeable": true,
+      "distance_km": 385.3,
+      "duration_minutes": 360,
+      "return_geometry_unique_percent": null,
+      "return_geometry_unique_cells": null,
+      "return_geometry_total_cells": null
+    },
+    {
+      "id": "n50",
+      "status": "warning",
+      "route_pattern": "snake",
+      "map_points": 9,
+      "osrm_routeable": true,
+      "distance_km": 429.3,
+      "duration_minutes": 375,
+      "return_geometry_unique_percent": 52.9,
+      "return_geometry_unique_cells": 729,
+      "return_geometry_total_cells": 1379
+    }
+  ],
+  "nearest_road_checks": [
+    {
+      "route_id": "n50",
+      "name": "חניון רידינג מערב, תל אביב-יפו",
+      "distance_m": 7.5,
+      "snapped_coordinates": {
+        "lat": 32.099041,
+        "lon": 34.778501
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "קניון אם הדרך, כפר ויתקין",
+      "distance_m": 27.6,
+      "snapped_coordinates": {
+        "lat": 32.383076,
+        "lon": 34.867319
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n21",
+      "name": "מוזיאון ההעפלה וחיל הים",
+      "distance_m": 30.7,
+      "snapped_coordinates": {
+        "lat": 32.830343,
+        "lon": 34.971504
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n23",
+      "name": "מנזר סטלה מאריס",
+      "distance_m": 43.4,
+      "snapped_coordinates": {
+        "lat": 32.827523,
+        "lon": 34.970367
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n21",
+      "name": "המוזיאון הימי הלאומי",
+      "distance_m": 24,
+      "snapped_coordinates": {
+        "lat": 32.828926,
+        "lon": 34.972649
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n21",
+      "name": "חניה ציבורית אספלט סמוך לגן לאומי שקמונה",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.81753,
+        "lon": 34.9596
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "מחלף עין תות — נקודת חזרה",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.619081,
+        "lon": 35.054881
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n48",
+      "name": "מחלף נחשונים",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.073646,
+        "lon": 34.933555
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n22",
+      "name": "מדעטק",
+      "distance_m": 42.8,
+      "snapped_coordinates": {
+        "lat": 32.810397,
+        "lon": 34.995982
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n22",
+      "name": "מוזיאון הרמן שטרוק",
+      "distance_m": 22.6,
+      "snapped_coordinates": {
+        "lat": 32.804809,
+        "lon": 35.000376
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n22",
+      "name": "מוזיאון טיקוטין לאמנות יפנית",
+      "distance_m": 26.9,
+      "snapped_coordinates": {
+        "lat": 32.809205,
+        "lon": 34.985154
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n22",
+      "name": "מוזיאון הכט",
+      "distance_m": 56,
+      "snapped_coordinates": {
+        "lat": 32.763614,
+        "lon": 35.018433
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n23",
+      "name": "מרפסת הגנים הבהאיים, יפה נוף 61",
+      "distance_m": 13.2,
+      "snapped_coordinates": {
+        "lat": 32.811299,
+        "lon": 34.985185
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n23",
+      "name": "חניון ציבורי יפה נוף — הליכה לטיילת לואי",
+      "distance_m": 1,
+      "snapped_coordinates": {
+        "lat": 32.812165,
+        "lon": 34.982695
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n34",
+      "name": "המושבה הגרמנית",
+      "distance_m": 8.9,
+      "snapped_coordinates": {
+        "lat": 32.821708,
+        "lon": 34.991081
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n24",
+      "name": "מוזיאון העלייה הראשונה",
+      "distance_m": 10.9,
+      "snapped_coordinates": {
+        "lat": 32.574115,
+        "lon": 34.952344
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n24",
+      "name": "מוזיאון ניל״י – בית אהרנסון",
+      "distance_m": 6.7,
+      "snapped_coordinates": {
+        "lat": 32.5723,
+        "lon": 34.954209
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n24",
+      "name": "מדרחוב המייסדים",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.569573,
+        "lon": 34.954071
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n24",
+      "name": "חניון מרכז המבקרים רמת הנדיב",
+      "distance_m": 7.6,
+      "snapped_coordinates": {
+        "lat": 32.553369,
+        "lon": 34.948821
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n25",
+      "name": "מוזיאון ינקו דאדא",
+      "distance_m": 20,
+      "snapped_coordinates": {
+        "lat": 32.701548,
+        "lon": 34.980005
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n25",
+      "name": "כפר האמנים עין הוד",
+      "distance_m": 29.7,
+      "snapped_coordinates": {
+        "lat": 32.70035,
+        "lon": 34.982335
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n25",
+      "name": "שמורת טבע נחל מערות",
+      "distance_m": 14.7,
+      "snapped_coordinates": {
+        "lat": 32.671308,
+        "lon": 34.965327
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n25",
+      "name": "שמורת חי־בר כרמל — חניית המבקרים הרשמית",
+      "distance_m": 5.6,
+      "snapped_coordinates": {
+        "lat": 32.754291,
+        "lon": 35.016861
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n26",
+      "name": "בית פישר",
+      "distance_m": 37.6,
+      "snapped_coordinates": {
+        "lat": 32.804846,
+        "lon": 35.105468
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n26",
+      "name": "שמורת טבע עין אפק — חניית הכניסה הרשמית",
+      "distance_m": 22.9,
+      "snapped_coordinates": {
+        "lat": 32.847617,
+        "lon": 35.11051
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n26",
+      "name": "חניה ציבורית ליד גני בהג׳י בעכו",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.943849,
+        "lon": 35.090013
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n27",
+      "name": "חניה ציבורית מרכז המבקרים עכו העתיקה, ויצמן 1",
+      "distance_m": 6,
+      "snapped_coordinates": {
+        "lat": 32.923761,
+        "lon": 35.071086
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n48",
+      "name": "צומת אחיהוד",
+      "distance_m": 4.3,
+      "snapped_coordinates": {
+        "lat": 32.911952,
+        "lon": 35.167243
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "בית לוחמי הגטאות",
+      "distance_m": 27.9,
+      "snapped_coordinates": {
+        "lat": 32.960348,
+        "lon": 35.095365
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n28",
+      "name": "בית ליברמן",
+      "distance_m": 30.6,
+      "snapped_coordinates": {
+        "lat": 32.99176,
+        "lon": 35.096143
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n28",
+      "name": "חניון חוף סוקולוב — הליכה לטיילת אופירה נבון",
+      "distance_m": 36.4,
+      "snapped_coordinates": {
+        "lat": 33.00423,
+        "lon": 35.087505
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n28",
+      "name": "גן לאומי אכזיב — חניית הכניסה הרשמית",
+      "distance_m": 20,
+      "snapped_coordinates": {
+        "lat": 33.048291,
+        "lon": 35.102364
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "צומת מגידו",
+      "distance_m": 2.4,
+      "snapped_coordinates": {
+        "lat": 32.572856,
+        "lon": 35.191873
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n29",
+      "name": "מוזיאון וילפריד ישראל",
+      "distance_m": 5.2,
+      "snapped_coordinates": {
+        "lat": 32.644404,
+        "lon": 35.117624
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n29",
+      "name": "תחנת רכבת העמק כפר יהושע",
+      "distance_m": 12.4,
+      "snapped_coordinates": {
+        "lat": 32.671926,
+        "lon": 35.152949
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n29",
+      "name": "בית שטורמן",
+      "distance_m": 38.6,
+      "snapped_coordinates": {
+        "lat": 32.559639,
+        "lon": 35.394586
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n29",
+      "name": "המשכן לאמנות עין חרוד",
+      "distance_m": 30.8,
+      "snapped_coordinates": {
+        "lat": 32.560998,
+        "lon": 35.393575
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n29",
+      "name": "צומת ישי",
+      "distance_m": 3.5,
+      "snapped_coordinates": {
+        "lat": 32.708711,
+        "lon": 35.15352
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n30",
+      "name": "מוזיאון המושבה כפר תבור",
+      "distance_m": 15.6,
+      "snapped_coordinates": {
+        "lat": 32.688164,
+        "lon": 35.419839
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n30",
+      "name": "המרכז למורשת הצ׳רקסית",
+      "distance_m": 4,
+      "snapped_coordinates": {
+        "lat": 32.721238,
+        "lon": 35.443133
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n30",
+      "name": "מוזיאון התרבות הירמוכית, שער הגולן",
+      "distance_m": 16,
+      "snapped_coordinates": {
+        "lat": 32.685716,
+        "lon": 35.605678
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n30",
+      "name": "בית גבריאל",
+      "distance_m": 38,
+      "snapped_coordinates": {
+        "lat": 32.704841,
+        "lon": 35.589526
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n38",
+      "name": "צומת בית שאן — נקודת חזרה",
+      "distance_m": 7.6,
+      "snapped_coordinates": {
+        "lat": 32.506879,
+        "lon": 35.51886
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n38",
+      "name": "צומת נבות — נקודת חזרה",
+      "distance_m": 16.4,
+      "snapped_coordinates": {
+        "lat": 32.561763,
+        "lon": 35.355149
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n31",
+      "name": "תחנת הרכבת ההיסטורית של צמח",
+      "distance_m": 23.3,
+      "snapped_coordinates": {
+        "lat": 32.70476,
+        "lon": 35.593128
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n31",
+      "name": "בית גורדון",
+      "distance_m": 26.2,
+      "snapped_coordinates": {
+        "lat": 32.708793,
+        "lon": 35.574456
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n31",
+      "name": "חצר כנרת",
+      "distance_m": 8.1,
+      "snapped_coordinates": {
+        "lat": 32.721958,
+        "lon": 35.568069
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n31",
+      "name": "נהריים בגשר",
+      "distance_m": 20.3,
+      "snapped_coordinates": {
+        "lat": 32.623207,
+        "lon": 35.56361
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "צומת יזרעאל",
+      "distance_m": 2,
+      "snapped_coordinates": {
+        "lat": 32.558341,
+        "lon": 35.316834
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "מוזיאון אורי ורמי נחושתן, אשדות יעקב מאוחד",
+      "distance_m": 17.7,
+      "snapped_coordinates": {
+        "lat": 32.660979,
+        "lon": 35.582452
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "בית יגאל אלון",
+      "distance_m": 74.3,
+      "snapped_coordinates": {
+        "lat": 32.844637,
+        "lon": 35.524429
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "מגדלא",
+      "distance_m": 25.9,
+      "snapped_coordinates": {
+        "lat": 32.828412,
+        "lon": 35.513195
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "מוזיאון דונה גרציה",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.788626,
+        "lon": 35.541181
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "צומת גולני — נקודת חזרה",
+      "distance_m": 21.9,
+      "snapped_coordinates": {
+        "lat": 32.79497,
+        "lon": 35.404114
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n32",
+      "name": "מחלף אליקים — נקודת חזרה",
+      "distance_m": 24,
+      "snapped_coordinates": {
+        "lat": 32.636214,
+        "lon": 35.063695
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n33",
+      "name": "כפר נצרת",
+      "distance_m": 19.4,
+      "snapped_coordinates": {
+        "lat": 32.699901,
+        "lon": 35.291687
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n33",
+      "name": "בזיליקת הבשורה",
+      "distance_m": 51.3,
+      "snapped_coordinates": {
+        "lat": 32.701717,
+        "lon": 35.298075
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n33",
+      "name": "המרכז הבינלאומי מרים מנצרת",
+      "distance_m": 20.9,
+      "snapped_coordinates": {
+        "lat": 32.70314,
+        "lon": 35.29768
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n33",
+      "name": "הר הקפיצה — חניית התצפית הרשמית",
+      "distance_m": 38.4,
+      "snapped_coordinates": {
+        "lat": 32.685675,
+        "lon": 35.302596
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n34",
+      "name": "מוזיאון העיר חיפה",
+      "distance_m": 2.1,
+      "snapped_coordinates": {
+        "lat": 32.822254,
+        "lon": 34.991965
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n34",
+      "name": "בית הגפן",
+      "distance_m": 28.2,
+      "snapped_coordinates": {
+        "lat": 32.815983,
+        "lon": 34.992294
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n34",
+      "name": "מוזיאון חיפה לאמנות",
+      "distance_m": 24.6,
+      "snapped_coordinates": {
+        "lat": 32.814998,
+        "lon": 34.992466
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n42",
+      "name": "פארק קצרין העתיקה",
+      "distance_m": 70.3,
+      "snapped_coordinates": {
+        "lat": 32.988013,
+        "lon": 35.704083
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n35",
+      "name": "מוזיאון עתיקות הגולן",
+      "distance_m": 42.2,
+      "snapped_coordinates": {
+        "lat": 32.995097,
+        "lon": 35.688025
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n39",
+      "name": "כפר האמנים אניעם",
+      "distance_m": 29,
+      "snapped_coordinates": {
+        "lat": 32.95896,
+        "lon": 35.742026
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n35",
+      "name": "מרכז המבקרים דה קרינה, עין זיוון",
+      "distance_m": 10.8,
+      "snapped_coordinates": {
+        "lat": 33.096717,
+        "lon": 35.798791
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n48",
+      "name": "צומת מחניים",
+      "distance_m": 25,
+      "snapped_coordinates": {
+        "lat": 32.99047,
+        "lon": 35.562985
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n36",
+      "name": "גן לאומי תל דור — חניית הכניסה הרשמית",
+      "distance_m": 2.3,
+      "snapped_coordinates": {
+        "lat": 32.620275,
+        "lon": 34.920593
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n36",
+      "name": "מוזיאון המזגגה",
+      "distance_m": 29.5,
+      "snapped_coordinates": {
+        "lat": 32.612529,
+        "lon": 34.919272
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n36",
+      "name": "חניון חוף הבונים",
+      "distance_m": 19.9,
+      "snapped_coordinates": {
+        "lat": 32.642034,
+        "lon": 34.924279
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n37",
+      "name": "כפר קיש",
+      "distance_m": 38.4,
+      "snapped_coordinates": {
+        "lat": 32.666257,
+        "lon": 35.449185
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n37",
+      "name": "מרכז המושבה מנחמיה — עצירת מורשת על כביש ציבורי",
+      "distance_m": 39.2,
+      "snapped_coordinates": {
+        "lat": 32.66689,
+        "lon": 35.555199
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n38",
+      "name": "שמורת נחל עמוד – חניה ומרכז מידע (כניסה עליונה)",
+      "distance_m": 1.6,
+      "snapped_coordinates": {
+        "lat": 32.973679,
+        "lon": 35.461768
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n38",
+      "name": "חניון נחל עמוד תחתון – כניסה רשמית",
+      "distance_m": 47.7,
+      "snapped_coordinates": {
+        "lat": 32.914034,
+        "lon": 35.484382
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n38",
+      "name": "עין נון — חניית הכניסה הציבורית",
+      "distance_m": 55.5,
+      "snapped_coordinates": {
+        "lat": 32.842107,
+        "lon": 35.511177
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n39",
+      "name": "שמורת טבע גמלא – חניון מבואת המבקרים",
+      "distance_m": 8.4,
+      "snapped_coordinates": {
+        "lat": 32.905583,
+        "lon": 35.747457
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n39",
+      "name": "מפל עיט – חניון",
+      "distance_m": 35.8,
+      "snapped_coordinates": {
+        "lat": 32.955217,
+        "lon": 35.754142
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "גן לאומי כורסי — חניית הכניסה הרשמית",
+      "distance_m": 84.6,
+      "snapped_coordinates": {
+        "lat": 32.825784,
+        "lon": 35.64934
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "שער הגישה לסוסיתא מכיוון עין גב — כביש ציבורי בלבד",
+      "distance_m": 6.4,
+      "snapped_coordinates": {
+        "lat": 32.783773,
+        "lon": 35.640797
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "גן לאומי סוסיתא — חניית המבקרים הרשמית",
+      "distance_m": 63.7,
+      "snapped_coordinates": {
+        "lat": 32.774355,
+        "lon": 35.663439
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "עין גב – חזרה חובה באותו ציר מסוסיתא",
+      "distance_m": 30.7,
+      "snapped_coordinates": {
+        "lat": 32.781211,
+        "lon": 35.638578
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n40",
+      "name": "צומת צמח",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.704546,
+        "lon": 35.586558
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n41",
+      "name": "מסעף אבני איתן – נקודת הקפצה למסלול המפל הלבן",
+      "distance_m": 3.6,
+      "snapped_coordinates": {
+        "lat": 32.811976,
+        "lon": 35.765351
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n41",
+      "name": "צומת אליעד – נקודת הקפצה למסלול המפל השחור",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.801582,
+        "lon": 35.744684
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n41",
+      "name": "עין קשתות",
+      "distance_m": 42.4,
+      "snapped_coordinates": {
+        "lat": 32.847783,
+        "lon": 35.736896
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n41",
+      "name": "מצפה השלום",
+      "distance_m": 30.5,
+      "snapped_coordinates": {
+        "lat": 32.758385,
+        "lon": 35.658821
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n42",
+      "name": "שער מושב כנף",
+      "distance_m": 13.6,
+      "snapped_coordinates": {
+        "lat": 32.870146,
+        "lon": 35.698305
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n42",
+      "name": "צומת מעלה גמלא – חלופה סלולה לירידה למעיין",
+      "distance_m": 0,
+      "snapped_coordinates": {
+        "lat": 32.882519,
+        "lon": 35.660298
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n42",
+      "name": "חד נס",
+      "distance_m": 30.3,
+      "snapped_coordinates": {
+        "lat": 32.928664,
+        "lon": 35.643035
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n43",
+      "name": "פארק וולקני אביטל — כניסת המבקרים",
+      "distance_m": 109.9,
+      "snapped_coordinates": {
+        "lat": 33.107424,
+        "lon": 35.803124
+      },
+      "official_entrance_exception": "כניסת המבקרים הרשמית אומתה מול Google Maps ותיירות גולן; דרך השירות הפנימית אינה ממופה במלואה ב-OSRM."
+    },
+    {
+      "route_id": "n43",
+      "name": "חניון הג׳ובה הגדולה — תחילת השביל",
+      "distance_m": 6.8,
+      "snapped_coordinates": {
+        "lat": 33.206492,
+        "lon": 35.73703
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n43",
+      "name": "תל פאחר — מצפה גולני",
+      "distance_m": 25,
+      "snapped_coordinates": {
+        "lat": 33.224497,
+        "lon": 35.692285
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "צומת גונן — נקודת חזרה",
+      "distance_m": 1.6,
+      "snapped_coordinates": {
+        "lat": 33.12143,
+        "lon": 35.64865
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "צומת בית המכס העליון — נקודת חזרה",
+      "distance_m": 23.2,
+      "snapped_coordinates": {
+        "lat": 33.012197,
+        "lon": 35.65151
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "גן לאומי מבצר נמרוד — חניית הכניסה הרשמית",
+      "distance_m": 37.5,
+      "snapped_coordinates": {
+        "lat": 33.252077,
+        "lon": 35.712438
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n44",
+      "name": "חניון מפל סער",
+      "distance_m": 3.1,
+      "snapped_coordinates": {
+        "lat": 33.239605,
+        "lon": 35.702707
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n44",
+      "name": "מג׳דל שמס",
+      "distance_m": 18.7,
+      "snapped_coordinates": {
+        "lat": 33.253942,
+        "lon": 35.759813
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n44",
+      "name": "חניון תחתון אתר החרמון",
+      "distance_m": 24.5,
+      "snapped_coordinates": {
+        "lat": 33.306048,
+        "lon": 35.771172
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n45",
+      "name": "חניון ציבורי למוזיאון בית השומר, כפר גלעדי",
+      "distance_m": 7.9,
+      "snapped_coordinates": {
+        "lat": 33.239921,
+        "lon": 35.573735
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n45",
+      "name": "מוזיאון חצר תל חי",
+      "distance_m": 38.9,
+      "snapped_coordinates": {
+        "lat": 33.233922,
+        "lon": 35.574858
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n45",
+      "name": "מוזיאון בר־דוד, קיבוץ ברעם",
+      "distance_m": 8.6,
+      "snapped_coordinates": {
+        "lat": 33.059,
+        "lon": 35.432048
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n45",
+      "name": "גן לאומי ברעם",
+      "distance_m": 26.5,
+      "snapped_coordinates": {
+        "lat": 33.044485,
+        "lon": 35.414774
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "צומת כרמיאל — נקודת חזרה",
+      "distance_m": 10.8,
+      "snapped_coordinates": {
+        "lat": 32.924464,
+        "lon": 35.300222
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "אתר שיירת יחיעם — חניית האנדרטה",
+      "distance_m": 14.6,
+      "snapped_coordinates": {
+        "lat": 33.009722,
+        "lon": 35.147454
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "מוזיאון חומה ומגדל חניתה",
+      "distance_m": 13.4,
+      "snapped_coordinates": {
+        "lat": 33.088472,
+        "lon": 35.171936
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "אתר התיירות ראש הנקרה — חניית הכניסה",
+      "distance_m": 44.4,
+      "snapped_coordinates": {
+        "lat": 33.093399,
+        "lon": 35.104911
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n46",
+      "name": "צומת כברי — נקודת חזרה",
+      "distance_m": 3.3,
+      "snapped_coordinates": {
+        "lat": 33.016441,
+        "lon": 35.14379
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n47",
+      "name": "מצודת כ״ח",
+      "distance_m": 76.2,
+      "snapped_coordinates": {
+        "lat": 33.114662,
+        "lon": 35.556022
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n47",
+      "name": "רמות נפתלי",
+      "distance_m": 31.2,
+      "snapped_coordinates": {
+        "lat": 33.102378,
+        "lon": 35.553437
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n47",
+      "name": "מנרה",
+      "distance_m": 6.3,
+      "snapped_coordinates": {
+        "lat": 33.195989,
+        "lon": 35.544639
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n47",
+      "name": "כפר גלעדי",
+      "distance_m": 44.1,
+      "snapped_coordinates": {
+        "lat": 33.242177,
+        "lon": 35.575034
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n49",
+      "name": "שמורת טבע החולה — חניית הכניסה הרשמית",
+      "distance_m": 42.5,
+      "snapped_coordinates": {
+        "lat": 33.067247,
+        "lon": 35.602918
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n48",
+      "name": "חניון תחתון נחל עיון – מפל התנור",
+      "distance_m": 7.1,
+      "snapped_coordinates": {
+        "lat": 33.270826,
+        "lon": 35.582374
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n48",
+      "name": "מטולה",
+      "distance_m": 0.7,
+      "snapped_coordinates": {
+        "lat": 33.278992,
+        "lon": 35.580189
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n49",
+      "name": "אגמון החולה — חניית מרכז המבקרים",
+      "distance_m": 3.2,
+      "snapped_coordinates": {
+        "lat": 33.116277,
+        "lon": 35.57249
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n49",
+      "name": "יסוד המעלה",
+      "distance_m": 20,
+      "snapped_coordinates": {
+        "lat": 33.057546,
+        "lon": 35.60293
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n49",
+      "name": "מצפה גדות",
+      "distance_m": 42.4,
+      "snapped_coordinates": {
+        "lat": 33.01316,
+        "lon": 35.641616
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "בניאס – חניון מתחם המעיינות",
+      "distance_m": 9.1,
+      "snapped_coordinates": {
+        "lat": 33.24729,
+        "lon": 35.694249
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "בניאס – חניון מתחם המפל והשביל התלוי",
+      "distance_m": 24.6,
+      "snapped_coordinates": {
+        "lat": 33.240966,
+        "lon": 35.680711
+      },
+      "official_entrance_exception": null
+    },
+    {
+      "route_id": "n50",
+      "name": "מוזיאון האדם הקדמון, מעיין ברוך",
+      "distance_m": 27.6,
+      "snapped_coordinates": {
+        "lat": 33.238116,
+        "lon": 35.608921
+      },
+      "official_entrance_exception": null
+    }
+  ],
+  "source_checks": [
+    {
+      "url": "https://museums.mod.gov.il/sites/Haapala/aboutus/Pages/About.aspx",
+      "status": 200,
+      "final_url": "https://museums.mod.gov.il/sites/Haapala/aboutus/Pages/About.aspx",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.haifa.muni.il/place/%D7%9E%D7%A1%D7%9C%D7%95%D7%9C-%D7%A1%D7%98%D7%9C%D7%94-%D7%9E%D7%90%D7%A8%D7%99%D7%A1/",
+      "status": 200,
+      "final_url": "https://www.haifa.muni.il/place/%D7%9E%D7%A1%D7%9C%D7%95%D7%9C-%D7%A1%D7%98%D7%9C%D7%94-%D7%9E%D7%90%D7%A8%D7%99%D7%A1/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.nmm.org.il/",
+      "status": 200,
+      "final_url": "https://www.nmm.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.hma.org.il/",
+      "status": 200,
+      "final_url": "https://www.hma.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/shikmona/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/shikmona/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://mada.org.il/",
+      "status": 200,
+      "final_url": "https://mada.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.shm.org.il/",
+      "status": 200,
+      "final_url": "https://www.shm.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.tmja.org.il/",
+      "status": 200,
+      "final_url": "https://www.tmja.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://mushecht.haifa.ac.il/",
+      "status": 200,
+      "final_url": "https://mushecht.haifa.ac.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://ganbahai.org.il/he/visit-us-haifa/",
+      "status": 200,
+      "final_url": "https://ganbahai.org.il/he/visit-us-haifa/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.haifa.muni.il/place/louis-promenade/",
+      "status": 200,
+      "final_url": "https://www.haifa.muni.il/place/louis-promenade/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.haifa.muni.il/place/the-german-colony/",
+      "status": 200,
+      "final_url": "https://www.haifa.muni.il/place/the-german-colony/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.museumzy.com/",
+      "status": 200,
+      "final_url": "https://www.museumzy.com/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://nili-museum.org.il/",
+      "status": 200,
+      "final_url": "https://nili-museum.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://makom.hamoreshet.org.il/landmark/yad-for-the-founders-zichron-yaakov/",
+      "status": 200,
+      "final_url": "https://makom.hamoreshet.org.il/landmark/yad-for-the-founders-zichron-yaakov/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.ramat-hanadiv.org.il/",
+      "status": 200,
+      "final_url": "https://www.ramat-hanadiv.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.jancodada.co.il/",
+      "status": 200,
+      "final_url": "https://www.jancodada.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.ein-hod.org/",
+      "status": 200,
+      "final_url": "https://www.ein-hod.org/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%94%D7%9E%D7%A2%D7%A8%D7%95%D7%AA/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%94%D7%9E%D7%A2%D7%A8%D7%95%D7%AA/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%99-%D7%91%D7%A8-%D7%91%D7%9B%D7%A8%D7%9E%D7%9C/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%99-%D7%91%D7%A8-%D7%91%D7%9B%D7%A8%D7%9E%D7%9C/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.kiryat-ata.org.il/city/aboutcity/thefisherhousemuseum/",
+      "status": 200,
+      "final_url": "https://www.kiryat-ata.org.il/city/aboutcity/thefisherhousemuseum/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A2%D7%99%D7%9F-%D7%90%D7%A4%D7%A7/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A2%D7%99%D7%9F-%D7%90%D7%A4%D7%A7/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://ganbahai.org.il/he/%D7%91%D7%A7%D7%A8%D7%95-%D7%90%D7%95%D7%AA%D7%A0%D7%95-%D7%A2%D7%9B%D7%95/",
+      "status": 200,
+      "final_url": "https://ganbahai.org.il/he/%D7%91%D7%A7%D7%A8%D7%95-%D7%90%D7%95%D7%AA%D7%A0%D7%95-%D7%A2%D7%9B%D7%95/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.akko.org.il/attraction/the-visitors-center/",
+      "status": 200,
+      "final_url": "https://www.akko.org.il/attraction/the-visitors-center/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.akko.org.il/accessibility/",
+      "status": 200,
+      "final_url": "https://www.akko.org.il/accessibility/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://museums.mod.gov.il/sites/Aco/Tours/Pages/default.aspx",
+      "status": 200,
+      "final_url": "https://museums.mod.gov.il/sites/Aco/Tours/Pages/default.aspx",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.akko.org.il/attraction/the-knights-halls/",
+      "status": 200,
+      "final_url": "https://www.akko.org.il/attraction/the-knights-halls/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.akko.org.il/attraction/the-templars-tunnel/",
+      "status": 200,
+      "final_url": "https://www.akko.org.il/attraction/the-templars-tunnel/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.akko.org.il/attraction/marina-fishing-port/",
+      "status": 200,
+      "final_url": "https://www.akko.org.il/attraction/marina-fishing-port/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.gfh.org.il/%D7%9E%D7%A4%D7%AA_%D7%94%D7%92%D7%A2%D7%94",
+      "status": 200,
+      "final_url": "https://www.gfh.org.il/%D7%9E%D7%A4%D7%AA_%D7%94%D7%92%D7%A2%D7%94",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/signs/%D7%91%D7%99%D7%AA-%D7%9C%D7%99%D7%91%D7%A8%D7%9E%D7%9F-%D7%94%D7%9E%D7%95%D7%96%D7%90%D7%95%D7%9F-%D7%9C%D7%AA%D7%95%D7%9C%D7%93%D7%95%D7%AA-%D7%A0%D7%94%D7%A8%D7%99%D7%94/",
+      "status": 200,
+      "final_url": "https://shimur.org/signs/%D7%91%D7%99%D7%AA-%D7%9C%D7%99%D7%91%D7%A8%D7%9E%D7%9F-%D7%94%D7%9E%D7%95%D7%96%D7%90%D7%95%D7%9F-%D7%9C%D7%AA%D7%95%D7%9C%D7%93%D7%95%D7%AA-%D7%A0%D7%94%D7%A8%D7%99%D7%94/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.westgalil.org.il/ent/%D7%97%D7%95%D7%A3-%D7%A1%D7%95%D7%A7%D7%95%D7%9C%D7%95%D7%91/",
+      "status": 200,
+      "final_url": "https://www.westgalil.org.il/ent/%D7%97%D7%95%D7%A3-%D7%A1%D7%95%D7%A7%D7%95%D7%9C%D7%95%D7%91/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%90%D7%9B%D7%96%D7%99%D7%91-%D7%95%D7%97%D7%95%D7%A3-%D7%90%D7%9B%D7%96%D7%99%D7%91/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%90%D7%9B%D7%96%D7%99%D7%91-%D7%95%D7%97%D7%95%D7%A3-%D7%90%D7%9B%D7%96%D7%99%D7%91/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.wilfrid.org.il/",
+      "status": 200,
+      "final_url": "https://www.wilfrid.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/rakevet-haemek/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/rakevet-haemek/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.beit-shturman.co.il/",
+      "status": 200,
+      "final_url": "https://www.beit-shturman.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://museumeinharod.org.il/en/about/",
+      "status": 200,
+      "final_url": "https://museumeinharod.org.il/en/about/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F-%D7%99%D7%A7%D7%90-%D7%97%D7%A6%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9B%D7%A8%D7%99%D7%9D-%D7%91%D7%9B%D7%A4%D7%A8-%D7%AA%D7%91%D7%95%D7%A8/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/%D7%9E%D7%95%D7%96%D7%99%D7%90%D7%95%D7%9F-%D7%99%D7%A7%D7%90-%D7%97%D7%A6%D7%A8%D7%95%D7%AA-%D7%94%D7%90%D7%99%D7%9B%D7%A8%D7%99%D7%9D-%D7%91%D7%9B%D7%A4%D7%A8-%D7%AA%D7%91%D7%95%D7%A8/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://chckk.org.il/",
+      "status": 200,
+      "final_url": "https://chckk.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.myc.org.il/about/",
+      "status": 200,
+      "final_url": "https://www.myc.org.il/about/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.betgabriel.co.il/",
+      "status": 200,
+      "final_url": "https://www.betgabriel.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/%D7%9E%D7%AA%D7%97%D7%9D-%D7%AA%D7%97%D7%A0%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%AA-%D7%A9%D7%9C-%D7%A6%D7%9E%D7%97/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/%D7%9E%D7%AA%D7%97%D7%9D-%D7%AA%D7%97%D7%A0%D7%AA-%D7%94%D7%A8%D7%9B%D7%91%D7%AA-%D7%94%D7%94%D7%99%D7%A1%D7%98%D7%95%D7%A8%D7%99%D7%AA-%D7%A9%D7%9C-%D7%A6%D7%9E%D7%97/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://eretzhefetz.org.il/collection-house/beit-gordon_degania/",
+      "status": 200,
+      "final_url": "https://eretzhefetz.org.il/collection-house/beit-gordon_degania/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/%D7%97%D7%A6%D7%A8-%D7%9B%D7%A0%D7%A8%D7%AA/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/%D7%97%D7%A6%D7%A8-%D7%9B%D7%A0%D7%A8%D7%AA/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://naharayim.co.il/%D7%94%D7%A1%D7%99%D7%95%D7%A8-%D7%A9%D7%9C%D7%A0%D7%95/%D7%A9%D7%A2%D7%95%D7%AA-%D7%A4%D7%AA%D7%99%D7%97%D7%94-%D7%95%D7%A9%D7%A2%D7%95%D7%AA-%D7%A1%D7%99%D7%95%D7%A8%D7%99%D7%9D/",
+      "status": 200,
+      "final_url": "https://naharayim.co.il/%D7%94%D7%A1%D7%99%D7%95%D7%A8-%D7%A9%D7%9C%D7%A0%D7%95/%D7%A9%D7%A2%D7%95%D7%AA-%D7%A4%D7%AA%D7%99%D7%97%D7%94-%D7%95%D7%A9%D7%A2%D7%95%D7%AA-%D7%A1%D7%99%D7%95%D7%A8%D7%99%D7%9D/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.uri-rami-museum.co.il/",
+      "status": 200,
+      "final_url": "https://www.uri-rami-museum.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://yigal-allon-centre.org.il/category/%D7%90%D7%95%D7%93%D7%95%D7%AA/",
+      "status": 200,
+      "final_url": "https://yigal-allon-centre.org.il/category/%D7%90%D7%95%D7%93%D7%95%D7%AA/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.magdala.org/",
+      "status": 200,
+      "final_url": "https://www.magdala.org/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.donagracia.com/museum",
+      "status": 200,
+      "final_url": "https://www.donagracia.com/museum",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.nazarethvillage.com/",
+      "status": 200,
+      "final_url": "https://nazarethvillage.com/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.custodia.org/en/sanctuaries/nazareth-basilica-of-the-annunciation/",
+      "status": 200,
+      "final_url": "https://www.custodia.org/en/sanctuaries/nazareth-basilica-of-the-annunciation/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.mariedenazareth.com/en/our-activities",
+      "status": 200,
+      "final_url": "https://www.mariedenazareth.com/en/our-activities",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.kkl.org.il/travel/scenic_lookout_jump_m/",
+      "status": 200,
+      "final_url": "https://www.kkl.org.il/travel/scenic_lookout_jump_m/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.hcm.org.il/",
+      "status": 200,
+      "final_url": "https://www.hcm.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.beit-hagefen.com/",
+      "status": 200,
+      "final_url": "https://www.beit-hagefen.com/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://parkatzrin.com/",
+      "status": 200,
+      "final_url": "https://kfarkatzrin.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://pop.education.gov.il/tchumey_daat/global-subjects/annual-theme/leadership-and-leaders/museums/",
+      "status": 200,
+      "final_url": "https://pop.education.gov.il/tchumey_daat/global-subjects/annual-theme/leadership-and-leaders/museums/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/aniam_artists_village/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/aniam_artists_village/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/de-karina/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/de-karina/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%AA%D7%A0%D7%99%D7%A0%D7%99%D7%9D/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%AA%D7%A0%D7%99%D7%A0%D7%99%D7%9D/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/teldor/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/teldor/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.mizgaga.com/",
+      "status": 200,
+      "final_url": "https://www.mizgaga.com/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A3-%D7%93%D7%95%D7%A8-%D7%94%D7%91%D7%95%D7%A0%D7%99%D7%9D/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%97%D7%95%D7%A3-%D7%93%D7%95%D7%A8-%D7%94%D7%91%D7%95%D7%A0%D7%99%D7%9D/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%AA%D7%91%D7%95%D7%A8/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%AA%D7%91%D7%95%D7%A8/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%90%D7%9C%D7%95%D7%AA-%D7%A1%D7%99%D7%A8%D7%99%D7%9F/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%90%D7%9C%D7%95%D7%AA-%D7%A1%D7%99%D7%A8%D7%99%D7%9F/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.romgalil.org.il/cds/915/",
+      "status": 200,
+      "final_url": "https://www.romgalil.org.il/cds/915/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%A2%D7%9E%D7%95%D7%93/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%A2%D7%9E%D7%95%D7%93/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://hadashot.iaa.org.il/report_detail.aspx?id=25934&mag_id=133",
+      "status": 200,
+      "final_url": "https://hadashot.iaa.org.il/report_detail.aspx?id=25934&mag_id=133",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%92%D7%9E%D7%9C%D7%90/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%92%D7%9E%D7%9C%D7%90/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/eagle_waterfall/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/eagle_waterfall/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9B%D7%95%D7%A8%D7%A1%D7%99/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9B%D7%95%D7%A8%D7%A1%D7%99/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/susita/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/susita/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/peace_lookout_point/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/peace_lookout_point/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/el_al_stream/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/el_al_stream/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/einkeshatot/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/einkeshatot/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/maps/%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%95%D7%9E%D7%95%D7%A8%D7%A9%D7%AA/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/maps/%D7%97%D7%A7%D7%9C%D7%90%D7%95%D7%AA-%D7%95%D7%9E%D7%95%D7%A8%D7%A9%D7%AA/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/kanaf_spring/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/kanaf_spring/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/%D7%A4%D7%90%D7%A8%D7%A7-%D7%95%D7%95%D7%9C%D7%A7%D7%A0%D7%99-%D7%90%D7%91%D7%99%D7%98%D7%9C/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/%D7%A4%D7%90%D7%A8%D7%A7-%D7%95%D7%95%D7%9C%D7%A7%D7%A0%D7%99-%D7%90%D7%91%D7%99%D7%98%D7%9C/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/big_juba/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/big_juba/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/tel_faher/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/tel_faher/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.izkor.gov.il/monument/en_896968a1a2f53fa2c3abe22fa46c6038",
+      "status": 200,
+      "final_url": "https://www.izkor.gov.il/monument/en_896968a1a2f53fa2c3abe22fa46c6038",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%91%D7%A6%D7%A8-%D7%A0%D7%9E%D7%A8%D7%95%D7%93-%D7%A7%D7%9C%D7%A2%D7%AA-%D7%A0%D7%9E%D7%A8%D7%95%D7%93/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%9E%D7%91%D7%A6%D7%A8-%D7%A0%D7%9E%D7%A8%D7%95%D7%93-%D7%A7%D7%9C%D7%A2%D7%AA-%D7%A0%D7%9E%D7%A8%D7%95%D7%93/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/saar_waterfall/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/saar_waterfall/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/mount_hermon/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/mount_hermon/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://skihermon.co.il/",
+      "status": 200,
+      "final_url": "https://skihermon.co.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://museums.mod.gov.il/sites/Hashomer/Events/Pages/PreEvents.aspx",
+      "status": 200,
+      "final_url": "https://museums.mod.gov.il/sites/Hashomer/Events/Pages/PreEvents.aspx",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/%D7%97%D7%A6%D7%A8-%D7%AA%D7%9C-%D7%97%D7%99-2/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/%D7%97%D7%A6%D7%A8-%D7%AA%D7%9C-%D7%97%D7%99-2/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.bardavid-museum.org.il/about/",
+      "status": 200,
+      "final_url": "https://www.bardavid-museum.org.il/about/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%A8%D7%A2%D7%9D/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%92%D7%9F-%D7%9C%D7%90%D7%95%D7%9E%D7%99-%D7%91%D7%A8%D7%A2%D7%9D/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.kkl.org.il/travel/trips/2562/",
+      "status": 200,
+      "final_url": "https://www.kkl.org.il/travel/trips/2562/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://museumhanita.org.il/",
+      "status": 200,
+      "final_url": "https://museumhanita.org.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.rosh-hanikra.com/",
+      "status": 200,
+      "final_url": "https://www.rosh-hanikra.com/he",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://shimur.org/sites/hareut/",
+      "status": 200,
+      "final_url": "https://shimur.org/sites/hareut/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.kkl.org.il/travel/kkl_nafta/",
+      "status": 200,
+      "final_url": "https://www.kkl.org.il/travel/kkl_nafta/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%94%D7%97%D7%95%D7%9C%D7%94/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%94%D7%97%D7%95%D7%9C%D7%94/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%A2%D7%99%D7%95%D7%9F-%D7%94%D7%AA%D7%A0%D7%95%D7%A8/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/reserve-park/%D7%A9%D7%9E%D7%95%D7%A8%D7%AA-%D7%98%D7%91%D7%A2-%D7%A0%D7%97%D7%9C-%D7%A2%D7%99%D7%95%D7%9F-%D7%94%D7%AA%D7%A0%D7%95%D7%A8/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://www.metulla.muni.il/",
+      "status": 200,
+      "final_url": "https://www.metulla.muni.il/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.kkl.org.il/travel/hula_lake/",
+      "status": 200,
+      "final_url": "https://www.kkl.org.il/travel/hula_lake/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.romgalil.org.il/cds/874/",
+      "status": 200,
+      "final_url": "https://www.romgalil.org.il/cds/874/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://tourgolan.org.il/listing/gadot_lookout/",
+      "status": 200,
+      "final_url": "https://tourgolan.org.il/listing/gadot_lookout/",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "url": "https://www.parks.org.il/article/%D7%94%D7%91%D7%A0%D7%99%D7%90%D7%A1-%D7%9E%D7%9C%D7%9A-%D7%94%D7%9E%D7%A4%D7%9C%D7%99%D7%9D/",
+      "status": 403,
+      "final_url": "https://www.parks.org.il/article/%D7%94%D7%91%D7%A0%D7%99%D7%90%D7%A1-%D7%9E%D7%9C%D7%9A-%D7%94%D7%9E%D7%A4%D7%9C%D7%99%D7%9D/",
+      "live": false,
+      "classification": "official_antibot"
+    },
+    {
+      "url": "https://ugmp.co.il/",
+      "status": 200,
+      "final_url": "https://ugmp.co.il/",
+      "live": true,
+      "classification": "http_success"
+    }
+  ],
+  "google_directions_checks": [
+    {
+      "route_id": "n21",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8300751%2C34.9714206%7C32.8272182%2C34.9700773%7C32.8288878%2C34.9723966%7C32.8175296%2C34.9596001%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8300751%2C34.9714206%7C32.8272182%2C34.9700773%7C32.8288878%2C34.9723966%7C32.8175296%2C34.9596001%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n22",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8101456%2C34.996329%7C32.8046702%2C35.0005516%7C32.8093487%2C34.985385%7C32.7632182%2C35.018062%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8101456%2C34.996329%7C32.8046702%2C35.0005516%7C32.8093487%2C34.985385%7C32.7632182%2C35.018062%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n23",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.811387%2C34.9852803%7C32.8121608%2C34.9827047%7C32.8272182%2C34.9700773%7C32.8217023%2C34.991176%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.811387%2C34.9852803%7C32.8121608%2C34.9827047%7C32.8272182%2C34.9700773%7C32.8217023%2C34.991176%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n24",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.574017%2C34.952347%7C32.5723598%2C34.9542081%7C32.5695728%2C34.9540712%7C32.553325%2C34.948883%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.574017%2C34.952347%7C32.5723598%2C34.9542081%7C32.5695728%2C34.9540712%7C32.553325%2C34.948883%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n25",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.7017278%2C34.9799967%7C32.7005017%2C34.9825964%7C32.6711823%2C34.9652775%7C32.75433%2C35.016823%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.7017278%2C34.9799967%7C32.7005017%2C34.9825964%7C32.6711823%2C34.9652775%7C32.75433%2C35.016823%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n26",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8048038%2C35.1058659%7C32.8474933%2C35.1107059%7C32.9438492%2C35.0900129%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8048038%2C35.1058659%7C32.8474933%2C35.1107059%7C32.9438492%2C35.0900129%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n27",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9237071%2C35.0710856%7C32.911913%2C35.167244%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9237071%2C35.0710856%7C32.911913%2C35.167244%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n28",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9605996%2C35.0953678%7C32.9915731%2C35.0959032%7C33.0043811%2C35.0871586%7C33.048379%2C35.102177%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9605996%2C35.0953678%7C32.9915731%2C35.0959032%7C33.0043811%2C35.0871586%7C33.048379%2C35.102177%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n29",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6444501%2C35.117615%7C32.6718235%2C35.1528942%7C32.5596394%2C35.3949967%7C32.5610011%2C35.3932473%7C32.708743%2C35.15352%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6444501%2C35.117615%7C32.6718235%2C35.1528942%7C32.5596394%2C35.3949967%7C32.5610011%2C35.3932473%7C32.708743%2C35.15352%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n30",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6882%2C35.42%7C32.7212373%2C35.4431764%7C32.6857%2C35.6055089%7C32.7051807%2C35.5894796%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6882%2C35.42%7C32.7212373%2C35.4431764%7C32.6857%2C35.6055089%7C32.7051807%2C35.5894796%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n31",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.70465%2C35.59334%7C32.7089571%2C35.5742545%7C32.7220279%2C35.5680441%7C32.6230967%2C35.5634372%7C32.558358%2C35.316841%7C32.5728653%2C35.1918956%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.70465%2C35.59334%7C32.7089571%2C35.5742545%7C32.7220279%2C35.5680441%7C32.6230967%2C35.5634372%7C32.558358%2C35.316841%7C32.5728653%2C35.1918956%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n32",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6608977%2C35.5826149%7C32.844394%2C35.5251688%7C32.8284428%2C35.512921%7C32.7886258%2C35.5411812%7C32.795166%2C35.404087%7C32.636333%2C35.063908",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6608977%2C35.5826149%7C32.844394%2C35.5251688%7C32.8284428%2C35.512921%7C32.7886258%2C35.5411812%7C32.795166%2C35.404087%7C32.636333%2C35.063908",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n33",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.7000733%2C35.2917217%7C32.702102%2C35.2977711%7C32.7029983%2C35.2975335%7C32.685922%2C35.302309%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.7000733%2C35.2917217%7C32.702102%2C35.2977711%7C32.7029983%2C35.2975335%7C32.685922%2C35.302309%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n34",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8222627%2C34.9919454%7C32.815941%2C34.9925911%7C32.8151043%2C34.9926973%7C32.8217023%2C34.991176%7C32.3830604%2C34.8676122",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.8222627%2C34.9919454%7C32.815941%2C34.9925911%7C32.8151043%2C34.9926973%7C32.8217023%2C34.991176%7C32.3830604%2C34.8676122",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n35",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9885134%2C35.7045451%7C32.9953854%2C35.6883203%7C32.9587019%2C35.7420753%7C33.0967048%2C35.7986756%7C32.9906948%2C35.5629653%7C32.911913%2C35.167244%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9885134%2C35.7045451%7C32.9953854%2C35.6883203%7C32.9587019%2C35.7420753%7C33.0967048%2C35.7986756%7C32.9906948%2C35.5629653%7C32.911913%2C35.167244%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n36",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.6202955%2C34.9206011%7C32.6127276%2C34.9194804%7C32.6418611%2C34.9242222%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.6202955%2C34.9206011%7C32.6127276%2C34.9194804%7C32.6418611%2C34.9242222%7C32.6190811%2C35.0548805%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n37",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6663613%2C35.4487944%7C32.6670217%2C35.5555869%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.6663613%2C35.4487944%7C32.6670217%2C35.5555869%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n38",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9736834%2C35.4617845%7C32.9138667%2C35.483912%7C32.8416083%2C35.5111327%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9736834%2C35.4617845%7C32.9138667%2C35.483912%7C32.8416083%2C35.5111327%7C32.506908%2C35.518787%7C32.5618163%2C35.3553123%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n39",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9055834%2C35.7473674%7C32.955143%2C35.7537689%7C32.9587019%2C35.7420753%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9055834%2C35.7473674%7C32.955143%2C35.7537689%7C32.9587019%2C35.7420753%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n40",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.8257841%2C35.6502442%7C32.783775%2C35.640865%7C32.7746995%2C35.6639828%7C32.7811125%2C35.6388846%7C32.7045456%2C35.5865584%7C32.558358%2C35.316841%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.8257841%2C35.6502442%7C32.783775%2C35.640865%7C32.7746995%2C35.6639828%7C32.7811125%2C35.6388846%7C32.7045456%2C35.5865584%7C32.558358%2C35.316841%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n41",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.812001%2C35.765326%7C32.801582%2C35.7446843%7C32.8478165%2C35.7373466%7C32.7586576%2C35.6588582%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.812001%2C35.765326%7C32.801582%2C35.7446843%7C32.8478165%2C35.7373466%7C32.7586576%2C35.6588582%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n42",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9885134%2C35.7045451%7C32.8700272%2C35.6982707%7C32.8825188%2C35.660298%7C32.928396%2C35.6429709%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C32.9885134%2C35.7045451%7C32.8700272%2C35.6982707%7C32.8825188%2C35.660298%7C32.928396%2C35.6429709%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n43",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.1078603%2C35.8020663%7C33.2064824%2C35.736958%7C33.224696%2C35.69216%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.1078603%2C35.8020663%7C33.2064824%2C35.736958%7C33.224696%2C35.69216%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n44",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2523913%2C35.7125858%7C33.239581%2C35.702691%7C33.2539499%2C35.7596122%7C33.306185%2C35.7709657%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2523913%2C35.7125858%7C33.239581%2C35.702691%7C33.2539499%2C35.7596122%7C33.306185%2C35.7709657%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n45",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2399753%2C35.57368%7C33.233764%2C35.575231%7C33.0590556%2C35.4321111%7C33.0447017%2C35.4146535%7C32.924557%2C35.300255%7C32.6190811%2C35.0548805",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2399753%2C35.57368%7C33.233764%2C35.575231%7C33.0590556%2C35.4321111%7C33.0447017%2C35.4146535%7C32.924557%2C35.300255%7C32.6190811%2C35.0548805",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n46",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9605996%2C35.0953678%7C33.009852%2C35.147431%7C33.0884734%2C35.1717924%7C33.0933543%2C35.104439%7C33.016411%2C35.143791%7C32.924557%2C35.300255%7C32.6190811%2C35.0548805",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.3830604%2C34.8676122%7C32.9605996%2C35.0953678%7C33.009852%2C35.147431%7C33.0884734%2C35.1717924%7C33.0933543%2C35.104439%7C33.016411%2C35.143791%7C32.924557%2C35.300255%7C32.6190811%2C35.0548805",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n47",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.11477%2C35.5568283%7C33.1022971%2C35.5531168%7C33.195939%2C35.5446083%7C33.2417843%2C35.5749608%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.11477%2C35.5568283%7C33.1022971%2C35.5531168%7C33.195939%2C35.5446083%7C33.2417843%2C35.5749608%7C33.121426%2C35.648666%7C33.012115%2C35.651281%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n48",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.0674266%2C35.6033203%7C33.2707911%2C35.5823104%7C33.2789864%2C35.5801884%7C32.9906948%2C35.5629653%7C32.911913%2C35.167244%7C32.0736456%2C34.9335548",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.0674266%2C35.6033203%7C33.2707911%2C35.5823104%7C33.2789864%2C35.5801884%7C32.9906948%2C35.5629653%7C32.911913%2C35.167244%7C32.0736456%2C34.9335548",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n49",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.0674266%2C35.6033203%7C33.1162748%2C35.5725244%7C33.0573811%2C35.6030157%7C33.0134828%2C35.6413743%7C32.5728653%2C35.1918956",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.0674266%2C35.6033203%7C33.1162748%2C35.5725244%7C33.0573811%2C35.6030157%7C33.0134828%2C35.6413743%7C32.5728653%2C35.1918956",
+      "live": true,
+      "classification": "http_success"
+    },
+    {
+      "route_id": "n50",
+      "url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2523913%2C35.7125858%7C33.2473706%2C35.694264%7C33.2411431%2C35.6808698%7C33.2380748%2C35.6086294%7C33.121426%2C35.648666%7C33.012115%2C35.651281",
+      "status": 200,
+      "final_url": "https://www.google.com/maps/dir/?api=1&origin=32.0990382%2C34.7784222&destination=32.0990382%2C34.7784222&travelmode=driving&waypoints=32.5728653%2C35.1918956%7C33.2523913%2C35.7125858%7C33.2473706%2C35.694264%7C33.2411431%2C35.6808698%7C33.2380748%2C35.6086294%7C33.121426%2C35.648666%7C33.012115%2C35.651281",
+      "live": true,
+      "classification": "http_success"
+    }
+  ],
+  "navigation_exclusions": [
+    {
+      "route_id": "n27",
+      "point": "מוזיאון אסירי המחתרות עכו — הליכה בלבד",
+      "reason": "המוזיאון נמצא במרקם העיר העתיקה; הגעה ברגל מן החניה הציבורית היחידה, ללא יעד ניווט נפרד לאופנוע."
+    },
+    {
+      "route_id": "n27",
+      "point": "אולמות האבירים — הליכה בלבד",
+      "reason": "האתר נמצא בתוך מתחם הולכי הרגל והסמטאות; אין יעד ניווט נפרד לאופנוע."
+    },
+    {
+      "route_id": "n27",
+      "point": "מנהרת הטמפלרים — הליכה בלבד",
+      "reason": "הכניסה נמצאת בסמטאות העיר העתיקה והגישה היא חלק ממסלול ההליכה מן החניה הציבורית."
+    },
+    {
+      "route_id": "n27",
+      "point": "נמל עכו — הליכה בלבד",
+      "reason": "אזור הנמל והסמטאות נכלל במסלול הולכי הרגל; האופנוע נשאר בחניה הציבורית ליד מרכז המבקרים."
+    },
+    {
+      "route_id": "n36",
+      "point": "שמורת טבע נחל תנינים – מבואת מבקרים",
+      "reason": "הגישה הסופית למבואת נחל תנינים מתוארת בידי רט״ג כדרך עפר; הנקודה נשארת כהצעת ביקור אך אינה מוכנסת אוטומטית למסלול אופנוע כביש."
+    },
+    {
+      "route_id": "n37",
+      "point": "חניון נחל תבור דרך גזית",
+      "reason": "החניון כולל מקטע דרך עפר שעלול להיות בוצי או סגור אחרי גשם; יש לבדוק עצמאית ביום היציאה ולכן הוא אינו חלק מניווט הכביש האוטומטי."
+    },
+    {
+      "route_id": "n37",
+      "point": "מצפה אלות סירין – נקודת הליכה, לא יעד ניווט לאופנוע",
+      "reason": "המצפה הוא נקודת הליכה/שטח ולא יעד רכיבה מאומת לאופנוע כביש; הוא נשאר בתוכן אך מושמט מכל קישור ניווט אוטומטי."
+    },
+    {
+      "route_id": "n40",
+      "point": "מצפה השלום",
+      "reason": "אין לחבר אוטומטית את מצפה השלום אחרי סוסיתא, משום שמנוע ניווט עלול לבחור בכביש הסגור והאסור לכיוון אמפי גולן; הנקודה נשארת כרעיון נפרד בלבד."
+    },
+    {
+      "route_id": "n42",
+      "point": "מעיין כנף – דיר עזיז (תוכן בלבד, ללא ניווט אופנוע כביש)",
+      "reason": "המעיין נמצא מעבר לכשני קילומטרים של דרך עפר שאינם חלק ממסלול אופנוע הכביש; הוא נשאר כהרחבת תוכן בלבד ואינו נכנס ל-Google/Waze."
+    }
+  ],
+  "semantic_duplicate_remediations": [
+    {
+      "new_route_id": "n43",
+      "legacy_route_id": "r005",
+      "unique_verified_cores": [
+        "פארק וולקני אביטל — כניסת המבקרים",
+        "חניון הג׳ובה הגדולה — תחילת השביל",
+        "תל פאחר — מצפה גולני"
+      ]
+    },
+    {
+      "new_route_id": "n46",
+      "legacy_route_id": "r038",
+      "unique_verified_cores": [
+        "אתר שיירת יחיעם — חניית האנדרטה",
+        "מוזיאון חומה ומגדל חניתה"
+      ]
+    },
+    {
+      "new_route_id": "n50",
+      "legacy_route_id": "r053",
+      "unique_verified_cores": [
+        "גן לאומי מבצר נמרוד — חניית הכניסה הרשמית",
+        "מוזיאון האדם הקדמון, מעיין ברוך"
+      ]
+    }
+  ],
+  "notes": [
+    "n27 משתמש בחניה ציבורית חוקית אחת; ארבע נקודות העיר העתיקה נשמרות בתוכן ומוחרגות מן הניווט.",
+    "n30, n32, n37, n38, n43, n44, n45, n47 ו־n50 הוגדרו snake רק לאחר הוספת נקודות חזרה שמכריחות מסדרון שונה ואימות גאומטריית OSRM.",
+    "n39 קודם ל-PASS לאחר אימות שלוש חניות/נקודות כביש; n27 הועבר ל-WARNING בגלל מודל חניה אחת והליכה, וכך נשמר יחס 15/15.",
+    "הזמנה מראש אינה החרגת ניווט: יעד חוקי נשאר במסלול ומקבל WARNING/conditional לפי הצורך."
+  ]
+}

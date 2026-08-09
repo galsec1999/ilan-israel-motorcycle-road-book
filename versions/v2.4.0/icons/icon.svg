@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ספר הטיולים של אילן">
+  <rect width="512" height="512" rx="100" fill="#0b2132"/>
+  <circle cx="378" cy="130" r="58" fill="#f6a23a"/>
+  <path d="M0 337L125 206l75 77 83-119 229 215v133H0z" fill="#0b5362"/>
+  <path d="M158 512c17-92 49-130 112-176 53-39 67-80 44-152" fill="none" stroke="#f5eee0" stroke-width="96" stroke-linecap="round"/>
+  <path d="M158 512c17-92 49-130 112-176 53-39 67-80 44-152" fill="none" stroke="#f47b20" stroke-width="10" stroke-linecap="round" stroke-dasharray="24 23"/>
+  <path d="M79 111h178" stroke="#fff" stroke-width="26" stroke-linecap="round" opacity=".95"/>
+  <path d="M79 158h130" stroke="#fff" stroke-width="18" stroke-linecap="round" opacity=".72"/>
+</svg>
