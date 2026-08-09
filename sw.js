@@ -1,21 +1,23 @@
 /**
- * Service Worker — גרסה 2.2.0
+ * Service Worker — גרסה 2.2.4
  * מוחק רק caches של הספר ואינו שומר מפות, AI או שמע דינמי.
  */
 
 const CACHE_PREFIX = 'ilan-road-book-';
-const CACHE_NAME = `${CACHE_PREFIX}v2.2.0`;
+const CACHE_NAME = `${CACHE_PREFIX}v2.2.4-build-1`;
 const APP_FILES = [
   './',
   './index.html',
-  './manifest.webmanifest',
-  './offline.html',
-  './assets/app-v2.css',
-  './assets/app-v2.js',
-  './data/config-v2.js',
+  './manifest-2.2.4.webmanifest',
+  './offline-2.2.4.html',
+  './assets/app-v2.2.4.css',
+  './assets/app-v2.2.4.js',
+  './data/config-v2.2.4.js',
   './data/legacy-content-v2.js',
   './data/new-routes-v2.js',
+  './data/release-audit-v2.2.4.js',
   './icons/icon.svg',
+  './favicon.ico',
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];
@@ -55,7 +57,7 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       } catch {
-        return (await caches.match('./index.html')) || (await caches.match('./offline.html'));
+        return (await caches.match('./index.html')) || (await caches.match('./offline-2.2.4.html'));
       }
     })());
     return;

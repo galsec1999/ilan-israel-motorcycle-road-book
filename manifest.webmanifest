@@ -1,9 +1,9 @@
 {
   "id": "./",
-  "name": "ספר הטיולים של אילן — גרסה 2.2.0",
-  "short_name": "אילן 2.2",
-  "description": "143 מסלולי כביש ומועמדי מסלול בישראל, מפות, בטיחות קבוצתית, סיפורי דרך ועוזר המסלול.",
-  "version": "2.2.0",
+  "name": "ספר הטיולים של אילן — גרסה 2.2.4",
+  "short_name": "אילן 2.2.4",
+  "description": "90 מסלולי כביש בשני טאבים; 45 המסלולים עם הערה מסווגים לשלוש קטגוריות; 475 תחנות עם העתקה מודרכת ל־AI.",
+  "version": "2.2.4",
   "lang": "he",
   "dir": "rtl",
   "start_url": "./?source=pwa",
@@ -15,6 +15,7 @@
   "categories": ["travel", "navigation", "education"],
   "shortcuts": [
     { "name": "בחירת מסלול", "short_name": "מסלולים", "url": "./#routesView" },
+    { "name": "מסלולים עם הערות", "short_name": "עם הערות", "url": "./#issuesView" },
     { "name": "מרכז הבטיחות", "short_name": "בטיחות", "url": "./#safetyView" },
     { "name": "בונה טיול משולב", "short_name": "טיול משולב", "url": "./#combinedView" }
   ],
