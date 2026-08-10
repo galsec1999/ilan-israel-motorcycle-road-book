@@ -1,0 +1,174 @@
+TOTAL EXPANDED ROUTES: 261
+
+FOUND 171 INCOMPLETE ROUTES OUT OF 261:
+[91] ID=n01 | צפת–דלתון–גוש חלב–ברעם–סאסא => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[92] ID=n02 | חצור–ביריה–עמוקה–דלתון–כרם בן זמרה–צפת => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[93] ID=n03 | נהריה–כברי–אילון–פארק גורן–מצפה מונפור–מעיליא => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[94] ID=n04 | כרמיאל–ראמה–בית ג׳אן–הר הארי–פקיעין–כרמיאל => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[95] ID=n05 | כרמיאל–כסרא־סמיע–תפן–כפר ורדים–מעיליא–כרמיאל => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[96] ID=n06 | כרמיאל–אשחר–יובלים–יודפת–כאוכב–שפרעם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[97] ID=n07 | שפרעם–אלון הגליל–כעביה–בית לחם הגלילית–אלוני אבא–כפר יהושע => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[98] ID=n08 | כפר מנדא–בית רימון–הר תורען–כפר כמא–אילניה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[99] ID=n09 | כפר תבור–אילניה–כפר כמא–יבנאל–כנרת => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[100] ID=n10 | בית שאן–מולדת–רמת צבי–עין חרוד–גדעונה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[101] ID=n12 | קצרין–עין קשתות–נטור–גשור–בני יהודה–עין גב => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[102] ID=n13 | קצרין–משושים–יהודיה–מג׳רסה–כורסי => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[103] ID=n17 | פרדס חנה–כפר קרע–קציר–אום אל־פחם–מגידו–יקנעם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[104] ID=n18 | זכרון–בת שלמה–כרם מהר״ל–עופר–גבע כרמל–עתלית => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[105] ID=n20 | יבנאל–פוריה–ברניקי–חמת טבריה–ארבל => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[106] ID=c01 | בנימינה–אביאל–עמיקם–מי קדם–גבעת ניל״י–זכרון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[107] ID=c02 | מוזיאון החאן–בית פיינברג–נחל חדרה–גבעת אולגה–קיסריה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[108] ID=c03 | חדרה–תל קאקון–בחן–מעברות–בית ינאי => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[109] ID=c04 | חדרה–עין החורש–כפר הרא״ה–בית יצחק–נתניה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[110] ID=c05 | אירוס הארגמן–פולג–וינגייט–געש–סידנא עלי => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[111] ID=c06 | ראש העין–מאוזוליאום מזור–שוהם–ברקת–בן שמן => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[112] ID=c07 | רמלה–המגדל הלבן–לוד העתיקה–מזור–נאות קדומים => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[113] ID=c08 | רמלה–תל גזר–כרמי יוסף–נחשון–לטרון–נווה שלום => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[114] ID=c09 | מכון איילון–בית ויצמן–גבעת ברנר–מזכרת בתיה–חולדה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[115] ID=c10 | נס ציונה–רחובות–גדרה–ביל״ו–עקרון–מזכרת בתיה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[116] ID=c11 | יפו–מקוה ישראל–ראשון לציון–רמלה–לטרון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[117] ID=c12 | יבנה–בית גמליאל–פלמחים–נס ציונה–ראשון לציון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[118] ID=c13 | נמל תל אביב–הירקון–שרונה–שביל העצמאות–יפו => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[119] ID=j01 | נבי סמואל–עין חמד–קריית ענבים–יד השמונה–נווה אילן–אבו גוש => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[120] ID=j02 | בית שמש–נס הרים–בר גיורא–צור הדסה–מטע–עמק האלה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[121] ID=j03 | בית שמש–עמק האלה–מטע–בית ג׳מאל–צרעה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[122] ID=j04 | ארמון הנציב–עין יעל–עין לבן–יד קנדי–עין כרם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[123] ID=j05 | גבעת התחמושת–הר הצופים–נבי סמואל–הקסטל–אבו גוש => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[124] ID=j06 | ארבעת התלים: גזר–בית שמש–עזקה–עמק האלה–לטרון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[125] ID=j07 | בית שמש–צרעה–גיזו–טל שחר–חולדה–לטרון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[126] ID=j08 | בית גוברין–קריית גת–יואב–נגבה–אשקלון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[127] ID=j09 | בית שמש–גבעת ישעיהו–נחושה–אמציה–לכיש => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[128] ID=j10 | התחנה הראשונה–הר ציון–מוזיאון ישראל–הר הרצל–יד ושם–עין כרם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[129] ID=s01 | באר שבע–רהט–מרכז ג׳ו אלון–להב–דביר–בית קמה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[130] ID=s02 | באר שבע–תל באר שבע–נבטים–דימונה–באר שבע => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[131] ID=s03 | באר שבע–חצרים–גילת–אופקים–באר שבע => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[132] ID=s04 | בית קמה–פורה–שוקדה–נתיבות–רוחמה–בית קמה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[133] ID=s06 | אשקלון–נגבה–יואב–קריית גת–לכיש–אשקלון => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[134] ID=s07 | באר שבע–משאבי שדה–פארק גולדה–רביבים–ירוחם–באר שבע => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[135] ID=s08 | דימונה–ממשית–רותם–ירוחם–דימונה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[136] ID=s10 | ירוחם–שדה בוקר–רמת בוקר–חלוקים–ירוחם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[137] ID=s11 | טללים–שבטה–שדה בוקר–ירוחם–טללים => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[138] ID=s12 | באר שבע–ערד–נווה זוהר–שדה בוקר–באר שבע => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[139] ID=s13 | נווה זוהר–נאות הכיכר–עין חצבה–חצבה–עידן => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[140] ID=s14 | עין יהב–ספיר–צופר–צוקים–פארן => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[141] ID=s15 | פארן–יהל–נאות סמדר–קטורה–לוטן–יטבתה => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[142] ID=s16 | אילת–פארק הצפרות–אילות–באר אורה–תמנע–אילת => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[143] ID=s17 | אילת–מסוף טאבה–חוף האלמוגים–הר יואש–אילת => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[144] ID=n21 | חיפה הימית: העפלה, סטלה מאריס ושקמונה => missing road_character
+[145] ID=n22 | חיפה של מדע ואמנות: מדעטק, שטרוק, טיקוטין והכט => missing road_character
+[146] ID=n23 | חיפה של דתות ותצפיות: הבהאים, לואי, סטלה מאריס והמושבה => missing road_character
+[147] ID=n24 | זכרון יעקב: מייסדים, ניל״י ורמת הנדיב => missing road_character
+[148] ID=n25 | עין הוד והכרמל הקדום: אמנות, מערות וחי־בר => missing road_character
+[149] ID=n26 | עמק זבולון: בית פישר, עין אפק ובהג׳י => missing road_character
+[150] ID=n27 | עכו העתיקה מן החניה הציבורית: אסירי המחתרות, אבירים, מנהרה ונמל => missing road_character
+[151] ID=n28 | נהריה והגליל המערבי: שואה, עיר חדשה ואכזיב => missing road_character
+[152] ID=n29 | מוזיאוני העמק: הזורע, רכבת העמק ועין חרוד => missing road_character
+[153] ID=n30 | תבור וצ׳רקסים: המושבה, כפר כמא והתרבות הירמוכית => missing road_character
+[154] ID=n31 | רכבת וחלוצים בדרום הכנרת: צמח, דגניה, כנרת ונהריים => missing road_character
+[155] ID=n32 | מוזיאונים ועתיקות סביב הכנרת: אשדות יעקב, גינוסר, מגדלא וטבריה => missing road_character
+[156] ID=n33 | נצרת מבפנים: כפר נצרת, הבשורה, מרים והר הקפיצה => missing road_character
+[157] ID=n34 | חיפה התחתית: מוזיאון העיר, בית הגפן ואמנות עכשווית => missing road_character
+[158] ID=n35 | אמנות ומבקרים בגולן: קצרין, אניעם ועין זיוון => missing road_character
+[159] ID=n36 | חוף הכרמל הדרומי: תנינים, דור, המזגגה והבונים => missing road_character
+[160] ID=n37 | נחל תבור ורמת סירין: מסלול יבש בלבד => missing road_character
+[161] ID=n38 | נחל עמוד: שתי כניסות רשמיות בלי קיצורי ניווט => missing road_character
+[162] ID=n39 | גמלא, עיט ואניעם: חניות רשמיות ומסלולי הליכה => missing road_character
+[163] ID=n40 | סוסיתא דרך עין גב בלבד וחזרה באותו ציר => missing road_character
+[164] ID=n41 | אל־על ועין קשתות: חניונים, לא רכיבה למפלים => missing road_character
+[165] ID=n42 | כנף ודיר עזיז: גרסת אופנוע כביש בלי שני ק״מ עפר => missing road_character
+[166] ID=n43 | געש ומורשת בצפון הגולן: אביטל, הג׳ובה הגדולה ותל פאחר => missing road_character
+[167] ID=n44 | סער והחרמון: מסלול מותנה במזג אוויר ובהפעלת האתר => missing road_character
+[168] ID=n45 | מורשת תל חי וברעם: רק בתיאום חצר תל חי => missing road_character
+[169] ID=n46 | שואה והתיישבות בגליל המערבי: לוחמי הגטאות, שיירת יחיעם, חניתה וראש הנקרה => missing road_character
+[170] ID=n47 | רכס נפתלי בכבישים ציבוריים: בלי דרך הנוף הסגורה => missing road_character
+[171] ID=n48 | מטולה ונחל עיון: הכניסה התחתונה המדויקת => missing road_character
+[172] ID=n49 | החולה ואגמון החולה: האופנוע נשאר במרכז המבקרים => missing road_character
+[173] ID=n50 | מבצר, בניאס ואדם קדמון: נמרוד, שני מתחמי הבניאס ומעיין ברוך => missing road_character
+[174] ID=south-expansion-pass-001 | באר שבע התנ״כית ומורשת מלחמת העולם הראשונה => missing road_character
+[175] ID=south-expansion-pass-002 | באר שבע החלוצית: בית אשל, נחל ואמנות => missing road_character
+[176] ID=south-expansion-pass-003 | באר שבע של סקרנות ותרבות: לונדע, קרסו והאסלאם => missing road_character
+[177] ID=south-expansion-pass-004 | בעלי חיים ומים במדבר: מדבריום–דימונה–ירוחם => missing road_character
+[178] ID=south-expansion-pass-005 | ציר הערים הנבטיות: ניצנה, עבדת וממשית => missing road_character
+[179] ID=south-expansion-pass-006 | ירוחם הקהילתית וממשית: מדבר חי => missing road_character
+[180] ID=south-expansion-pass-007 | שדה בוקר: בן גוריון, הרועה ועבדת => missing road_character
+[181] ID=south-expansion-pass-008 | ערד: תל, חורשה, מצפור וממשית => missing road_character
+[182] ID=south-expansion-pass-009 | כיכרות ים המלח והערבה הצפונית => missing road_character
+[183] ID=south-expansion-pass-010 | חקלאות ואמנות לאורך הערבה => missing road_character
+[184] ID=south-expansion-pass-011 | שימור בדרום הערבה: יטבתה, חי-בר, תמנע וצפרות => missing road_character
+[185] ID=south-expansion-pass-012 | אילת: טבע עירוני, מורשת וחוף האלמוגים => missing road_character
+[186] ID=south-expansion-pass-013 | אילת הבוטנית והימית: גן, דולפינים ומצפה תת־ימי => missing road_character
+[187] ID=south-expansion-pass-014 | לכיש–נגבה–מצודת יואב: קו המצודות => missing road_character
+[188] ID=south-expansion-pass-015 | מסע המים המדברי: גולדה–ירוחם–עין תמר–ספיר => missing road_character
+[189] ID=south-expansion-warning-001 | להב וג׳ו אלון — גישה חלופית נדרשת => missing road_character
+[190] ID=south-expansion-warning-002 | פורה ושוקדה: פריחה, יער וכניסה מדויקת => missing road_character
+[191] ID=south-expansion-warning-003 | אירוס ירוחם ובית המייסדים: שתי כניסות שיש לזהות => missing road_character
+[192] ID=south-expansion-warning-004 | יתיר וערד — כבישי יער אינם בהכרח אספלט => missing road_character
+[193] ID=south-expansion-warning-005 | פארק שרשרת–נחל גרר — כניסה לפי שילוט קק״ל => missing road_character
+[194] ID=south-expansion-warning-006 | השומרוני הטוב–קומראן–עינות צוקים: הזמנה מחייבת => missing road_character
+[195] ID=south-expansion-warning-007 | לקיה וּואדי עתיר: תרבות בדואית וקיימות בתיאום => missing road_character
+[196] ID=south-expansion-warning-008 | מצפה רמון מבפנים: אלפקות ורובע דרכי הבשמים => missing road_character
+[197] ID=south-expansion-warning-009 | חוות ויקבים בהר הנגב: נחל בוקר–כרמי עבדת–ננה => missing road_character
+[198] ID=south-expansion-warning-010 | קטורה ואליפז: סביבה וחקלאות בערבה הדרומית => missing road_character
+[199] ID=south-expansion-warning-011 | יער פלוגות וקוממיות סגורים — חלופת תום ותומר וגברעם => missing road_character
+[200] ID=south-expansion-warning-012 | נתיב אנז״ק הבטוח: יד מרדכי לבאר שבע, בלי יד אנז״ק => missing road_character
+[201] ID=south-expansion-warning-013 | בארות יצחק ויער אסף שמחוני סגורים — חלופת שקמה => missing road_character
+[202] ID=south-expansion-warning-014 | ממשית וצפון הערבה — בלי חציית מעלה עקרבים החסום => missing road_character
+[203] ID=south-expansion-warning-015 | הערבה התיכונה הבטוחה — בלי מואה ובלי חוות האנטילופות => missing road_character
+[204] ID=c2301 | עיצוב ומורשת בין חולון לראשון לציון => missing road_character
+[205] ID=c2302 | פסיפס, חאן ומים: לוד–רמלה => missing road_character
+[206] ID=c2303 | מושבות ופארקים בשרון המזרחי => missing road_character
+[207] ID=c2304 | בית הבאר, אילנות וחדרה => missing road_character
+[208] ID=c2305 | שפך שורק ויבנה־ים => missing road_character
+[209] ID=c2306 | אשדוד, שפך שורק ויבנה ים => missing road_character
+[210] ID=c2307 | אפק, מגדל צדק, יער שוהם ולוד => missing road_character
+[211] ID=c2308 | לוד, מודיעין ואפק — ערי מעבר עתיקות => missing road_character
+[212] ID=c2309 | ירושלים הירוקה מדרום => missing road_character
+[213] ID=c2310 | שדרת המוזיאונים והגן הבוטני בירושלים => missing road_character
+[214] ID=c2311 | כביש 395: מגילת האש והר הטייסים => missing road_character
+[215] ID=c2312 | ארבעה מוזיאונים בתל אביב => missing road_character
+[216] ID=c2313 | מצוקי השרון ונתניה => missing road_character
+[217] ID=c2314 | הטבעת הירוקה של גוש דן והירקון => missing road_character
+[218] ID=c2315 | מוזיאוני ההתיישבות בשרון => missing road_character
+[219] ID=c2316 | מקווה ישראל, עיצוב ומורשת תל אביב => missing road_character
+[220] ID=c2317 | מכון איילון, ויצמן ומושבות השפלה => missing road_character
+[221] ID=c2318 | טכנודע ומורשת השרון => missing road_character
+[222] ID=c2319 | המגדל הלבן ורמלה ההיסטורית => missing road_character
+[223] ID=c2320 | תל גזר, כרמי יוסף ולטרון => missing road_character
+[224] ID=c2321 | מוזיאוני המחתרות של תל אביב => missing road_character
+[225] ID=c2322 | מערת הנטיפים, ירושלים והשומרוני הטוב => missing road_character
+[226] ID=c2323 | פארק קנדה, תל גזר ולטרון — מסלול סגור זמנית => missing road_character
+[227] ID=c2324 | תל גזר, יער חולדה ורחובות — מסלול סגור זמנית => missing road_character
+[228] ID=c2325 | בנק ישראל, הבורסה ומוזיאוני תל אביב => missing road_character
+[229] ID=c2326 | הספרייה הלאומית ומוסדות המשפט בירושלים => missing road_character
+[230] ID=c2327 | הכנסת, הספרייה ובית המשפט העליון => missing road_character
+[231] ID=c2328 | מורשת, רכבת וטבע עירוני בירושלים => missing road_character
+[232] ID=c2329 | עיר דוד, מרכז דוידסון ומנהרות הכותל => missing road_character
+[233] ID=c2330 | נחל פרת, עין פרת והשומרוני הטוב => missing road_character
+[234] ID=ext_n01 | סובב כביש הצפון והר אדיר (כביש 899 & 864) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[235] ID=ext_n02 | פיתולי הכרמל הדרומי ורמת מנשה (כביש 721 & 6953) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[236] ID=ext_n03 | סובב גוש תפן ופארק הסלעים (כביש 854 & 886) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[237] ID=ext_n04 | צפון הגולן וסובב חרמון (כביש 988 & 98) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[238] ID=ext_n05 | ציר המפלים והנחלים בגולן (כביש 808) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[239] ID=ext_n06 | דרך נוף הגלבוע ומלכישוע (כביש 667) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[240] ID=ext_n07 | סובב גבעות אלונים וציפורי (כביש 754 & 77) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[241] ID=ext_n08 | סובב הר תבור ורמת יבנאל (כביש 767) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[242] ID=ext_n09 | רכס נפתלי ומצודת כ״ח (כביש 886) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[243] ID=ext_n10 | סובב עמק חולה וציר להבות הבשן (כביש 918) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[244] ID=ext_c01 | סובב השרון הכפרי ואגמי חפר (כביש 5711) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[245] ID=ext_c02 | ציר חבל מודיעין ויער בן שמן (כביש 443 & 444) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[246] ID=ext_c03 | ציר גבעות ברקאי וכפר מנחם (כביש 383) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[247] ID=ext_c04 | ציר חוף השרון ורכס הכורכר (כביש 553) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[248] ID=ext_c05 | דרך המושבות ההיסטוריות בשפלה (כביש 40 & 411) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[249] ID=ext_j01 | כביש 395 - פיתולי אשתאול-צובה (המסלול האגדי) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[250] ID=ext_j02 | כביש 3866 & 386 - ציר נס הרים ובר גיורא => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[251] ID=ext_j03 | כביש 375 - סובב עמק האלה ומבוא ביתר => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[252] ID=ext_j04 | ציר אלון (כביש 458) - מדבר בנימין => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[253] ID=ext_j05 | דרך ים המלח ומצפורי מדבר יהודה (כביש 1 & 90) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[254] ID=ext_s01 | כביש 3199 - פיתולי ערד ומצדה מערב (הציר הבלעדי) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[255] ID=ext_s02 | פיתולי סדום-ערד (כביש 31 החדש והישן) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[256] ID=ext_s03 | כביש 225 - המכתש הגדול ומעלה אברהם => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[257] ID=ext_s04 | כביש 12 - הרי אילת ומעלה נטפים (ציר גבול מצרים) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[258] ID=ext_s05 | סובב מכתש רמון והמישר (כביש 40) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[259] ID=ext_s06 | ציר דרך הבשור והנגב המערבי (כביש 241 & 232) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[260] ID=ext_s07 | ציר יער להב וחבל לכיש (כביש 325 & 358) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero
+[261] ID=ext_s08 | מעלה עקרבים וצומת צפית (כביש 227 - האתגרי) => missing km, missing duration, missing level, missing summary/story, road_profile_is_zero

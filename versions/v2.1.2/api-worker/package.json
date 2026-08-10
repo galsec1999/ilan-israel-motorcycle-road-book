@@ -1,0 +1,16 @@
+{
+  "name": "ilan-road-book-ai-v2",
+  "version": "2.0.0",
+  "document_version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/worker.js && node --check src/context.generated.js",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
