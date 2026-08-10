@@ -1,7 +1,7 @@
 /**
  * שער האיכות המקומי
- * גרסת מסמך: 2.5.2
- * גרסת מוצר: 2.5.0
+ * גרסת מסמך: 2.6.0
+ * גרסת מוצר: 2.6.0
  */
 
 import test from 'node:test';
@@ -15,9 +15,9 @@ import { buildAudit } from '../tools/audit-release-routes.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relative) => fs.readFileSync(path.join(root, relative), 'utf8');
 const readBytes = (relative) => fs.readFileSync(path.join(root, relative));
-const APP_VERSION = '2.5.0';
+const APP_VERSION = '2.6.0';
 const CATALOGUE_VERSION = '2.3.0';
-const RELEASE_DOCUMENT_VERSION = '2.5.2';
+const RELEASE_DOCUMENT_VERSION = '2.6.0';
 
 function evaluateAll() {
   const context = vm.createContext({ window: {} });
@@ -73,7 +73,7 @@ function sharedPlaceCount(a, b) {
   return [...a].filter((point) => b.has(point)).length;
 }
 
-test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומי 2.2.0–2.4.0', () => {
+test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומי 2.2.0–2.5.0', () => {
   assert.equal(legacy.routes.length, 90);
   assert.equal(legacy.multiday.length, 18);
   assert.equal(legacy.grandTours.length, 3);
@@ -87,6 +87,7 @@ test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומ�
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.2.4', 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', `v${CATALOGUE_VERSION}`, 'index.html')));
   assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.4.0', 'index.html')));
+  assert.ok(fs.existsSync(path.join(root, 'versions', 'v2.5.0', 'index.html')));
   assert.match(read('versions/v2.2.4/index.html'), /גרסה 2\.2\.4/);
   for (const preserved of [
     'versions/v2.2.3/assets/app-v2.2.3.js',
@@ -138,6 +139,26 @@ test('קטלוג 2.3.0 משמר את כל חומר המקור ואת צילומ�
     ['versions/v2.4.0/manifest-2.4.0.webmanifest', 'manifest-2.4.0.webmanifest'],
     ['versions/v2.4.0/offline-2.4.0.html', 'offline-2.4.0.html'],
     ['versions/v2.4.0/tests/browser-qa-v2.4.0.cjs', 'tests/browser-qa-v2.4.0.cjs'],
+  ]) assert.deepEqual(readBytes(snapshot), readBytes(historical), `${snapshot} != ${historical} byte-for-byte`);
+  for (const preserved of [
+    'versions/v2.5.0/index.html',
+    'versions/v2.5.0/assets/app-v2.5.0.js',
+    'versions/v2.5.0/assets/app-v2.5.0.css',
+    'versions/v2.5.0/data/config-v2.5.0.js',
+    'versions/v2.5.0/manifest-2.5.0.webmanifest',
+    'versions/v2.5.0/offline-2.5.0.html',
+    'versions/v2.5.0/sw.js',
+    'versions/v2.5.0/tests/browser-qa-v2.5.0.cjs',
+  ]) assert.ok(fs.existsSync(path.join(root, preserved)), preserved);
+  assert.match(read('versions/v2.5.0/index.html'), /גרסה 2\.5\.0/);
+  assert.doesNotMatch(read('versions/v2.5.0/index.html'), /גרסה 2\.6\.0/);
+  for (const [snapshot, historical] of [
+    ['versions/v2.5.0/assets/app-v2.5.0.js', 'assets/app-v2.5.0.js'],
+    ['versions/v2.5.0/assets/app-v2.5.0.css', 'assets/app-v2.5.0.css'],
+    ['versions/v2.5.0/data/config-v2.5.0.js', 'data/config-v2.5.0.js'],
+    ['versions/v2.5.0/manifest-2.5.0.webmanifest', 'manifest-2.5.0.webmanifest'],
+    ['versions/v2.5.0/offline-2.5.0.html', 'offline-2.5.0.html'],
+    ['versions/v2.5.0/tests/browser-qa-v2.5.0.cjs', 'tests/browser-qa-v2.5.0.cjs'],
   ]) assert.deepEqual(readBytes(snapshot), readBytes(historical), `${snapshot} != ${historical} byte-for-byte`);
   assert.ok(fs.existsSync(path.join(root, 'reports', 'route-release-audit-2.2.1.json')));
   assert.ok(fs.existsSync(path.join(root, 'reports', 'ROUTE_RELEASE_AUDIT_2_2_1.md')));
@@ -409,7 +430,7 @@ test('שלושת תיקי המחקר נסגרו בדוחות QA אזוריים',
   }
 });
 
-test('HTML מציג ממשק 2.5.0, קטלוג 2.3.0, טאב אזהרות, בטיחות וכל התצוגות', () => {
+test('HTML מציג ממשק 2.6.0, קטלוג 2.3.0, טאב אזהרות, בטיחות וכל התצוגות', () => {
   assert.match(index, new RegExp(`גרסה ${APP_VERSION.replaceAll('.', '\\.')}`));
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
@@ -455,13 +476,13 @@ test('HTML מציג ממשק 2.5.0, קטלוג 2.3.0, טאב אזהרות, בט�
 test('התכונות ששוחזרו נשארות פעילות בקוד', () => {
   for (const functionName of [
     'filterRoutes', 'renderJourneys', 'pointsMapsUrl', 'migrateLegacyStorage',
-    'renderCombined', 'routeExportHtml', 'grandExportHtml', 'openInvite',
+    'renderCombined', 'routeExportHtml', 'journeyExportHtml', 'openInvite',
     'getMeetings', 'initVisitCounter', 'normalizeSprings', 'approachMapsUrl',
     'filterIssueRoutes', 'renderIssueRoutes', 'renderCentralStar', 'routeStarDirection',
     'writeClipboardText', 'copyWithFeedback', 'buildStopAiPrompt', 'copyStopAiPrompt',
   ]) assert.match(app, new RegExp(`function ${functionName}\\(`));
 
-  for (const feature of ['data-export-route', 'data-add-combined', 'data-jump-route', 'data-invite', 'data-export-grand']) {
+  for (const feature of ['data-export-route', 'data-add-combined', 'data-jump-route', 'data-invite', 'data-export-journey']) {
     assert.match(app, new RegExp(feature));
   }
   assert.match(app, /quickFilter === 'short'[\s\S]*?trip_types/);
@@ -716,6 +737,53 @@ test('שמונת שיפורי 2.5.0 מחוברים ל־UI, לאחסון המקו
   assert.match(events, /navigationBundleText\(route\)/);
 });
 
+test('מסעות 2.6.0 הם מארזים של 50 טיולים יומיים מלאים עם פעולה יומית ומרוכזת', () => {
+  const twoDayCount = legacy.multiday.reduce((sum, journey) => sum + journey.days.length, 0);
+  const grandDayCount = legacy.grandTours.reduce((sum, journey) => sum + journey.days.length, 0);
+  assert.equal(legacy.multiday.length + legacy.grandTours.length, 21);
+  assert.equal(twoDayCount, 36);
+  assert.equal(grandDayCount, 14);
+  assert.equal(twoDayCount + grandDayCount, 50);
+  const catalogueIds = new Set(catalogueRoutes.map((route) => route.id));
+  for (const journey of legacy.multiday) {
+    assert.equal(journey.days.length, 2, journey.id);
+    for (const routeId of journey.days) assert.ok(catalogueIds.has(routeId), `${journey.id} -> ${routeId}`);
+  }
+
+  for (const functionName of [
+    'journeyDayId', 'referencedJourneyDay', 'documentedJourneyDay', 'buildJourneys',
+    'journeyTarget', 'journeyExportHtml', 'exportJourney', 'journeyNavigationText',
+    'journeyShareText', 'journeyAiPrompt', 'openJourneyMaps', 'journeyCard',
+    'calendarEventLines', 'requestedJourneyFromAddress', 'openPendingInitialJourney',
+  ]) assert.match(app, new RegExp(`function ${functionName}\\(`), functionName);
+
+  assert.match(app, /const journeyDayRoutes = journeys\.flatMap/);
+  assert.match(app, /const personalActionRoutes = \[\.\.\.actionRoutes, \.\.\.journeyDayRoutes\]/);
+  assert.match(app, /const routeById = new Map\(personalActionRoutes/);
+  assert.match(app, /journey_kind: 'referenced'/);
+  assert.match(app, /journey_kind: 'documented'/);
+  assert.match(app, /sources: \[\]/);
+  assert.match(app, /לא עבר ביקורת שחרור עצמאית/);
+  assert.match(app, /connections: \[\.\.\.new Set/);
+  assert.match(app, /route\.is_journey_day \? 'journeysView'/);
+  assert.match(app, /journey\.day_routes\.map\(\(route, index\)/);
+  assert.match(app, /routeExportMainHtml\(route\)/);
+  assert.match(app, /calendarRoutes = target\.journey \? target\.journey\.day_routes/);
+  assert.match(app, /\.\.\.events/);
+  assert.match(app, /קובץ היומן הורד עם/);
+
+  for (const feature of [
+    'data-invite-journey', 'data-export-journey', 'data-copy-journey-navigation',
+    'data-open-journey-maps', 'data-copy-journey-summary', 'data-copy-journey-link',
+    'data-copy-journey-ai', 'data-open-route', 'data-ready-share', 'data-copy-navigation',
+    'data-copy-route-link', 'data-add-combined', 'data-invite', 'data-ai-route',
+  ]) assert.match(app, new RegExp(feature), feature);
+  for (const className of ['journey-package', 'journey-day-full', 'journey-day-separator', 'journey-day-context']) {
+    assert.match(css, new RegExp(`\\.${className}\\b`), className);
+  }
+  assert.match(index, /כל יום כולל את מבנה הטיול הרגיל ואת כל כלי התכנון/);
+});
+
 test('הערת ה־warning המדויקת נשמרת בכרטיס, בפרטים, בהזמנה, בשילוב ובייצוא', () => {
   const card = appFunctionSection('routeCard', 'filterRoutes');
   const combined = appFunctionSection('combinedPlanText', 'renderCombined');
@@ -818,29 +886,30 @@ test('כרטיסים ומסכי מובייל אינם יכולים לחרוג מ
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.issue-severity-guide, \.issue-severity-filters \{ grid-template-columns: minmax\(0,1fr\); \}/);
 });
 
-test('manifest, נכסי UI ו-Service Worker יחסיים ומסונכרנים ל-2.5.0 בלי לשנות את קטלוג 2.3.0', () => {
+test('manifest, נכסי UI ו-Service Worker יחסיים ומסונכרנים ל-2.6.0 בלי לשנות את קטלוג 2.3.0', () => {
   assert.equal(config.version, APP_VERSION);
   assert.equal(release.version, CATALOGUE_VERSION);
   assert.equal(expansion.version, CATALOGUE_VERSION);
   assert.equal(manifest.version, APP_VERSION);
-  assert.match(manifest.name, /גרסה 2\.5\.0/);
-  assert.match(manifest.short_name, /2\.5\.0/);
+  assert.match(manifest.name, /גרסה 2\.6\.0/);
+  assert.match(manifest.short_name, /2\.6\.0/);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
   assert.equal(manifest.display, 'standalone');
   assert.ok(manifest.icons.some((icon) => icon.sizes === '192x192' && icon.src.startsWith('./')));
   assert.ok(manifest.icons.some((icon) => icon.sizes === '512x512' && icon.src.startsWith('./')));
   assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === './#issuesView'));
-  assert.match(serviceWorker, /const CACHE_PREFIX = 'ilan-roadbook-v250-'/);
+  assert.ok(manifest.shortcuts.some((shortcut) => shortcut.url === './#journeysView'));
+  assert.match(serviceWorker, /const CACHE_PREFIX = 'ilan-roadbook-v260-'/);
   assert.match(serviceWorker, /const CACHE_NAME = `\$\{CACHE_PREFIX\}build-1`/);
-  assert.match(serviceWorker, /LEGACY_LIVE_CACHES = new Set\(\['ilan-roadbook-live-v2\.4\.0-build-1'\]\)/);
+  assert.match(serviceWorker, /LEGACY_LIVE_CACHES = new Set\(\['ilan-roadbook-v250-build-1', 'ilan-roadbook-live-v2\.4\.0-build-1'\]\)/);
   assert.match(serviceWorker, /data\/route-expansion-v2\.3\.0\.js/);
   assert.match(serviceWorker, /data\/release-audit-v2\.3\.0\.js/);
-  assert.match(serviceWorker, /data\/config-v2\.5\.0\.js/);
-  assert.match(serviceWorker, /assets\/app-v2\.5\.0\.js/);
-  assert.match(serviceWorker, /assets\/app-v2\.5\.0\.css/);
-  assert.match(serviceWorker, /manifest-2\.5\.0\.webmanifest/);
-  assert.match(serviceWorker, /offline-2\.5\.0\.html/);
+  assert.match(serviceWorker, /data\/config-v2\.6\.0\.js/);
+  assert.match(serviceWorker, /assets\/app-v2\.6\.0\.js/);
+  assert.match(serviceWorker, /assets\/app-v2\.6\.0\.css/);
+  assert.match(serviceWorker, /manifest-2\.6\.0\.webmanifest/);
+  assert.match(serviceWorker, /offline-2\.6\.0\.html/);
   assert.match(serviceWorker, /key\.startsWith\(CACHE_PREFIX\) && key !== CACHE_NAME/);
   assert.match(serviceWorker, /const cache = await caches\.open\(CACHE_NAME\)/);
   assert.match(serviceWorker, /cache\.match\(event\.request, \{ ignoreSearch: true \}\)/);
@@ -850,7 +919,7 @@ test('manifest, נכסי UI ו-Service Worker יחסיים ומסונכרנים 
 
 test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read(`offline-${APP_VERSION}.html`), /גרסה 2\.5\.0/);
+  assert.match(read(`offline-${APP_VERSION}.html`), /גרסה 2\.6\.0/);
   for (const relative of [
     'index.html', `offline-${APP_VERSION}.html`, `manifest-${APP_VERSION}.webmanifest`, 'sw.js',
     `assets/app-v${APP_VERSION}.css`, `assets/app-v${APP_VERSION}.js`, `data/config-v${APP_VERSION}.js`,
@@ -867,23 +936,23 @@ test('robots, מעטפת offline וקובצי הפרסום שלמים', () => {
   ]) assert.deepEqual(readBytes(compatibility), readBytes(active), `${compatibility} != ${active} byte-for-byte`);
 });
 
-test('מסמכי הסיום מציגים גרסת מסמך 2.5.2 ומוצר 2.5.0', () => {
+test('מסמכי הסיום מציגים גרסת מסמך 2.6.0 ומוצר 2.6.0', () => {
   for (const relative of [
     'README_HE.md',
     'PROJECT_STATUS.md',
     'REVIEW_PACKET.md',
     'NEXT_ACTION.md',
-    'RELEASE_2_5_0.md',
+    'RELEASE_2_6_0.md',
   ]) {
     assert.ok(fs.existsSync(path.join(root, relative)), relative);
     const document = read(relative);
     assert.match(document, new RegExp(`גרסת מסמך(?:[: ]+)(?:\\*\\*)?${RELEASE_DOCUMENT_VERSION.replaceAll('.', '\\.')}`), `${relative}: גרסת מסמך`);
-    assert.match(document, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.5\.0/, `${relative}: גרסת מוצר`);
+    assert.match(document, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.6\.0/, `${relative}: גרסת מוצר`);
   }
 
   const decisions = read('DECISIONS.md');
-  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.5\.2/, 'DECISIONS.md: גרסת מסמך');
-  assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.5\.0/, 'DECISIONS.md: גרסת מוצר');
+  assert.match(decisions, /גרסת מסמך(?:[: ]+)(?:\*\*)?2\.6\.0/, 'DECISIONS.md: גרסת מסמך');
+  assert.match(decisions, /גרסת מוצר(?:[: ]+)(?:\*\*)?2\.6\.0/, 'DECISIONS.md: גרסת מוצר');
 });
 
 test('אין מפתח OpenAI בקובצי הפרויקט הניתנים לפרסום', () => {
