@@ -4,8 +4,8 @@
  */
 
 window.ROAD_BOOK_CONFIG = Object.freeze({
-  version: '4.3.0',
-  buildStatus: 'v4.3.0',
+  version: '4.4.0',
+  buildStatus: 'v4.4.0',
   aiEndpoint: '',
   aiTimeoutMs: 25000,
   aiMaxQuestionLength: 500,
