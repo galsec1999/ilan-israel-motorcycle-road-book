@@ -2711,6 +2711,47 @@ ${sources}
     fillSelect($('#verifyFilter'), [...new Set(routes.map((route) => route.verification_level))]);
   }
 
+  
+  function initSunAndGloveModes() {
+    try {
+      const sunSaved = localStorage.getItem('ilan-roadbook-sun-mode') === 'true';
+      const gloveSaved = localStorage.getItem('ilan-roadbook-glove-mode') === 'true';
+
+      if (sunSaved) {
+        document.body.classList.add('sun-mode');
+        $('#sunToggle')?.setAttribute('aria-pressed', 'true');
+        $('#sunToggle')?.classList.add('active');
+      }
+
+      if (gloveSaved) {
+        document.body.classList.add('glove-mode');
+        $('#gloveToggle')?.setAttribute('aria-pressed', 'true');
+        $('#gloveToggle')?.classList.add('active');
+      }
+    } catch {}
+  }
+
+  function toggleSunMode() {
+    const isSun = document.body.classList.toggle('sun-mode');
+    try { localStorage.setItem('ilan-roadbook-sun-mode', isSun ? 'true' : 'false'); } catch {}
+    const btn = $('#sunToggle');
+    if (btn) {
+      btn.setAttribute('aria-pressed', String(isSun));
+      btn.classList.toggle('active', isSun);
+    }
+  }
+
+  function toggleGloveMode() {
+    const isGlove = document.body.classList.toggle('glove-mode');
+    try { localStorage.setItem('ilan-roadbook-glove-mode', isGlove ? 'true' : 'false'); } catch {}
+    const btn = $('#gloveToggle');
+    if (btn) {
+      btn.setAttribute('aria-pressed', String(isGlove));
+      btn.classList.toggle('active', isGlove);
+    }
+  }
+
+
   function initTheme() {
     const stored = localStorage.getItem(config.themeKey);
     if (stored) document.documentElement.dataset.theme = stored;
@@ -2776,6 +2817,8 @@ ${sources}
     $('[data-clear-filters]')?.addEventListener('click', clearFilters);
     $('#showFavoritesOnly')?.addEventListener('click', () => { favoritesOnly = !favoritesOnly; renderRoutes(); });
     $('#themeToggle')?.addEventListener('click', toggleTheme);
+    $('#sunToggle')?.addEventListener('click', toggleSunMode);
+    $('#gloveToggle')?.addEventListener('click', toggleGloveMode);
     $('#inviteGlobal')?.addEventListener('click', () => openInvite(routes[0]?.id));
     $('#openAll')?.addEventListener('click', () => $$('#routeGrid [data-card-details]').forEach((details) => { details.open = true; }));
     $('#closeAll')?.addEventListener('click', () => $$('#routeGrid [data-card-details]').forEach((details) => { details.open = false; }));
@@ -3345,6 +3388,7 @@ ${sources}
 
   function init() {
     initTheme();
+    initSunAndGloveModes();
     migrateLegacyStorage();
     initFilters();
     applyLayout(localStorage.getItem(config.layoutKey) === 'compact' ? 'compact' : 'comfortable', false);
