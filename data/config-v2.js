@@ -4,8 +4,8 @@
  */
 
 window.ROAD_BOOK_CONFIG = Object.freeze({
-  version: '4.1.1',
-  buildStatus: 'v4.1.1',
+  version: '4.2.0',
+  buildStatus: 'v4.2.0',
   aiEndpoint: '',
   aiTimeoutMs: 25000,
   aiMaxQuestionLength: 500,
@@ -57,9 +57,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "ברי סחרוף – עבדים",
       "אריק איינשטיין – סוס עץ"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%A8%D7%95%D7%A7+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A8%D7%95%D7%A7+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%A8%D7%95%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A8%D7%95%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A8%D7%95%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A8%D7%95%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA"
   },
   {
     "id": "pl_synthwave",
@@ -74,9 +74,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Lazerhawk – Overdrive",
       "GUNSHIP – Tech Noir"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=synthwave+night+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=synthwave+night+drive",
-    "spotifyUrl": "https://open.spotify.com/search/synthwave%20night%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=80s%20Synthwave%20%26%20Retrowave%20%28Night%20Ride%29%20Kavinsky%20The%20Midnight",
+    "youtubeUrl": "https://music.youtube.com/search?q=80s%20Synthwave%20%26%20Retrowave%20%28Night%20Ride%29%20Kavinsky%20The%20Midnight",
+    "spotifyUrl": "https://open.spotify.com/search/80s%20Synthwave%20%26%20Retrowave%20%28Night%20Ride%29%20Kavinsky%20The%20Midnight"
   },
   {
     "id": "pl_classic_rock",
@@ -91,9 +91,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Pink Floyd – Comfortably Numb",
       "Queen – Don't Stop Me Now"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=classic+rock+highway",
-    "youtubeUrl": "https://music.youtube.com/search?q=classic+rock+highway",
-    "spotifyUrl": "https://open.spotify.com/search/classic%20rock%20highway"
+    "appleUrl": "https://music.apple.com/il/search?term=70s-80s%20Classic%20Rock%20Highway%20AC/DC%20Steppenwolf",
+    "youtubeUrl": "https://music.youtube.com/search?q=70s-80s%20Classic%20Rock%20Highway%20AC/DC%20Steppenwolf",
+    "spotifyUrl": "https://open.spotify.com/search/70s-80s%20Classic%20Rock%20Highway%20AC/DC%20Steppenwolf"
   },
   {
     "id": "pl_hebrew_90s",
@@ -108,9 +108,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "אביב גפן – עכשיו מעונן",
       "זקני צפת – שישי שבת"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%A8%D7%95%D7%A7+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99+90",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A8%D7%95%D7%A7+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99+90",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%A8%D7%95%D7%A7%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%2090"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A8%D7%95%D7%A7%20%D7%95%D7%A4%D7%95%D7%A4%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A9%D7%A0%D7%95%D7%AA%20%D7%94-90%20%D7%90%D7%99%D7%A4%D7%94%20%D7%94%D7%99%D7%9C%D7%93%20%D7%9E%D7%95%D7%A0%D7%99%D7%A7%D7%94%20%D7%A1%D7%A7%D7%A1",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A8%D7%95%D7%A7%20%D7%95%D7%A4%D7%95%D7%A4%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A9%D7%A0%D7%95%D7%AA%20%D7%94-90%20%D7%90%D7%99%D7%A4%D7%94%20%D7%94%D7%99%D7%9C%D7%93%20%D7%9E%D7%95%D7%A0%D7%99%D7%A7%D7%94%20%D7%A1%D7%A7%D7%A1",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A8%D7%95%D7%A7%20%D7%95%D7%A4%D7%95%D7%A4%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%A9%D7%A0%D7%95%D7%AA%20%D7%94-90%20%D7%90%D7%99%D7%A4%D7%94%20%D7%94%D7%99%D7%9C%D7%93%20%D7%9E%D7%95%D7%A0%D7%99%D7%A7%D7%94%20%D7%A1%D7%A7%D7%A1"
   },
   {
     "id": "pl_metal_power",
@@ -125,9 +125,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Megadeth – Symphony of Destruction",
       "Motörhead – Ace of Spades"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=heavy+metal+motorcycle",
-    "youtubeUrl": "https://music.youtube.com/search?q=heavy+metal+motorcycle",
-    "spotifyUrl": "https://open.spotify.com/search/heavy%20metal%20motorcycle"
+    "appleUrl": "https://music.apple.com/il/search?term=Heavy%20Metal%20%26%20Power%20Riding%20Iron%20Maiden%20Metallica",
+    "youtubeUrl": "https://music.youtube.com/search?q=Heavy%20Metal%20%26%20Power%20Riding%20Iron%20Maiden%20Metallica",
+    "spotifyUrl": "https://open.spotify.com/search/Heavy%20Metal%20%26%20Power%20Riding%20Iron%20Maiden%20Metallica"
   },
   {
     "id": "pl_blues_road",
@@ -142,9 +142,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Gary Clark Jr. – Bright Lights",
       "Jimi Hendrix – Voodoo Child"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=roadtrip+blues+rock",
-    "youtubeUrl": "https://music.youtube.com/search?q=roadtrip+blues+rock",
-    "spotifyUrl": "https://open.spotify.com/search/roadtrip%20blues%20rock"
+    "appleUrl": "https://music.apple.com/il/search?term=Desert%20Blues%20%26%20Road%20trip%20ZZ%20Top%20Stevie%20Ray%20Vaughan",
+    "youtubeUrl": "https://music.youtube.com/search?q=Desert%20Blues%20%26%20Road%20trip%20ZZ%20Top%20Stevie%20Ray%20Vaughan",
+    "spotifyUrl": "https://open.spotify.com/search/Desert%20Blues%20%26%20Road%20trip%20ZZ%20Top%20Stevie%20Ray%20Vaughan"
   },
   {
     "id": "pl_indie_breeze",
@@ -159,9 +159,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "עמיר לב – אריה ויונה",
       "עלמה זהר – שיר אהבה אינדיאני"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%90%D7%99%D7%A0%D7%93%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%90%D7%99%D7%A0%D7%93%D7%99+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%90%D7%99%D7%A0%D7%93%D7%99%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%90%D7%99%D7%A0%D7%93%D7%99%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%95%D7%A8%D7%95%D7%A7%20%D7%A8%D7%9A%20%D7%9C%D7%91%D7%95%D7%A7%D7%A8%20%D7%92%D7%91%D7%A2%20%D7%90%D7%9C%D7%95%D7%9F%20%D7%A2%D7%9E%D7%99%D7%A8%20%D7%9C%D7%91",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%90%D7%99%D7%A0%D7%93%D7%99%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%95%D7%A8%D7%95%D7%A7%20%D7%A8%D7%9A%20%D7%9C%D7%91%D7%95%D7%A7%D7%A8%20%D7%92%D7%91%D7%A2%20%D7%90%D7%9C%D7%95%D7%9F%20%D7%A2%D7%9E%D7%99%D7%A8%20%D7%9C%D7%91",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%90%D7%99%D7%A0%D7%93%D7%99%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%D7%95%D7%A8%D7%95%D7%A7%20%D7%A8%D7%9A%20%D7%9C%D7%91%D7%95%D7%A7%D7%A8%20%D7%92%D7%91%D7%A2%20%D7%90%D7%9C%D7%95%D7%9F%20%D7%A2%D7%9E%D7%99%D7%A8%20%D7%9C%D7%91"
   },
   {
     "id": "pl_mediterranean",
@@ -176,9 +176,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "יהודה פוליקר – זינגואלה",
       "יורגוס דאלאראס – זיבקיקו"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%99%D7%95%D7%95%D7%A0%D7%99+%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%99%D7%95%D7%95%D7%A0%D7%99+%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%99%D7%95%D7%95%D7%A0%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A7%D7%A6%D7%91%20%D7%99%D7%9D-%D7%AA%D7%99%D7%9B%D7%95%D7%A0%D7%99%20%D7%95%D7%99%D7%95%D7%95%D7%A0%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A0%D7%95%D7%A4%D7%99%D7%AA%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%A4%D7%95%D7%9C%D7%99%D7%A7%D7%A8%20%D7%A1%D7%98%D7%9C%D7%95%D7%A1%20%D7%95%D7%90%D7%95%D7%A8%D7%9F%20%D7%97%D7%9F",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A7%D7%A6%D7%91%20%D7%99%D7%9D-%D7%AA%D7%99%D7%9B%D7%95%D7%A0%D7%99%20%D7%95%D7%99%D7%95%D7%95%D7%A0%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A0%D7%95%D7%A4%D7%99%D7%AA%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%A4%D7%95%D7%9C%D7%99%D7%A7%D7%A8%20%D7%A1%D7%98%D7%9C%D7%95%D7%A1%20%D7%95%D7%90%D7%95%D7%A8%D7%9F%20%D7%97%D7%9F",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A7%D7%A6%D7%91%20%D7%99%D7%9D-%D7%AA%D7%99%D7%9B%D7%95%D7%A0%D7%99%20%D7%95%D7%99%D7%95%D7%95%D7%A0%D7%99%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A0%D7%95%D7%A4%D7%99%D7%AA%20%D7%99%D7%94%D7%95%D7%93%D7%94%20%D7%A4%D7%95%D7%9C%D7%99%D7%A7%D7%A8%20%D7%A1%D7%98%D7%9C%D7%95%D7%A1%20%D7%95%D7%90%D7%95%D7%A8%D7%9F%20%D7%97%D7%9F"
   },
   {
     "id": "pl_electronic_trance",
@@ -193,9 +193,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Astral Projection – Mahadeva",
       "Shpongle – Divine Moments of Truth"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=progressive+trance+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=progressive+trance+drive",
-    "spotifyUrl": "https://open.spotify.com/search/progressive%20trance%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=Progressive%20Trance%20%26%20Electronic%20Drive%20Infected%20Mushroom%20Astrix",
+    "youtubeUrl": "https://music.youtube.com/search?q=Progressive%20Trance%20%26%20Electronic%20Drive%20Infected%20Mushroom%20Astrix",
+    "spotifyUrl": "https://open.spotify.com/search/Progressive%20Trance%20%26%20Electronic%20Drive%20Infected%20Mushroom%20Astrix"
   },
   {
     "id": "pl_90s_grunge",
@@ -210,9 +210,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Alice in Chains – Man in the Box",
       "Stone Temple Pilots – Plush"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=90s+grunge+rock",
-    "youtubeUrl": "https://music.youtube.com/search?q=90s+grunge+rock",
-    "spotifyUrl": "https://open.spotify.com/search/90s%20grunge%20rock"
+    "appleUrl": "https://music.apple.com/il/search?term=90s%20Grunge%20%26%20Alternative%20Rock%20Nirvana%20Pearl%20Jam",
+    "youtubeUrl": "https://music.youtube.com/search?q=90s%20Grunge%20%26%20Alternative%20Rock%20Nirvana%20Pearl%20Jam",
+    "spotifyUrl": "https://open.spotify.com/search/90s%20Grunge%20%26%20Alternative%20Rock%20Nirvana%20Pearl%20Jam"
   },
   {
     "id": "pl_hebrew_chanson",
@@ -227,9 +227,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "להקת הנח\"ל – שיר לשלום",
       "מאיר אריאל – נדר נדרתי"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%A9%D7%99%D7%A8%D7%99+%D7%93%D7%A8%D7%9A+%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A9%D7%99%D7%A8%D7%99+%D7%93%D7%A8%D7%9A+%D7%99%D7%A9%D7%A8%D7%90%D7%9C",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%A9%D7%99%D7%A8%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A9%D7%99%D7%A8%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%95%D7%9E%D7%95%D7%A8%D7%A9%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA%20%D7%90%D7%A8%D7%99%D7%A7%20%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%20%D7%A0%D7%A2%D7%9E%D7%99%20%D7%A9%D7%9E%D7%A8",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A9%D7%99%D7%A8%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%95%D7%9E%D7%95%D7%A8%D7%A9%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA%20%D7%90%D7%A8%D7%99%D7%A7%20%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%20%D7%A0%D7%A2%D7%9E%D7%99%20%D7%A9%D7%9E%D7%A8",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A9%D7%99%D7%A8%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%95%D7%9E%D7%95%D7%A8%D7%A9%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%AA%20%D7%90%D7%A8%D7%99%D7%A7%20%D7%90%D7%99%D7%99%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F%20%D7%A0%D7%A2%D7%9E%D7%99%20%D7%A9%D7%9E%D7%A8"
   },
   {
     "id": "pl_funk_groove",
@@ -244,9 +244,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Bruno Mars – Uptown Funk",
       "Tower of Power – What Is Hip?"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=funk+groove+driving",
-    "youtubeUrl": "https://music.youtube.com/search?q=funk+groove+driving",
-    "spotifyUrl": "https://open.spotify.com/search/funk%20groove%20driving"
+    "appleUrl": "https://music.apple.com/il/search?term=Funk%2C%20Groove%20%26%20Soul%20Highway%20Earth%20Wind%20%26%20Fire%20Stevie%20Wonder",
+    "youtubeUrl": "https://music.youtube.com/search?q=Funk%2C%20Groove%20%26%20Soul%20Highway%20Earth%20Wind%20%26%20Fire%20Stevie%20Wonder",
+    "spotifyUrl": "https://open.spotify.com/search/Funk%2C%20Groove%20%26%20Soul%20Highway%20Earth%20Wind%20%26%20Fire%20Stevie%20Wonder"
   },
   {
     "id": "pl_reggae_dub",
@@ -261,9 +261,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "UB40 – Red Red Wine",
       "Jimmy Cliff – Reggae Night"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=sunshine+reggae+dub",
-    "youtubeUrl": "https://music.youtube.com/search?q=sunshine+reggae+dub",
-    "spotifyUrl": "https://open.spotify.com/search/sunshine%20reggae%20dub"
+    "appleUrl": "https://music.apple.com/il/search?term=Sunshine%20Reggae%20%26%20Dub%20Chill%20Bob%20Marley%20Damian%20Marley",
+    "youtubeUrl": "https://music.youtube.com/search?q=Sunshine%20Reggae%20%26%20Dub%20Chill%20Bob%20Marley%20Damian%20Marley",
+    "spotifyUrl": "https://open.spotify.com/search/Sunshine%20Reggae%20%26%20Dub%20Chill%20Bob%20Marley%20Damian%20Marley"
   },
   {
     "id": "pl_country_highway",
@@ -278,9 +278,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Eagles – Take It Easy",
       "Willie Nelson – On the Road Again"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=southern+country+rock",
-    "youtubeUrl": "https://music.youtube.com/search?q=southern+country+rock",
-    "spotifyUrl": "https://open.spotify.com/search/southern%20country%20rock"
+    "appleUrl": "https://music.apple.com/il/search?term=Country%20Rock%20%26%20Southern%20Highway%20Lynyrd%20Skynyrd%20Creedence%20Clearwater%20Revival",
+    "youtubeUrl": "https://music.youtube.com/search?q=Country%20Rock%20%26%20Southern%20Highway%20Lynyrd%20Skynyrd%20Creedence%20Clearwater%20Revival",
+    "spotifyUrl": "https://open.spotify.com/search/Country%20Rock%20%26%20Southern%20Highway%20Lynyrd%20Skynyrd%20Creedence%20Clearwater%20Revival"
   },
   {
     "id": "pl_acoustic_sunset",
@@ -295,9 +295,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Ben Howard – Keep Your Head Up",
       "José González – Heartbeats"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=acoustic+sunset+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=acoustic+sunset+drive",
-    "spotifyUrl": "https://open.spotify.com/search/acoustic%20sunset%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A9%D7%A7%D7%99%D7%A2%D7%94%20%D7%90%D7%A7%D7%95%D7%A1%D7%98%D7%99%D7%AA%20%E2%80%94%20%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A8%D7%92%D7%95%D7%A2%D7%94%20Jack%20Johnson%20Ben%20Howard",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A9%D7%A7%D7%99%D7%A2%D7%94%20%D7%90%D7%A7%D7%95%D7%A1%D7%98%D7%99%D7%AA%20%E2%80%94%20%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A8%D7%92%D7%95%D7%A2%D7%94%20Jack%20Johnson%20Ben%20Howard",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A9%D7%A7%D7%99%D7%A2%D7%94%20%D7%90%D7%A7%D7%95%D7%A1%D7%98%D7%99%D7%AA%20%E2%80%94%20%D7%A8%D7%9B%D7%99%D7%91%D7%94%20%D7%A8%D7%92%D7%95%D7%A2%D7%94%20Jack%20Johnson%20Ben%20Howard"
   },
   {
     "id": "pl_punk_energy",
@@ -312,9 +312,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Ramones – Blitzkrieg Bop",
       "Sum 41 – Fat Lip"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=punk+rock+adrenaline",
-    "youtubeUrl": "https://music.youtube.com/search?q=punk+rock+adrenaline",
-    "spotifyUrl": "https://open.spotify.com/search/punk%20rock%20adrenaline"
+    "appleUrl": "https://music.apple.com/il/search?term=Punk%20Rock%20%26%20Adrenaline%20Rush%20Green%20Day%20The%20Offspring",
+    "youtubeUrl": "https://music.youtube.com/search?q=Punk%20Rock%20%26%20Adrenaline%20Rush%20Green%20Day%20The%20Offspring",
+    "spotifyUrl": "https://open.spotify.com/search/Punk%20Rock%20%26%20Adrenaline%20Rush%20Green%20Day%20The%20Offspring"
   },
   {
     "id": "pl_hiphop_flow",
@@ -329,9 +329,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "שוטי הנבואה – יפיהפיה",
       "סאבלימינל – התקווה"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%94%D7%99%D7%A4+%D7%94%D7%95%D7%A4+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%94%D7%99%D7%A4+%D7%94%D7%95%D7%A4+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%94%D7%99%D7%A4%20%D7%94%D7%95%D7%A4%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99"
+    "appleUrl": "https://music.apple.com/il/search?term=Hebrew%20Hip-Hop%20%26%20Beats%20Drive%20%D7%94%D7%93%D7%92%20%D7%A0%D7%97%D7%A9%20%D7%98%D7%95%D7%A0%D7%94",
+    "youtubeUrl": "https://music.youtube.com/search?q=Hebrew%20Hip-Hop%20%26%20Beats%20Drive%20%D7%94%D7%93%D7%92%20%D7%A0%D7%97%D7%A9%20%D7%98%D7%95%D7%A0%D7%94",
+    "spotifyUrl": "https://open.spotify.com/search/Hebrew%20Hip-Hop%20%26%20Beats%20Drive%20%D7%94%D7%93%D7%92%20%D7%A0%D7%97%D7%A9%20%D7%98%D7%95%D7%A0%D7%94"
   },
   {
     "id": "pl_latino_rhythm",
@@ -346,9 +346,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Santana – Smooth",
       "Gipsy Kings – Bamboleo"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=latino+rhythm+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=latino+rhythm+drive",
-    "spotifyUrl": "https://open.spotify.com/search/latino%20rhythm%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A7%D7%A6%D7%91%20%D7%9C%D7%98%D7%99%D7%A0%D7%99%20%D7%95%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%A8%D7%94%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20Santana%20Gipsy%20Kings",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A7%D7%A6%D7%91%20%D7%9C%D7%98%D7%99%D7%A0%D7%99%20%D7%95%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%A8%D7%94%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20Santana%20Gipsy%20Kings",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A7%D7%A6%D7%91%20%D7%9C%D7%98%D7%99%D7%A0%D7%99%20%D7%95%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%A8%D7%94%20%D7%9C%D7%A8%D7%9B%D7%99%D7%91%D7%94%20Santana%20Gipsy%20Kings"
   },
   {
     "id": "pl_celtic_fiddle",
@@ -363,9 +363,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Gaelic Storm – Kiss Me I'm Irish",
       "The Dubliners – Whiskey in the Jar"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=celtic+rock+fiddle",
-    "youtubeUrl": "https://music.youtube.com/search?q=celtic+rock+fiddle",
-    "spotifyUrl": "https://open.spotify.com/search/celtic%20rock%20fiddle"
+    "appleUrl": "https://music.apple.com/il/search?term=Celtic%20Rock%20%26%20Fiddle%20Highway%20Dropkick%20Murphys%20Flogging%20Molly",
+    "youtubeUrl": "https://music.youtube.com/search?q=Celtic%20Rock%20%26%20Fiddle%20Highway%20Dropkick%20Murphys%20Flogging%20Molly",
+    "spotifyUrl": "https://open.spotify.com/search/Celtic%20Rock%20%26%20Fiddle%20Highway%20Dropkick%20Murphys%20Flogging%20Molly"
   },
   {
     "id": "pl_ambient_calm",
@@ -380,9 +380,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Ennio Morricone – The Ecstasy of Gold",
       "Ludovico Einaudi – Nuvole Bianche"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=cinematic+ambient+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=cinematic+ambient+drive",
-    "spotifyUrl": "https://open.spotify.com/search/cinematic%20ambient%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=Ambient%20%26%20Cinematic%20Soundscapes%20Hans%20Zimmer%20Tycho",
+    "youtubeUrl": "https://music.youtube.com/search?q=Ambient%20%26%20Cinematic%20Soundscapes%20Hans%20Zimmer%20Tycho",
+    "spotifyUrl": "https://open.spotify.com/search/Ambient%20%26%20Cinematic%20Soundscapes%20Hans%20Zimmer%20Tycho"
   },
   {
     "id": "pl_80s_pop_rock",
@@ -397,9 +397,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Duran Duran – Hungry Like the Wolf",
       "The Outfield – Your Love"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=80s+pop+rock+anthems",
-    "youtubeUrl": "https://music.youtube.com/search?q=80s+pop+rock+anthems",
-    "spotifyUrl": "https://open.spotify.com/search/80s%20pop%20rock%20anthems"
+    "appleUrl": "https://music.apple.com/il/search?term=80s%20Pop%20Rock%20Anthems%20A-ha%20Tears%20for%20Fears",
+    "youtubeUrl": "https://music.youtube.com/search?q=80s%20Pop%20Rock%20Anthems%20A-ha%20Tears%20for%20Fears",
+    "spotifyUrl": "https://open.spotify.com/search/80s%20Pop%20Rock%20Anthems%20A-ha%20Tears%20for%20Fears"
   },
   {
     "id": "pl_hard_rock_80s",
@@ -414,9 +414,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Scorpions – Rock You Like a Hurricane",
       "Van Halen – Jump"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=80s+hard+rock+greats",
-    "youtubeUrl": "https://music.youtube.com/search?q=80s+hard+rock+greats",
-    "spotifyUrl": "https://open.spotify.com/search/80s%20hard%20rock%20greats"
+    "appleUrl": "https://music.apple.com/il/search?term=Hard%20Rock%20%26%20Hair%20Metal%20Greats%20Bon%20Jovi%20Def%20Leppard",
+    "youtubeUrl": "https://music.youtube.com/search?q=Hard%20Rock%20%26%20Hair%20Metal%20Greats%20Bon%20Jovi%20Def%20Leppard",
+    "spotifyUrl": "https://open.spotify.com/search/Hard%20Rock%20%26%20Hair%20Metal%20Greats%20Bon%20Jovi%20Def%20Leppard"
   },
   {
     "id": "pl_balkan_groove",
@@ -431,9 +431,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Balkan Beat Box – Move Zungit",
       "Emir Kusturica – Unza Unza Time"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=balkan+beats+groove",
-    "youtubeUrl": "https://music.youtube.com/search?q=balkan+beats+groove",
-    "spotifyUrl": "https://open.spotify.com/search/balkan%20beats%20groove"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%A7%D7%A6%D7%91%20%D7%91%D7%9C%D7%A7%D7%A0%D7%99%20%D7%95%D7%A6%D7%95%D7%A2%D7%A0%D7%99%20%D7%90%D7%A0%D7%A8%D7%92%D7%98%D7%99%20Goran%20Bregovic%20Shantel",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A7%D7%A6%D7%91%20%D7%91%D7%9C%D7%A7%D7%A0%D7%99%20%D7%95%D7%A6%D7%95%D7%A2%D7%A0%D7%99%20%D7%90%D7%A0%D7%A8%D7%92%D7%98%D7%99%20Goran%20Bregovic%20Shantel",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%A7%D7%A6%D7%91%20%D7%91%D7%9C%D7%A7%D7%A0%D7%99%20%D7%95%D7%A6%D7%95%D7%A2%D7%A0%D7%99%20%D7%90%D7%A0%D7%A8%D7%92%D7%98%D7%99%20Goran%20Bregovic%20Shantel"
   },
   {
     "id": "pl_jazz_fusion",
@@ -448,9 +448,9 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "Snarky Puppy – Lingus",
       "Herbie Hancock – Chameleon"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=jazz+fusion+night+drive",
-    "youtubeUrl": "https://music.youtube.com/search?q=jazz+fusion+night+drive",
-    "spotifyUrl": "https://open.spotify.com/search/jazz%20fusion%20night%20drive"
+    "appleUrl": "https://music.apple.com/il/search?term=Smooth%20Jazz%20%26%20Fusion%20Night%20Drive%20Miles%20Davis%20Weather%20Report",
+    "youtubeUrl": "https://music.youtube.com/search?q=Smooth%20Jazz%20%26%20Fusion%20Night%20Drive%20Miles%20Davis%20Weather%20Report",
+    "spotifyUrl": "https://open.spotify.com/search/Smooth%20Jazz%20%26%20Fusion%20Night%20Drive%20Miles%20Davis%20Weather%20Report"
   },
   {
     "id": "pl_israel_gold",
@@ -465,8 +465,8 @@ window.ROAD_BOOK_PLAYLISTS_CATALOG = [
       "מאיר אריאל – שלל רב",
       "אריק איינשטיין – אולז מנגנים"
     ],
-    "appleUrl": "https://music.apple.com/il/search?term=%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%95%D7%AA",
-    "youtubeUrl": "https://music.youtube.com/search?q=%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA+%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%95%D7%AA",
-    "spotifyUrl": "https://open.spotify.com/search/%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%D7%95%D7%AA"
+    "appleUrl": "https://music.apple.com/il/search?term=%D7%96%D7%94%D7%91%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%E2%80%94%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA%20%D7%9C%D7%9B%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%99%D7%9D%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A",
+    "youtubeUrl": "https://music.youtube.com/search?q=%D7%96%D7%94%D7%91%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%E2%80%94%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA%20%D7%9C%D7%9B%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%99%D7%9D%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A",
+    "spotifyUrl": "https://open.spotify.com/search/%D7%96%D7%94%D7%91%20%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99%20%E2%80%94%20%D7%A7%D7%9C%D7%90%D7%A1%D7%99%D7%A7%D7%95%D7%AA%20%D7%9C%D7%9B%D7%9C%20%D7%94%D7%96%D7%9E%D7%A0%D7%99%D7%9D%20%D7%9B%D7%95%D7%95%D7%A8%D7%AA%20%D7%A9%D7%9C%D7%95%D7%9D%20%D7%97%D7%A0%D7%95%D7%9A"
   }
 ];
