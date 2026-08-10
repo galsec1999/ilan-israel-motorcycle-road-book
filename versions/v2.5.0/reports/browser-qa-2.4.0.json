@@ -1,0 +1,106 @@
+{
+  "document_title": "בדיקת דפדפן מקצה לקצה",
+  "document_version": "2.4.0",
+  "product_version": "2.4.0",
+  "catalog_version": "2.3.0",
+  "tested_url": "http://127.0.0.1:4180/",
+  "pass_routes": 90,
+  "warning_routes": 90,
+  "filters": {
+    "north": 43,
+    "snake": 10,
+    "half_day": 16,
+    "calm": 73,
+    "day_short_sort": true,
+    "day_long_sort": true,
+    "personal_ridden": true
+  },
+  "picker": {
+    "pass_only": true,
+    "selected_route_id": "c2304"
+  },
+  "personal_planning": {
+    "status": "ridden",
+    "note_persisted": true,
+    "local_only": true
+  },
+  "deep_links": {
+    "pass": true,
+    "warning": true,
+    "invalid": true
+  },
+  "enlarged_map": true,
+  "ready_to_share": {
+    "pass": true,
+    "warning": true,
+    "clipboard": true,
+    "direct_link": true
+  },
+  "warning_severity_counts": {
+    "minor_navigation": 18,
+    "conditional": 29,
+    "major": 43
+  },
+  "clipboard_characters": 1572,
+  "route_html_export": "חיפה_הימית-_העפלה,_סטלה_מאריס_ושקמונה-גרסה-2.4.0.html",
+  "combined_html_export": "טיול-משולב-גרסה-2.4.0.html",
+  "warning_html_export": "עכו_העתיקה_מן_החניה_הציבורית-_אסירי_המחתרות,_אבירים,_מנהרה_ונמל-גרסה-2.4.0.html",
+  "invite_secondary_meeting": true,
+  "connected_routes_visible": true,
+  "local_visit_counter": true,
+  "dark_mode_toggle": "dark",
+  "local_ai_helper": true,
+  "ai_clipboard_tooltip": true,
+  "excluded_navigation_stop": {
+    "routeId": "n27",
+    "stopName": "מוזיאון אסירי המחתרות עכו — הליכה בלבד",
+    "reason": "המוזיאון נמצא במרקם העיר העתיקה; הגעה ברגל מן החניה הציבורית היחידה, ללא יעד ניווט נפרד לאופנוע."
+  },
+  "mobile_overflow": {
+    "document": 0,
+    "body": 0,
+    "routeCardsInsideViewport": true
+  },
+  "dialog_overflow": 0,
+  "service_worker": {
+    "scope": "http://127.0.0.1:4180/",
+    "active": "activated",
+    "scriptURL": "http://127.0.0.1:4180/sw.js"
+  },
+  "cache": {
+    "keys": [
+      "ilan-roadbook-live-v2.4.0-build-1"
+    ],
+    "activeKey": "ilan-roadbook-live-v2.4.0-build-1",
+    "urls": [
+      "http://127.0.0.1:4180/",
+      "http://127.0.0.1:4180/manifest-2.4.0.webmanifest",
+      "http://127.0.0.1:4180/offline-2.4.0.html",
+      "http://127.0.0.1:4180/assets/app-v2.4.0.css",
+      "http://127.0.0.1:4180/assets/app-v2.4.0.js",
+      "http://127.0.0.1:4180/data/config-v2.4.0.js",
+      "http://127.0.0.1:4180/data/new-routes-v2.js",
+      "http://127.0.0.1:4180/data/route-expansion-v2.3.0.js",
+      "http://127.0.0.1:4180/icons/icon.svg",
+      "http://127.0.0.1:4180/favicon.ico",
+      "http://127.0.0.1:4180/data/legacy-content-v2.js",
+      "http://127.0.0.1:4180/data/release-audit-v2.3.0.js",
+      "http://127.0.0.1:4180/icons/icon-192.png",
+      "http://127.0.0.1:4180/icons/icon-512.png",
+      "http://127.0.0.1:4180/index.html"
+    ]
+  },
+  "manifest_errors": [],
+  "installability_errors": [
+    {
+      "errorId": "in-incognito",
+      "errorArguments": []
+    }
+  ],
+  "actionable_installability_errors": [],
+  "installability_environment_note": "בדיקת Chrome אוטומטית רצה בפרופיל זמני/Incognito; זו מגבלת סביבת הבדיקה ולא שגיאת PWA.",
+  "offline_reload": true,
+  "page_errors": [],
+  "console_errors": [],
+  "passed": true
+}

@@ -1,0 +1,165 @@
+{
+  "document_title": "בדיקת דפדפן מקצה לקצה",
+  "document_version": "2.5.1",
+  "product_version": "2.5.0",
+  "catalog_version": "2.3.0",
+  "tested_url": "http://127.0.0.1:4182/",
+  "pass_routes": 90,
+  "warning_routes": 90,
+  "filters": {
+    "north": 43,
+    "snake": 10,
+    "half_day": 16,
+    "calm": 73,
+    "day_short_sort": true,
+    "day_long_sort": true,
+    "personal_ridden": true
+  },
+  "picker": {
+    "pass_only": true,
+    "selected_route_id": "c2314"
+  },
+  "personal_planning": {
+    "status": "ridden",
+    "note_persisted": true,
+    "local_only": true
+  },
+  "deep_links": {
+    "pass": true,
+    "warning": true,
+    "invalid": true
+  },
+  "recent_routes": {
+    "limit": 8,
+    "newest": "r018",
+    "persisted": true,
+    "invalid_ids_filtered": true
+  },
+  "route_comparison": {
+    "selected": [
+      "r001",
+      "r004"
+    ],
+    "third_rejected": "r006",
+    "persisted": true,
+    "exact_limit": 2
+  },
+  "filter_sharing": {
+    "url": "http://127.0.0.1:4182/?q=%D7%9B%D7%91%D7%99%D7%A9&direction=north&sort=title&layout=compact#routesView",
+    "query": "כביש",
+    "result_count": 43,
+    "roundtrip": true,
+    "private_params_excluded": true
+  },
+  "freshness_badges": {
+    "pass_badges": 90,
+    "warning_badges": 90,
+    "suffixed_date_parsed": true,
+    "states": [
+      "fresh"
+    ]
+  },
+  "compact_layout": {
+    "persisted": true,
+    "pass_mobile_overflow": {
+      "document": 0,
+      "body": 0,
+      "cards_inside_viewport": true
+    },
+    "warning_mobile_overflow": {
+      "document": 0,
+      "body": 0,
+      "cards_inside_viewport": true
+    }
+  },
+  "departure_checklist": {
+    "items": 8,
+    "persisted": true,
+    "reset_isolated": true
+  },
+  "enlarged_map": true,
+  "ready_to_share": {
+    "pass": true,
+    "warning": true,
+    "clipboard": true,
+    "direct_link": true
+  },
+  "warning_severity_counts": {
+    "minor_navigation": 18,
+    "conditional": 29,
+    "major": 43
+  },
+  "clipboard_characters": 1572,
+  "navigation_clipboard": {
+    "pass_characters": 2970,
+    "excluded_characters": 2844,
+    "excluded_stop_without_waze": true
+  },
+  "route_html_export": "חיפה_הימית-_העפלה,_סטלה_מאריס_ושקמונה-גרסה-2.5.0.html",
+  "combined_html_export": "טיול-משולב-גרסה-2.5.0.html",
+  "warning_html_export": "עכו_העתיקה_מן_החניה_הציבורית-_אסירי_המחתרות,_אבירים,_מנהרה_ונמל-גרסה-2.5.0.html",
+  "calendar_export": {
+    "filename": "חיפה_הימית-_העפלה,_סטלה_מאריס_ושקמונה-2.5.0.ics",
+    "bytes": 1783,
+    "crlf_only": true,
+    "route_link": true
+  },
+  "invite_secondary_meeting": true,
+  "connected_routes_visible": true,
+  "local_visit_counter": true,
+  "dark_mode_toggle": "dark",
+  "local_ai_helper": true,
+  "ai_clipboard_tooltip": true,
+  "excluded_navigation_stop": {
+    "routeId": "n27",
+    "stopName": "מוזיאון אסירי המחתרות עכו — הליכה בלבד",
+    "reason": "המוזיאון נמצא במרקם העיר העתיקה; הגעה ברגל מן החניה הציבורית היחידה, ללא יעד ניווט נפרד לאופנוע."
+  },
+  "mobile_overflow": {
+    "document": 0,
+    "body": 0,
+    "routeCardsInsideViewport": true
+  },
+  "dialog_overflow": 0,
+  "service_worker": {
+    "scope": "http://127.0.0.1:4182/",
+    "active": "activated",
+    "scriptURL": "http://127.0.0.1:4182/sw.js"
+  },
+  "cache": {
+    "keys": [
+      "ilan-roadbook-v250-build-1"
+    ],
+    "activeKey": "ilan-roadbook-v250-build-1",
+    "urls": [
+      "http://127.0.0.1:4182/",
+      "http://127.0.0.1:4182/manifest-2.5.0.webmanifest",
+      "http://127.0.0.1:4182/offline-2.5.0.html",
+      "http://127.0.0.1:4182/assets/app-v2.5.0.js",
+      "http://127.0.0.1:4182/assets/app-v2.5.0.css",
+      "http://127.0.0.1:4182/data/config-v2.5.0.js",
+      "http://127.0.0.1:4182/data/new-routes-v2.js",
+      "http://127.0.0.1:4182/data/legacy-content-v2.js",
+      "http://127.0.0.1:4182/icons/icon.svg",
+      "http://127.0.0.1:4182/data/release-audit-v2.3.0.js",
+      "http://127.0.0.1:4182/data/route-expansion-v2.3.0.js",
+      "http://127.0.0.1:4182/favicon.ico",
+      "http://127.0.0.1:4182/icons/icon-192.png",
+      "http://127.0.0.1:4182/icons/icon-512.png",
+      "http://127.0.0.1:4182/index.html"
+    ]
+  },
+  "manifest_errors": [],
+  "installability_errors": [
+    {
+      "errorId": "in-incognito",
+      "errorArguments": []
+    }
+  ],
+  "actionable_installability_errors": [],
+  "installability_environment_note": "בדיקת Chrome אוטומטית רצה בפרופיל זמני/Incognito; זו מגבלת סביבת הבדיקה ולא שגיאת PWA.",
+  "offline_reload": true,
+  "page_errors": [],
+  "console_errors": [],
+  "passed": true
+}
