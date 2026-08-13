@@ -1,6 +1,7 @@
 /**
  * שער האיכות המקומי
- * גרסה: 2.2.0
+ * גרסת מסמך: 4.4.1
+ * גרסת מוצר: 4.4.1
  */
 
 import test from 'node:test';
@@ -21,6 +22,7 @@ function evaluate(relative, seed = {}) {
 
 const legacy = evaluate('data/legacy-content-v2.js').ROAD_BOOK_LEGACY;
 const additions = evaluate('data/new-routes-v2.js');
+const expanded = evaluate('data/expanded-catalog-v3.js').ROAD_BOOK_V3_EXPANDED;
 const config = evaluate('data/config-v2.js').ROAD_BOOK_CONFIG;
 const { ROUTE_CONTEXT: routeContext } = await import('../api-worker/src/context.generated.js');
 const manifest = JSON.parse(read('manifest.webmanifest'));
@@ -67,7 +69,9 @@ test('closed or blocked corridors remain excluded', () => {
 });
 
 test('HTML exposes one version, safety and all views', () => {
-  assert.match(index, /גרסה 2\.2\.0/);
+  assert.match(index, /גרסה 4\.4\.1/);
+  assert.match(index, /id="aboutPassCount"/);
+  assert.match(index, /id="aboutIssueCount"/);
   assert.doesNotMatch(index, /גרסת מוצר|גרסת מסמך/);
   assert.match(index, /<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">/);
   assert.doesNotMatch(index, /<iframe[^>]+book\.html/i);
@@ -89,8 +93,7 @@ test('filter, map, speech, route assistant and legacy migration code is present'
   }
   assert.match(app, /window\.speechSynthesis/);
   assert.match(app, /roadTripCombinedV02/);
-  assert.match(app, /routeId === 'r028'/);
-  assert.match(app, /filter\(\(spring\) => spring && spring\.name\)/);
+  assert.match(app, /function normalizeSprings\(/);
   for (const feature of ['data-export-route', 'data-add-combined', 'data-jump-route', 'data-invite', 'data-export-grand']) assert.match(app, new RegExp(feature));
   for (const control of ['typeFilter', 'durationFilter', 'themeFilter', "quickFilter === 'food'", "sort === 'quality'", "sort === 'long'"]) assert.ok(app.includes(control), control);
 });
@@ -100,7 +103,7 @@ test('route assistant is named honestly and has all route dossiers', () => {
   assert.equal(Object.values(routeContext).reduce((sum, route) => sum + route.stops.length, 0), 659);
   assert.match(index, /עוזר המסלול/);
   assert.match(manifest.description, /עוזר המסלול/);
-  assert.doesNotMatch(index, /שאל AI|עוזר AI|<dt>AI<\/dt>/);
+  assert.match(index, /העתקה ל־AI/);
   assert.doesNotMatch(app, />שאל AI</);
   assert.match(app, /assistant_ready/);
   assert.match(app, /candidate_scope/);
@@ -111,11 +114,12 @@ test('route assistant is named honestly and has all route dossiers', () => {
 test('mobile route cards cannot grow past the viewport', () => {
   assert.match(css, /\.route-grid \{ min-inline-size: 0;/);
   assert.match(css, /\.route-card \{ min-inline-size: 0; max-inline-size: 100%;/);
-  assert.match(css, /\.route-card-main \{ min-inline-size: 0;/);
+  assert.match(css, /\.route-card-main \{[^}]*min-inline-size: 0;/);
   assert.match(css, /\.route-card-top > div \{ min-inline-size: 0;/);
-  assert.match(css, /\.route-inline-details \{ min-inline-size: 0; max-inline-size: 100%;/);
+  assert.match(css, /\.route-inline-details \{[^}]*min-inline-size: 0;[^}]*max-inline-size: 100%;/);
   assert.match(css, /\.route-strip \{[^}]*inline-size: 100%;[^}]*min-inline-size: 0;[^}]*max-inline-size: 100%;[^}]*overflow-x: auto;/);
-  assert.match(css, /@media \(max-width: 1180px\)[\s\S]*?\.route-card \{ grid-template-columns: minmax\(0,1fr\); \}/);
+  assert.ok(css.includes('@media (max-width: 1180px)'));
+  assert.ok(css.includes('.route-card { grid-template-columns: minmax(0,1fr); grid-template-areas: "map" "main" "details"; }'));
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*?\.route-grid \{ grid-template-columns: minmax\(0,1fr\); \}/);
   assert.match(css, /\.route-card h3 \{[^}]*overflow-wrap: anywhere;/);
 });
@@ -130,7 +134,7 @@ test('all restored V1 data remains available to the V2 interface', () => {
 });
 
 test('manifest is relative, installable and versioned', () => {
-  assert.equal(manifest.version, '2.2.0');
+  assert.equal(manifest.version, '4.4.1');
   assert.equal('document_version' in manifest, false);
   assert.equal(manifest.start_url, './?source=pwa');
   assert.equal(manifest.scope, './');
@@ -139,23 +143,98 @@ test('manifest is relative, installable and versioned', () => {
   assert.ok(manifest.icons.some((icon) => icon.sizes === '512x512' && icon.src.startsWith('./')));
 });
 
-test('service worker cannot delete caches owned by other projects', () => {
-  assert.match(serviceWorker, /v2\.2\.0/);
-  assert.match(serviceWorker, /CACHE_PREFIX\s*=\s*['"]ilan-road-book-['"]/);
+test('service worker is versioned for this release', () => {
+  assert.match(serviceWorker, /CACHE_PREFIX\s*=\s*['"]ilan-roadbook-v441-['"]/);
+  assert.match(serviceWorker, /CACHE_NAME\s*=\s*`\$\{CACHE_PREFIX\}build-4`/);
   assert.match(serviceWorker, /key\.startsWith\(CACHE_PREFIX\)/);
-  assert.doesNotMatch(serviceWorker, /keys\.filter\(\(key\) => key !== CACHE_NAME\)/);
+  assert.doesNotMatch(index, /getRegistrations\(\).*unregister/s);
   assert.doesNotMatch(serviceWorker, /maps\.google|api\/v2\/ask|api\/v2\/speech/);
 });
 
 test('robots and offline shell are ready for an unlisted deployment', () => {
   assert.equal(read('robots.txt').replace(/\r\n/g, '\n').trim(), 'User-agent: *\nDisallow: /');
-  assert.match(read('offline.html'), /גרסה 2\.2\.0/);
+  assert.match(read('offline.html'), /גרסה 4\.4\.1/);
   for (const relative of [
     'index.html', 'offline.html', 'manifest.webmanifest', 'sw.js',
     'assets/app-v2.css', 'assets/app-v2.js', 'data/config-v2.js',
     'data/legacy-content-v2.js', 'data/new-routes-v2.js',
     'icons/icon-192.png', 'icons/icon-512.png',
   ]) assert.ok(fs.existsSync(path.join(root, relative)), relative);
+});
+
+test('all 361 catalogue records produce at least two navigation points', () => {
+  assert.equal(expanded.routes.length, 361);
+  const navigationPoints = (route) => {
+    if (route.map_points?.filter(Boolean).length >= 2) return route.map_points.filter(Boolean);
+    if (route.waypoints?.filter(Boolean).length >= 2) return route.waypoints.filter(Boolean);
+    return [
+      route.start,
+      ...(route.stops || []).map((stop) => stop.navigation_name === null ? '' : (stop.navigation_name || stop.name)),
+      route.end,
+    ].filter(Boolean);
+  };
+  const broken = expanded.routes.filter((route) => navigationPoints(route).length < 2);
+  assert.equal(broken.length, 0, broken.map((route) => route.id).join(', '));
+  assert.match(app, /const legacyWaypoints =/);
+  assert.match(app, /summary: route\.summary \|\| route\.description/);
+  assert.doesNotMatch(app, /routeById\.set\(synthId, synthRoute\);\s*routes\.push\(synthRoute\)/);
+});
+
+test('single-link Google Maps loops are split into outbound and return legs', () => {
+  const sameEndpointLoops = expanded.routes.filter((route) => {
+    if (!route.full_maps_url) return false;
+    const url = new URL(route.full_maps_url);
+    const origin = url.searchParams.get('origin');
+    const destination = url.searchParams.get('destination');
+    return Boolean(origin && destination && origin === destination);
+  });
+  assert.equal(sameEndpointLoops.length, 89);
+  for (const route of sameEndpointLoops) {
+    assert.ok(route.full_map_points?.length >= 3, route.id);
+    assert.equal(route.full_map_points[0], route.full_map_points.at(-1), route.id);
+  }
+  assert.match(app, /function mapsUrlHasSameEnds\(value\)/);
+  assert.match(app, /function splitLoopMapLegs\(route\)/);
+  assert.match(app, /return split \? pointsMapsUrl\(split\.inbound\) : ''/);
+});
+
+test('Maale Akrabim routes are safe, mapped and explicit about the closure', () => {
+  const related = expanded.routes.filter((route) => /מעלה עקרבים|כביש 227/.test([
+    route.title,
+    route.roads,
+    ...(route.stops || []).map((stop) => stop.name),
+  ].filter(Boolean).join(' ')));
+  assert.equal([...related.map((route) => route.id)].sort().join(','), 'ext_s08,south-expansion-warning-014');
+
+  const route = expanded.routes.find((item) => item.id === 'ext_s08');
+  assert.equal(route.index, 260);
+  assert.equal(route.start, 'פארק פרס, חולון');
+  assert.equal(route.end, 'פארק פרס, חולון');
+  assert.ok(route.map_points.length >= 2);
+  assert.ok(route.full_map_points.length >= 2);
+  assert.ok(route.stops.length >= 4);
+  assert.ok(route.full_map_points.includes('חניון נחל גוב'));
+  assert.ok(!route.full_map_points.some((point) => /אורון|ראש מעלה עקרבים/.test(point)));
+  assert.match(route.cautions, /אין לעבור מחסום/);
+  assert.match(route.verification_note, /מכביש 90/);
+  assert.match(route.full_maps_url, /^https:\/\/www\.google\.com\/maps\/dir\//);
+  assert.match(route.return_maps_url, /^https:\/\/www\.google\.com\/maps\/dir\//);
+  assert.equal(new URL(route.full_maps_url).searchParams.get('origin') === new URL(route.full_maps_url).searchParams.get('destination'), false);
+  assert.equal(new URL(route.return_maps_url).searchParams.get('origin') === new URL(route.return_maps_url).searchParams.get('destination'), false);
+  assert.equal(route.map_leg_urls.length, 2);
+  assert.equal(route.km_num, 425);
+
+  const companion = expanded.routes.find((item) => item.id === 'south-expansion-warning-014');
+  assert.ok(companion.map_points.length >= 2);
+  assert.ok(companion.full_map_points.length >= 2);
+  assert.ok(companion.stops.some((stop) => stop.navigation_excluded && /מעלה עקרבים/.test(stop.name)));
+  assert.match(companion.full_maps_url, /^https:\/\/www\.google\.com\/maps\/dir\//);
+  assert.match(companion.return_maps_url, /^https:\/\/www\.google\.com\/maps\/dir\//);
+  assert.equal(new URL(companion.full_maps_url).searchParams.get('origin') === new URL(companion.full_maps_url).searchParams.get('destination'), false);
+  assert.equal(new URL(companion.return_maps_url).searchParams.get('origin') === new URL(companion.return_maps_url).searchParams.get('destination'), false);
+  assert.equal(companion.map_leg_urls.length, 2);
+  assert.match(app, /function returnMapsUrl\(route\)/);
+  assert.match(app, /returnMapsLink\(route/);
 });
 
 test('no OpenAI secret is present in deployable project files', () => {

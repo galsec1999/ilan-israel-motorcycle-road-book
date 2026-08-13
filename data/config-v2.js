@@ -1,11 +1,12 @@
 /**
  * הגדרות ספר הטיולים
- * גרסה: 3.0.0
+ * גרסת מסמך: 4.4.1
+ * גרסת מוצר: 4.4.1
  */
 
 window.ROAD_BOOK_CONFIG = Object.freeze({
-  version: '4.4.0',
-  buildStatus: 'v4.4.0',
+  version: '4.4.1',
+  buildStatus: 'v4.4.1',
   aiEndpoint: '',
   aiTimeoutMs: 25000,
   aiMaxQuestionLength: 500,

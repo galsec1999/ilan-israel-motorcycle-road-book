@@ -1,6 +1,7 @@
 /**
  * יישום ספר הטיולים
- * גרסה: 2.5.0
+ * גרסת מסמך: 4.4.1
+ * גרסת מוצר: 4.4.1
  */
 
 (() => {
@@ -156,22 +157,51 @@
   }
 
   function releaseRoute(route) {
+    const legacyWaypoints = (route.waypoints || []).map((point) => String(point || '').trim()).filter(Boolean);
+    const schemaStops = Array.isArray(route.stops) && route.stops.length
+      ? route.stops
+      : legacyWaypoints.map((name, index) => ({
+        name,
+        navigation_name: name,
+        kind: index === 0 ? 'נקודת התחלה' : index === legacyWaypoints.length - 1 ? 'נקודת סיום' : 'נקודת דרך',
+        minutes: index === 0 || index === legacyWaypoints.length - 1 ? 0 : 15,
+        story: `נקודת דרך במסלול: ${name}.`,
+        story_long: `נקודת דרך במסלול: ${name}. יש לבדוק נגישות, חניה ותנאי דרך ביום היציאה.`,
+        sources: route.sources || [],
+      }));
+    const schemaCompatibleRoute = {
+      ...route,
+      start: route.start || legacyWaypoints[0] || '',
+      end: route.end || legacyWaypoints.at(-1) || '',
+      summary: route.summary || route.description || '',
+      story_big: route.story_big || route.description || '',
+      duration: route.duration || route.duration_hours || '',
+      km: route.km || route.distance_km || '',
+      level: route.level || route.difficulty_level || '',
+      roads: route.roads || (Array.isArray(route.main_roads) ? route.main_roads.join(', ') : route.main_roads) || '',
+      best: route.best || route.recommended_season || '',
+      cautions: route.cautions || route.safety_notes || '',
+      map_points: Array.isArray(route.map_points) && route.map_points.length >= 2
+        ? route.map_points
+        : legacyWaypoints,
+      stops: schemaStops,
+    };
     const override = releaseAudit.route_overrides?.[route.id] || {};
     const sourceOverride = releaseAudit.source_overrides?.[route.id];
     const navigationPoints = releaseAudit.navigation_points?.[route.id];
     const stopNavigation = releaseAudit.stop_navigation?.[route.id] || {};
     const stopExclusions = new Set(releaseAudit.stop_exclusions?.[route.id] || []);
     const correctedProfile = override.road_profile
-      ? { ...(route.road_profile || {}), ...override.road_profile }
-      : route.road_profile;
+      ? { ...(schemaCompatibleRoute.road_profile || {}), ...override.road_profile }
+      : schemaCompatibleRoute.road_profile;
     return {
-      ...route,
+      ...schemaCompatibleRoute,
       ...override,
-      route_shape: pointToPointCorrections.has(route.id) ? 'נקודה לנקודה' : (override.route_shape || route.route_shape),
+      route_shape: pointToPointCorrections.has(route.id) ? 'נקודה לנקודה' : (override.route_shape || schemaCompatibleRoute.route_shape),
       road_profile: correctedProfile,
-      sources: sourceOverride || override.sources || route.sources,
-      map_points: navigationPoints || override.map_points || route.map_points,
-      stops: (route.stops || []).filter((stop) => !stopExclusions.has(stop.name)).map((stop) => ({
+      sources: sourceOverride || override.sources || schemaCompatibleRoute.sources,
+      map_points: navigationPoints || override.map_points || schemaCompatibleRoute.map_points,
+      stops: schemaStops.filter((stop) => !stopExclusions.has(stop.name)).map((stop) => ({
         ...stop,
         ...(Object.hasOwn(stopNavigation, stop.name) ? { navigation_name: stopNavigation[stop.name] } : {}),
       })),
@@ -344,7 +374,6 @@
     });
 
     routeById.set(synthId, synthRoute);
-    routes.push(synthRoute);
     return synthRoute;
   }
 
@@ -498,9 +527,67 @@
     return points;
   }
 
+  function mapsUrlHasSameEnds(value) {
+    const safe = safeHttpsUrl(value);
+    if (!safe) return false;
+    try {
+      const url = new URL(safe);
+      const origin = url.searchParams.get('origin');
+      const destination = url.searchParams.get('destination');
+      return Boolean(origin && destination && origin.trim().toLocaleLowerCase('he') === destination.trim().toLocaleLowerCase('he'));
+    } catch {
+      return false;
+    }
+  }
+
+  function splitLoopMapLegs(route) {
+    const points = fullRouteNavigationPoints(route);
+    if (points.length < 3 || points[0] !== points.at(-1)) return null;
+
+    let pivotIndex = -1;
+    const firstReturnPoint = (route.return_points || []).find(Boolean);
+    if (firstReturnPoint) {
+      const returnIndex = points.findIndex((point, index) => index > 0 && point === firstReturnPoint);
+      if (returnIndex > 1) pivotIndex = returnIndex - 1;
+    }
+    if (pivotIndex < 1) {
+      const lastCorePoint = [...(route.map_points || [])].reverse().find((point) => point && point !== points[0]);
+      if (lastCorePoint) pivotIndex = points.findIndex((point, index) => index > 0 && point === lastCorePoint);
+    }
+    if (pivotIndex < 1 || pivotIndex >= points.length - 1) pivotIndex = Math.floor((points.length - 1) / 2);
+
+    const outbound = orderedRoutePoints(points.slice(0, pivotIndex + 1));
+    const inbound = orderedRoutePoints(points.slice(pivotIndex));
+    if (outbound.length < 2 || inbound.length < 2 || outbound[0] === outbound.at(-1) || inbound[0] === inbound.at(-1)) return null;
+    return { outbound, inbound };
+  }
+
   function mapsUrl(route) {
-    if (safeHttpsUrl(route.full_maps_url)) return safeHttpsUrl(route.full_maps_url);
+    const explicit = safeHttpsUrl(route.full_maps_url);
+    if (explicit && !mapsUrlHasSameEnds(explicit)) return explicit;
+    const split = splitLoopMapLegs(route);
+    if (split) return pointsMapsUrl(split.outbound);
+    if (explicit) return explicit;
     return pointsMapsUrl(fullRouteNavigationPoints(route));
+  }
+
+  function returnMapsUrl(route) {
+    const explicit = safeHttpsUrl(route.return_maps_url);
+    if (explicit) return explicit;
+    const split = splitLoopMapLegs(route);
+    return split ? pointsMapsUrl(split.inbound) : '';
+  }
+
+  function mapsLinkLabel(route, issue = false) {
+    if (route.full_maps_label) return route.full_maps_label;
+    if (splitLoopMapLegs(route)) return issue ? 'Google Maps — הלוך לבדיקה' : 'Google Maps — הלוך';
+    return issue ? 'Google Maps מהמרכז — לבדיקה' : 'Google Maps — מסלול מלא מהמרכז';
+  }
+
+  function returnMapsLink(route, className = 'button light') {
+    const url = returnMapsUrl(route);
+    if (!url) return '';
+    return `<a class="${escapeHtml(className)}" href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(route.return_maps_label || 'Google Maps — חזרה')}</a>`;
   }
 
   function coreMapsUrl(route) {
@@ -914,7 +1001,8 @@
     lines.push(
       '',
       `מפת גישה מהמרכז: ${approachMapsUrl(route, meetings)}`,
-      `מפת המסלול המלאה: ${mapsUrl(route)}`,
+      `${route.full_maps_label || 'מפת המסלול המלאה'}: ${mapsUrl(route)}`,
+      ...(returnMapsUrl(route) ? [`${route.return_maps_label || 'Google Maps — חזרה'}: ${returnMapsUrl(route)}`] : []),
       `מפת הציר הנופי: ${coreMapsUrl(route)}`,
       '',
       'תחנות לפי הסדר:',
@@ -1431,7 +1519,8 @@
         <div class="route-actions route-card-actions">
           <button class="button primary" type="button" data-open-route="${escapeHtml(route.id)}">${issue ? 'פרטי הטיול וההערה' : 'פרטי הטיול'}</button>
           ${compareRouteButton(route)}
-          <a class="button light" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">${issue ? 'Google Maps מהמרכז — לבדיקה' : 'Google Maps — מסלול מלא מהמרכז'}</a>
+          <a class="button light" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">${escapeHtml(mapsLinkLabel(route, issue))}</a>
+          ${returnMapsLink(route)}
           <span class="route-card-secondary-actions">
             <button class="button accent" type="button" data-ready-share="${escapeHtml(route.id)}">${distributionReady ? 'מוכן להפצה' : 'תקציר לבדיקה'}</button>
             <button class="button ghost" type="button" data-copy-navigation="${escapeHtml(route.id)}" title="${escapeHtml(NAVIGATION_COPY_TOOLTIP)}">העתקת כל הניווט</button>
@@ -1762,7 +1851,8 @@
     const profile = route.road_profile || {};
     const gravelMeter = Number(profile.gravel) > 0 ? `<div><b>${Number(profile.gravel)}%</b>דרך כבושה</div>` : '';
     const issueBlock = route.release_has_issue ? `<section class="warn"><h2>⚠ ${escapeHtml(route.release_issue_severity_label)}</h2><p>${escapeHtml(route.release_issue_reason)}</p><p><strong>${escapeHtml(route.release_issue_severity_description)}</strong></p></section>` : '';
-    return `<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>${escapeHtml(route.title)}</title><style>${exportStyles()}</style></head><body><header><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;"><div><h1 style="margin:0;">${escapeHtml(route.title)}</h1><p style="margin:4px 0 0 0;opacity:0.9;">${escapeHtml(route.area)} · יום מהמרכז ${escapeHtml(day.dayKmLabel)} · ${escapeHtml(day.timeLabel)}</p></div><button type="button" class="theme-toggle-btn no-print" onclick="toggleExportTheme()">🌓 מצב כהה / בהיר</button></div></header><main>${issueBlock}<div class="card no-print" style="display:flex;gap:10px;align-items:center;"><button class="button" onclick="window.print()">🖨 הדפסה / שמירה ל־PDF</button></div><section class="meeting"><h2>נקודות מפגש והצטרפות</h2><p><strong>נקודת מרכז:</strong> ${escapeHtml(meetings.primaryPlace)} — מפגש ${escapeHtml(meetings.primaryMeet)}, יציאה ${escapeHtml(meetings.primaryDepart)} <a class="button" href="${escapeHtml(wazeUrl(meetings.primaryPlace))}">Waze</a></p>${secondary}<p><strong>תחילת מסלול הטיול:</strong> ${escapeHtml(route.start)}</p><p><strong>אומדן יום מלא מהמרכז:</strong> ${escapeHtml(day.dayKmLabel)} · ${escapeHtml(day.timeLabel)}.</p><p class="muted">${escapeHtml(day.distanceBasis)}. השעות והמרחק הם כלי תכנון; בודקים ב־Google Maps ומעדכנים לפני הפצה.</p><a class="button" href="${escapeHtml(approachMapsUrl(route, meetings))}">מפת גישה מהמרכז</a><a class="button" href="${escapeHtml(mapsUrl(route))}">מפת מסלול הטיול</a></section><div class="card grid"><div><b>התחלה</b><br>${escapeHtml(route.start)}</div><div><b>סיום</b><br>${escapeHtml(route.end)}</div><div><b>רמה</b><br>${escapeHtml(route.level)}</div><div><b>עונה</b><br>${escapeHtml(route.best)}</div><div><b>כבישים</b><br>${escapeHtml(route.roads)}</div><div><b>אופי</b><br>${escapeHtml(route.road_character)}</div><div><b>סוגי טיול</b><br>${escapeHtml((route.trip_types || []).join(' · '))}</div><div><b>אימות</b><br>${escapeHtml(route.verification_level)}</div></div><section><h2>סיפור הדרך</h2><p>${escapeHtml(route.story_big || route.summary).replace(/\n/g, '<br>')}</p></section><section><h2>מפת המסלול</h2><iframe class="map" loading="lazy" src="${escapeHtml(embedUrl(route))}"></iframe></section>${renderMusicBox(route, true)}<section><h2>פרופיל כביש</h2><div class="meters"><div><b>${Number(profile.fast) || 0}%</b>מהיר</div><div><b>${Number(profile.twisty) || 0}%</b>מפותל</div><div><b>${Number(profile.local) || 0}%</b>אזורי</div><div><b>${Number(profile.urban) || 0}%</b>עירוני</div>${gravelMeter}</div><p>${escapeHtml(profile.note || 'טרם הושלם פרופיל כביש.')}</p></section><h2>התחנות וסיפורי הדרך</h2>${stops}${springs ? `<section><h2>מים ומעיינות</h2><ul>${springs}</ul></section>` : ''}${food ? `<section><h2>קפה ואוכל</h2><ul>${food}</ul></section>` : ''}<section><h2>תדלוק</h2><p>${escapeHtml(route.fuel)}</p></section><section class="warn"><h2>דגשים ובטיחות</h2><p>${escapeHtml(route.cautions)}</p></section>${connections ? `<section><h2>המשך טבעי למסלולים נוספים</h2><ul>${connections}</ul></section>` : ''}<section><h2>מקורות</h2><p>${sources || 'לא צורפו מקורות תקינים.'}</p></section><section class="warn"><h2>אחריות הרוכב</h2><p>זהו טיול חברים לא־מאורגן. כל רוכב רוכב באחריותו הבלעדית ואחראי לרישיון ולביטוח תקפים, למיגון, לתקינות האופנוע, לשירותי גרירה ולציות לחוק. בודקים את הדרך ואת המקורות הרשמיים ביום היציאה.</p></section><script>
+    const returnMapLink = returnMapsUrl(route) ? `<a class="button" href="${escapeHtml(returnMapsUrl(route))}">${escapeHtml(route.return_maps_label || 'Google Maps — חזרה')}</a>` : '';
+    return `<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive,nosnippet"><title>${escapeHtml(route.title)}</title><style>${exportStyles()}</style></head><body><header><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;"><div><h1 style="margin:0;">${escapeHtml(route.title)}</h1><p style="margin:4px 0 0 0;opacity:0.9;">${escapeHtml(route.area)} · יום מהמרכז ${escapeHtml(day.dayKmLabel)} · ${escapeHtml(day.timeLabel)}</p></div><button type="button" class="theme-toggle-btn no-print" onclick="toggleExportTheme()">🌓 מצב כהה / בהיר</button></div></header><main>${issueBlock}<div class="card no-print" style="display:flex;gap:10px;align-items:center;"><button class="button" onclick="window.print()">🖨 הדפסה / שמירה ל־PDF</button></div><section class="meeting"><h2>נקודות מפגש והצטרפות</h2><p><strong>נקודת מרכז:</strong> ${escapeHtml(meetings.primaryPlace)} — מפגש ${escapeHtml(meetings.primaryMeet)}, יציאה ${escapeHtml(meetings.primaryDepart)} <a class="button" href="${escapeHtml(wazeUrl(meetings.primaryPlace))}">Waze</a></p>${secondary}<p><strong>תחילת מסלול הטיול:</strong> ${escapeHtml(route.start)}</p><p><strong>אומדן יום מלא מהמרכז:</strong> ${escapeHtml(day.dayKmLabel)} · ${escapeHtml(day.timeLabel)}.</p><p class="muted">${escapeHtml(day.distanceBasis)}. השעות והמרחק הם כלי תכנון; בודקים ב־Google Maps ומעדכנים לפני הפצה.</p><a class="button" href="${escapeHtml(approachMapsUrl(route, meetings))}">מפת גישה מהמרכז</a><a class="button" href="${escapeHtml(mapsUrl(route))}">${escapeHtml(route.full_maps_label || 'מפת מסלול הטיול')}</a>${returnMapLink}</section><div class="card grid"><div><b>התחלה</b><br>${escapeHtml(route.start)}</div><div><b>סיום</b><br>${escapeHtml(route.end)}</div><div><b>רמה</b><br>${escapeHtml(route.level)}</div><div><b>עונה</b><br>${escapeHtml(route.best)}</div><div><b>כבישים</b><br>${escapeHtml(route.roads)}</div><div><b>אופי</b><br>${escapeHtml(route.road_character)}</div><div><b>סוגי טיול</b><br>${escapeHtml((route.trip_types || []).join(' · '))}</div><div><b>אימות</b><br>${escapeHtml(route.verification_level)}</div></div><section><h2>סיפור הדרך</h2><p>${escapeHtml(route.story_big || route.summary).replace(/\n/g, '<br>')}</p></section><section><h2>מפת המסלול</h2><iframe class="map" loading="lazy" src="${escapeHtml(embedUrl(route))}"></iframe></section>${renderMusicBox(route, true)}<section><h2>פרופיל כביש</h2><div class="meters"><div><b>${Number(profile.fast) || 0}%</b>מהיר</div><div><b>${Number(profile.twisty) || 0}%</b>מפותל</div><div><b>${Number(profile.local) || 0}%</b>אזורי</div><div><b>${Number(profile.urban) || 0}%</b>עירוני</div>${gravelMeter}</div><p>${escapeHtml(profile.note || 'טרם הושלם פרופיל כביש.')}</p></section><h2>התחנות וסיפורי הדרך</h2>${stops}${springs ? `<section><h2>מים ומעיינות</h2><ul>${springs}</ul></section>` : ''}${food ? `<section><h2>קפה ואוכל</h2><ul>${food}</ul></section>` : ''}<section><h2>תדלוק</h2><p>${escapeHtml(route.fuel)}</p></section><section class="warn"><h2>דגשים ובטיחות</h2><p>${escapeHtml(route.cautions)}</p></section>${connections ? `<section><h2>המשך טבעי למסלולים נוספים</h2><ul>${connections}</ul></section>` : ''}<section><h2>מקורות</h2><p>${sources || 'לא צורפו מקורות תקינים.'}</p></section><section class="warn"><h2>אחריות הרוכב</h2><p>זהו טיול חברים לא־מאורגן. כל רוכב רוכב באחריותו הבלעדית ואחראי לרישיון ולביטוח תקפים, למיגון, לתקינות האופנוע, לשירותי גרירה ולציות לחוק. בודקים את הדרך ואת המקורות הרשמיים ביום היציאה.</p></section><script>
 function toggleExportTheme(){document.body.classList.toggle('light-theme');const isL=document.body.classList.contains('light-theme');try{localStorage.setItem('ilan_export_theme',isL?'light':'dark');}catch{}}
 (function(){try{if(localStorage.getItem('ilan_export_theme')==='light')document.body.classList.add('light-theme');}catch{}})();
 </script></main></body></html>`;
@@ -1866,6 +1956,7 @@ function toggleExportTheme(){document.body.classList.toggle('light-theme');const
     $('#mapDialogTitle').textContent = `מפת המסלול — ${route.title}`;
     $('#largeMapFrame').src = embedUrl(route);
     $('#largeMapGoogle').href = mapsUrl(route);
+    $('#largeMapGoogle').textContent = mapsLinkLabel(route, route.release_has_issue);
     if (!$('#mapDialog').open) $('#mapDialog').showModal();
   }
 
@@ -1890,7 +1981,8 @@ function toggleExportTheme(){document.body.classList.toggle('light-theme');const
       : isDistributionReady(route)
         ? '\n\n✅ המסלול עבר את שער השחרור הטכני.'
         : '\n\n⚠️ תיק המסלול טרם השלים את כל בדיקות ההפצה הטכניות.';
-    return `🏍️ ${route.title}\nספר הטיולים של אילן · גרסה ${config.version}${issue}\n\n🧭 מבנה: ${routePatternLabel(route)}\n🎚️ רמה: ${route.level} · אופי כביש: ${route.road_character}\n📏 אומדן יום מהמרכז: ${day.dayKmLabel}\n⏱️ משך יום משוער: ${day.timeLabel}\nℹ️ בסיס החישוב: ${day.distanceBasis}\n\n📍 נקודת מפגש ראשונה: ${meetings.primaryPlace}\nמפגש ${meetings.primaryMeet} | יציאה ${meetings.primaryDepart}${secondary}\n\n🛣️ ליבת הטיול: ${route.start} ← ${route.end}\n\n📖 תחנות עיקריות:\n${stops || 'לא צוינו תחנות.'}${moreStops}\n\n🗺️ מסלול מלא ב־Google Maps:\n${mapsUrl(route)}\n\n🔗 פרטי המסלול בספר:\n${routeShareUrl(route)}\n\n⚠️ לפני הפצה ויציאה בודקים חסימות, מזג אוויר, מצב ביטחוני, שעות פתיחה וזמני נסיעה בפועל. זהו טיול חברים קבוצתי ולא־מאורגן. כל רוכב רוכב באחריותו הבלעדית ואחראי לרישיון ולביטוח תקפים, למיגון, לתקינות האופנוע, לשירותי גרירה ולציות לחוק. אין להשתמש באתר בזמן רכיבה.`;
+    const returnMapText = returnMapsUrl(route) ? `\n🗺️ ${route.return_maps_label || 'Google Maps — חזרה'}:\n${returnMapsUrl(route)}` : '';
+    return `🏍️ ${route.title}\nספר הטיולים של אילן · גרסה ${config.version}${issue}\n\n🧭 מבנה: ${routePatternLabel(route)}\n🎚️ רמה: ${route.level} · אופי כביש: ${route.road_character}\n📏 אומדן יום מהמרכז: ${day.dayKmLabel}\n⏱️ משך יום משוער: ${day.timeLabel}\nℹ️ בסיס החישוב: ${day.distanceBasis}\n\n📍 נקודת מפגש ראשונה: ${meetings.primaryPlace}\nמפגש ${meetings.primaryMeet} | יציאה ${meetings.primaryDepart}${secondary}\n\n🛣️ ליבת הטיול: ${route.start} ← ${route.end}\n\n📖 תחנות עיקריות:\n${stops || 'לא צוינו תחנות.'}${moreStops}\n\n🗺️ ${route.full_maps_label || 'מסלול מלא ב־Google Maps'}:\n${mapsUrl(route)}${returnMapText}\n\n🔗 פרטי המסלול בספר:\n${routeShareUrl(route)}\n\n⚠️ לפני הפצה ויציאה בודקים חסימות, מזג אוויר, מצב ביטחוני, שעות פתיחה וזמני נסיעה בפועל. זהו טיול חברים קבוצתי ולא־מאורגן. כל רוכב רוכב באחריותו הבלעדית ואחראי לרישיון ולביטוח תקפים, למיגון, לתקינות האופנוע, לשירותי גרירה ולציות לחוק. אין להשתמש באתר בזמן רכיבה.`;
   }
 
   function openReadyShare(routeId) {
@@ -2187,7 +2279,7 @@ function toggleExportTheme(){document.body.classList.toggle('light-theme');const
     </div>
     <div class="detail-map"><iframe title="מפת המסלול ${escapeHtml(route.title)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="${escapeHtml(embedUrl(route))}"></iframe><button class="map-expand-button" type="button" data-enlarge-map="${escapeHtml(route.id)}">הגדלת מפה</button></div>
     ${renderMusicBox(route, true)}
-    <div class="route-actions"><a class="button accent" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">${releaseIssue ? 'מסלול מלא מהמרכז — לבדיקה' : 'מסלול מלא מהמרכז ב־Google Maps'}</a><button class="button primary" type="button" data-ready-share="${escapeHtml(route.id)}">${distributionReady ? 'מוכן להפצה' : 'תקציר לבדיקה'}</button>${compareRouteButton(route)}<button class="button ghost" type="button" data-copy-navigation="${escapeHtml(route.id)}" title="${escapeHtml(NAVIGATION_COPY_TOOLTIP)}">העתקת כל הניווט</button><button class="button ghost" type="button" data-copy-route-link="${escapeHtml(route.id)}">העתקת קישור ישיר</button><a class="button ghost" href="${escapeHtml(coreMapsUrl(route))}" target="_blank" rel="noopener">הציר הנופי בלבד</a><a class="button ghost" href="${escapeHtml(wazeUrl(meetings.primaryPlace))}" target="_blank" rel="noopener">Waze לנקודת המרכז</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">יצירת הזמנה ונקודות מפגש</button><button class="button ghost" type="button" data-add-combined="${escapeHtml(route.id)}">${releaseIssue ? 'הוספה לטיול משולב למרות ההערה' : 'הוספה לטיול משולב'}</button><button class="button ghost" type="button" data-export-route="${escapeHtml(route.id)}">📤 ייצוא דף הטיול ל-HTML לשיתוף בוואטסאפ${releaseIssue ? ' עם ההערה' : ''}</button><button class="button ghost" type="button" data-speak-route="${escapeHtml(route.id)}">השמעת תקציר</button>${releaseIssue ? '' : `<button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}">עוזר המסלול</button>`}</div>
+    <div class="route-actions"><a class="button accent" href="${escapeHtml(mapsUrl(route))}" target="_blank" rel="noopener">${escapeHtml(mapsLinkLabel(route, releaseIssue))}</a>${returnMapsLink(route, 'button accent')}<button class="button primary" type="button" data-ready-share="${escapeHtml(route.id)}">${distributionReady ? 'מוכן להפצה' : 'תקציר לבדיקה'}</button>${compareRouteButton(route)}<button class="button ghost" type="button" data-copy-navigation="${escapeHtml(route.id)}" title="${escapeHtml(NAVIGATION_COPY_TOOLTIP)}">העתקת כל הניווט</button><button class="button ghost" type="button" data-copy-route-link="${escapeHtml(route.id)}">העתקת קישור ישיר</button><a class="button ghost" href="${escapeHtml(coreMapsUrl(route))}" target="_blank" rel="noopener">הציר הנופי בלבד</a><a class="button ghost" href="${escapeHtml(wazeUrl(meetings.primaryPlace))}" target="_blank" rel="noopener">Waze לנקודת המרכז</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">יצירת הזמנה ונקודות מפגש</button><button class="button ghost" type="button" data-add-combined="${escapeHtml(route.id)}">${releaseIssue ? 'הוספה לטיול משולב למרות ההערה' : 'הוספה לטיול משולב'}</button><button class="button ghost" type="button" data-export-route="${escapeHtml(route.id)}">📤 ייצוא דף הטיול ל-HTML לשיתוף בוואטסאפ${releaseIssue ? ' עם ההערה' : ''}</button><button class="button ghost" type="button" data-speak-route="${escapeHtml(route.id)}">השמעת תקציר</button>${releaseIssue ? '' : `<button class="button ghost" type="button" data-ai-route="${escapeHtml(route.id)}">עוזר המסלול</button>`}</div>
     <section class="detail-section personal-panel"><h3>התכנון האישי שלי</h3><p>המידע נשמר רק במכשיר הזה.</p><div class="personal-form"><label><span>מצב</span><select id="personalStatus"><option value=""${personal.status ? '' : ' selected'}>ללא סימון</option><option value="want"${personal.status === 'want' ? ' selected' : ''}>רוצה לרכוב</option><option value="ridden"${personal.status === 'ridden' ? ' selected' : ''}>רכבתי</option></select></label><label class="personal-note-field"><span>הערה אישית</span><textarea id="personalNote" maxlength="600" rows="3" placeholder="למשל: לבדוק עצירת קפה או להזמין מקום">${escapeHtml(personal.note)}</textarea></label><button class="button primary" type="button" data-save-personal="${escapeHtml(route.id)}">שמירת התכנון האישי</button></div></section>
     <section class="detail-section meeting-summary"><h3>נקודות מפגש והצטרפות</h3><p><strong>מרכז:</strong> ${escapeHtml(meetings.primaryPlace)} — מפגש ${escapeHtml(meetings.primaryMeet)}, יציאה ${escapeHtml(meetings.primaryDepart)}</p>${meetings.secondaryEnabled ? `<p><strong>הצטרפות בדרך:</strong> ${escapeHtml(meetings.secondaryPlace)} — מפגש ${escapeHtml(meetings.secondaryMeet)}, יציאה ${escapeHtml(meetings.secondaryDepart)}</p>` : ''}<p><strong>תחילת מסלול הטיול:</strong> ${escapeHtml(route.start)}</p><p class="export-note">${escapeHtml(day.distanceBasis)}. הזמן והמרחק הכולל הם כלי תכנון ואינם כוללים עומסי תנועה חיים.</p><div class="route-actions"><a class="button primary" href="${escapeHtml(approachMapsUrl(route, meetings))}" target="_blank" rel="noopener">מפת גישה מהמרכז</a><button class="button ghost" type="button" data-invite="${escapeHtml(route.id)}">עריכת נקודות ושעות</button></div></section>
     <section class="detail-section quality-panel${releaseIssue ? ' quality-panel-warning' : ''}"><div class="quality-head"><div><h3>ביקורת שחרור טכנית</h3><strong>${releaseIssue ? escapeHtml(route.release_issue_reason || 'נדרשת בדיקה') : 'עבר את שער השחרור — כל הבדיקות הטכניות עברו בהצלחה'}</strong></div><div class="quality-score">${releaseIssue ? 'הערה' : 'עבר ✓'}</div></div><div class="quality-checks">${qualityChecks}</div><p><strong>מועד הביקורת:</strong> ${escapeHtml(route.release_audited_on || 'אוגוסט 2026')}. <strong>מעמד התוכן:</strong> ${escapeHtml(route.verification_level || 'מאומת ממקורות')}. ${escapeHtml(route.verification_note || 'כל הנתונים והניווט נבדקו ואומתו בהצלחה.')}</p></section>
@@ -2351,7 +2443,8 @@ function toggleExportTheme(){document.body.classList.toggle('light-theme');const
     const secondary = meetings.secondaryEnabled
       ? `\nנקודת הצטרפות: ${meetings.secondaryPlace}, מפגש ${meetings.secondaryMeet}, יציאה ${meetings.secondaryDepart}`
       : '';
-    const description = `מפגש ראשי: ${meetings.primaryPlace}, מפגש ${meetings.primaryMeet}, יציאה ${meetings.primaryDepart}${secondary}\nמפת גישה: ${approachMapsUrl(route, meetings)}\nמפת המסלול: ${mapsUrl(route)}\nקישור ישיר לספר: ${routeUrl}\nהשעות והמסלול הם כלי תכנון בלבד; בודקים מצב עדכני לפני היציאה.`;
+    const calendarReturnMap = returnMapsUrl(route) ? `\n${route.return_maps_label || 'Google Maps — חזרה'}: ${returnMapsUrl(route)}` : '';
+    const description = `מפגש ראשי: ${meetings.primaryPlace}, מפגש ${meetings.primaryMeet}, יציאה ${meetings.primaryDepart}${secondary}\nמפת גישה: ${approachMapsUrl(route, meetings)}\n${route.full_maps_label || 'מפת המסלול'}: ${mapsUrl(route)}${calendarReturnMap}\nקישור ישיר לספר: ${routeUrl}\nהשעות והמסלול הם כלי תכנון בלבד; בודקים מצב עדכני לפני היציאה.`;
     const uidSeed = `${route.id}-${dateValue}-${meetings.primaryMeet}@ilan-road-book`;
     const lines = [
       'BEGIN:VCALENDAR',
